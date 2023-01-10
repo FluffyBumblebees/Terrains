@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "quark_crystals:block/cyan_corundum_cluster"
-  }
-}

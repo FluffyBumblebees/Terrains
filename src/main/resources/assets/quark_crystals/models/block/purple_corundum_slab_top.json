@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "quark_crystals:block/purple_corundum",
-    "top": "quark_crystals:block/purple_corundum",
-    "side": "quark_crystals:block/purple_corundum"
-  }
-}

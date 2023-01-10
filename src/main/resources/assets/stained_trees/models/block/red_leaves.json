@@ -1,6 +1,0 @@
-{
-  "parent": "block/leaves",
-  "textures": {
-    "all": "stained_trees:block/red_leaves"
-  }
-}

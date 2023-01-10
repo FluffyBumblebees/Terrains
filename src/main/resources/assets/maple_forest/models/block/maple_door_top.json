@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_top",
-  "textures": {
-    "top": "maple_forest:block/maple_door_top",
-    "bottom": "maple_forest:block/maple_door_bottom"
-  }
-}

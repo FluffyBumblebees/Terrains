@@ -1,6 +1,0 @@
-{
-    "parent": "quark_crystals:block/template_crystal_corundum_pane_noside_alt",
-    "textures": {
-        "pane": "quark_crystals:block/blue_corundum"
-    }
-}
