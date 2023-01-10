@@ -15,7 +15,7 @@ import static net.fluffybumblebee.terrains.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.QCUtil.registerGeode;
 import static net.fluffybumblebee.terrains.util.QCUtil.registerPlacedGeode;
 
-public final class GeodeCollection {
+public final class GeodeCollection <E extends Enum<?>> {
     public final BlockBuilder<?>[] ALL_BLOCKS;
 
     public final BlockBuilder<CorundumBlock> waxedCorundumBlock;
@@ -34,7 +34,8 @@ public final class GeodeCollection {
     public final RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> CONFIGURED_GEODE;
     public final RegistryEntry<PlacedFeature> PLACED_GEODE;
 
-    public GeodeCollection(String colour) {
+    public GeodeCollection(E type) {
+        String colour = type.name();
         waxedCorundumBlock = buildBlock(new CorundumBlock(), "waxed_" + colour + "corundum");
         corundumCluster = buildBlock(new CorundumCluster(), colour + "_corundum_bluster");
 

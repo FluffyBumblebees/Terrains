@@ -1,6 +1,6 @@
 package net.fluffybumblebee.terrains.mixins.mixin;
 
-import net.fluffybumblebee.terrains.common.registry.CrystalGeodes;
+import net.fluffybumblebee.terrains.common.registry.category.CrystalGeodes;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import org.spongepowered.asm.mixin.Mixin;
