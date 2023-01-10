@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "quark_crystals:waxed_white_corundum"
+  },
+  "result": "quark_crystals:white_crystal",
+  "experience": 0.5,
+  "cookingtime": 200
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "stained_glass_pane",
+  "ingredients": [
+	{
+      "item": "quark_crystals:red_corundum_stairs"
+    },
+	{
+      "item": "quark_crystals:red_corundum_stairs"
+    },
+	{
+      "item": "quark_crystals:red_corundum_stairs"
+    },
+	{
+      "item": "quark_crystals:red_corundum_stairs"
+    }
+  ],
+  "result": {
+    "item": "quark_crystals:waxed_red_corundum",
+	"count": 3
+  }
+}

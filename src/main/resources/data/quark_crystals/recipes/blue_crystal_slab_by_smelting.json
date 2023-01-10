@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "quark_crystals:blue_corundum_slab"
+  },
+  "result": "quark_crystals:blue_crystal_slab",
+  "experience": 0.25,
+  "cookingtime": 200
+}

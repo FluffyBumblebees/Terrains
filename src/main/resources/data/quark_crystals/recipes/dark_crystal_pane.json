@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stained_glass_pane",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "quark_crystals:dark_crystal"
+    }
+  },
+  "result": {
+    "item": "quark_crystals:dark_crystal_pane",
+    "count": 16
+  }
+}

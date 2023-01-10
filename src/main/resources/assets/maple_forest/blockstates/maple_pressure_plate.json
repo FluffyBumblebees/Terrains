@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "powered=false": { "model": "maple_forest:block/maple_pressure_plate" },
+    "powered=true": { "model": "maple_forest:block/maple_pressure_plate_down" }
+  }
+}

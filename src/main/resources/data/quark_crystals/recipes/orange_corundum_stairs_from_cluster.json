@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stained_glass_pane",
+  "pattern": [
+    "#  ",
+    "## ",
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "quark_crystals:orange_corundum_cluster"
+    }
+  },
+  "result": {
+    "item": "quark_crystals:orange_corundum_stairs",
+	"count": 2
+  }
+}

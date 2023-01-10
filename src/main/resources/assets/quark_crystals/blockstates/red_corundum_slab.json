@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "quark_crystals:block/red_corundum_slab"
+    },
+    "type=double": {
+      "model": "quark_crystals:block/red_corundum"
+    },
+    "type=top": {
+      "model": "quark_crystals:block/red_corundum_slab_top"
+    }
+  }
+}

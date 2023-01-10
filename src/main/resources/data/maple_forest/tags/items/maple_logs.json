@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "maple_forest:maple_log",
+    "maple_forest:stripped_maple_log",
+	"maple_forest:maple_wood",
+    "maple_forest:stripped_maple_wood",
+    "maple_forest:sappy_maple_log"
+  ]
+}

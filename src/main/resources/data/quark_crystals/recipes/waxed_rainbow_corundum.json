@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "stained_glass_pane",
+  "ingredients": [
+    {
+      "item": "quark_crystals:waxed_red_corundum"
+    },
+	{
+      "item": "quark_crystals:waxed_yellow_corundum"
+    },
+	{
+      "item": "quark_crystals:waxed_orange_corundum"
+    },
+	{
+      "item": "quark_crystals:waxed_green_corundum"
+    },
+	{
+      "item": "quark_crystals:waxed_cyan_corundum"
+    },
+	{
+      "item": "quark_crystals:waxed_blue_corundum"
+    },
+	{
+      "item": "quark_crystals:waxed_indigo_corundum"
+    },
+	{
+      "item": "quark_crystals:waxed_purple_corundum"
+    },
+	{
+      "item": "quark_crystals:waxed_pink_corundum"
+    }
+  ],
+  "result": {
+    "item": "quark_crystals:waxed_rainbow_corundum",
+    "count": 9
+  }
+}

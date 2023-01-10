@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "quark_crystals:indigo_corundum_pane"
+  },
+  "result": "quark_crystals:indigo_crystal_pane",
+  "experience": 0.1875,
+  "cookingtime": 200
+}

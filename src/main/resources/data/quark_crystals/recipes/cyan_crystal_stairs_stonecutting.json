@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "quark_crystals:cyan_crystal"
+  },
+  "result": "quark_crystals:cyan_crystal_stairs",
+  "count": 1
+}

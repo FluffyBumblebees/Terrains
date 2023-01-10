@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "quark_crystals:block/indigo_crystal",
+    "top": "quark_crystals:block/indigo_crystal",
+    "side": "quark_crystals:block/indigo_crystal"
+  }
+}

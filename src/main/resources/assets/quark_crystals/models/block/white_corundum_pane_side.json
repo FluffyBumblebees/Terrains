@@ -1,0 +1,7 @@
+{
+    "parent": "quark_crystals:block/template_crystal_corundum_pane_side",
+    "textures": {
+        "edge": "quark_crystals:block/white_corundum",
+        "pane": "quark_crystals:block/white_corundum"
+    }
+}

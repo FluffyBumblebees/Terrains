@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bark",
+  "pattern": [
+    "LL",
+    "LL"
+  ],
+  "key": {
+    "L": {
+      "item": "maple_forest:stripped_maple_log"
+    }
+  },
+  "result": {
+    "item": "maple_forest:stripped_maple_wood",
+    "count": 3
+  }
+}

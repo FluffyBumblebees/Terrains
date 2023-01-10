@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "maple_forest:maple_planks"
+    }
+  },
+  "result": {
+    "item": "maple_forest:maple_pressure_plate"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "quark_crystals:waxed_orange_corundum"
+  },
+  "result": "quark_crystals:orange_crystal",
+  "experience": 0.5,
+  "cookingtime": 200
+}

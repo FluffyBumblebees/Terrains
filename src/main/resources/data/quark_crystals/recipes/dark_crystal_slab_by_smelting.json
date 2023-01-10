@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "quark_crystals:dark_corundum_slab"
+  },
+  "result": "quark_crystals:dark_crystal_slab",
+  "experience": 0.25,
+  "cookingtime": 200
+}

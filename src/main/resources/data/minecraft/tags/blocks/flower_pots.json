@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "maple_forest:potted_green_maple_sapling",
+    "maple_forest:potted_red_maple_sapling",
+    "maple_forest:potted_yellow_maple_sapling",
+    "maple_forest:potted_orange_maple_sapling"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "quark_crystals:cyan_corundum_stairs"
+  },
+  "result": "quark_crystals:cyan_crystal_stairs",
+  "experience": 0.375,
+  "cookingtime": 200
+}

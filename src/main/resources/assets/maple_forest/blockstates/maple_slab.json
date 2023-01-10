@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "maple_forest:block/maple_slab" },
+    "type=top": { "model": "maple_forest:block/maple_slab_top" },
+    "type=double": { "model": "maple_forest:block/maple_planks" }
+  }
+}

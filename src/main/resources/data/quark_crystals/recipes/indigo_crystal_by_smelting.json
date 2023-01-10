@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "quark_crystals:waxed_indigo_corundum"
+  },
+  "result": "quark_crystals:indigo_crystal",
+  "experience": 0.5,
+  "cookingtime": 200
+}

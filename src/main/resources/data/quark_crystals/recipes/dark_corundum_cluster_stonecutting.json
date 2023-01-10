@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "quark_crystals:dark_corundum"
+  },
+  "result": "quark_crystals:dark_corundum_cluster",
+  "count": 4
+}

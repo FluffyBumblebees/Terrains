@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PMP"
+  ],
+  "key": {
+    "P": {
+      "item": "maple_forest:pancake"
+    },
+    "M": {
+      "item": "maple_forest:maple_sap"
+    }
+  },
+  "result": {
+    "item": "maple_forest:maple_flavoured_pancake",
+	"count": 2
+  }
+}

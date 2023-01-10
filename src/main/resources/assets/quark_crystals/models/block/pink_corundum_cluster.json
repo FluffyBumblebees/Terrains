@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "quark_crystals:block/pink_corundum_cluster"
+  }
+}

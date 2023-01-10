@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "quark_crystals:block/purple_corundum",
+    "top": "quark_crystals:block/purple_corundum",
+    "side": "quark_crystals:block/purple_corundum"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stained_glass_pane",
+  "pattern": [
+	"#",
+	"#"
+  ],
+  "key": {
+    "#": {
+      "item": "quark_crystals:pink_corundum_slab"
+    }
+  },
+  "result": {
+    "item": "quark_crystals:waxed_pink_corundum",
+	"count": 1
+  }
+}

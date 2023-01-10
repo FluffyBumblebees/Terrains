@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "quark_crystals:waxed_green_corundum"
+  },
+  "result": "quark_crystals:green_crystal",
+  "experience": 0.5,
+  "cookingtime": 200
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "quark_crystals:waxed_yellow_corundum"
+  },
+  "result": "quark_crystals:yellow_corundum_slab",
+  "count": 2
+}

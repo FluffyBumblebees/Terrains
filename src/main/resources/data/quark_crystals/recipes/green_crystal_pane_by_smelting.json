@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "quark_crystals:green_corundum_pane"
+  },
+  "result": "quark_crystals:green_crystal_pane",
+  "experience": 0.1875,
+  "cookingtime": 200
+}

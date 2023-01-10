@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "maple_forest:maple_planks"
+    }
+  },
+  "result": {
+    "item": "maple_forest:maple_fence_gate"
+  }
+}

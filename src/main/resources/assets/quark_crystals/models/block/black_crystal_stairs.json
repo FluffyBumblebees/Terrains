@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "quark_crystals:block/black_crystal",
+    "top": "quark_crystals:block/black_crystal",
+    "side": "quark_crystals:block/black_crystal"
+  }
+}

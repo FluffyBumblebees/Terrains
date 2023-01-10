@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "quark_crystals:waxed_brown_corundum"
+  },
+  "result": "quark_crystals:brown_corundum_stairs",
+  "count": 1
+}

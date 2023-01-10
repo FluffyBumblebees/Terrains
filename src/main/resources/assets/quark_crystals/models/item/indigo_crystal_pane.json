@@ -1,0 +1,6 @@
+{
+	"parent": "item/generated",
+    "textures": {
+        "layer0": "quark_crystals:block/indigo_crystal"
+	}
+}
