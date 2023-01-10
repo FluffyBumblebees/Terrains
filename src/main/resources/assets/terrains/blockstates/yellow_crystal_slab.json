@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "terrains:block/yellow_crystal_slab"
+    },
+    "type=double": {
+      "model": "terrains:block/yellow_crystal"
+    },
+    "type=top": {
+      "model": "terrains:block/yellow_crystal_slab_top"
+    }
+  }
+}

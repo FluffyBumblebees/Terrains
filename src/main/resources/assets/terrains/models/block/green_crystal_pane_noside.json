@@ -1,0 +1,6 @@
+{
+    "parent": "terrains:block/template_crystal_corundum_pane_noside",
+    "textures": {
+        "pane": "terrains:block/green_crystal"
+    }
+}

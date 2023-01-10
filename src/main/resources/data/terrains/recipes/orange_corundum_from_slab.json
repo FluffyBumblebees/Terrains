@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stained_glass_pane",
+  "pattern": [
+	"#",
+	"#"
+  ],
+  "key": {
+    "#": {
+      "item": "terrains:orange_corundum_slab"
+    }
+  },
+  "result": {
+    "item": "terrains:waxed_orange_corundum",
+	"count": 1
+  }
+}

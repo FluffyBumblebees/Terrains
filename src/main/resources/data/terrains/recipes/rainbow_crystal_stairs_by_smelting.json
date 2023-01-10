@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "terrains:rainbow_corundum_stairs"
+  },
+  "result": "terrains:rainbow_crystal_stairs",
+  "experience": 0.375,
+  "cookingtime": 200
+}

@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "powered=false": { "model": "terrains:block/maple_pressure_plate" },
+    "powered=true": { "model": "terrains:block/maple_pressure_plate_down" }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "terrains:block/indigo_crystal",
+    "top": "terrains:block/indigo_crystal",
+    "side": "terrains:block/indigo_crystal"
+  }
+}

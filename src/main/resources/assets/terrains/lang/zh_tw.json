@@ -1,0 +1,42 @@
+{
+  "block.terrains.green_maple_leaves": "綠色楓葉",
+  "block.terrains.yellow_maple_leaves": "黃色楓葉",
+  "block.terrains.orange_maple_leaves": "橙色楓葉",
+  "block.terrains.red_maple_leaves": "紅色楓葉",
+  "block.terrains.brown_maple_leaves": "棕色楓葉",
+
+  "block.terrains.green_maple_sapling": "綠色楓樹苗",
+  "block.terrains.yellow_maple_sapling": "黃色楓樹苗",
+  "block.terrains.orange_maple_sapling": "橙色楓樹苗",
+  "block.terrains.red_maple_sapling": "紅色楓樹苗",
+  "block.terrains.brown_maple_sapling": "棕色楓樹苗",
+
+  "block.terrains.sappy_maple_log": "多汁的楓樹原木",
+  "block.terrains.maple_log": "楓樹原木",
+  "block.terrains.stripped_maple_log": "剝皮楓樹原木",
+  "block.terrains.maple_wood": "楓木塊",
+  "block.terrains.stripped_maple_wood": "剝皮楓木塊",
+  "block.terrains.maple_planks": "枫木材",
+  "block.terrains.maple_stairs": "楓木階梯",
+  "block.terrains.maple_slab": "楓木半磚",
+  "block.terrains.maple_fence": "楓木柵欄",
+  "block.terrains.maple_fence_gate": "楓木柵欄門",
+  "block.terrains.maple_pressure_plate": "楓木壓力板",
+  "block.terrains.maple_door": "楓木門",
+  "block.terrains.maple_trapdoor": "楓木活板門",
+  "block.terrains.maple_button": "楓木按鈕",
+  "block.terrains.maple_sign": "楓木告示牌",
+
+  "item.terrains.maple_boat": "楓木船",
+  "item.terrains.maple_sap": "楓樹汁",
+  "item.terrains.pancake": "煎餅",
+  "item.terrains.pancake_dough": "煎餅麵皮",
+  "item.terrains.maple_flavoured_pancake": "楓香煎餅",
+  "item.terrains.honey_flavoured_pancake": "蜂蜜煎餅",
+  "item.terrains.honeycomb_pancake_sandwich": "蜂巢煎餅三明治",
+
+  "itemGroup.terrains.terrains": "楓林",
+  "biome.terrains.maple_woodlands": "Maple Woodlands",
+  "biome.terrains.maple_blossom": "Maple Blossom",
+  "biome.terrains.barren_maple_woods": "Barren Maple Woods"
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stained_glass_pane",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "terrains:waxed_pink_corundum"
+    }
+  },
+  "result": {
+    "item": "terrains:pink_corundum_pane",
+    "count": 16
+  }
+}

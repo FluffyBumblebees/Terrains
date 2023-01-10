@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stained_glass_pane",
+  "pattern": [
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "terrains:purple_crystal"
+    }
+  },
+  "result": {
+    "item": "terrains:purple_crystal_slab",
+	"count": 6
+  }
+}

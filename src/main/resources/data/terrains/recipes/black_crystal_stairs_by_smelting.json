@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "terrains:black_corundum_stairs"
+  },
+  "result": "terrains:black_crystal_stairs",
+  "experience": 0.375,
+  "cookingtime": 200
+}

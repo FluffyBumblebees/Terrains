@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "terrains:cyan_corundum_stairs"
+  },
+  "result": "terrains:cyan_crystal_stairs",
+  "experience": 0.375,
+  "cookingtime": 200
+}

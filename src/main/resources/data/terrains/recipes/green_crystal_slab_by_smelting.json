@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "terrains:green_corundum_slab"
+  },
+  "result": "terrains:green_crystal_slab",
+  "experience": 0.25,
+  "cookingtime": 200
+}

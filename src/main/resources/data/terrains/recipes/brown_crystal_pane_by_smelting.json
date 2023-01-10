@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "terrains:brown_corundum_pane"
+  },
+  "result": "terrains:brown_crystal_pane",
+  "experience": 0.1875,
+  "cookingtime": 200
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stained_glass_pane",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "terrains:waxed_cyan_corundum"
+    }
+  },
+  "result": {
+    "item": "terrains:cyan_corundum_pane",
+    "count": 16
+  }
+}

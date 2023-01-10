@@ -1,0 +1,7 @@
+{
+    "parent": "terrains:block/template_crystal_corundum_pane_side_alt",
+    "textures": {
+        "edge": "terrains:block/cyan_corundum",
+        "pane": "terrains:block/cyan_corundum"
+    }
+}

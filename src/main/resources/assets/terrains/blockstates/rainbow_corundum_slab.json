@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "terrains:block/rainbow_corundum_slab"
+    },
+    "type=double": {
+      "model": "terrains:block/rainbow_corundum"
+    },
+    "type=top": {
+      "model": "terrains:block/rainbow_corundum_slab_top"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "terrains:yellow_corundum_pane"
+  },
+  "result": "terrains:yellow_crystal_pane",
+  "experience": 0.1875,
+  "cookingtime": 200
+}
