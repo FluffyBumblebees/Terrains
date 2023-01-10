@@ -8,6 +8,8 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import static net.fluffybumblebee.terrains.TerrainsDefaults.getIdentifier;
+
 public final class BlockBuilder <B extends Block> {
 
     private boolean isRegistered;
@@ -22,21 +24,21 @@ public final class BlockBuilder <B extends Block> {
         blockItem = null;
     }
 
-    private BlockBuilder<B> instance(InstanceReturnable instanceReturnable) {
+    private BlockBuilder<B> getInstanceWithSideEffect(InstanceReturnable instanceReturnable) {
         instanceReturnable.sideEffect();
         return this;
     }
 
-    public BlockBuilder<B> flammable(int burn, int spread) {
-        return instance(() -> FlammableBlockRegistry.getDefaultInstance().add(block, burn, spread));
+    public BlockBuilder<B> addFlammability(int burn, int spread) {
+        return getInstanceWithSideEffect(() -> FlammableBlockRegistry.getDefaultInstance().add(block, burn, spread));
     }
 
-    public BlockBuilder<B> blockItem(ItemGroup group) {
-        return instance(() -> blockItem = new BlockItem(block, new Item.Settings().group(group)));
+    public BlockBuilder<B> addBlockItem(ItemGroup group) {
+        return getInstanceWithSideEffect(() -> blockItem = new BlockItem(block, new Item.Settings().group(group)));
     }
 
-    public BlockBuilder<B> blockItem() {
-        return blockItem(ItemGroup.DECORATIONS);
+    public BlockBuilder<B> addBlockItem() {
+        return addBlockItem(ItemGroup.DECORATIONS);
     }
 
     public BlockBuilder<B> build() {
@@ -56,7 +58,11 @@ public final class BlockBuilder <B extends Block> {
     public BlockItem getBlockItem() {
         if (blockItem != null)
             return blockItem;
-        else throw new RuntimeException("Tried to get a blockItem from " + this + " but it wasn't registered!");
+        else throw new RuntimeException("Tried to get a addBlockItem from " + this + " but it wasn't registered!");
+    }
+
+    public static <B extends Block> BlockBuilder<B> buildBlock(B block, String name) {
+        return new BlockBuilder<>(block, getIdentifier(name)).addBlockItem().build();
     }
 
     @Override

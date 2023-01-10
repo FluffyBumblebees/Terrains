@@ -7,17 +7,17 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-import static net.fluffybumblebee.terrains.common.registry.category.CrystalGeodes.AllColours.PURPLE;
-import static net.fluffybumblebee.terrains.common.registry.category.CrystalGeodes.allGeodes;
-import static net.fluffybumblebee.terrains.common.registry.category.CrystalGeodes.getAllRegistryEntries;
+import static net.fluffybumblebee.terrains.common.registry.category.GeodeCollections.AllColours.PURPLE;
+import static net.fluffybumblebee.terrains.common.registry.category.GeodeCollections.allGeodes;
+import static net.fluffybumblebee.terrains.common.registry.category.GeodeCollections.getAllRegistryEntries;
 
 
 public class UndergroundItemGroup {
     public static void register() {}
-    public static final ItemGroup Underground;
+    public static final ItemGroup underground;
 
     static {
-        Underground = FabricItemGroupBuilder.create(new Identifier(TerrainsDefaults.NAMESPACE, "underground"))
+        underground = FabricItemGroupBuilder.create(new Identifier(TerrainsDefaults.NAMESPACE, "underground"))
                 .icon(() -> new ItemStack(allGeodes.get(PURPLE).corundumBlock.getBlockItem().asItem()))
                 .appendItems(stacks -> {
                     for (BlockBuilder<?> builder : getAllRegistryEntries()) {

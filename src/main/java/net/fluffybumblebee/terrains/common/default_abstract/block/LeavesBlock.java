@@ -1,6 +1,6 @@
 package net.fluffybumblebee.terrains.common.default_abstract.block;
 
-import net.fluffybumblebee.terrains.util.STUtil;
+import net.fluffybumblebee.terrains.util.predicates.BlockPredicates;
 import net.minecraft.block.Blocks;
 import net.minecraft.sound.BlockSoundGroup;
 
@@ -12,8 +12,8 @@ public class LeavesBlock extends net.minecraft.block.LeavesBlock {
                 .ticksRandomly()
                 .strength(0.2F)
                 .sounds(BlockSoundGroup.GRASS)
-                .suffocates(STUtil::never)
-                .allowsSpawning(STUtil::canSpawnOnLeaves)
-                .blockVision(STUtil::never));
+                .suffocates(BlockPredicates::never)
+                .allowsSpawning(BlockPredicates::canSpawnOnLeaves)
+                .blockVision(BlockPredicates::never));
     }
 }

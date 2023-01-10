@@ -1,8 +1,7 @@
-package net.fluffybumblebee.terrains.util.registration;
+package net.fluffybumblebee.terrains.util.registration.category;
 
 import net.fluffybumblebee.terrains.common.default_abstract.block.*;
 import net.fluffybumblebee.terrains.util.registration.block.BlockBuilder;
-import net.minecraft.block.Block;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.gen.GenerationStep;
@@ -11,9 +10,9 @@ import net.minecraft.world.gen.feature.GeodeFeatureConfig;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
 import static net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry.registerWaxableBlockPair;
-import static net.fluffybumblebee.terrains.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.QCUtil.registerGeode;
 import static net.fluffybumblebee.terrains.util.QCUtil.registerPlacedGeode;
+import static net.fluffybumblebee.terrains.util.registration.block.BlockBuilder.buildBlock;
 
 public final class GeodeCollection <E extends Enum<?>> {
     public final BlockBuilder<?>[] ALL_BLOCKS;
@@ -75,10 +74,6 @@ public final class GeodeCollection <E extends Enum<?>> {
                 colour
         );
 
-    }
-
-    public static <B extends Block> BlockBuilder<B> buildBlock(B block, String name) {
-        return new BlockBuilder<>(block, getIdentifier(name)).blockItem().build();
     }
 
     public void register(GenerationSettings.Builder builder) {

@@ -1,22 +1,13 @@
 package net.fluffybumblebee.terrains.util;
 
-import net.fluffybumblebee.terrains.TerrainsDefaults;
-import net.fluffybumblebee.terrains.common.default_abstract.block.SaplingBlock;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.common.default_abstract.block.SaplingBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.EntityType;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.*;
@@ -32,26 +23,7 @@ import java.util.List;
 import java.util.OptionalInt;
 
 @SuppressWarnings("OptionalGetWithoutIsPresent")
-public class STUtil {
-    public static boolean never(BlockState ignoredBlockState, BlockView ignoredBlockView, BlockPos ignoredBlockPos) {
-        return false;
-    }
-    public static Boolean canSpawnOnLeaves(BlockState ignoredState, BlockView ignoredWorld, BlockPos ignoredPos, EntityType<?> type) {
-        return type == EntityType.OCELOT || type == EntityType.PARROT;
-    }
-
-    public static <B extends Block> B registerBlocks(B block, String name, ItemGroup itemGroup) {
-        Registry.register(Registry.BLOCK, new Identifier(TerrainsDefaults.NAMESPACE, name), block);
-        Registry.register(Registry.ITEM, new Identifier(TerrainsDefaults.NAMESPACE, name), new BlockItem(block, new FabricItemSettings().group(itemGroup)));
-    return block;
-    }
-    public static <B extends Block> B registerBlocks(B block, String name) {
-        return registerBlocks(block, name , ItemGroup.DECORATIONS);
-    }
-    public static <B extends Block> B registerPottedSapling(B block, String name) {
-        Registry.register(Registry.BLOCK, new Identifier(TerrainsDefaults.NAMESPACE, name), block);
-        return block;
-    }
+public class TreeRegistration {
     public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> defOak(String colour, Block block) {
         return ConfiguredFeatures.register(
                 TerrainsDefaults.NAMESPACE + ":" + colour + "_tree",
@@ -145,7 +117,7 @@ public class STUtil {
                         PlacedFeatures.createCountExtraModifier(0, 0.01f, 1)
                 ));
     }
-    public static void generate(RegistryEntry<PlacedFeature> tree) {
+    public static void generateTree(RegistryEntry<PlacedFeature> tree) {
         BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.PLAINS),
                 GenerationStep.Feature.VEGETAL_DECORATION,
                 tree.getKey().get());
