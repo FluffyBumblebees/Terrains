@@ -1,12 +1,13 @@
 {
   "schemaVersion": 1,
-  "id": "stained_trees",
+  "id": "terrains",
   "version": "${version}",
 
-  "name": "Stained Trees",
-  "description": "Bringing back the good ol' coloured trees that were removed from Project Red... on fabric!",
+  "name": "Terrains",
+  "description": "Random things that I want to add because I can.",
   "authors": [
-    "Fluffy Bumblebee"
+    "Fluffy Bumblebee [Owner]",
+    "IIpho3nix [Contributor-Artist]"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
@@ -19,12 +20,13 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.bumblesoftware.stainedtrees.StainedTrees"
+      "net.fluffybumblebee.terrains.TerrainsCommon"
     ],
     "client": [
-      "net.bumblesoftware.stainedtrees.StainedTreesClient"
+      "net.fluffybumblebee.terrains.TerrainsClient"
     ]
   },
+  "accessWidener": "terrains.accesswidener",
   "mixins": [
     "terrains.mixins.json"
   ],
