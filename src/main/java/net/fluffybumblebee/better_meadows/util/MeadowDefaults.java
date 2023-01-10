@@ -1,6 +1,6 @@
 package net.fluffybumblebee.better_meadows.util;
 
-import net.fluffybumblebee.better_meadows.mixin_interface.OverworldBiomeCreatorMixinInterface;
+import net.fluffybumblebee.terrains.mixins.intercomm.OverworldBiomeCreatorMixinInterface;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.sound.SoundEvents;

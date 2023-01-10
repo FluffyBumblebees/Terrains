@@ -1,4 +1,4 @@
-package net.fluffybumblebee.quarkcrystals.mixin;
+package net.fluffybumblebee.terrains.mixins.mixin;
 
 import net.fluffybumblebee.quarkcrystals.world.gen.feature.QCDefaultBiomeFeatures;
 import net.minecraft.world.biome.GenerationSettings;

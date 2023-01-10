@@ -1,4 +1,4 @@
-package net.fluffybumblebee.better_meadows.mixin;
+package net.fluffybumblebee.terrains.mixins.mixin;
 
 import net.fluffybumblebee.better_meadows.util.MeadowDefaults;
 import net.minecraft.entity.EntityType;
