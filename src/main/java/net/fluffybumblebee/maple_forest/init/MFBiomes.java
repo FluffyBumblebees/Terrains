@@ -3,7 +3,7 @@ package net.fluffybumblebee.maple_forest.init;
 import net.fluffybumblebee.maple_forest.world.biome.MFBarrenMapleWoods;
 import net.fluffybumblebee.maple_forest.world.biome.MFMapleWoodlands;
 import net.fluffybumblebee.maple_forest.world.biome.MFMapleBlossom;
-import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;

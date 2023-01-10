@@ -3,7 +3,7 @@ package net.fluffybumblebee.maple_forest.entity.boat;
 import com.terraformersmc.terraform.boat.api.TerraformBoatType;
 import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
 import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
-import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 

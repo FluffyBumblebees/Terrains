@@ -1,4 +1,4 @@
-package net.fluffybumblebee.better_meadows.world.biome;
+package net.fluffybumblebee.terrains.common.world.terrablender.biomes;
 
 import net.fluffybumblebee.terrains.util.MeadowDefaults;
 import net.minecraft.entity.EntityType;
@@ -11,7 +11,7 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 
 
-public class BMMeadowFlats {
+public class MeadowFlats {
     public static final Biome MEADOW_FLATS = new Biome.Builder()
             .precipitation(Biome.Precipitation.RAIN)
             .generationSettings(generationSettings())

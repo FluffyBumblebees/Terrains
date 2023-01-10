@@ -2,7 +2,7 @@ package net.fluffybumblebee.maple_forest.item.group;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fluffybumblebee.maple_forest.init.MFRegistry;
-import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;

@@ -3,7 +3,7 @@ package net.fluffybumblebee.maple_forest.world.gen;
 import com.mojang.datafixers.util.Pair;
 import net.fluffybumblebee.maple_forest.config.MFConfig;
 import net.fluffybumblebee.maple_forest.init.MapleForest;
-import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;

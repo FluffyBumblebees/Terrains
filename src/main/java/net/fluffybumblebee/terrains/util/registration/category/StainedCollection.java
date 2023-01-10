@@ -1,10 +1,10 @@
 package net.fluffybumblebee.terrains.util.registration.category;
 
-import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.common.default_abstract.block.LeavesBlock;
 import net.fluffybumblebee.terrains.common.default_abstract.block.SaplingBlock;
 import net.fluffybumblebee.terrains.common.default_abstract.block.ShortenedFlowerPotBlock;
-import net.fluffybumblebee.terrains.common.registry.world.feature.tree.STSaplingGenerator;
+import net.fluffybumblebee.terrains.common.world.feature.raw.StainedSaplingGenerator;
 import net.fluffybumblebee.terrains.util.registration.block.BlockBuilder;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
@@ -36,7 +36,7 @@ public class StainedCollection <E extends Enum<?>> {
         FAT_TREE = fatOak("fat_" + colour, block);
         FAT_TREE_BEES = fatOakBees("fat_" + colour + "_bees", block);
 
-        SAPLING = buildBlock(new SaplingBlock(new STSaplingGenerator(
+        SAPLING = buildBlock(new SaplingBlock(new StainedSaplingGenerator(
                 () -> TREE,
                 () -> TREE_BEES,
                 () -> FAT_TREE,

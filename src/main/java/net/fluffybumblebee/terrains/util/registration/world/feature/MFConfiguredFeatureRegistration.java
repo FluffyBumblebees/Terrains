@@ -2,7 +2,7 @@ package net.fluffybumblebee.terrains.util.registration.world.feature;
 
 import com.google.common.base.Preconditions;
 import net.fluffybumblebee.maple_forest.init.MFRegistry;
-import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.type.wood.MFWoodTypes;
 import net.fluffybumblebee.maple_forest.world.placer.FallenTrunkPlacer;
 import net.fluffybumblebee.maple_forest.world.placer.ConeFoliagePlacer;

@@ -1,6 +1,6 @@
 package net.fluffybumblebee.maple_forest.world.biome;
 
-import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;

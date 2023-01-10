@@ -1,6 +1,6 @@
 package net.fluffybumblebee.maple_forest.item;
 
-import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.item.BoatItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;

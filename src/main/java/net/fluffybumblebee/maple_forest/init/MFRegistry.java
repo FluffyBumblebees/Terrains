@@ -10,7 +10,7 @@ import net.fluffybumblebee.maple_forest.blocks.custom.tree.MFWood;
 import net.fluffybumblebee.maple_forest.blocks.custom.woodcraftables.*;
 import net.fluffybumblebee.maple_forest.item.MFItems;
 import net.fluffybumblebee.maple_forest.item.custom.MFFood;
-import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.registration.block.MFBlockRegistration;
 import net.fluffybumblebee.terrains.util.registration.item.MFItemRegistration;
 import net.fluffybumblebee.terrains.util.type.wood.MFWoodTypes;

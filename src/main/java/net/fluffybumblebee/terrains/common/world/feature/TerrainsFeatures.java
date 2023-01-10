@@ -1,11 +1,12 @@
-package net.fluffybumblebee.better_meadows.world.feature;
+package net.fluffybumblebee.terrains.common.world.feature;
 
+import net.fluffybumblebee.terrains.common.world.feature.raw.MeadowLakeFeature;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.LakeFeature;
 
-public class BMFeatures {
+public class TerrainsFeatures {
 
     @SuppressWarnings("deprecation")
     public static final Feature<MeadowLakeFeature.Config> LAKE = register(

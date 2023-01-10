@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains;
+package net.fluffybumblebee.terrains.core;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fluffybumblebee.terrains.client.ClientManager;

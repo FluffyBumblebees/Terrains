@@ -9,7 +9,7 @@ import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.gen.GenerationStep;
 
-import static net.fluffybumblebee.better_meadows.world.feature.BMPlaced.*;
+import static net.fluffybumblebee.terrains.common.world.feature.TerrainsPlacedFeatures.*;
 
 public class MeadowDefaults {
     private static int getSkyColor(@SuppressWarnings("SameParameterValue") float temperature) {

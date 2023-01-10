@@ -20,10 +20,13 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fluffybumblebee.terrains.TerrainsCommon"
+      "net.fluffybumblebee.terrains.core.TerrainsCommon"
     ],
     "client": [
-      "net.fluffybumblebee.terrains.TerrainsClient"
+      "net.fluffybumblebee.terrains.core.TerrainsClient"
+    ],
+    "terrablender": [
+      "net.fluffybumblebee.terrains.common.world.terrablender.TerrainsTerrablenderBiomes"
     ]
   },
   "accessWidener": "terrains.accesswidener",

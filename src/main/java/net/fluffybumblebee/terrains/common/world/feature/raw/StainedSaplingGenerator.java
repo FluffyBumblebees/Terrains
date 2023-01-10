@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.common.registry.world.feature.tree;
+package net.fluffybumblebee.terrains.common.world.feature.raw;
 
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.util.registry.RegistryEntry;
@@ -9,12 +9,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Random;
 import java.util.function.Supplier;
 
-public class STSaplingGenerator extends SaplingGenerator {
+public class StainedSaplingGenerator extends SaplingGenerator {
     private final Supplier<RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>>> def;
     private final Supplier<RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>>> defBees;
     private final Supplier<RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>>> fat;
     private final Supplier<RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>>> fatBees;
-    public STSaplingGenerator(
+    public StainedSaplingGenerator(
             Supplier<RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>>> def,
             Supplier<RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>>> defBees,
             Supplier<RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>>> fat,

@@ -1,7 +1,7 @@
 package net.fluffybumblebee.maple_forest.world.placer;
 
 import com.terraformersmc.terraform.tree.placer.PlacerTypes;
-import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
 

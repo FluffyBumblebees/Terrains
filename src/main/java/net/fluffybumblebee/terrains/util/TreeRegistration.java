@@ -2,7 +2,7 @@ package net.fluffybumblebee.terrains.util;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.common.default_abstract.block.SaplingBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;

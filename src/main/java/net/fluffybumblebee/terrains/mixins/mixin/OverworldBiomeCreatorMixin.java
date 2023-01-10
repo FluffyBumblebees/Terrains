@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static net.fluffybumblebee.better_meadows.world.feature.BMPlaced.MEADOW_BUSH;
+import static net.fluffybumblebee.terrains.common.world.feature.TerrainsPlacedFeatures.MEADOW_BUSH;
 import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 
 @Mixin(OverworldBiomeCreator.class)

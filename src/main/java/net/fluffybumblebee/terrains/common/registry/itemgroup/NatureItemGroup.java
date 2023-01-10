@@ -7,7 +7,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-import static net.fluffybumblebee.terrains.TerrainsDefaults.NAMESPACE;
+import static net.fluffybumblebee.terrains.core.TerrainsDefaults.NAMESPACE;
 import static net.fluffybumblebee.terrains.common.registry.category.StainedCollections.AllColours.PURPLE;
 import static net.fluffybumblebee.terrains.common.registry.category.StainedCollections.allStainedTrees;
 import static net.fluffybumblebee.terrains.common.registry.category.StainedCollections.getAllRegistryEntries;

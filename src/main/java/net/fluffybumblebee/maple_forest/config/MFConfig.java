@@ -2,7 +2,7 @@ package net.fluffybumblebee.maple_forest.config;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.fluffybumblebee.maple_forest.init.MapleForest;
-import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 
 import java.io.IOException;
 import java.io.InputStream;

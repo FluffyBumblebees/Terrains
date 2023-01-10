@@ -8,7 +8,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-import static net.fluffybumblebee.terrains.TerrainsDefaults.getIdentifier;
+import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 
 public final class BlockBuilder <B extends Block> {
 

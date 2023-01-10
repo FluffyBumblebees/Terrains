@@ -1,7 +1,7 @@
 package net.fluffybumblebee.terrains.util.registration.world.feature;
 
 import com.google.common.collect.ImmutableList;
-import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.type.wood.MFWoodTypes;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;

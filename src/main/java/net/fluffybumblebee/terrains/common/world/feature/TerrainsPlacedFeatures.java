@@ -1,6 +1,6 @@
-package net.fluffybumblebee.better_meadows.world.feature;
+package net.fluffybumblebee.terrains.common.world.feature;
 
-import net.fluffybumblebee.better_meadows.BetterMeadows;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
@@ -16,13 +16,13 @@ import static net.minecraft.world.gen.feature.PlacedFeatures.register;
 import static net.minecraft.world.gen.feature.VegetationPlacedFeatures.modifiers;
 import static net.minecraft.world.gen.feature.VegetationPlacedFeatures.modifiersWithWouldSurvive;
 
-public class BMPlaced {
+public class TerrainsPlacedFeatures {
     private static RegistryEntry<PlacedFeature> registerToMod(
             String id,
             RegistryEntry<? extends ConfiguredFeature<?, ?>> registryEntry,
             List<PlacementModifier> modifiers
     ) {
-        return register(BetterMeadows.getNamespaceAppendable() +  id, registryEntry, modifiers);
+        return register(TerrainsDefaults.getNamespaceVar() +  id, registryEntry, modifiers);
     }
 
     @SuppressWarnings("unused")
@@ -48,14 +48,14 @@ public class BMPlaced {
 
     public static final RegistryEntry<PlacedFeature> MEADOW_BUSH = registerToMod(
             "meadow_bush",
-            BMConfigured.MEADOW_BUSH,
+            TerrainsConfiguredFeatures.MEADOW_BUSH,
             modifiersWithWouldSurvive(createCountExtraModifier(1, 0.5f, 2), Blocks.OAK_SAPLING)
     );
 
 
     public static final RegistryEntry<PlacedFeature> MEADOW_LAKE = registerToMod(
             "meadow_lake",
-            BMConfigured.MEADOW_LAKE,
+            TerrainsConfiguredFeatures.MEADOW_LAKE,
             modifiers(createCountExtraModifier(0, 0.1f, 20))
     );
 

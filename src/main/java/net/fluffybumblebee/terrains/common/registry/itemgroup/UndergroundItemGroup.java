@@ -1,7 +1,7 @@
 package net.fluffybumblebee.terrains.common.registry.itemgroup;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.registration.block.BlockBuilder;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;

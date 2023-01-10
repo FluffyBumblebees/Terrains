@@ -1,4 +1,4 @@
-package net.fluffybumblebee.better_meadows.world.feature;
+package net.fluffybumblebee.terrains.common.world.feature.raw;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
@@ -22,7 +22,6 @@ public class MeadowLakeFeature extends LakeFeature {
     public MeadowLakeFeature(Codec<LakeFeature.Config> codec) {
         super(codec);
     }
-
 
     @Override
     public boolean generate(FeatureContext<Config> context) {

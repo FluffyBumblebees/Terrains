@@ -1,6 +1,6 @@
-package net.fluffybumblebee.better_meadows.world.feature;
+package net.fluffybumblebee.terrains.common.world.feature;
 
-import net.fluffybumblebee.better_meadows.BetterMeadows;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
@@ -13,9 +13,9 @@ import net.minecraft.world.gen.foliage.BushFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
-public class BMConfigured {
+public class TerrainsConfiguredFeatures {
     private static <FC extends FeatureConfig, F extends Feature<FC>> RegistryEntry<ConfiguredFeature<FC, ?>> registerToMod(String id, F feature, FC config) {
-        return BuiltinRegistries.method_40360(BuiltinRegistries.CONFIGURED_FEATURE, BetterMeadows.getNamespaceAppendable() + id, new ConfiguredFeature<>(feature, config));
+        return BuiltinRegistries.method_40360(BuiltinRegistries.CONFIGURED_FEATURE, TerrainsDefaults.getNamespaceVar() + id, new ConfiguredFeature<>(feature, config));
     }
 
     public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> MEADOW_BUSH = registerToMod(
@@ -32,7 +32,7 @@ public class BMConfigured {
     @SuppressWarnings("deprecation")
     public static final RegistryEntry<ConfiguredFeature<LakeFeature.Config, ?>> MEADOW_LAKE = registerToMod(
             "spring_water",
-            BMFeatures.LAKE,
+            TerrainsFeatures.LAKE,
             new LakeFeature.Config(BlockStateProvider.of(
                     Fluids.WATER.getDefaultState().getBlockState()),
                     BlockStateProvider.of(Blocks.OBSIDIAN)

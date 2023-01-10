@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fluffybumblebee.maple_forest.blocks.custom.tree.MFSaplings;
 import net.fluffybumblebee.maple_forest.blocks.custom.tree.MFWood;
-import net.fluffybumblebee.terrains.TerrainsDefaults;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.type.wood.MFWoodTypes;
 import net.fluffybumblebee.maple_forest.world.feature.tree.MFSaplingGenerator;
 import net.minecraft.block.*;
