@@ -1,7 +1,7 @@
 package net.fluffybumblebee.terrains.util.registration.world.feature;
 
 import com.google.common.collect.ImmutableList;
-import net.fluffybumblebee.maple_forest.init.MapleForest;
+import net.fluffybumblebee.terrains.Terrains;
 import net.fluffybumblebee.terrains.util.type.wood.MFWoodTypes;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
@@ -60,7 +60,7 @@ public class MFPlacedFeatureRegistration {
     }
 
     public static <FC extends FeatureConfig> RegistryEntry<PlacedFeature> createPlacedFeature(String id, RegistryEntry<ConfiguredFeature<FC, ?>> feature, List<PlacementModifier> placementModifiers) {
-        Identifier realID = new Identifier(MapleForest.NAMESPACE, id);
+        Identifier realID = new Identifier(Terrains.NAMESPACE, id);
         if (BuiltinRegistries.PLACED_FEATURE.getIds().contains(realID))
             throw new IllegalStateException("Placed Feature ID: \"" + realID + "\" already exists in the Placed Features registry!");
 

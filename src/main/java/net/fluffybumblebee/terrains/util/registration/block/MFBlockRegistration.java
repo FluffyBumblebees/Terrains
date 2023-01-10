@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fluffybumblebee.maple_forest.blocks.custom.tree.MFSaplings;
 import net.fluffybumblebee.maple_forest.blocks.custom.tree.MFWood;
-import net.fluffybumblebee.maple_forest.init.MapleForest;
+import net.fluffybumblebee.terrains.Terrains;
 import net.fluffybumblebee.terrains.util.type.wood.MFWoodTypes;
 import net.fluffybumblebee.maple_forest.world.feature.tree.MFSaplingGenerator;
 import net.minecraft.block.*;
@@ -20,7 +20,7 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 @SuppressWarnings({"unused", "UnusedReturnValue"})
 public class MFBlockRegistration {
     public static <B extends Block> B registerBlockOnly(B block, String name, ItemGroup itemGroup) {
-        Registry.register(Registry.BLOCK, new Identifier(MapleForest.NAMESPACE, name), block);
+        Registry.register(Registry.BLOCK, new Identifier(Terrains.NAMESPACE, name), block);
         return block;
     }
     public static <B extends Block> B registerBlockOnly(B block, String name) {
@@ -29,8 +29,8 @@ public class MFBlockRegistration {
         } return registerBlockOnly(block, name, ItemGroup.BUILDING_BLOCKS);
     }
     public static Block register(Block block, String name, ItemGroup itemGroup) {
-        Registry.register(Registry.BLOCK, new Identifier(MapleForest.NAMESPACE, name), block);
-        Registry.register(Registry.ITEM, new Identifier(MapleForest.NAMESPACE, name), new BlockItem(block, new Item.Settings().group(itemGroup)));
+        Registry.register(Registry.BLOCK, new Identifier(Terrains.NAMESPACE, name), block);
+        Registry.register(Registry.ITEM, new Identifier(Terrains.NAMESPACE, name), new BlockItem(block, new Item.Settings().group(itemGroup)));
         if (block instanceof LeavesBlock) {
             addFlammability(block, 30, 60, flammableRegistry);
         }

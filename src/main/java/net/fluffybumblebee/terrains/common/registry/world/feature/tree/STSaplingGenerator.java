@@ -1,4 +1,4 @@
-package net.fluffybumblebee.stainedtrees.world.feature.tree;
+package net.fluffybumblebee.terrains.common.registry.world.feature.tree;
 
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.util.registry.RegistryEntry;

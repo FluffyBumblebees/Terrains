@@ -1,6 +1,6 @@
-package net.fluffybumblebee.stainedtrees.world.gen;
+package net.fluffybumblebee.terrains.common.registry.world.gen;
 
-import net.fluffybumblebee.stainedtrees.world.feature.STPlacedFeatures;
+import net.fluffybumblebee.terrains.common.registry.world.feature.STPlacedFeatures;
 
 import static net.fluffybumblebee.terrains.util.STUtil.*;
 

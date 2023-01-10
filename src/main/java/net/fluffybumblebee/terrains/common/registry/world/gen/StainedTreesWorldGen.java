@@ -1,9 +1,9 @@
-package net.fluffybumblebee.stainedtrees.world.gen;
+package net.fluffybumblebee.terrains.common.registry.world.gen;
 
-import static net.fluffybumblebee.stainedtrees.world.gen.STTreeGeneration.*;
+import static net.fluffybumblebee.terrains.common.registry.world.gen.STTreeGeneration.*;
 
-public class STWorldGen {
-    public static void generateWorldGen() {
+public class StainedTreesWorldGen {
+    public static void register() {
         generateBlackTrees();
         generateBlueTrees();
         generateBrownTrees();

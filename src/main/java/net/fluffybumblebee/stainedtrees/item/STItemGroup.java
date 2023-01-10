@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 
-import static net.fluffybumblebee.stainedtrees.StainedTrees.MOD_ID;
+import static net.fluffybumblebee.terrains.Terrains.NAMESPACE;
 
 public class STItemGroup {
     public static void initClass () {}
@@ -16,10 +16,10 @@ public class STItemGroup {
 
     static {
         STAINED_TREES = FabricItemGroupBuilder.create(
-                        new Identifier(MOD_ID, "general"))
+                        new Identifier(NAMESPACE, "general"))
                 .icon(() -> new ItemStack(StainedBlocks.PURPLE_LEAVES_BLOCK))
                 .appendItems(stacks -> Registry.ITEM.forEach(item -> {
-                    if (Registry.ITEM.getId(item).getNamespace().equals(MOD_ID)) {
+                    if (Registry.ITEM.getId(item).getNamespace().equals(NAMESPACE)) {
                         item.appendStacks(item.getGroup(), (DefaultedList<ItemStack>) stacks);
                     }})).build();
     }

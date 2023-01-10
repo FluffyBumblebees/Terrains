@@ -1,6 +1,6 @@
 package net.fluffybumblebee.maple_forest.item;
 
-import net.fluffybumblebee.maple_forest.init.MapleForest;
+import net.fluffybumblebee.terrains.Terrains;
 import net.minecraft.item.BoatItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
@@ -11,9 +11,9 @@ public class MFItems {
     public static void addToRegistry() {}
     public static Item register(String name,Item item) {
         if  (item instanceof BoatItem) {
-            Registry.register(Registry.ITEM, new Identifier(MapleForest.NAMESPACE, name + "_boat"), item);
+            Registry.register(Registry.ITEM, new Identifier(Terrains.NAMESPACE, name + "_boat"), item);
             return item;
-        } else Registry.register(Registry.ITEM, new Identifier(MapleForest.NAMESPACE, name), item);
+        } else Registry.register(Registry.ITEM, new Identifier(Terrains.NAMESPACE, name), item);
         return item;
     }
 }

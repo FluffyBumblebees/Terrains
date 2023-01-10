@@ -2,6 +2,7 @@ package net.fluffybumblebee.maple_forest.config;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.fluffybumblebee.maple_forest.init.MapleForest;
+import net.fluffybumblebee.terrains.Terrains;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,7 +24,7 @@ public class MFConfig {
     static {
         final Properties properties = new Properties();
         final Properties newProperties = new Properties();
-        final Path path = FabricLoader.getInstance().getConfigDir().resolve( MapleForest.NAMESPACE + ".properties");
+        final Path path = FabricLoader.getInstance().getConfigDir().resolve( Terrains.NAMESPACE + ".properties");
 
         if (Files.isRegularFile(path)) {
             try (InputStream in = Files.newInputStream(path, StandardOpenOption.CREATE)) {
@@ -40,13 +41,13 @@ public class MFConfig {
 
 
         try (OutputStream out = Files.newOutputStream(path, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
-            newProperties.store(out, MapleForest.NAMESPACE.replace('_', ' ') + " config");
+            newProperties.store(out, Terrains.NAMESPACE.replace('_', ' ') + " config");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
     private static void logError(String key) {
-        MapleForest.LOGGER.error("Failed to parse variable '" + key + "' in " + MapleForest.NAMESPACE + "'s config, generating a new one!");
+        MapleForest.LOGGER.error("Failed to parse variable '" + key + "' in " + Terrains.NAMESPACE + "'s config, generating a new one!");
     }
     private static boolean parseBoolean(String string) {
         if (string == null) throw new NumberFormatException("null");

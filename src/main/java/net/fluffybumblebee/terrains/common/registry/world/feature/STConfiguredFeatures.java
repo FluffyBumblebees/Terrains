@@ -1,4 +1,4 @@
-package net.fluffybumblebee.stainedtrees.world.feature;
+package net.fluffybumblebee.terrains.common.registry.world.feature;
 
 import net.fluffybumblebee.terrains.common.registry.blocks.StainedBlocks;
 import net.minecraft.util.registry.RegistryEntry;

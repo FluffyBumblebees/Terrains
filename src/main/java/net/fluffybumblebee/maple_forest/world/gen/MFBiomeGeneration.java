@@ -3,6 +3,7 @@ package net.fluffybumblebee.maple_forest.world.gen;
 import com.mojang.datafixers.util.Pair;
 import net.fluffybumblebee.maple_forest.config.MFConfig;
 import net.fluffybumblebee.maple_forest.init.MapleForest;
+import net.fluffybumblebee.terrains.Terrains;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
@@ -17,7 +18,7 @@ import static net.fluffybumblebee.maple_forest.init.MFBiomes.*;
 public class MFBiomeGeneration extends Region implements Runnable, TerraBlenderApi {
 
     public MFBiomeGeneration() {
-        super(new Identifier(MapleForest.NAMESPACE, "overworld"), RegionType.OVERWORLD, 5);
+        super(new Identifier(Terrains.NAMESPACE, "overworld"), RegionType.OVERWORLD, 5);
     }
 
     @Override

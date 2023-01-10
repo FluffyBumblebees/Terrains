@@ -11,5 +11,6 @@ public class TerrainsCommon implements ModInitializer {
         registerBlocks();
         registerItems();
         registerItemGroups();
+        registerWorldGen();
     }
 }

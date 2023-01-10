@@ -2,7 +2,7 @@ package net.fluffybumblebee.maple_forest.item.group;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fluffybumblebee.maple_forest.init.MFRegistry;
-import net.fluffybumblebee.maple_forest.init.MapleForest;
+import net.fluffybumblebee.terrains.Terrains;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -14,11 +14,11 @@ public class MFItemGroup {
     public static void initClass() {}
 
     public static final ItemGroup MAPLE_FOREST = FabricItemGroupBuilder.create(
-            new Identifier(MapleForest.NAMESPACE, MapleForest.NAMESPACE)
+            new Identifier(Terrains.NAMESPACE, Terrains.NAMESPACE)
                 ).icon(() ->
                         new ItemStack(MFRegistry.RED_MAPLE_LEAVES)
                 ).appendItems(stacks -> Registry.ITEM.forEach(item -> {
-                if (Registry.ITEM.getId(item).getNamespace().equals(MapleForest.NAMESPACE)) {
+                if (Registry.ITEM.getId(item).getNamespace().equals(Terrains.NAMESPACE)) {
                     item.appendStacks(item.getGroup(), (DefaultedList<ItemStack>) stacks);
                     }})).build();
 }

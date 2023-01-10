@@ -3,6 +3,7 @@ package net.fluffybumblebee.maple_forest.init;
 import net.fluffybumblebee.maple_forest.world.biome.MFBarrenMapleWoods;
 import net.fluffybumblebee.maple_forest.world.biome.MFMapleWoodlands;
 import net.fluffybumblebee.maple_forest.world.biome.MFMapleBlossom;
+import net.fluffybumblebee.terrains.Terrains;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
@@ -81,7 +82,7 @@ public class MFBiomes {
 
 
     static RegistryKey<Biome> add(String name, Biome biome) {
-        RegistryKey<Biome> key = RegistryKey.of(Registry.BIOME_KEY, new Identifier(MapleForest.NAMESPACE, name));
+        RegistryKey<Biome> key = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Terrains.NAMESPACE, name));
         BIOMES.put(key, biome);
         return key;
     }

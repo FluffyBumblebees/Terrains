@@ -10,6 +10,7 @@ import net.fluffybumblebee.maple_forest.blocks.custom.tree.MFWood;
 import net.fluffybumblebee.maple_forest.blocks.custom.woodcraftables.*;
 import net.fluffybumblebee.maple_forest.item.MFItems;
 import net.fluffybumblebee.maple_forest.item.custom.MFFood;
+import net.fluffybumblebee.terrains.Terrains;
 import net.fluffybumblebee.terrains.util.registration.block.MFBlockRegistration;
 import net.fluffybumblebee.terrains.util.registration.item.MFItemRegistration;
 import net.fluffybumblebee.terrains.util.type.wood.MFWoodTypes;
@@ -64,7 +65,7 @@ public class MFRegistry {
     public static final Block MAPLE_DOOR = MFBlockRegistration.register(new MFWoodDoor(), MFWoodTypes.MAPLE + "_door");
     public static final Block MAPLE_TRAPDOOR =  MFBlockRegistration.register(new MFWoodTrapDoor(), MFWoodTypes.MAPLE + "_trapdoor");
     public static final Block MAPLE_BUTTON = MFBlockRegistration.register(new MFWoodButton(), MFWoodTypes.MAPLE + "_button");
-    private static final Identifier MAPLE_SIGN_TEXTURE = new Identifier(MapleForest.NAMESPACE, "entity/signs/maple");
+    private static final Identifier MAPLE_SIGN_TEXTURE = new Identifier(Terrains.NAMESPACE, "entity/signs/maple");
     public static final TerraformSignBlock MAPLE_SIGN = MFBlockRegistration.registerBlockOnly(new TerraformSignBlock(MAPLE_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_SIGN)), MFWoodTypes.MAPLE + "_sign", ItemGroup.DECORATIONS);
     public static final Block MAPLE_WALL_SIGN = MFBlockRegistration.registerBlockOnly(new TerraformWallSignBlock(MAPLE_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)), MFWoodTypes.MAPLE + "_wall_sign", ItemGroup.DECORATIONS);
     public static final Item MAPLE_SIGN_ITEM = MFItemRegistration.register(new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), MAPLE_SIGN, MAPLE_WALL_SIGN), MFWoodTypes.MAPLE + "_sign");

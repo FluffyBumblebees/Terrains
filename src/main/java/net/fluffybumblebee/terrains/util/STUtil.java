@@ -1,6 +1,6 @@
 package net.fluffybumblebee.terrains.util;
 
-import net.fluffybumblebee.stainedtrees.StainedTrees;
+import net.fluffybumblebee.terrains.Terrains;
 import net.fluffybumblebee.terrains.common.default_abstract.block.SaplingBlock;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -41,20 +41,20 @@ public class STUtil {
     }
 
     public static <B extends Block> B registerBlocks(B block, String name, ItemGroup itemGroup) {
-        Registry.register(Registry.BLOCK, new Identifier(StainedTrees.MOD_ID, name), block);
-        Registry.register(Registry.ITEM, new Identifier(StainedTrees.MOD_ID, name), new BlockItem(block, new FabricItemSettings().group(itemGroup)));
+        Registry.register(Registry.BLOCK, new Identifier(Terrains.NAMESPACE, name), block);
+        Registry.register(Registry.ITEM, new Identifier(Terrains.NAMESPACE, name), new BlockItem(block, new FabricItemSettings().group(itemGroup)));
     return block;
     }
     public static <B extends Block> B registerBlocks(B block, String name) {
         return registerBlocks(block, name , ItemGroup.DECORATIONS);
     }
     public static <B extends Block> B registerPottedSapling(B block, String name) {
-        Registry.register(Registry.BLOCK, new Identifier(StainedTrees.MOD_ID, name), block);
+        Registry.register(Registry.BLOCK, new Identifier(Terrains.NAMESPACE, name), block);
         return block;
     }
     public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> defOak(String colour, Block block) {
         return ConfiguredFeatures.register(
-                StainedTrees.MOD_ID + ":" + colour + "_tree",
+                Terrains.NAMESPACE + ":" + colour + "_tree",
                 Feature.TREE,
                 new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(Blocks.OAK_LOG.getDefaultState()),
@@ -68,7 +68,7 @@ public class STUtil {
     }
     public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> defOakBees(String colour, Block block) {
         return ConfiguredFeatures.register(
-                StainedTrees.MOD_ID + ":" + colour + "_tree",
+                Terrains.NAMESPACE + ":" + colour + "_tree",
                 Feature.TREE,
                 new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(Blocks.OAK_LOG.getDefaultState()),
@@ -83,7 +83,7 @@ public class STUtil {
     }
     public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> fatOak(String colour, Block block) {
         return ConfiguredFeatures.register(
-                StainedTrees.MOD_ID + ":" + colour + "_tree",
+                Terrains.NAMESPACE + ":" + colour + "_tree",
                 Feature.TREE,
                 new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(Blocks.OAK_LOG.getDefaultState()),
@@ -98,7 +98,7 @@ public class STUtil {
     }
     public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> fatOakBees(String colour, Block block) {
         return ConfiguredFeatures.register(
-                StainedTrees.MOD_ID + ":" + colour + "_tree",
+                Terrains.NAMESPACE + ":" + colour + "_tree",
                 Feature.TREE,
                 new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(Blocks.OAK_LOG.getDefaultState()),
@@ -120,10 +120,10 @@ public class STUtil {
             String colour,
             SaplingBlock saplingBlock
     ) {
-        PlacedFeatures.register(StainedTrees.MOD_ID + ":" + colour + "_checked", def, PlacedFeatures.wouldSurvive(saplingBlock));
-        PlacedFeatures.register(StainedTrees.MOD_ID + ":" + "fat_" + colour + "_checked", fat, PlacedFeatures.wouldSurvive(saplingBlock));
-        RegistryEntry<PlacedFeature> DEF_BEES = PlacedFeatures.register(StainedTrees.MOD_ID + ":" + colour + "_bees_checked", def_bees, PlacedFeatures.wouldSurvive(saplingBlock));
-        RegistryEntry<PlacedFeature> FAT_BEES = PlacedFeatures.register(StainedTrees.MOD_ID + ":" + "fat" + colour + "_fat_checked", fat_bees, PlacedFeatures.wouldSurvive(saplingBlock));
+        PlacedFeatures.register(Terrains.NAMESPACE + ":" + colour + "_checked", def, PlacedFeatures.wouldSurvive(saplingBlock));
+        PlacedFeatures.register(Terrains.NAMESPACE + ":" + "fat_" + colour + "_checked", fat, PlacedFeatures.wouldSurvive(saplingBlock));
+        RegistryEntry<PlacedFeature> DEF_BEES = PlacedFeatures.register(Terrains.NAMESPACE + ":" + colour + "_bees_checked", def_bees, PlacedFeatures.wouldSurvive(saplingBlock));
+        RegistryEntry<PlacedFeature> FAT_BEES = PlacedFeatures.register(Terrains.NAMESPACE + ":" + "fat" + colour + "_fat_checked", fat_bees, PlacedFeatures.wouldSurvive(saplingBlock));
 
         return ConfiguredFeatures.register(colour + "_spawn", Feature.RANDOM_SELECTOR,
                 new RandomFeatureConfig(
@@ -139,7 +139,7 @@ public class STUtil {
             SaplingBlock saplingBlock,
             String colour
     ) {
-        return PlacedFeatures.register(StainedTrees.MOD_ID + ":" + colour + "_placed",
+        return PlacedFeatures.register(Terrains.NAMESPACE + ":" + colour + "_placed",
                 registerTreeSpawn(def, def_bees, fat, fat_bees, colour, saplingBlock),
                 VegetationPlacedFeatures.modifiers(
                         PlacedFeatures.createCountExtraModifier(0, 0.01f, 1)

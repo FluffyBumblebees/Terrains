@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 
 public class MapleForest implements ModInitializer {
-    public static final String NAMESPACE = "maple_forest";
     private static Boolean initialized = false;
     private static final ArrayList<Runnable> runnables = new ArrayList<>(1);
     public static final Logger LOGGER = LoggerFactory.getLogger("Fastload");
