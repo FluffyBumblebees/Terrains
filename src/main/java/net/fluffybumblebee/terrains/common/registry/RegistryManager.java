@@ -1,9 +1,9 @@
 package net.fluffybumblebee.terrains.common.registry;
 
-import net.fluffybumblebee.terrains.common.registry.itemgroup.StainedItemGroup;
+import net.fluffybumblebee.terrains.common.registry.itemgroup.NatureItemGroup;
 import net.fluffybumblebee.terrains.common.registry.blocks.StainedBlocks;
 import net.fluffybumblebee.terrains.common.registry.category.CrystalGeodes;
-import net.fluffybumblebee.terrains.common.registry.itemgroup.CrystalItemGroup;
+import net.fluffybumblebee.terrains.common.registry.itemgroup.UndergroundItemGroup;
 import net.fluffybumblebee.terrains.common.registry.world.gen.StainedTreesWorldGen;
 
 public class RegistryManager {
@@ -15,8 +15,8 @@ public class RegistryManager {
     }
 
     public static void registerItemGroups() {
-        CrystalItemGroup.register();
-        StainedItemGroup.register();
+        UndergroundItemGroup.register();
+        NatureItemGroup.register();
     }
 
     public static void registerWorldGen() {

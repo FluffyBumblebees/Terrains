@@ -1,7 +1,7 @@
 package net.fluffybumblebee.terrains.common.registry.itemgroup;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fluffybumblebee.terrains.util.IdentifierUtil;
+import net.fluffybumblebee.terrains.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.registration.block.BlockBuilder;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -12,12 +12,12 @@ import static net.fluffybumblebee.terrains.common.registry.category.CrystalGeode
 import static net.fluffybumblebee.terrains.common.registry.category.CrystalGeodes.getAllRegistryEntries;
 
 
-public class CrystalItemGroup {
+public class UndergroundItemGroup {
     public static void register() {}
-    public static final ItemGroup CRYSTALS;
+    public static final ItemGroup Underground;
 
     static {
-        CRYSTALS = FabricItemGroupBuilder.create(new Identifier(IdentifierUtil.ID, IdentifierUtil.ID))
+        Underground = FabricItemGroupBuilder.create(new Identifier(TerrainsDefaults.NAMESPACE, "underground"))
                 .icon(() -> new ItemStack(allGeodes.get(PURPLE).corundumBlock.getBlockItem().asItem()))
                 .appendItems(stacks -> {
                     for (BlockBuilder<?> builder : getAllRegistryEntries()) {

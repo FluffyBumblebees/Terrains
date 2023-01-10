@@ -10,13 +10,13 @@ import net.minecraft.util.registry.Registry;
 
 import static net.fluffybumblebee.terrains.TerrainsDefaults.NAMESPACE;
 
-public class StainedItemGroup {
+public class NatureItemGroup {
     public static void register() {}
-    public static final ItemGroup STAINED_TREES;
+    public static final ItemGroup NATURE;
 
     static {
-        STAINED_TREES = FabricItemGroupBuilder.create(
-                        new Identifier(NAMESPACE, "general"))
+        NATURE = FabricItemGroupBuilder.create(
+                        new Identifier(NAMESPACE, "nature"))
                 .icon(() -> new ItemStack(StainedBlocks.PURPLE_LEAVES_BLOCK))
                 .appendItems(stacks -> Registry.ITEM.forEach(item -> {
                     if (Registry.ITEM.getId(item).getNamespace().equals(NAMESPACE)) {
