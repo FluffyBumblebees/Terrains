@@ -11,7 +11,7 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 
-import static net.fluffybumblebee.terrains.util.TreeRegistration.*;
+import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.*;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockBuilder.buildBlock;
 
 public class StainedCollection <E extends Enum<?>> {

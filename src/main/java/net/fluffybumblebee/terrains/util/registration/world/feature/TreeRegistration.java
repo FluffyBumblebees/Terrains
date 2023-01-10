@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.util;
+package net.fluffybumblebee.terrains.util.registration.world.feature;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;

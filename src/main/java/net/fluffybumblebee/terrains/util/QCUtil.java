@@ -1,17 +1,13 @@
 package net.fluffybumblebee.terrains.util;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fluffybumblebee.terrains.common.default_abstract.block.CorundumCluster;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.tag.BlockTags;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.*;
@@ -25,10 +21,6 @@ import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import java.util.List;
 
 public class QCUtil {
-    public static <B extends Block> void registerBlock(B block, String name) {
-        Registry.register(Registry.BLOCK, new Identifier(IdentifierUtil.ID, name), block);
-        Registry.register(Registry.ITEM, new Identifier(IdentifierUtil.ID, name), new BlockItem(block, new FabricItemSettings().group(ItemGroup.DECORATIONS)));
-    }
 
     public static <B extends Block, C extends CorundumCluster> RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> registerGeode(B corundum, B crystal, C cluster, String colour) {
         WeightedBlockStateProvider outerLayers = new WeightedBlockStateProvider(new DataPool.Builder<BlockState>()
@@ -45,7 +37,7 @@ public class QCUtil {
                 .build());
 
         return ConfiguredFeatures.register(
-                IdentifierUtil.ID + ":" + colour + "_geode",
+                TerrainsDefaults.getNamespaceVar() + colour + "_geode",
                 Feature.GEODE,
                 new GeodeFeatureConfig(
                         new GeodeLayerConfig(

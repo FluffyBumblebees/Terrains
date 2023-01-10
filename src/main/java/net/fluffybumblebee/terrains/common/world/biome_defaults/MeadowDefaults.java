@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.util;
+package net.fluffybumblebee.terrains.common.world.biome_defaults;
 
 import net.fluffybumblebee.terrains.mixins.intercomm.OverworldBiomeCreatorMixinInterface;
 import net.minecraft.client.sound.MusicType;

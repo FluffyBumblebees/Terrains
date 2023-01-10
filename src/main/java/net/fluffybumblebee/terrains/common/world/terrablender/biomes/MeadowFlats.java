@@ -1,6 +1,6 @@
 package net.fluffybumblebee.terrains.common.world.terrablender.biomes;
 
-import net.fluffybumblebee.terrains.util.MeadowDefaults;
+import net.fluffybumblebee.terrains.common.world.biome_defaults.MeadowDefaults;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
