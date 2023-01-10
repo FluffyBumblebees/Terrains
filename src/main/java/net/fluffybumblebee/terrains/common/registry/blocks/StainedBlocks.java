@@ -13,7 +13,7 @@ import net.minecraft.block.FlowerPotBlock;
 
 
 public class StainedBlocks {
-    public static void initClass() {
+    public static void register() {
     }
     private static final FlammableBlockRegistry INSTANCE = FlammableBlockRegistry.getDefaultInstance();
     private static  <B extends Block> B registerBlocks(B block, String colour, String suffix) {

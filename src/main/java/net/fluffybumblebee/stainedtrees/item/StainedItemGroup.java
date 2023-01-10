@@ -8,10 +8,10 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 
-import static net.fluffybumblebee.terrains.Terrains.NAMESPACE;
+import static net.fluffybumblebee.terrains.TerrainsDefaults.NAMESPACE;
 
-public class STItemGroup {
-    public static void initClass () {}
+public class StainedItemGroup {
+    public static void register() {}
     public static final ItemGroup STAINED_TREES;
 
     static {

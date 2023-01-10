@@ -1,6 +1,6 @@
 package net.fluffybumblebee.maple_forest.world.biome;
 
-import net.fluffybumblebee.terrains.Terrains;
+import net.fluffybumblebee.terrains.TerrainsDefaults;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
@@ -20,24 +20,24 @@ public class MFVegetationPlacedFeatures {
 
     static {
         PUMPKINS = PlacedFeatures.register(
-                Terrains.NAMESPACE + ":pumpkins",
+                TerrainsDefaults.NAMESPACE + ":pumpkins",
                 VegetationConfiguredFeatures.PATCH_PUMPKIN,
                 RarityFilterPlacementModifier.of(4),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of());
         FLOWER_MEADOW = PlacedFeatures.register(
-                Terrains.NAMESPACE + ":meadow_flowers",
+                TerrainsDefaults.NAMESPACE + ":meadow_flowers",
                 VegetationConfiguredFeatures.FLOWER_MEADOW,
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of());
         PATCH_GRASS_JUNGLE = PlacedFeatures.register(
-                Terrains.NAMESPACE + ":patch_grass_forest",
+                TerrainsDefaults.NAMESPACE + ":patch_grass_forest",
                 VegetationConfiguredFeatures.PATCH_GRASS_JUNGLE,
                 modifiers(2));
         PATCH_DEAD_BUSH = PlacedFeatures.register(
-                Terrains.NAMESPACE + "patch_dead_bush",
+                TerrainsDefaults.NAMESPACE + "patch_dead_bush",
                 VegetationConfiguredFeatures.PATCH_DEAD_BUSH,
                 SquarePlacementModifier.of(),
                 PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,

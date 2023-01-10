@@ -1,6 +1,5 @@
 package net.fluffybumblebee.quarkcrystals.world.gen.feature;
 
-import net.fluffybumblebee.terrains.common.registry.blocks.CrystalBlocks;
 import net.fluffybumblebee.terrains.common.default_abstract.block.CorundumCluster;
 import net.fluffybumblebee.terrains.util.QCUtil;
 import net.minecraft.block.Block;

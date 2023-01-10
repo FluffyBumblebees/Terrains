@@ -1,6 +1,6 @@
 package net.fluffybumblebee.maple_forest.blocks.custom.tree;
 
-import net.fluffybumblebee.terrains.util.block.MFBlockUtil;
+import net.fluffybumblebee.terrains.util.predicates.BlockPredicates;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.sound.BlockSoundGroup;
@@ -13,8 +13,8 @@ public class MFLeaves extends LeavesBlock {
                 .ticksRandomly()
                 .strength(0.2F)
                 .sounds(BlockSoundGroup.GRASS)
-                .suffocates(MFBlockUtil::never)
-                .allowsSpawning(MFBlockUtil::canSpawnOnLeaves)
-                .blockVision(MFBlockUtil::never));
+                .suffocates(BlockPredicates::never)
+                .allowsSpawning(BlockPredicates::canSpawnOnLeaves)
+                .blockVision(BlockPredicates::never));
     }
 }

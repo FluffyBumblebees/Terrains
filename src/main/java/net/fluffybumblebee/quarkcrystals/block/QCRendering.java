@@ -1,7 +1,6 @@
 package net.fluffybumblebee.quarkcrystals.block;
 
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fluffybumblebee.terrains.common.registry.blocks.CrystalBlocks;
 import net.minecraft.client.render.RenderLayer;
 
 public class QCRendering {

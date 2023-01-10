@@ -1,14 +1,14 @@
 package net.fluffybumblebee.maple_forest.world.placer;
 
 import com.terraformersmc.terraform.tree.placer.PlacerTypes;
-import net.fluffybumblebee.terrains.Terrains;
+import net.fluffybumblebee.terrains.TerrainsDefaults;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
 
 public class MFPlacerTypes {
-	public static final FoliagePlacerType<NoneFoliagePlacer> NONE_FOLIAGE_PLACER = PlacerTypes.registerFoliagePlacer( Terrains.NAMESPACE + ":none", NoneFoliagePlacer.CODEC);
-	public static final TrunkPlacerType<FallenTrunkPlacer> FALLEN_TRUNK_PLACER = PlacerTypes.registerTrunkPlacer(Terrains.NAMESPACE + ":fallen", FallenTrunkPlacer.CODEC);
-	public static final FoliagePlacerType<ConeFoliagePlacer> CONE_FOLIAGE_PLACER = PlacerTypes.registerFoliagePlacer(Terrains.NAMESPACE + ":cone", ConeFoliagePlacer.CODEC);
+	public static final FoliagePlacerType<NoneFoliagePlacer> NONE_FOLIAGE_PLACER = PlacerTypes.registerFoliagePlacer( TerrainsDefaults.NAMESPACE + ":none", NoneFoliagePlacer.CODEC);
+	public static final TrunkPlacerType<FallenTrunkPlacer> FALLEN_TRUNK_PLACER = PlacerTypes.registerTrunkPlacer(TerrainsDefaults.NAMESPACE + ":fallen", FallenTrunkPlacer.CODEC);
+	public static final FoliagePlacerType<ConeFoliagePlacer> CONE_FOLIAGE_PLACER = PlacerTypes.registerFoliagePlacer(TerrainsDefaults.NAMESPACE + ":cone", ConeFoliagePlacer.CODEC);
 
 	public static void addToRegistry() {
 	}

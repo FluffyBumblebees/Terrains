@@ -2,7 +2,7 @@ package net.fluffybumblebee.terrains.util.registration.world.feature;
 
 import com.google.common.base.Preconditions;
 import net.fluffybumblebee.maple_forest.init.MFRegistry;
-import net.fluffybumblebee.terrains.Terrains;
+import net.fluffybumblebee.terrains.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.type.wood.MFWoodTypes;
 import net.fluffybumblebee.maple_forest.world.placer.FallenTrunkPlacer;
 import net.fluffybumblebee.maple_forest.world.placer.ConeFoliagePlacer;
@@ -34,7 +34,7 @@ public class MFConfiguredFeatureRegistration {
             SaplingBlock sapling,
             RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> tree
     ) {
-        return PlacedFeatures.register(Terrains.NAMESPACE + ":" + name + "_checker" + "_" + suffix, tree,
+        return PlacedFeatures.register(TerrainsDefaults.NAMESPACE + ":" + name + "_checker" + "_" + suffix, tree,
                 PlacedFeatures.wouldSurvive(sapling));
     }
 
@@ -43,7 +43,7 @@ public class MFConfiguredFeatureRegistration {
             RegistryEntry<PlacedFeature> treeChecked,
             float checked
     ) {
-        return ConfiguredFeatures.register(Terrains.NAMESPACE + ":" + name + "_spawner", Feature.RANDOM_SELECTOR,
+        return ConfiguredFeatures.register(TerrainsDefaults.NAMESPACE + ":" + name + "_spawner", Feature.RANDOM_SELECTOR,
                 new RandomFeatureConfig(List.of(new RandomFeatureEntry(treeChecked, checked)),
                         treeChecked));
     }
@@ -86,7 +86,7 @@ public class MFConfiguredFeatureRegistration {
                 float beeChance
         ) {
             return mapleTreeTemplate
-                    (Terrains.NAMESPACE + ":" + colour + "_" + MFWoodTypes.MAPLE + "_" + suffix,
+                    (TerrainsDefaults.NAMESPACE + ":" + colour + "_" + MFWoodTypes.MAPLE + "_" + suffix,
                             MFRegistry.MAPLE_LOG,
                             MFRegistry.SAPPY_MAPLE_LOG,
                             leaves,
@@ -219,7 +219,7 @@ public class MFConfiguredFeatureRegistration {
     }
 
     private static <FC extends FeatureConfig, F extends Feature<FC>> RegistryEntry<ConfiguredFeature<FC, ?>> register(String id, ConfiguredFeature<FC, F> cf) {
-        Identifier realId = new Identifier(Terrains.NAMESPACE, id);
+        Identifier realId = new Identifier(TerrainsDefaults.NAMESPACE, id);
         Preconditions.checkState(!BuiltinRegistries.CONFIGURED_FEATURE.getIds().contains(realId), "Duplicate ID: %s", id);
         return BuiltinRegistries.method_40360(BuiltinRegistries.CONFIGURED_FEATURE, realId.toString(), cf);
     }

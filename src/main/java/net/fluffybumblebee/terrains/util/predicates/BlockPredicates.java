@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.util.block;
+package net.fluffybumblebee.terrains.util.predicates;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
@@ -6,7 +6,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
 @SuppressWarnings("unused")
-public class MFBlockUtil {
+public class BlockPredicates {
     public static boolean never(BlockState state, BlockView world, BlockPos pos) {
         return false;
     }

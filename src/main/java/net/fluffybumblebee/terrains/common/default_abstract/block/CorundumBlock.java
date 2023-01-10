@@ -20,10 +20,9 @@ import java.util.function.Supplier;
 @SuppressWarnings({"deprecation"})
 public class CorundumBlock extends BuddingAmethystBlock {
     private final List<Direction> DIRECTIONS = Arrays.asList(Direction.values());
-    private final boolean waxed;
-    private final Supplier<CorundumCluster> corundum;
+    private final Supplier<CorundumCluster> clusterSupplier;
 
-    public CorundumBlock(boolean waxed, Supplier<CorundumCluster> corundum) {
+    public CorundumBlock(Supplier<CorundumCluster> clusterSupplier) {
         super(FabricBlockSettings
                         .of(Material.AMETHYST)
                         .sounds(BlockSoundGroup.AMETHYST_BLOCK)
@@ -33,9 +32,16 @@ public class CorundumBlock extends BuddingAmethystBlock {
                         .ticksRandomly()
                         .requiresTool()
         );
-        this.waxed = waxed;
-        this.corundum = corundum;
+        this.clusterSupplier = clusterSupplier;
 
+    }
+
+    public CorundumBlock() {
+        this(null);
+    }
+
+    private boolean isWaxed() {
+        return clusterSupplier == null;
     }
 
     @Override
@@ -47,7 +53,7 @@ public class CorundumBlock extends BuddingAmethystBlock {
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         int bound = pos.getY() + 64;
         if (bound == 0) bound++;
-        if (!waxed && random.nextInt(bound) <= 2) {
+        if (!isWaxed() && random.nextInt(bound) <= 2) {
             IntegerHolder holder = new IntegerHolder(0);
             int connectedBlockAmount = (384 - (pos.getY() + 64)) / 96;
             scanForLimit(world, pos, null, holder, connectedBlockAmount);
@@ -66,13 +72,13 @@ public class CorundumBlock extends BuddingAmethystBlock {
                     if (random.nextInt(3) == 0) {
                         world.setBlockState(offPosBase, this.getDefaultState());
                         if (world.isAir(offPos1) && random.nextInt(2) == 0)
-                            world.setBlockState(offPos1, corundum.get().getDefaultState().with(AmethystClusterBlock.FACING, direction01));
+                            world.setBlockState(offPos1, clusterSupplier.get().getDefaultState().with(AmethystClusterBlock.FACING, direction01));
                         if (world.isAir(offPos2) && random.nextInt(4) == 0)
-                            world.setBlockState(offPos2, corundum.get().getDefaultState().with(AmethystClusterBlock.FACING, direction02));
+                            world.setBlockState(offPos2, clusterSupplier.get().getDefaultState().with(AmethystClusterBlock.FACING, direction02));
                         if (world.isAir(offPos3) && random.nextInt(8) == 0)
-                            world.setBlockState(offPos3, corundum.get().getDefaultState().with(AmethystClusterBlock.FACING, direction03));
+                            world.setBlockState(offPos3, clusterSupplier.get().getDefaultState().with(AmethystClusterBlock.FACING, direction03));
                     } else
-                        world.setBlockState(offPosBase, corundum.get().getDefaultState().with(AmethystClusterBlock.FACING, direction00));
+                        world.setBlockState(offPosBase, clusterSupplier.get().getDefaultState().with(AmethystClusterBlock.FACING, direction00));
                 }
             }
         }
