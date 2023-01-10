@@ -1,6 +1,6 @@
 package net.fluffybumblebee.maple_forest.blocks.custom.tree;
 
-import net.fluffybumblebee.maple_forest.util.block.MFBlockUtil;
+import net.fluffybumblebee.terrains.util.block.MFBlockUtil;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.sound.BlockSoundGroup;

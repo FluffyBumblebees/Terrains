@@ -1,10 +1,10 @@
 package net.fluffybumblebee.stainedtrees.world.feature;
 
-import net.fluffybumblebee.stainedtrees.block.STBlocks;
+import net.fluffybumblebee.terrains.common.registry.blocks.StainedBlocks;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
-import static net.fluffybumblebee.stainedtrees.util.STUtil.*;
+import static net.fluffybumblebee.terrains.util.STUtil.*;
 
 public class STPlacedFeatures {
     public static final RegistryEntry<PlacedFeature> BLACK_TREE = createPlaced(
@@ -12,7 +12,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.BLACK_TREE_BEES,
             STConfiguredFeatures.FAT_BLACK_TREE,
             STConfiguredFeatures.FAT_BLACK_TREE_BEES,
-            STBlocks.BLACK_SAPLING,
+            StainedBlocks.BLACK_SAPLING_BLOCK,
             "black"
     );
     public static final RegistryEntry<PlacedFeature> BLUE_TREE = createPlaced(
@@ -20,7 +20,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.BLUE_TREE_BEES,
             STConfiguredFeatures.FAT_BLUE_TREE,
             STConfiguredFeatures.FAT_BLUE_TREE_BEES,
-            STBlocks.BLUE_SAPLING,
+            StainedBlocks.BLUE_SAPLING_BLOCK,
             "blue"
     );
     public static final RegistryEntry<PlacedFeature> BROWN_TREE = createPlaced(
@@ -28,7 +28,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.BROWN_TREE_BEES,
             STConfiguredFeatures.FAT_BROWN_TREE,
             STConfiguredFeatures.FAT_BROWN_TREE_BEES,
-            STBlocks.BROWN_SAPLING,
+            StainedBlocks.BROWN_SAPLING_BLOCK,
             "brown"
     );
     public static final RegistryEntry<PlacedFeature> CYAN_TREE = createPlaced(
@@ -36,7 +36,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.CYAN_TREE_BEES,
             STConfiguredFeatures.FAT_CYAN_TREE,
             STConfiguredFeatures.FAT_CYAN_TREE_BEES,
-            STBlocks.CYAN_SAPLING,
+            StainedBlocks.CYAN_SAPLING_BLOCK,
             "cyan"
     );
     public static final RegistryEntry<PlacedFeature> GRAY_TREE = createPlaced(
@@ -44,7 +44,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.GRAY_TREE_BEES,
             STConfiguredFeatures.FAT_GRAY_TREE,
             STConfiguredFeatures.FAT_GRAY_TREE_BEES,
-            STBlocks.GRAY_SAPLING,
+            StainedBlocks.GRAY_SAPLING_BLOCK,
             "gray"
     );
     public static final RegistryEntry<PlacedFeature> LIGHT_BLUE_TREE = createPlaced(
@@ -52,7 +52,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.LIGHT_BLUE_TREE_BEES,
             STConfiguredFeatures.FAT_LIGHT_BLUE_TREE,
             STConfiguredFeatures.FAT_LIGHT_BLUE_TREE_BEES,
-            STBlocks.LIGHT_BLUE_SAPLING,
+            StainedBlocks.LIGHT_BLUE_SAPLING_BLOCK,
             "light_blue"
     );
     public static final RegistryEntry<PlacedFeature> LIGHT_GRAY_TREE = createPlaced(
@@ -60,7 +60,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.LIGHT_GRAY_TREE_BEES,
             STConfiguredFeatures.FAT_LIGHT_GRAY_TREE,
             STConfiguredFeatures.FAT_LIGHT_GRAY_TREE_BEES,
-            STBlocks.LIGHT_GRAY_SAPLING,
+            StainedBlocks.LIGHT_GRAY_SAPLING_BLOCK,
             "light_gray"
     );
     public static final RegistryEntry<PlacedFeature> LIME_TREE = createPlaced(
@@ -68,7 +68,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.LIME_TREE_BEES,
             STConfiguredFeatures.FAT_LIME_TREE,
             STConfiguredFeatures.FAT_LIME_TREE_BEES,
-            STBlocks.LIME_SAPLING,
+            StainedBlocks.LIME_SAPLING_BLOCK,
             "lime"
     );
     public static final RegistryEntry<PlacedFeature> MAGENTA_TREE = createPlaced(
@@ -76,7 +76,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.MAGENTA_TREE_BEES,
             STConfiguredFeatures.FAT_MAGENTA_TREE,
             STConfiguredFeatures.FAT_MAGENTA_TREE_BEES,
-            STBlocks.MAGENTA_SAPLING,
+            StainedBlocks.MAGENTA_SAPLING_BLOCK,
             "magenta"
     );
     public static final RegistryEntry<PlacedFeature> ORANGE_TREE = createPlaced(
@@ -84,7 +84,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.ORANGE_TREE_BEES,
             STConfiguredFeatures.FAT_ORANGE_TREE,
             STConfiguredFeatures.FAT_ORANGE_TREE_BEES,
-            STBlocks.ORANGE_SAPLING,
+            StainedBlocks.ORANGE_SAPLING_BLOCK,
             "orange"
     );
     public static final RegistryEntry<PlacedFeature> PINK_TREE = createPlaced(
@@ -92,7 +92,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.PINK_TREE_BEES,
             STConfiguredFeatures.FAT_PINK_TREE,
             STConfiguredFeatures.FAT_PINK_TREE_BEES,
-            STBlocks.PINK_SAPLING,
+            StainedBlocks.PINK_SAPLING_BLOCK,
             "pink"
     );
     public static final RegistryEntry<PlacedFeature> PURPLE_TREE = createPlaced(
@@ -100,7 +100,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.PURPLE_TREE_BEES,
             STConfiguredFeatures.FAT_PURPLE_TREE,
             STConfiguredFeatures.FAT_PURPLE_TREE_BEES,
-            STBlocks.PURPLE_SAPLING,
+            StainedBlocks.PURPLE_SAPLING_BLOCK,
             "purple"
     );
     public static final RegistryEntry<PlacedFeature> RED_TREE = createPlaced(
@@ -108,7 +108,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.RED_TREE_BEES,
             STConfiguredFeatures.FAT_RED_TREE,
             STConfiguredFeatures.FAT_RED_TREE_BEES,
-            STBlocks.RED_SAPLING,
+            StainedBlocks.RED_SAPLING_BLOCK,
             "red"
     );
     public static final RegistryEntry<PlacedFeature> WHITE_TREE = createPlaced(
@@ -116,7 +116,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.WHITE_TREE_BEES,
             STConfiguredFeatures.FAT_WHITE_TREE,
             STConfiguredFeatures.FAT_WHITE_TREE_BEES,
-            STBlocks.WHITE_SAPLING,
+            StainedBlocks.WHITE_SAPLING_BLOCK,
             "white"
     );
     public static final RegistryEntry<PlacedFeature> YELLOW_TREE = createPlaced(
@@ -124,7 +124,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.YELLOW_TREE_BEES,
             STConfiguredFeatures.FAT_YELLOW_TREE,
             STConfiguredFeatures.FAT_YELLOW_TREE_BEES,
-            STBlocks.YELLOW_SAPLING,
+            StainedBlocks.YELLOW_SAPLING_BLOCK,
             "yellow"
     );
     public static final RegistryEntry<PlacedFeature> RAINBOW_TREE = createPlaced(
@@ -132,7 +132,7 @@ public class STPlacedFeatures {
             STConfiguredFeatures.RAINBOW_TREE_BEES,
             STConfiguredFeatures.FAT_RAINBOW_TREE,
             STConfiguredFeatures.FAT_RAINBOW_TREE_BEES,
-            STBlocks.RAINBOW_SAPLING,
+            StainedBlocks.RAINBOW_SAPLING_BLOCK,
             "rainbow"
     );
 }

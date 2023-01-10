@@ -1,6 +1,6 @@
 package net.fluffybumblebee.stainedtrees;
 
-import net.fluffybumblebee.stainedtrees.block.STBlocks;
+import net.fluffybumblebee.terrains.common.registry.blocks.StainedBlocks;
 import net.fluffybumblebee.stainedtrees.item.STItemGroup;
 import net.fluffybumblebee.stainedtrees.world.gen.STWorldGen;
 import net.fabricmc.api.ModInitializer;
@@ -10,7 +10,7 @@ public class StainedTrees implements ModInitializer {
     @Override
     public void onInitialize() {
         STWorldGen.generateWorldGen();
-        STBlocks.initClass();
+        StainedBlocks.initClass();
         STItemGroup.initClass();
     }
 }

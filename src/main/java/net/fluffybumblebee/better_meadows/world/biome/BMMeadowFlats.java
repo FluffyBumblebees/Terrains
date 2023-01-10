@@ -1,6 +1,6 @@
 package net.fluffybumblebee.better_meadows.world.biome;
 
-import net.fluffybumblebee.better_meadows.util.MeadowDefaults;
+import net.fluffybumblebee.terrains.util.MeadowDefaults;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;

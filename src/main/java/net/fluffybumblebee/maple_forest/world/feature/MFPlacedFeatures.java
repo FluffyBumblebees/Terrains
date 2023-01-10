@@ -3,7 +3,7 @@ package net.fluffybumblebee.maple_forest.world.feature;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.*;
 
-import static net.fluffybumblebee.maple_forest.util.registration.world.feature.MFPlacedFeatureRegistration.BiasedRegistration.*;
+import static net.fluffybumblebee.terrains.util.registration.world.feature.MFPlacedFeatureRegistration.BiasedRegistration.*;
 
 
 public class MFPlacedFeatures {

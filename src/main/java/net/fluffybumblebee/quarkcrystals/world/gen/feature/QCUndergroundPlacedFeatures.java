@@ -1,6 +1,6 @@
 package net.fluffybumblebee.quarkcrystals.world.gen.feature;
 
-import net.fluffybumblebee.quarkcrystals.util.QCUtil;
+import net.fluffybumblebee.terrains.util.QCUtil;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.GeodeFeatureConfig;

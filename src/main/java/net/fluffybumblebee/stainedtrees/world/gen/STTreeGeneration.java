@@ -2,7 +2,7 @@ package net.fluffybumblebee.stainedtrees.world.gen;
 
 import net.fluffybumblebee.stainedtrees.world.feature.STPlacedFeatures;
 
-import static net.fluffybumblebee.stainedtrees.util.STUtil.*;
+import static net.fluffybumblebee.terrains.util.STUtil.*;
 
 public class STTreeGeneration {
     public static void generateBlackTrees() {

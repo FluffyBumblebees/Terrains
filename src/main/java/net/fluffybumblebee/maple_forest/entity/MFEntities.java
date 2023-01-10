@@ -3,7 +3,7 @@ package net.fluffybumblebee.maple_forest.entity;
 
 import com.terraformersmc.terraform.boat.api.TerraformBoatType;
 import net.fluffybumblebee.maple_forest.entity.boat.MFBoatTypes;
-import net.fluffybumblebee.maple_forest.util.type.wood.MFWoodTypes;
+import net.fluffybumblebee.terrains.util.type.wood.MFWoodTypes;
 
 @SuppressWarnings("unused")
 public class MFEntities {

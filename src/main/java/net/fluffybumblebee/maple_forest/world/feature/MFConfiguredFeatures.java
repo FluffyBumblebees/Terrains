@@ -4,7 +4,7 @@ import net.fluffybumblebee.maple_forest.init.MFRegistry;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.*;
 
-import static net.fluffybumblebee.maple_forest.util.registration.world.feature.MFConfiguredFeatureRegistration.BiasedRegistration.*;
+import static net.fluffybumblebee.terrains.util.registration.world.feature.MFConfiguredFeatureRegistration.BiasedRegistration.*;
 
 
 @SuppressWarnings("unused")

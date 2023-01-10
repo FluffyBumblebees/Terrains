@@ -1,6 +1,6 @@
 package net.fluffybumblebee.stainedtrees.item;
 
-import net.fluffybumblebee.stainedtrees.block.STBlocks;
+import net.fluffybumblebee.terrains.common.registry.blocks.StainedBlocks;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -17,7 +17,7 @@ public class STItemGroup {
     static {
         STAINED_TREES = FabricItemGroupBuilder.create(
                         new Identifier(MOD_ID, "general"))
-                .icon(() -> new ItemStack(STBlocks.PURPLE_LEAVES))
+                .icon(() -> new ItemStack(StainedBlocks.PURPLE_LEAVES_BLOCK))
                 .appendItems(stacks -> Registry.ITEM.forEach(item -> {
                     if (Registry.ITEM.getId(item).getNamespace().equals(MOD_ID)) {
                         item.appendStacks(item.getGroup(), (DefaultedList<ItemStack>) stacks);
