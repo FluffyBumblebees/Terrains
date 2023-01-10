@@ -35,19 +35,19 @@ public final class GeodeCollection <E extends Enum<?>> {
     public final RegistryEntry<PlacedFeature> PLACED_GEODE;
 
     public GeodeCollection(E type) {
-        String colour = type.name();
-        waxedCorundumBlock = buildBlock(new CorundumBlock(), "waxed_" + colour + "corundum");
-        corundumCluster = buildBlock(new CorundumCluster(), colour + "_corundum_bluster");
+        String colour = type.name().toLowerCase();
+        waxedCorundumBlock = buildBlock(new CorundumBlock(), "waxed_" + colour + "_corundum");
+        corundumCluster = buildBlock(new CorundumCluster(), colour + "_corundum_cluster");
 
         corundumBlock = buildBlock(new CorundumBlock(corundumCluster::getBlock), colour + "_corundum");
         corundumPane = buildBlock(new CorundumCrystalPane(), colour + "_corundum_pane");
         corundumSlab = buildBlock(new CorundumCrystalSlab(), colour + "_corundum_slab");
-        corundumStairs = buildBlock(new CorundumCrystalStairs(), colour + "corundum_stairs");
+        corundumStairs = buildBlock(new CorundumCrystalStairs(), colour + "_corundum_stairs");
 
         crystalBlock = buildBlock(new CrystalBlock(), colour + "_crystal");
         crystalPane = buildBlock(new CorundumCrystalPane(), colour + "_crystal_pane");
-        crystalSlab = buildBlock(new CorundumCrystalSlab(), colour + "crystal_slab");
-        crystalStairs = buildBlock(new CorundumCrystalStairs(), colour + "crystal_stairs");
+        crystalSlab = buildBlock(new CorundumCrystalSlab(), colour + "_crystal_slab");
+        crystalStairs = buildBlock(new CorundumCrystalStairs(), colour + "_crystal_stairs");
 
         ALL_BLOCKS = new BlockBuilder[] {
                 waxedCorundumBlock,
