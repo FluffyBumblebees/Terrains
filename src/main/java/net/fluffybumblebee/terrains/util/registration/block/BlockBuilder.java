@@ -24,11 +24,16 @@ public final class BlockBuilder <B extends Block> {
         blockItem = null;
     }
 
+    public static <B extends Block> BlockBuilder<B> buildBlock(B block, String name) {
+        return new BlockBuilder<>(block, getIdentifier(name)).addBlockItem().build();
+    }
+
     private BlockBuilder<B> getInstanceWithSideEffect(InstanceReturnable instanceReturnable) {
         instanceReturnable.sideEffect();
         return this;
     }
 
+    @SuppressWarnings("unused")
     public BlockBuilder<B> addFlammability(int burn, int spread) {
         return getInstanceWithSideEffect(() -> FlammableBlockRegistry.getDefaultInstance().add(block, burn, spread));
     }
@@ -59,10 +64,6 @@ public final class BlockBuilder <B extends Block> {
         if (blockItem != null)
             return blockItem;
         else throw new RuntimeException("Tried to get a addBlockItem from " + this + " but it wasn't registered!");
-    }
-
-    public static <B extends Block> BlockBuilder<B> buildBlock(B block, String name) {
-        return new BlockBuilder<>(block, getIdentifier(name)).addBlockItem().build();
     }
 
     @Override
