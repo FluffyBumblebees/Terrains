@@ -1,7 +1,7 @@
-package net.fluffybumblebee.terrains.common.registry.category.crystal_geodes;
+package net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fluffybumblebee.terrains.common.default_abstract.block.*;
+import net.fluffybumblebee.terrains.common.instances.block.*;
 import net.fluffybumblebee.terrains.util.registration.abstract_collection.abstract_helper.FeatureRegistrar;
 import net.fluffybumblebee.terrains.util.registration.block.BlockBuilder;
 import net.minecraft.util.registry.RegistryEntry;

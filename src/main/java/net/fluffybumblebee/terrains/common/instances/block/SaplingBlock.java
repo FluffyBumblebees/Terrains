@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.common.default_abstract.block;
+package net.fluffybumblebee.terrains.common.instances.block;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Blocks;

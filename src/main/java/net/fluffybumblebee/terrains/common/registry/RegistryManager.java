@@ -1,6 +1,6 @@
 package net.fluffybumblebee.terrains.common.registry;
 
-import net.fluffybumblebee.terrains.common.registry.category.AllFeatureSets;
+import net.fluffybumblebee.terrains.common.registry.sets.AllFeatureSets;
 import net.fluffybumblebee.terrains.common.registry.itemgroup.NatureItemGroup;
 import net.fluffybumblebee.terrains.common.registry.itemgroup.UndergroundItemGroup;
 

@@ -6,8 +6,8 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-import static net.fluffybumblebee.terrains.common.registry.category.AllFeatureSets.CRYSTAL_GEODES;
-import static net.fluffybumblebee.terrains.common.registry.category.crystal_geodes.CrystalGeodeTypes.PURPLE;
+import static net.fluffybumblebee.terrains.common.registry.sets.AllFeatureSets.CRYSTAL_GEODES;
+import static net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.CrystalGeodeTypes.PURPLE;
 
 
 public class UndergroundItemGroup {

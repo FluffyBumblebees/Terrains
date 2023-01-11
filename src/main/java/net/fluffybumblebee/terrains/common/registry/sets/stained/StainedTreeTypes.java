@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.common.registry.category.stained;
+package net.fluffybumblebee.terrains.common.registry.sets.stained;
 
 public enum StainedTreeTypes {
     BLACK,

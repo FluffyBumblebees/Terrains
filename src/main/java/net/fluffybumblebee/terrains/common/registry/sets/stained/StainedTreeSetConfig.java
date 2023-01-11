@@ -1,9 +1,9 @@
-package net.fluffybumblebee.terrains.common.registry.category.stained;
+package net.fluffybumblebee.terrains.common.registry.sets.stained;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fluffybumblebee.terrains.common.default_abstract.block.LeavesBlock;
-import net.fluffybumblebee.terrains.common.default_abstract.block.SaplingBlock;
-import net.fluffybumblebee.terrains.common.default_abstract.block.ShortenedFlowerPotBlock;
+import net.fluffybumblebee.terrains.common.instances.block.LeavesBlock;
+import net.fluffybumblebee.terrains.common.instances.block.SaplingBlock;
+import net.fluffybumblebee.terrains.common.instances.block.ShortenedFlowerPotBlock;
 import net.fluffybumblebee.terrains.common.world.feature.raw.StainedSaplingGenerator;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.registration.abstract_collection.abstract_helper.FeatureRegistrar;

@@ -1,13 +1,13 @@
 package net.fluffybumblebee.terrains.common.registry.itemgroup;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fluffybumblebee.terrains.common.default_abstract.block.ShortenedFlowerPotBlock;
+import net.fluffybumblebee.terrains.common.instances.block.ShortenedFlowerPotBlock;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-import static net.fluffybumblebee.terrains.common.registry.category.AllFeatureSets.STAINED_TREES;
-import static net.fluffybumblebee.terrains.common.registry.category.stained.StainedTreeTypes.PURPLE;
+import static net.fluffybumblebee.terrains.common.registry.sets.AllFeatureSets.STAINED_TREES;
+import static net.fluffybumblebee.terrains.common.registry.sets.stained.StainedTreeTypes.PURPLE;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.NAMESPACE;
 
 public class NatureItemGroup {

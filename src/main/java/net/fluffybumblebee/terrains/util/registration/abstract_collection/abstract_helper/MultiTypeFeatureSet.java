@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MultTypeFeatureSet<E extends Enum<?>, F extends FeatureRegistrar> implements AbstractFeatureSet<E, F> {
+public class MultiTypeFeatureSet<E extends Enum<?>, F extends FeatureRegistrar> implements AbstractFeatureSet<E, F> {
     private final FeatureSetIterator<E> ITERATOR;
     private final Map<E, F> ALL_TYPES;
-    public MultTypeFeatureSet(E[] values, FeatureSetFactory<E, F> factory) {
+    public MultiTypeFeatureSet(E[] values, FeatureSetFactory<E, F> factory) {
         ALL_TYPES = new HashMap<>();
         ITERATOR = () -> Arrays.asList(values);
         ITERATOR.forEach(colour -> ALL_TYPES.put(colour, factory.getNewSet(colour)));

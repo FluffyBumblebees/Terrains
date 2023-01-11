@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.common.registry.category.crystal_geodes;
+package net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes;
 
 public enum CrystalGeodeTypes {
     DARK,
@@ -8,6 +8,7 @@ public enum CrystalGeodeTypes {
     ORANGE,
     YELLOW,
     GREEN,
+    LIME,
     CYAN,
     INDIGO,
     BLUE,

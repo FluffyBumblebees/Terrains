@@ -3,13 +3,13 @@ package net.fluffybumblebee.terrains.client.render;
 
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fluffybumblebee.maple_forest.init.MFRegistry;
-import net.fluffybumblebee.terrains.common.default_abstract.block.CorundumCluster;
+import net.fluffybumblebee.terrains.common.instances.block.CorundumCluster;
 import net.fluffybumblebee.terrains.util.registration.block.BlockBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 
-import static net.fluffybumblebee.terrains.common.registry.category.AllFeatureSets.CRYSTAL_GEODES;
-import static net.fluffybumblebee.terrains.common.registry.category.AllFeatureSets.STAINED_TREES;
+import static net.fluffybumblebee.terrains.common.registry.sets.AllFeatureSets.CRYSTAL_GEODES;
+import static net.fluffybumblebee.terrains.common.registry.sets.AllFeatureSets.STAINED_TREES;
 
 public class RendererCutouts {
     public static void registerCutouts() {
