@@ -18,16 +18,16 @@ public final class TreeFoliageSetConfig<E extends Enum<?>, S extends SaplingGene
     public final BlockSet<ShortenedFlowerPotBlock> POTTED_SAPLING;
 
     public TreeFoliageSetConfig(E type, AfterLeaves<S> afterLeaves) {
-        final String colour = type.name().toLowerCase();
+        final String leafType = type.name().toLowerCase();
 
-        LEAVES = buildBlock(new LeavesBlock(), colour + "_leaves");
+        LEAVES = buildBlock(new LeavesBlock(), leafType + "_leaves");
 
-        SAPLING = buildBlock(new SaplingBlock(afterLeaves.register(LEAVES.BLOCK)),   colour + "_sapling");
+        SAPLING = buildBlock(new SaplingBlock(afterLeaves.register(LEAVES.BLOCK)),   leafType + "_sapling");
         var sapling = SAPLING.BLOCK;
 
         POTTED_SAPLING = new BlockSet.Builder<>(
                 new ShortenedFlowerPotBlock(sapling),
-                getIdentifier("potted_" + colour +  "_sapling")
+                getIdentifier("potted_" + leafType +  "_sapling")
         ).addBlockItem().build();
 
         ALL_BLOCKS = new BlockSet[] {

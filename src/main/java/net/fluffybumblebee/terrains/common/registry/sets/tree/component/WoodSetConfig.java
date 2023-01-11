@@ -61,9 +61,9 @@ public class WoodSetConfig <E extends Enum<?>> implements FeatureRegistrar<Block
         TRAPDOOR = buildFlammableBlock(new WoodTrapDoor(), type + "_trapdoor");
         BUTTON = buildFlammableBlock(new WoodButton(), type + "_button");
 
-        Identifier MAPLE_SIGN_TEXTURE = getIdentifier("entity/signs/maple");
-        WALL_SIGN = new Builder<>(new TerraformWallSignBlock(MAPLE_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)), getIdentifier(type + "_wall_sign")).build();
-        SIGN = new Builder<>(new TerraformSignBlock(MAPLE_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_SIGN)), getIdentifier(type + "_sign"))
+        Identifier SIGN_TEXTURE = getIdentifier("entity/signs/" + type);
+        WALL_SIGN = new Builder<>(new TerraformWallSignBlock(SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)), getIdentifier(type + "_wall_sign")).build();
+        SIGN = new Builder<>(new TerraformSignBlock(SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_SIGN)), getIdentifier(type + "_sign"))
                 .addBlockItem(block -> new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), block, WALL_SIGN.BLOCK))
                 .build();
 
