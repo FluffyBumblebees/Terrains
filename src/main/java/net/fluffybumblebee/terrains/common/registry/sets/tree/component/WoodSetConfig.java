@@ -17,19 +17,20 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SignItem;
 import net.minecraft.util.Identifier;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildFlammableBlock;
 
 public class WoodSetConfig <E extends Enum<?>> implements FeatureRegistrar<BlockSet<?>> {
-    private final BlockSet<?>[] ALL_BLOCKS;
+    private final List<BlockSet<?>> ALL_BLOCKS;
     public static TerraformBoatType BOAT;
 
     public final BlockSet<?> LOG;
     public final BlockSet<?> WOOD;
-
     public final BlockSet<?> STRIPPED_LOG;
     public final BlockSet<?> STRIPPED_WOOD;
-
     public final BlockSet<?> PLANKS;
     public final BlockSet<?> STAIRS;
     public final BlockSet<?> SLAB;
@@ -45,6 +46,7 @@ public class WoodSetConfig <E extends Enum<?>> implements FeatureRegistrar<Block
 
     public WoodSetConfig(E woodType) {
         final String type = woodType.name();
+        ALL_BLOCKS = new ArrayList<>();
         new BoatRegistration(MFWoodTypes.MAPLE, BOAT);
 
         LOG = buildFlammableBlock(new WoodBlock(), type + "_log");
@@ -67,7 +69,7 @@ public class WoodSetConfig <E extends Enum<?>> implements FeatureRegistrar<Block
                 .addBlockItem(block -> new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), block, WALL_SIGN.BLOCK))
                 .build();
 
-        ALL_BLOCKS = new BlockSet<?>[] {
+        addAllElements(new BlockSet<?>[] {
                 LOG,
                 WOOD,
                 STRIPPED_LOG,
@@ -82,12 +84,12 @@ public class WoodSetConfig <E extends Enum<?>> implements FeatureRegistrar<Block
                 TRAPDOOR,
                 BUTTON,
                 SIGN
-        };
+        });
     }
 
 
     @Override
-    public BlockSet<?>[] getAll() {
+    public List<BlockSet<?>> getAll() {
         return ALL_BLOCKS;
     }
 }

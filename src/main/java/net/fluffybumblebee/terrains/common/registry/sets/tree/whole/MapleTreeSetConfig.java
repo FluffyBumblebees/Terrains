@@ -22,9 +22,9 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
-import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalInt;
 
@@ -32,7 +32,7 @@ import static net.minecraft.world.gen.feature.ConfiguredFeatures.register;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class MapleTreeSetConfig<E extends Enum<?>> implements FeatureRegistrar<BlockSet<?>> {
-    private final BlockSet<?>[] ALL_BLOCKS;
+    private final List<BlockSet<?>> ALL_BLOCKS;
     private final TreeFoliageSetConfig<E, MapleSaplingGenerator> GREEN_FOLIAGE;
     private final TreeFoliageSetConfig<E, MapleSaplingGenerator> GREEN_FOLIAGE_BEES;
     private final TreeFoliageSetConfig<E, MapleSaplingGenerator> RED_FOLIAGE;
@@ -45,6 +45,8 @@ public class MapleTreeSetConfig<E extends Enum<?>> implements FeatureRegistrar<B
 
     public MapleTreeSetConfig(E type) {
         final String name = type.name();
+        ALL_BLOCKS = new ArrayList<>();
+
         SAPPY_LOG = BlockSet.buildFlammableBlock(new WoodBlock(), name);
         WOOD = new WoodSetConfig<>(type);
         GREEN_FOLIAGE = new TreeFoliageSetConfig<>(type, getGen("green", null));
@@ -54,20 +56,17 @@ public class MapleTreeSetConfig<E extends Enum<?>> implements FeatureRegistrar<B
         ORANGE_FOLIAGE = new TreeFoliageSetConfig<>(type, getGen("green", null));
         BROWN_FOLIAGE = new TreeFoliageSetConfig<>(type, getGen("green", null));
 
-        ALL_BLOCKS = (BlockSet<?>[]) ArrayUtils.addAll(
-                RED_FOLIAGE.getAll(),
-                BROWN_FOLIAGE.getAll(),
-                YELLOW_FOLIAGE.getAll(),
-                ORANGE_FOLIAGE.getAll(),
-                GREEN_FOLIAGE.getAll(),
-                new BlockSet[]{SAPPY_LOG},
-                WOOD.getAll()
-        );
-
+        ALL_BLOCKS.addAll(RED_FOLIAGE.getAll());
+        ALL_BLOCKS.addAll(BROWN_FOLIAGE.getAll());
+        ALL_BLOCKS.addAll(YELLOW_FOLIAGE.getAll());
+        ALL_BLOCKS.addAll(ORANGE_FOLIAGE.getAll());
+        ALL_BLOCKS.addAll(GREEN_FOLIAGE.getAll());
+        ALL_BLOCKS.add(SAPPY_LOG);
+        ALL_BLOCKS.addAll(WOOD.getAll());
     }
 
     @Override
-    public BlockSet<?>[] getAll() {
+    public List<BlockSet<?>> getAll() {
         return ALL_BLOCKS;
     }
 

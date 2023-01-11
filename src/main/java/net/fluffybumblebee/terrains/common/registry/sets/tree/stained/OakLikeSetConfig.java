@@ -12,10 +12,13 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.*;
 
 public final class OakLikeSetConfig<E extends Enum<?>> implements FeatureRegistrar<BlockSet<?>> {
-    private final BlockSet<?>[] ALL_BLOCKS;
+    private final List<BlockSet<?>> ALL_BLOCKS;
     private RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> TREE;
     private RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> TREE_BEES;
     private RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> FAT_TREE;
@@ -25,6 +28,7 @@ public final class OakLikeSetConfig<E extends Enum<?>> implements FeatureRegistr
 
     public OakLikeSetConfig(E type) {
         final String colour = type.name().toLowerCase();
+        ALL_BLOCKS = new ArrayList<>();
 
         FOLIAGE = new TreeFoliageSetConfig<>(type, block -> {
             TREE = defOak(colour, block);
@@ -40,12 +44,11 @@ public final class OakLikeSetConfig<E extends Enum<?>> implements FeatureRegistr
         });
 
         var sapling = FOLIAGE.SAPLING.BLOCK;
-
-        ALL_BLOCKS = new BlockSet[] {
+        addAllElements(new BlockSet[] {
                 FOLIAGE.LEAVES,
                 FOLIAGE.SAPLING,
                 FOLIAGE.POTTED_SAPLING
-        };
+        });
 
         TREE_PLACED = createPlaced(
                 TREE,
@@ -59,7 +62,7 @@ public final class OakLikeSetConfig<E extends Enum<?>> implements FeatureRegistr
     }
 
     @Override
-    public BlockSet<?>[] getAll() {
+    public List<BlockSet<?>> getAll() {
         return ALL_BLOCKS;
     }
 }

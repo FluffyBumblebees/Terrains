@@ -10,6 +10,9 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.GeodeFeatureConfig;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry.registerWaxableBlockPair;
 import static net.fluffybumblebee.terrains.util.QCUtil.registerGeode;
 import static net.fluffybumblebee.terrains.util.QCUtil.registerPlacedGeode;
@@ -18,6 +21,7 @@ import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeR
 
 @SuppressWarnings("FieldCanBeLocal")
 public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRegistrar<BlockSet<?>> {
+    public final List<BlockSet<?>> ALL_BLOCKS;
 
     public final BlockSet<CorundumBlock> WAXED_CORUNDUM;
     public final BlockSet<CorundumCluster> CORUNDUM_CLUSTER;
@@ -32,13 +36,12 @@ public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRe
     public final BlockSet<CorundumCrystalSlab> CRYSTAL_SLAB;
     public final BlockSet<CorundumCrystalStairs> CRYSTAL_STAIRS;
 
-    public final BlockSet<?>[] ALL_BLOCKS;
-
     private final RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> CONFIGURED_GEODE;
     private final RegistryEntry<PlacedFeature> PLACED_GEODE;
 
     public CrystalGeodeSetConfig(E type) {
         final String colour = type.name().toLowerCase();
+        ALL_BLOCKS = new ArrayList<>();
 
         WAXED_CORUNDUM = buildBlock(new CorundumBlock(), "waxed_" + colour + "_corundum");
         CORUNDUM_CLUSTER = buildBlock(new CorundumCluster(), colour + "_corundum_cluster");
@@ -53,7 +56,7 @@ public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRe
         CRYSTAL_SLAB = buildBlock(new CorundumCrystalSlab(), colour + "_crystal_slab");
         CRYSTAL_STAIRS = buildBlock(new CorundumCrystalStairs(), colour + "_crystal_stairs");
 
-        ALL_BLOCKS = new BlockSet[] {
+        addAllElements(new BlockSet[] {
                 WAXED_CORUNDUM,
                 CORUNDUM_CLUSTER,
                 CORUNDUM,
@@ -64,7 +67,7 @@ public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRe
                 CRYSTAL_PANE,
                 CRYSTAL_SLAB,
                 CRYSTAL_STAIRS
-        };
+        });
 
         registerWaxableBlockPair(CORUNDUM.BLOCK, WAXED_CORUNDUM.BLOCK);
 
@@ -83,7 +86,7 @@ public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRe
     }
 
     @Override
-    public BlockSet<?>[] getAll() {
+    public List<BlockSet<?>> getAll() {
         return ALL_BLOCKS;
     }
 }
