@@ -1,7 +1,7 @@
 package net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fluffybumblebee.terrains.common.instances.block.*;
+import net.fluffybumblebee.terrains.common.instances.block.crystals.*;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.feature_set.FeatureRegistrar;
 import net.minecraft.util.registry.RegistryEntry;
@@ -38,12 +38,12 @@ public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRe
     private final RegistryEntry<PlacedFeature> PLACED_GEODE;
 
     public CrystalGeodeSetConfig(E type) {
-        String colour = type.name().toLowerCase();
+        final String colour = type.name().toLowerCase();
 
         WAXED_CORUNDUM = buildBlock(new CorundumBlock(), "waxed_" + colour + "_corundum");
         CORUNDUM_CLUSTER = buildBlock(new CorundumCluster(), colour + "_corundum_cluster");
 
-        CORUNDUM = buildBlock(new CorundumBlock(() -> CORUNDUM_CLUSTER.block), colour + "_corundum");
+        CORUNDUM = buildBlock(new CorundumBlock(() -> CORUNDUM_CLUSTER.BLOCK), colour + "_corundum");
         CORUNDUM_PANE = buildBlock(new CorundumCrystalPane(), colour + "_corundum_pane");
         CORUNDUM_SLAB = buildBlock(new CorundumCrystalSlab(), colour + "_corundum_slab");
         CORUNDUM_STAIRS = buildBlock(new CorundumCrystalStairs(), colour + "_corundum_stairs");
@@ -66,12 +66,12 @@ public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRe
                 CRYSTAL_STAIRS
         };
 
-        registerWaxableBlockPair(CORUNDUM.block, WAXED_CORUNDUM.block);
+        registerWaxableBlockPair(CORUNDUM.BLOCK, WAXED_CORUNDUM.BLOCK);
 
         CONFIGURED_GEODE = registerGeode(
-                CORUNDUM.block,
-                CRYSTAL.block,
-                CORUNDUM_CLUSTER.block,
+                CORUNDUM.BLOCK,
+                CRYSTAL.BLOCK,
+                CORUNDUM_CLUSTER.BLOCK,
                 colour
         );
         PLACED_GEODE = registerPlacedGeode(

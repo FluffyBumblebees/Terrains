@@ -1,7 +1,7 @@
 package net.fluffybumblebee.terrains.util.registration.world.feature;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
-import net.fluffybumblebee.terrains.common.instances.block.SaplingBlock;
+import net.fluffybumblebee.terrains.common.instances.block.plant.SaplingBlock;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;

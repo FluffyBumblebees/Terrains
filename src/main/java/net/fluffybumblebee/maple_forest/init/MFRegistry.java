@@ -6,16 +6,14 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fluffybumblebee.maple_forest.blocks.custom.tree.MFLeaves;
 import net.fluffybumblebee.maple_forest.blocks.custom.tree.MFSaplings;
-import net.fluffybumblebee.maple_forest.blocks.custom.tree.MFWood;
-import net.fluffybumblebee.maple_forest.blocks.custom.woodcraftables.*;
+import net.fluffybumblebee.terrains.common.instances.block.wood_set.*;
 import net.fluffybumblebee.maple_forest.item.MFItems;
 import net.fluffybumblebee.maple_forest.item.custom.MFFood;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
-import net.fluffybumblebee.terrains.util.registration.block.MFBlockRegistration;
 import net.fluffybumblebee.terrains.util.registration.item.MFItemRegistration;
 import net.fluffybumblebee.terrains.util.type.wood.MFWoodTypes;
 import net.fluffybumblebee.maple_forest.world.feature.MFConfiguredFeatures;
-import net.fluffybumblebee.maple_forest.world.feature.tree.MFSaplingGenerator;
+import net.fluffybumblebee.terrains.common.world.feature.raw.MapleSaplingGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerPotBlock;
@@ -36,11 +34,11 @@ public class MFRegistry {
     public static final Block GREEN_MAPLE_LEAVES = MFBlockRegistration.register(new MFLeaves(), "green_" + MFWoodTypes.MAPLE + "_leaves");
     public static final Block BROWN_MAPLE_LEAVES = MFBlockRegistration.register(new MFLeaves(), "brown_" + MFWoodTypes.MAPLE + "_leaves");
 
-    public static final SaplingBlock RED_MAPLE_SAPLING = (SaplingBlock) MFBlockRegistration.register(new MFSaplings(new MFSaplingGenerator(() -> MFConfiguredFeatures.RED_MAPLE_TREE)), "red_" + MFWoodTypes.MAPLE + "_sapling");
-    public static final SaplingBlock ORANGE_MAPLE_SAPLING = (SaplingBlock) MFBlockRegistration.register(new MFSaplings(new MFSaplingGenerator(() -> MFConfiguredFeatures.ORANGE_MAPLE_TREE)), "orange_" + MFWoodTypes.MAPLE + "_sapling");
-    public static final SaplingBlock YELLOW_MAPLE_SAPLING = (SaplingBlock) MFBlockRegistration.register(new MFSaplings(new MFSaplingGenerator(() -> MFConfiguredFeatures.YELLOW_MAPLE_TREE)), "yellow_" + MFWoodTypes.MAPLE + "_sapling");
-    public static final SaplingBlock GREEN_MAPLE_SAPLING = (SaplingBlock) MFBlockRegistration.register(new MFSaplings(new MFSaplingGenerator(() -> MFConfiguredFeatures.GREEN_MAPLE_TREE)), "green_" + MFWoodTypes.MAPLE + "_sapling");
-    public static final SaplingBlock BROWN_MAPLE_SAPLING = (SaplingBlock) MFBlockRegistration.register(new MFSaplings(new MFSaplingGenerator(() -> MFConfiguredFeatures.BROWN_MAPLE_TREE)), "brown_" + MFWoodTypes.MAPLE + "_sapling");
+    public static final SaplingBlock RED_MAPLE_SAPLING = (SaplingBlock) MFBlockRegistration.register(new MFSaplings(new MapleSaplingGenerator(() -> MFConfiguredFeatures.RED_MAPLE_TREE)), "red_" + MFWoodTypes.MAPLE + "_sapling");
+    public static final SaplingBlock ORANGE_MAPLE_SAPLING = (SaplingBlock) MFBlockRegistration.register(new MFSaplings(new MapleSaplingGenerator(() -> MFConfiguredFeatures.ORANGE_MAPLE_TREE)), "orange_" + MFWoodTypes.MAPLE + "_sapling");
+    public static final SaplingBlock YELLOW_MAPLE_SAPLING = (SaplingBlock) MFBlockRegistration.register(new MFSaplings(new MapleSaplingGenerator(() -> MFConfiguredFeatures.YELLOW_MAPLE_TREE)), "yellow_" + MFWoodTypes.MAPLE + "_sapling");
+    public static final SaplingBlock GREEN_MAPLE_SAPLING = (SaplingBlock) MFBlockRegistration.register(new MFSaplings(new MapleSaplingGenerator(() -> MFConfiguredFeatures.GREEN_MAPLE_TREE)), "green_" + MFWoodTypes.MAPLE + "_sapling");
+    public static final SaplingBlock BROWN_MAPLE_SAPLING = (SaplingBlock) MFBlockRegistration.register(new MFSaplings(new MapleSaplingGenerator(() -> MFConfiguredFeatures.BROWN_MAPLE_TREE)), "brown_" + MFWoodTypes.MAPLE + "_sapling");
 
     public static final Item MAPLE_SAP = MFItems.register("maple_sap", new MFFood(4, 1));
     public static final Item PANCAKE_DOUGH = MFItems.register("pancake_dough", new MFFood(2, 1));
@@ -49,22 +47,22 @@ public class MFRegistry {
     public static final Item MAPLE_FLAVOURED_PANCAKE = MFItems.register("maple_flavoured_pancake", new MFFood(6, 1));
     public static final Item HONEYCOMB_PANCAKE_SANDWICH = MFItems.register("honeycomb_pancake_sandwich", new MFFood(8, 1));
 
-    public static final Block SAPPY_MAPLE_LOG = MFBlockRegistration.register(new MFWood(), "sappy_" + MFWoodTypes.MAPLE + "_log");
-    public static final Block MAPLE_LOG = MFBlockRegistration.register(new MFWood(), MFWoodTypes.MAPLE + "_log");
-    public static final Block MAPLE_WOOD = MFBlockRegistration.register(new MFWood(), MFWoodTypes.MAPLE + "_wood");
+    public static final Block SAPPY_MAPLE_LOG = MFBlockRegistration.register(new WoodBlock(), "sappy_" + MFWoodTypes.MAPLE + "_log");
+    public static final Block MAPLE_LOG = MFBlockRegistration.register(new WoodBlock(), MFWoodTypes.MAPLE + "_log");
+    public static final Block MAPLE_WOOD = MFBlockRegistration.register(new WoodBlock(), MFWoodTypes.MAPLE + "_wood");
 
-    public static final Block STRIPPED_MAPLE_LOG = MFBlockRegistration.register(new MFWood(), "stripped_" + MFWoodTypes.MAPLE + "_log");
-    public static final Block STRIPPED_MAPLE_WOOD = MFBlockRegistration.register(new MFWood(), "stripped_" + MFWoodTypes.MAPLE + "_wood");
+    public static final Block STRIPPED_MAPLE_LOG = MFBlockRegistration.register(new WoodBlock(), "stripped_" + MFWoodTypes.MAPLE + "_log");
+    public static final Block STRIPPED_MAPLE_WOOD = MFBlockRegistration.register(new WoodBlock(), "stripped_" + MFWoodTypes.MAPLE + "_wood");
 
-    public static final Block MAPLE_PLANKS = MFBlockRegistration.register(new MFWood(), MFWoodTypes.MAPLE + "_planks");
-    public static final Block MAPLE_STAIRS = MFBlockRegistration.register(new MFWoodStairs(), MFWoodTypes.MAPLE + "_stairs");
-    public static final Block MAPLE_SLAB = MFBlockRegistration.register(new MFWoodSlabs(), MFWoodTypes.MAPLE + "_slab");
-    public static final Block MAPLE_FENCE = MFBlockRegistration.register(new MFWoodFence(), MFWoodTypes.MAPLE + "_fence");
-    public static final Block MAPLE_FENCE_GATE = MFBlockRegistration.register(new MFWoodFenceGate(), MFWoodTypes.MAPLE + "_fence_gate");
-    public static final Block MAPLE_PRESSURE_PLATE = MFBlockRegistration.register(new MFWoodPressureplate(), MFWoodTypes.MAPLE + "_pressure_plate");
-    public static final Block MAPLE_DOOR = MFBlockRegistration.register(new MFWoodDoor(), MFWoodTypes.MAPLE + "_door");
-    public static final Block MAPLE_TRAPDOOR =  MFBlockRegistration.register(new MFWoodTrapDoor(), MFWoodTypes.MAPLE + "_trapdoor");
-    public static final Block MAPLE_BUTTON = MFBlockRegistration.register(new MFWoodButton(), MFWoodTypes.MAPLE + "_button");
+    public static final Block MAPLE_PLANKS = MFBlockRegistration.register(new WoodBlock(), MFWoodTypes.MAPLE + "_planks");
+    public static final Block MAPLE_STAIRS = MFBlockRegistration.register(new WoodStairs(), MFWoodTypes.MAPLE + "_stairs");
+    public static final Block MAPLE_SLAB = MFBlockRegistration.register(new WoodSlabs(), MFWoodTypes.MAPLE + "_slab");
+    public static final Block MAPLE_FENCE = MFBlockRegistration.register(new WoodFence(), MFWoodTypes.MAPLE + "_fence");
+    public static final Block MAPLE_FENCE_GATE = MFBlockRegistration.register(new WoodFenceGate(), MFWoodTypes.MAPLE + "_fence_gate");
+    public static final Block MAPLE_PRESSURE_PLATE = MFBlockRegistration.register(new WoodPressureplate(), MFWoodTypes.MAPLE + "_pressure_plate");
+    public static final Block MAPLE_DOOR = MFBlockRegistration.register(new WoodDoor(), MFWoodTypes.MAPLE + "_door");
+    public static final Block MAPLE_TRAPDOOR =  MFBlockRegistration.register(new WoodTrapDoor(), MFWoodTypes.MAPLE + "_trapdoor");
+    public static final Block MAPLE_BUTTON = MFBlockRegistration.register(new WoodButton(), MFWoodTypes.MAPLE + "_button");
     private static final Identifier MAPLE_SIGN_TEXTURE = new Identifier(TerrainsDefaults.NAMESPACE, "entity/signs/maple");
     public static final TerraformSignBlock MAPLE_SIGN = MFBlockRegistration.registerBlockOnly(new TerraformSignBlock(MAPLE_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_SIGN)), MFWoodTypes.MAPLE + "_sign", ItemGroup.DECORATIONS);
     public static final Block MAPLE_WALL_SIGN = MFBlockRegistration.registerBlockOnly(new TerraformWallSignBlock(MAPLE_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)), MFWoodTypes.MAPLE + "_wall_sign", ItemGroup.DECORATIONS);

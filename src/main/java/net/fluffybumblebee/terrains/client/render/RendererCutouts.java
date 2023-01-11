@@ -3,11 +3,12 @@ package net.fluffybumblebee.terrains.client.render;
 
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fluffybumblebee.maple_forest.init.MFRegistry;
-import net.fluffybumblebee.terrains.common.instances.block.CorundumCluster;
+import net.fluffybumblebee.terrains.common.instances.block.crystals.CorundumCluster;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 
 import static net.fluffybumblebee.terrains.common.registry.sets.AllFeatureSets.CRYSTAL_GEODES;
+import static net.fluffybumblebee.terrains.common.registry.sets.AllFeatureSets.STAINED_TREES;
 
 public class RendererCutouts {
     public static void registerCutouts() {
@@ -25,13 +26,13 @@ public class RendererCutouts {
                 MFRegistry.POTTED_BROWN_MAPLE_SAPLING
         );
         CRYSTAL_GEODES.forEach(element -> {
-            Block block = element.block;
+            Block block = element.BLOCK;
             if (block instanceof CorundumCluster) {
                 putBlock(block);
             }
         });
 
-        CRYSTAL_GEODES.forEach(element -> putBlock(element.block));
+        STAINED_TREES.forEach(element -> putBlock(element.BLOCK));
 
     }
 

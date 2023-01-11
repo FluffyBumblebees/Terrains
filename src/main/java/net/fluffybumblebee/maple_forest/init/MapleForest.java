@@ -3,11 +3,10 @@ package net.fluffybumblebee.maple_forest.init;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fluffybumblebee.maple_forest.config.MFConfig;
-import net.fluffybumblebee.maple_forest.world.placer.MFPlacerTypes;
-import net.fluffybumblebee.maple_forest.entity.MFEntities;
 import net.fluffybumblebee.maple_forest.item.MFItems;
 import net.fluffybumblebee.maple_forest.item.group.MFItemGroup;
 import net.fluffybumblebee.maple_forest.world.gen.MFWorldGen;
+import net.fluffybumblebee.maple_forest.world.placer.MFPlacerTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +21,6 @@ public class MapleForest implements ModInitializer {
         MFConfig.loadClass();
         MFRegistry.addToRegistry();
         MFItems.addToRegistry();
-        MFEntities.addToRegistry();
         MFItemGroup.initClass();
         MFWorldGen.generateWorldGen();
         MFBiomes.addToRegistry();
