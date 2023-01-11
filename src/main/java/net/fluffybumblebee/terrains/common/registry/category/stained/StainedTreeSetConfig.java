@@ -1,21 +1,25 @@
-package net.fluffybumblebee.terrains.util.registration.category;
+package net.fluffybumblebee.terrains.common.registry.category.stained;
 
-import net.fluffybumblebee.terrains.core.TerrainsDefaults;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fluffybumblebee.terrains.common.default_abstract.block.LeavesBlock;
 import net.fluffybumblebee.terrains.common.default_abstract.block.SaplingBlock;
 import net.fluffybumblebee.terrains.common.default_abstract.block.ShortenedFlowerPotBlock;
 import net.fluffybumblebee.terrains.common.world.feature.raw.StainedSaplingGenerator;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
+import net.fluffybumblebee.terrains.util.registration.abstract_collection.abstract_helper.FeatureRegistrar;
 import net.fluffybumblebee.terrains.util.registration.block.BlockBuilder;
 import net.minecraft.util.registry.RegistryEntry;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 
-import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.*;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockBuilder.buildBlock;
+import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.*;
 
-public class StainedCollection <E extends Enum<?>> {
-    public final BlockBuilder<?>[] ALL_BLOCKS;
+public class StainedTreeSetConfig<E extends Enum<?>> implements FeatureRegistrar {
+    private final BlockBuilder<?>[] ALL_BLOCKS;
     public final BlockBuilder<LeavesBlock> LEAVES;
     public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> TREE;
     public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> TREE_BEES;
@@ -25,7 +29,7 @@ public class StainedCollection <E extends Enum<?>> {
     public final BlockBuilder<ShortenedFlowerPotBlock> POTTED_SAPLING;
     public final RegistryEntry<PlacedFeature> TREE_PLACED;
 
-    public StainedCollection(E type) {
+    public StainedTreeSetConfig(E type) {
         String colour = type.name().toLowerCase();
 
         LEAVES = buildBlock(new LeavesBlock(), colour + "_leaves");
@@ -52,7 +56,6 @@ public class StainedCollection <E extends Enum<?>> {
                 POTTED_SAPLING
         };
 
-
         TREE_PLACED = createPlaced(
                 TREE,
                 TREE_BEES,
@@ -61,7 +64,11 @@ public class StainedCollection <E extends Enum<?>> {
                 sapling,
                 colour
         );
+        generateFeature(TREE_PLACED, BiomeSelectors.categories(Biome.Category.PLAINS), GenerationStep.Feature.VEGETAL_DECORATION);
+    }
 
-        generateTree(TREE_PLACED);
+    @Override
+    public BlockBuilder<?>[] getAllBlocks() {
+        return ALL_BLOCKS;
     }
 }

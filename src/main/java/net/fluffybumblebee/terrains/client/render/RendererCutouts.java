@@ -4,11 +4,12 @@ package net.fluffybumblebee.terrains.client.render;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fluffybumblebee.maple_forest.init.MFRegistry;
 import net.fluffybumblebee.terrains.common.default_abstract.block.CorundumCluster;
-import net.fluffybumblebee.terrains.common.registry.category.GeodeCollections;
-import net.fluffybumblebee.terrains.common.registry.category.StainedCollections;
 import net.fluffybumblebee.terrains.util.registration.block.BlockBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
+
+import static net.fluffybumblebee.terrains.common.registry.category.AllFeatureSets.CRYSTAL_GEODES;
+import static net.fluffybumblebee.terrains.common.registry.category.AllFeatureSets.STAINED_TREES;
 
 public class RendererCutouts {
     public static void registerCutouts() {
@@ -25,14 +26,14 @@ public class RendererCutouts {
                 MFRegistry.POTTED_ORANGE_MAPLE_SAPLING,
                 MFRegistry.POTTED_BROWN_MAPLE_SAPLING
         );
-        for (BlockBuilder<?> builder : GeodeCollections.getAllRegistryEntries()) {
+        for (BlockBuilder<?> builder : CRYSTAL_GEODES.getAllRegistryEntries()) {
             Block block = builder.getBlock();
             if (block instanceof CorundumCluster) {
                 putBlock(block);
             }
         }
 
-        for (BlockBuilder<?> builder : StainedCollections.getAllRegistryEntries()) {
+        for (BlockBuilder<?> builder : STAINED_TREES.getAllRegistryEntries()) {
             Block block = builder.getBlock();
             putBlock(block);
         }

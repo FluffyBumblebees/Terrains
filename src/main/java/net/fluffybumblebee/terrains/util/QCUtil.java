@@ -1,7 +1,7 @@
 package net.fluffybumblebee.terrains.util;
 
-import net.fluffybumblebee.terrains.common.default_abstract.block.CorundumCluster;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
+import net.minecraft.block.AmethystClusterBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -20,23 +20,24 @@ import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 
 import java.util.List;
 
+import static net.minecraft.world.gen.feature.ConfiguredFeatures.register;
+
 public class QCUtil {
 
-    public static <B extends Block, C extends CorundumCluster> RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> registerGeode(B corundum, B crystal, C cluster, String colour) {
+    public static <B extends Block, C extends AmethystClusterBlock> RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> registerGeode(
+            B corundum,
+            B crystal,
+            C cluster,
+            String colour
+    ) {
         WeightedBlockStateProvider outerLayers = new WeightedBlockStateProvider(new DataPool.Builder<BlockState>()
                 .add(crystal.getDefaultState(), 5000)
                 .add(corundum.getDefaultState(), 100)
-                .add(Blocks.COAL_BLOCK.getDefaultState(), 24)
-                .add(Blocks.COPPER_BLOCK.getDefaultState(), 16)
-                .add(Blocks.IRON_BLOCK.getDefaultState(), 12)
-                .add(Blocks.REDSTONE_BLOCK.getDefaultState(), 12)
-                .add(Blocks.LAPIS_BLOCK.getDefaultState(), 12)
-                .add(Blocks.GOLD_BLOCK.getDefaultState(), 8)
                 .add(Blocks.EMERALD_BLOCK.getDefaultState(), 2)
                 .add(Blocks.DIAMOND_BLOCK.getDefaultState(), 1)
                 .build());
 
-        return ConfiguredFeatures.register(
+        return register(
                 TerrainsDefaults.getNamespaceVar() + colour + "_geode",
                 Feature.GEODE,
                 new GeodeFeatureConfig(

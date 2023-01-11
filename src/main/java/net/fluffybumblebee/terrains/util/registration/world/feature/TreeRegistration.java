@@ -1,14 +1,12 @@
 package net.fluffybumblebee.terrains.util.registration.world.feature;
 
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fluffybumblebee.terrains.core.TerrainsDefaults;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fluffybumblebee.terrains.common.default_abstract.block.SaplingBlock;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
@@ -21,6 +19,9 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.List;
 import java.util.OptionalInt;
+import java.util.function.Predicate;
+
+import static net.fabricmc.fabric.api.biome.v1.BiomeModifications.addFeature;
 
 @SuppressWarnings("OptionalGetWithoutIsPresent")
 public class TreeRegistration {
@@ -117,9 +118,7 @@ public class TreeRegistration {
                         PlacedFeatures.createCountExtraModifier(0, 0.01f, 1)
                 ));
     }
-    public static void generateTree(RegistryEntry<PlacedFeature> tree) {
-        BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.PLAINS),
-                GenerationStep.Feature.VEGETAL_DECORATION,
-                tree.getKey().get());
+    public static void generateFeature(RegistryEntry<PlacedFeature> feature, Predicate<BiomeSelectionContext> predicate, GenerationStep.Feature featureType) {
+        addFeature(predicate, featureType, feature.getKey().get());
     }
 }
