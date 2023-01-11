@@ -18,7 +18,7 @@ import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildBlock;
 import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.*;
 
-public class StainedTreeSetConfig<E extends Enum<?>> implements FeatureRegistrar {
+public class StainedTreeSetConfig<E extends Enum<?>> implements FeatureRegistrar<BlockSet<?>> {
     private final BlockSet<?>[] ALL_BLOCKS;
     public final BlockSet<LeavesBlock> LEAVES;
     public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> TREE;
@@ -71,7 +71,7 @@ public class StainedTreeSetConfig<E extends Enum<?>> implements FeatureRegistrar
     }
 
     @Override
-    public BlockSet<?>[] getAllBlocks() {
+    public BlockSet<?>[] getAll() {
         return ALL_BLOCKS;
     }
 }

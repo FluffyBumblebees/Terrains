@@ -7,14 +7,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public interface AbstractFeatureSet<E extends Enum<?>, C extends FeatureRegistrar> extends FeatureSetIterator<BlockSet<?>> {
+public interface AbstractFeatureSet<E extends Enum<?>, C extends FeatureRegistrar<BlockSet<?>>> extends FeatureSetIterator<BlockSet<?>> {
     FeatureSetIterator<E> getIterator();
 
     Map<E, C> getTypes();
 
     default List<BlockSet<?>> getAllRegistryEntries() {
         List<BlockSet<?>> list = new ArrayList<>();
-        getIterator().forEach(colour -> list.addAll(Arrays.asList(getTypes().get(colour).getAllBlocks())));
+        getIterator().forEach(colour -> list.addAll(Arrays.asList(getTypes().get(colour).getAll())));
         return list;
     }
 

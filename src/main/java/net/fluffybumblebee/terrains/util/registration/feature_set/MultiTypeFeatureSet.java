@@ -1,10 +1,12 @@
 package net.fluffybumblebee.terrains.util.registration.feature_set;
 
+import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MultiTypeFeatureSet<E extends Enum<?>, F extends FeatureRegistrar> implements AbstractFeatureSet<E, F> {
+public class MultiTypeFeatureSet<E extends Enum<?>, F extends FeatureRegistrar<BlockSet<?>>> implements AbstractFeatureSet<E, F> {
     private final FeatureSetIterator<E> ITERATOR;
     private final Map<E, F> ALL_TYPES;
     public MultiTypeFeatureSet(E[] values, FeatureSetFactory<E, F> factory) {
@@ -23,7 +25,7 @@ public class MultiTypeFeatureSet<E extends Enum<?>, F extends FeatureRegistrar> 
         return ALL_TYPES;
     }
 
-    public interface FeatureSetFactory< E extends Enum<?>, F extends FeatureRegistrar> {
+    public interface FeatureSetFactory< E extends Enum<?>, F extends FeatureRegistrar<BlockSet<?>>> {
         F getNewSet(E type);
     }
 }

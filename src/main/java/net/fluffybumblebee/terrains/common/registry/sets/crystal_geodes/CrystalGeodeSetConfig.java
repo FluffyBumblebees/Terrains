@@ -17,7 +17,7 @@ import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buil
 import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.generateFeature;
 
 @SuppressWarnings("FieldCanBeLocal")
-public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRegistrar {
+public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRegistrar<BlockSet<?>> {
 
     public final BlockSet<CorundumBlock> WAXED_CORUNDUM;
     public final BlockSet<CorundumCluster> CORUNDUM_CLUSTER;
@@ -83,7 +83,7 @@ public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRe
     }
 
     @Override
-    public BlockSet<?>[] getAllBlocks() {
+    public BlockSet<?>[] getAll() {
         return ALL_BLOCKS;
     }
 }
