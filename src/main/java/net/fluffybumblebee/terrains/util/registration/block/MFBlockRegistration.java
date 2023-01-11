@@ -2,12 +2,11 @@ package net.fluffybumblebee.terrains.util.registration.block;
 
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fluffybumblebee.maple_forest.blocks.custom.tree.MFSaplings;
 import net.fluffybumblebee.maple_forest.blocks.custom.tree.MFWood;
+import net.fluffybumblebee.maple_forest.world.feature.tree.MFSaplingGenerator;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.type.wood.MFWoodTypes;
-import net.fluffybumblebee.maple_forest.world.feature.tree.MFSaplingGenerator;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -17,7 +16,6 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 
-@SuppressWarnings({"unused", "UnusedReturnValue"})
 public class MFBlockRegistration {
     public static <B extends Block> B registerBlockOnly(B block, String name, ItemGroup itemGroup) {
         Registry.register(Registry.BLOCK, new Identifier(TerrainsDefaults.NAMESPACE, name), block);
@@ -83,12 +81,6 @@ public class MFBlockRegistration {
                 ),
                 colour + "_" + MFWoodTypes.MAPLE + "_sapling");
     }
-    public static void registerAndAddStripped(Block blockIn, Block blockOut, String type) {
-        register(blockIn, type + "_log");
-        register(blockOut,  "stripped_" + type + "_log");
-        StrippableBlockRegistry.register(blockIn, blockOut);
-    }
-
     private static final FlammableBlockRegistry flammableRegistry = FlammableBlockRegistry.getDefaultInstance();
     public static void addFlammability(Block block, int burn, int spread, FlammableBlockRegistry instance) {
         instance.add(block, burn, spread);

@@ -16,10 +16,10 @@ public class NatureItemGroup {
 
     static {
         NATURE = FabricItemGroupBuilder.create(new Identifier(NAMESPACE, "nature"))
-                .icon(() -> new ItemStack(STAINED_TREES.getTypes().get(PURPLE).LEAVES.getBlockItem().asItem()))
+                .icon(() -> new ItemStack(STAINED_TREES.getTypes().get(PURPLE).LEAVES.blockItem.asItem()))
                 .appendItems(stacks -> STAINED_TREES.forEach(element -> {
-                    if (!(element.getBlock() instanceof ShortenedFlowerPotBlock)) {
-                        stacks.add(element.getBlockItem().asItem().getDefaultStack());
+                    if (!(element.block instanceof ShortenedFlowerPotBlock)) {
+                        stacks.add(element.blockItem.asItem().getDefaultStack());
                     }
                 })).build();
     }

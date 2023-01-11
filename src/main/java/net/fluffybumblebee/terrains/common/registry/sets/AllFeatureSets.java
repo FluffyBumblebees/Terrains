@@ -4,7 +4,7 @@ import net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.CrystalG
 import net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.CrystalGeodeTypes;
 import net.fluffybumblebee.terrains.common.registry.sets.stained.StainedTreeTypes;
 import net.fluffybumblebee.terrains.common.registry.sets.stained.StainedTreeSetConfig;
-import net.fluffybumblebee.terrains.util.registration.abstract_collection.abstract_helper.MultiTypeFeatureSet;
+import net.fluffybumblebee.terrains.util.registration.feature_set.MultiTypeFeatureSet;
 
 public final class AllFeatureSets {
     public static final MultiTypeFeatureSet<StainedTreeTypes, StainedTreeSetConfig<StainedTreeTypes>> STAINED_TREES;

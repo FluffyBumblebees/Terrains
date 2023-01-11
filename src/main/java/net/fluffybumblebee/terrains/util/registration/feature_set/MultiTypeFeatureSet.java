@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.util.registration.abstract_collection.abstract_helper;
+package net.fluffybumblebee.terrains.util.registration.feature_set;
 
 import java.util.Arrays;
 import java.util.HashMap;
