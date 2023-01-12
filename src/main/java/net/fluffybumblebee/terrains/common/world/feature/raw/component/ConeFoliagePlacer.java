@@ -1,11 +1,7 @@
-package net.fluffybumblebee.maple_forest.world.placer;
-
-import java.util.Random;
-import java.util.function.BiConsumer;
+package net.fluffybumblebee.terrains.common.world.feature.raw.component;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import com.terraformersmc.terraform.shapes.api.Position;
 import com.terraformersmc.terraform.shapes.impl.Shapes;
 import com.terraformersmc.terraform.shapes.impl.layer.transform.TranslateLayer;
@@ -18,6 +14,9 @@ import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
 
+import java.util.Random;
+import java.util.function.BiConsumer;
+
 public class ConeFoliagePlacer extends FoliagePlacer {
     public static final Codec<ConeFoliagePlacer> CODEC = RecordCodecBuilder.create(instance ->
             fillFoliagePlacerFields(instance).apply(instance, ConeFoliagePlacer::new));
@@ -28,7 +27,7 @@ public class ConeFoliagePlacer extends FoliagePlacer {
 
     @Override
     protected FoliagePlacerType<?> getType() {
-        return MFPlacerTypes.CONE_FOLIAGE_PLACER;
+        return Placers.CONE_FOLIAGE_PLACER;
     }
 
     @Override

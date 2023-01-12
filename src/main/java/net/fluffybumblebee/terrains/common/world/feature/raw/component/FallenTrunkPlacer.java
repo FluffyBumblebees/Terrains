@@ -1,4 +1,4 @@
-package net.fluffybumblebee.maple_forest.world.placer;
+package net.fluffybumblebee.terrains.common.world.feature.raw.component;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
@@ -28,7 +28,7 @@ public class FallenTrunkPlacer extends StraightTrunkPlacer {
 
 	@Override
 	protected net.minecraft.world.gen.trunk.TrunkPlacerType<?> getType() {
-		return MFPlacerTypes.FALLEN_TRUNK_PLACER;
+		return Placers.FALLEN_TRUNK_PLACER;
 	}
 
 	@Override

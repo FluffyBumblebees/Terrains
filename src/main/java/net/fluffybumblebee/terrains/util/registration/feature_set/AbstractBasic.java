@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public interface AbstractFeatureSet<E extends Enum<?>, C extends FeatureRegistrar<BlockSet<?>>> extends FeatureSetIterator<BlockSet<?>> {
-    FeatureSetIterator<E> getIterator();
+public interface AbstractBasic<E extends Enum<?>, C extends FeatureRegistrar<BlockSet<?>>> extends BasicIterator<BlockSet<?>> {
+    BasicIterator<E> getIterator();
 
     Map<E, C> getTypes();
 

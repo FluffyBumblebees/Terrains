@@ -5,6 +5,8 @@ import java.util.List;
 public interface FeatureRegistrar<T> {
     List<T> getAll();
 
+    default void optionalGenerationEvent() {}
+
     default void addAllElements(T[] all) {
         for (T element : all) {
             getAll().add(element);

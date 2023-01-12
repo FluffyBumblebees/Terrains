@@ -6,17 +6,21 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MultiTypeFeatureSet<E extends Enum<?>, F extends FeatureRegistrar<BlockSet<?>>> implements AbstractFeatureSet<E, F> {
-    private final FeatureSetIterator<E> ITERATOR;
+public class FeatureSet<E extends Enum<?>, F extends FeatureRegistrar<BlockSet<?>>> implements AbstractBasic<E, F> {
+    private final BasicIterator<E> ITERATOR;
     private final Map<E, F> ALL_TYPES;
-    public MultiTypeFeatureSet(E[] values, FeatureSetFactory<E, F> factory) {
+    public FeatureSet(E[] values, FeatureSetFactory<E, F> factory) {
         ALL_TYPES = new HashMap<>();
         ITERATOR = () -> Arrays.asList(values);
-        ITERATOR.forEach(colour -> ALL_TYPES.put(colour, factory.getNewSet(colour)));
+        ITERATOR.forEach(element -> {
+            F set = factory.getNewSet(element);
+            set.optionalGenerationEvent();
+            ALL_TYPES.put(element, set);
+        });
     }
 
     @Override
-    public FeatureSetIterator<E> getIterator() {
+    public BasicIterator<E> getIterator() {
         return ITERATOR;
     }
 

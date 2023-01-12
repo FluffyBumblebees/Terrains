@@ -7,6 +7,7 @@ import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.feature_set.FeatureRegistrar;
 import net.minecraft.block.Block;
 import net.minecraft.block.sapling.SaplingGenerator;
+import net.minecraft.item.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public final class TreeFoliageSetConfig<E extends Enum<?>, S extends SaplingGene
         POTTED_SAPLING = new BlockSet.Builder<>(
                 new ShortenedFlowerPotBlock(sapling),
                 getIdentifier("potted_" + leafType +  "_sapling")
-        ).addBlockItem().build();
+        ).addBlockItem(new Item.Settings()).build();
 
         addAllElements(new BlockSet[] {
                 LEAVES,

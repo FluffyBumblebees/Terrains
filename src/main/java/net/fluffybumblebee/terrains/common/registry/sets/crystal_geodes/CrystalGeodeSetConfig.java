@@ -81,12 +81,16 @@ public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRe
                 CONFIGURED_GEODE,
                 colour
         );
-
-        generateFeature(PLACED_GEODE, BiomeSelectors.all(), GenerationStep.Feature.UNDERGROUND_STRUCTURES);
     }
 
     @Override
     public List<BlockSet<?>> getAll() {
         return ALL_BLOCKS;
+    }
+
+    @Override
+    public void optionalGenerationEvent() {
+        generateFeature(PLACED_GEODE, BiomeSelectors.all(), GenerationStep.Feature.UNDERGROUND_STRUCTURES);
+
     }
 }

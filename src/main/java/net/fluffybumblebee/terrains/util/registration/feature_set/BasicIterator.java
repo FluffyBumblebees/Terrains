@@ -2,7 +2,7 @@ package net.fluffybumblebee.terrains.util.registration.feature_set;
 
 import java.util.List;
 
-public interface FeatureSetIterator<T> {
+public interface BasicIterator<T> {
     List<T> getValues();
 
     default void forEach(TypeIterator<T> iterator) {

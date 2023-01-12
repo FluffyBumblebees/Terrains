@@ -92,4 +92,5 @@ public class WoodSetConfig <E extends Enum<?>> implements FeatureRegistrar<Block
     public List<BlockSet<?>> getAll() {
         return ALL_BLOCKS;
     }
+
 }

@@ -1,4 +1,4 @@
-package net.fluffybumblebee.maple_forest.world.placer;
+package net.fluffybumblebee.terrains.common.world.feature.raw.component;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -23,7 +23,7 @@ public class NoneFoliagePlacer extends FoliagePlacer {
 
 	@Override
 	protected FoliagePlacerType<?> getType() {
-		return MFPlacerTypes.NONE_FOLIAGE_PLACER;
+		return Placers.NONE_FOLIAGE_PLACER;
 	}
 
 	@Override

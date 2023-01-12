@@ -68,6 +68,10 @@ public class BlockSet<B extends Block> {
             blockItem = null;
         }
 
+        public Builder(B block, String identifier) {
+            this(block, TerrainsDefaults.getIdentifier(identifier));
+        }
+
         private Builder<B> getInstanceWithSideEffect(InstanceReturnable instanceReturnable) {
             instanceReturnable.sideEffect();
             return this;

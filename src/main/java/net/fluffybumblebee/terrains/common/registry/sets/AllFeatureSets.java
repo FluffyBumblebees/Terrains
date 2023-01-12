@@ -4,15 +4,15 @@ import net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.CrystalG
 import net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.CrystalGeodeTypes;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.stained.StainedTreeTypes;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.stained.OakLikeSetConfig;
-import net.fluffybumblebee.terrains.util.registration.feature_set.MultiTypeFeatureSet;
+import net.fluffybumblebee.terrains.util.registration.feature_set.FeatureSet;
 
 public final class AllFeatureSets {
-    public static final MultiTypeFeatureSet<StainedTreeTypes, OakLikeSetConfig<StainedTreeTypes>> STAINED_TREES;
-    public static final MultiTypeFeatureSet<CrystalGeodeTypes, CrystalGeodeSetConfig<CrystalGeodeTypes>> CRYSTAL_GEODES;
+    public static final FeatureSet<StainedTreeTypes, OakLikeSetConfig<StainedTreeTypes>> STAINED_TREES;
+    public static final FeatureSet<CrystalGeodeTypes, CrystalGeodeSetConfig<CrystalGeodeTypes>> CRYSTAL_GEODES;
 
     static {
-        STAINED_TREES = new MultiTypeFeatureSet<>(StainedTreeTypes.values(), OakLikeSetConfig::new);
-        CRYSTAL_GEODES = new MultiTypeFeatureSet<>(CrystalGeodeTypes.values(), CrystalGeodeSetConfig::new);
+        STAINED_TREES = new FeatureSet<>(StainedTreeTypes.values(), OakLikeSetConfig::new);
+        CRYSTAL_GEODES = new FeatureSet<>(CrystalGeodeTypes.values(), CrystalGeodeSetConfig::new);
     }
 
     private AllFeatureSets() {}

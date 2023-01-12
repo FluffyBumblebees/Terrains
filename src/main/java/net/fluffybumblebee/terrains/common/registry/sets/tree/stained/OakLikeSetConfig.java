@@ -58,11 +58,16 @@ public final class OakLikeSetConfig<E extends Enum<?>> implements FeatureRegistr
                 sapling,
                 colour
         );
-        generateFeature(TREE_PLACED, BiomeSelectors.categories(Biome.Category.PLAINS), GenerationStep.Feature.VEGETAL_DECORATION);
     }
 
     @Override
     public List<BlockSet<?>> getAll() {
         return ALL_BLOCKS;
+    }
+
+    @Override
+    public void optionalGenerationEvent() {
+        generateFeature(TREE_PLACED, BiomeSelectors.categories(Biome.Category.PLAINS), GenerationStep.Feature.VEGETAL_DECORATION);
+
     }
 }

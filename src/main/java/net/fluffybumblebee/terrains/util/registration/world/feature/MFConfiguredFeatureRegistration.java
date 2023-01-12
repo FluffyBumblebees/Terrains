@@ -1,12 +1,11 @@
 package net.fluffybumblebee.terrains.util.registration.world.feature;
 
 import com.google.common.base.Preconditions;
-import net.fluffybumblebee.maple_forest.init.MFRegistry;
+import net.fluffybumblebee.terrains.common.world.feature.raw.component.ConeFoliagePlacer;
+import net.fluffybumblebee.terrains.common.world.feature.raw.component.FallenTrunkPlacer;
+import net.fluffybumblebee.terrains.common.world.feature.raw.component.NoneFoliagePlacer;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.type.wood.MFWoodTypes;
-import net.fluffybumblebee.maple_forest.world.placer.FallenTrunkPlacer;
-import net.fluffybumblebee.maple_forest.world.placer.ConeFoliagePlacer;
-import net.fluffybumblebee.maple_forest.world.placer.NoneFoliagePlacer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -87,8 +86,8 @@ public class MFConfiguredFeatureRegistration {
         ) {
             return mapleTreeTemplate
                     (TerrainsDefaults.NAMESPACE + ":" + colour + "_" + MFWoodTypes.MAPLE + "_" + suffix,
-                            MFRegistry.MAPLE_LOG,
-                            MFRegistry.SAPPY_MAPLE_LOG,
+                            Blocks.OAK_LOG, //MFRegistry.MAPLE_LOG,
+                            Blocks.OAK_LOG, //MFRegistry.SAPPY_MAPLE_LOG,
                             leaves,
                             6,
                             5,
