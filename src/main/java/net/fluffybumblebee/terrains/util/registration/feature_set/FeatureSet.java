@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FeatureSet<E extends Enum<?>, F extends FeatureRegistrar<BlockSet<?>>> implements AbstractBasic<E, F> {
+public class FeatureSet<E extends Enum<?>, F extends FeatureRegistrar<BlockSet<?>>> implements AbstractFeatureSet<E, F> {
     private final BasicIterator<E> ITERATOR;
     private final Map<E, F> ALL_TYPES;
     public FeatureSet(E[] values, FeatureSetFactory<E, F> factory) {

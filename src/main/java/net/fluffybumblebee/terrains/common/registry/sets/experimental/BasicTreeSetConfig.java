@@ -20,8 +20,8 @@ import java.util.List;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildBlock;
 
-public final class BasicTreeSetConfig
-        <WoodType extends Enum<?>,
+public final class BasicTreeSetConfig<
+        WoodType extends Enum<?>,
         TreeVariant extends Enum<?>,
         ConfiguredVariants extends Enum<?>,
         PlacedVariants extends Enum<?>,
@@ -44,7 +44,7 @@ public final class BasicTreeSetConfig
             final TreeVariant treeVariant,
             final ConfiguredVariants[] configuredVariants,
             final PlacedVariants[] placedVariants,
-            final TreePattern<ConfiguredVariants> treePattern,
+            final TreePattern treePattern,
             final Configurator<ConfiguredVariants, PlacedVariants> featureConfigurator,
             final SaplingGeneratorProvider<ConfiguredVariants, Generator> saplingGeneratorProvider
     ) {
@@ -71,7 +71,7 @@ public final class BasicTreeSetConfig
         );
 
         SAPLING = buildBlock(
-                new SaplingBlock(saplingGeneratorProvider.register(CONFIGURED_FEATURE_HOLDER)),
+                new SaplingBlock(saplingGeneratorProvider.register(CONFIGURED_FEATURE_HOLDER, configuredVariants)),
                 typeString + "_sapling"
         );
 
@@ -94,15 +94,15 @@ public final class BasicTreeSetConfig
 
 
     //Use this in the ConfiguredVariants Enum.
-    public interface TreePattern<ConfiguredVariant extends Enum<?>> {
-        TreeFeatureConfig.Builder build(String type, List<BlockSet<?>> log, Block leaves, HashMap<ConfiguredVariant, RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>>> configuredFeatures);
+    public interface TreePattern {
+        TreeFeatureConfig.Builder build(String type, List<BlockSet<?>> log, Block leaves);
     }
 
     public interface Configurator<ConfiguredVariant extends Enum<?>, PlacedVariant extends Enum<?>> {
         void configureAndPlace(String type,
                                List<BlockSet<?>> log,
                                Block leaves,
-                               TreePattern<ConfiguredVariant> treePattern,
+                               TreePattern treePattern,
                                HashMap<ConfiguredVariant, RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>>> configuredFeatureHolder,
                                ConfiguredVariant[] configuredVariants,
                                HashMap<PlacedVariant, RegistryEntry<PlacedFeature>> placedFeatureHolder,
@@ -111,7 +111,8 @@ public final class BasicTreeSetConfig
         );
     }
 
-    public interface SaplingGeneratorProvider<FV extends Enum<?>, S extends SaplingGenerator> {
-        S register(HashMap<FV, RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>>> configuredFeatures);
+    public interface SaplingGeneratorProvider<ConfiguredVariant extends Enum<?>, Gen extends SaplingGenerator> {
+        Gen register(HashMap<ConfiguredVariant, RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>>> configuredFeatures,
+                     ConfiguredVariant[] variants);
     }
 }

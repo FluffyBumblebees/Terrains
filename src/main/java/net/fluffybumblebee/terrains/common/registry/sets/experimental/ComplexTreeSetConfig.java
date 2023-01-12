@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ComplexTreeSetConfig
-        <WoodType extends Enum<?>,
+public class ComplexTreeSetConfig<
+        WoodType extends Enum<?>,
         TreeVariant extends Enum<?>,
         ConfiguredVariants extends Enum<?>,
         PlacedVariants extends Enum<?>,
@@ -35,7 +35,7 @@ public class ComplexTreeSetConfig
             final TreeVariant[] treeVariants,
             final ConfiguredVariants[] configuredVariants,
             final PlacedVariants[] placedVariants,
-            TreePattern<ConfiguredVariants> treePattern,
+            TreePattern treePattern,
             final Configurator<ConfiguredVariants, PlacedVariants> featureConfigurator,
             final SaplingGeneratorProvider<ConfiguredVariants, Generator> saplingGeneratorProvider
     ) {
@@ -43,9 +43,9 @@ public class ComplexTreeSetConfig
         WOOD_SET = new WoodSetConfig<>(woodType);
         TREE_CONFIG = new HashMap<>();
 
-        final List<BlockSet<?>> logs;
+        List<BlockSet<?>> logs;
         if (logVariants != null) {
-            logs = logVariants;
+            logs = new ArrayList<>(logVariants);
             logs.add(WOOD_SET.LOG);
         } else logs = List.of(WOOD_SET.LOG);
 

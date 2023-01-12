@@ -45,7 +45,7 @@ public class WoodSetConfig <E extends Enum<?>> implements FeatureRegistrar<Block
     public final BlockSet<?> WALL_SIGN;
 
     public WoodSetConfig(E woodType) {
-        final String type = woodType.name();
+        final String type = woodType.name().toLowerCase();
         ALL_BLOCKS = new ArrayList<>();
         new BoatRegistration(MFWoodTypes.MAPLE, BOAT);
 
