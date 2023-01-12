@@ -37,7 +37,7 @@ public final class PrimitiveTreeSetConfig<Generator extends SaplingGenerator> im
             final String woodType,
             final String treeVariant,
             final String[] configuredVariants,
-            final String[] placedVariants,
+            final String[] uniquePlacedVariants,
             final TreePattern treePattern,
             final Configurator featureConfigurator,
             final SaplingGeneratorProvider<Generator> saplingGeneratorProvider
@@ -46,7 +46,7 @@ public final class PrimitiveTreeSetConfig<Generator extends SaplingGenerator> im
 
         CONFIGURED_VARIANTS = configuredVariants;
         CONFIGURED_FEATURE_HOLDER = new HashMap<>();
-        PLACED_VARIANTS = placedVariants;
+        PLACED_VARIANTS = uniquePlacedVariants;
         PLACED_FEATURES_HOLDER = new HashMap<>();
 
         ALL_BLOCKS = new ArrayList<>();
@@ -61,7 +61,7 @@ public final class PrimitiveTreeSetConfig<Generator extends SaplingGenerator> im
                 CONFIGURED_FEATURE_HOLDER,
                 configuredVariants,
                 PLACED_FEATURES_HOLDER,
-                placedVariants
+                uniquePlacedVariants
         );
 
         SAPLING = buildBlock(
@@ -90,7 +90,7 @@ public final class PrimitiveTreeSetConfig<Generator extends SaplingGenerator> im
 
     //Use this in the ConfiguredVariants Enum.
     public interface TreePattern {
-        TreeFeatureConfig.Builder build(String type, List<BlockSet<?>> log, Block leaves);
+        TreeFeatureConfig.Builder get(String type, List<BlockSet<?>> log, Block leaves);
     }
 
     public interface Configurator {

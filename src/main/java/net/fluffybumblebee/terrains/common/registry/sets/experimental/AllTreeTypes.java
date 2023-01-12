@@ -3,6 +3,7 @@ package net.fluffybumblebee.terrains.common.registry.sets.experimental;
 import net.fluffybumblebee.terrains.common.instances.block.wood_set.WoodBlock;
 import net.fluffybumblebee.terrains.common.world.feature.raw.MapleSaplingGenerator;
 import net.fluffybumblebee.terrains.common.world.feature.raw.component.ConeFoliagePlacer;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.feature_set.FeatureConfigEntries;
 import net.minecraft.block.BlockState;
@@ -17,6 +18,7 @@ import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
+import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.List;
@@ -28,20 +30,17 @@ public final class AllTreeTypes {
             List.of(BlockSet.buildFlammableBlock(new WoodBlock(), "sappy_maple_log")),
             "maple",
             new String[] {
-                    "yellow",
-                    "orange",
                     "red",
-                    "green",
-                    "brown"
+                    "brown",
+                    "orange",
+                    "yellow",
+                    "green"
             },
             new String[] {
                     "no_bees",
                     "bees"
             },
-            new String[] {
-                    "no_bees",
-                    "bees"
-            },
+            new String[] {},
             (type, log, leaves) -> {
                 DataPool.Builder<BlockState> dataBuilder = DataPool.builder();
                 for (BlockSet<?> set : log) {
@@ -57,25 +56,33 @@ public final class AllTreeTypes {
             },
             (type, log, leaves, treePattern, configuredFeatureHolder, configuredVariants, placedFeatureHolder, placedVariants) -> {
                 for (String variants : configuredVariants) {
+                    TreeFeatureConfig.Builder builder = treePattern.get(
+                            type,
+                            log,
+                            leaves
+                    );
+
+                    if (variants.matches("bees(.*)"))
+                        builder.decorators(List.of(new BeehiveTreeDecorator(0.05F)));
+
                     configuredFeatureHolder.put(variants, ConfiguredFeatures.register(
-                            type.toLowerCase() + "_" + variants.toLowerCase(),
+                            TerrainsDefaults.getNamespaceVar() + type + "_" + variants,
                             Feature.TREE,
-                            treePattern.build(
-                                    type,
-                                    log,
-                                    leaves
-                            ).build()));
-                }
-                for (int i = 0; i < placedVariants.length; i++) {
-                    placedFeatureHolder.put(placedVariants[i], PlacedFeatures.register(
-                            type + "_" + placedVariants[i] + "_placed",
-                            RegistryEntry.of(configuredFeatureHolder.get(configuredVariants[i]).value()),
+                            builder.build())
+                    );
+
+                    placedFeatureHolder.put(variants, PlacedFeatures.register(
+                            TerrainsDefaults.getNamespaceVar() + type + "_" + variants + "_placed",
+                            RegistryEntry.of(configuredFeatureHolder.get(variants).value()),
                             PlacedFeatures.wouldSurvive(Blocks.DIRT)
                     ));
                 }
             },
             (configuredFeatures, configuredVariants) ->
-                    new MapleSaplingGenerator(() -> configuredFeatures.get(configuredVariants[0]))
+                    new MapleSaplingGenerator(
+                            configuredFeatures::get,
+                            configuredFeatures::get
+                    )
     );
 
     private static final FeatureConfigEntries<TreeType<?>> ENTRIES = new FeatureConfigEntries<TreeType<?>>(new TreeType[] {

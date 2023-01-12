@@ -33,7 +33,7 @@ public class FullTreeSetConfig<Generator extends SaplingGenerator> implements Fe
                     config.woodType(),
                     treeVariant,
                     config.configuredVariants(),
-                    config.placedVariants(),
+                    config.uniquePlacedVariants(),
                     config.treePattern(),
                     config.featureConfigurator(),
                     config.saplingGeneratorProvider()

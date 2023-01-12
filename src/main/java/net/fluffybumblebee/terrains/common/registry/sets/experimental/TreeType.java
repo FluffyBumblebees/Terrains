@@ -13,7 +13,7 @@ public record TreeType<Generator extends SaplingGenerator>(
         String woodType,
         String[] treeVariants,
         String[] configuredVariants,
-        String[] placedVariants,
+        String[] uniquePlacedVariants,
         TreePattern treePattern,
         Configurator featureConfigurator,
         SaplingGeneratorProvider<Generator> saplingGeneratorProvider
