@@ -4,10 +4,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FeatureConfigEntries<T> implements BasicIterator<T> {
-    public final T[] ALL_ENTRIES;
+    private final T[] ALL_ENTRIES;
 
     public FeatureConfigEntries(T[] allEntries) {
         ALL_ENTRIES = allEntries;
+    }
+
+    public T[] getAllEntries() {
+        return ALL_ENTRIES;
     }
 
     @Override

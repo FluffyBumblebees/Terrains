@@ -7,7 +7,6 @@ import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.feature_set.FeatureConfigEntries;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.registry.RegistryEntry;
@@ -23,17 +22,9 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import java.util.List;
 import java.util.OptionalInt;
 
-public record ComplexTreeConfig <Generator extends SaplingGenerator>(
-        List<BlockSet<?>> logVariants,
-        String woodType,
-        String[] treeVariants,
-        String[] configuredVariants,
-        String[] placedVariants,
-        BasicTreeSetConfig.TreePattern treePattern,
-        BasicTreeSetConfig.Configurator<String, String> featureConfigurator,
-        BasicTreeSetConfig.SaplingGeneratorProvider<String, Generator> saplingGeneratorProvider
-    ) {
-    public static final ComplexTreeConfig<MapleSaplingGenerator> MAPLE = new ComplexTreeConfig<>(
+public final class AllTreeTypes {
+    private AllTreeTypes() {}
+    public static final TreeType<MapleSaplingGenerator> MAPLE = new TreeType<>(
             List.of(BlockSet.buildFlammableBlock(new WoodBlock(), "sappy_maple_log")),
             "maple",
             new String[] {
@@ -49,7 +40,7 @@ public record ComplexTreeConfig <Generator extends SaplingGenerator>(
             },
             new String[] {
                     "no_bees",
-                    "bnees"
+                    "bees"
             },
             (type, log, leaves) -> {
                 DataPool.Builder<BlockState> dataBuilder = DataPool.builder();
@@ -86,9 +77,11 @@ public record ComplexTreeConfig <Generator extends SaplingGenerator>(
             (configuredFeatures, configuredVariants) ->
                     new MapleSaplingGenerator(() -> configuredFeatures.get(configuredVariants[0]))
     );
-    public static FeatureConfigEntries<ComplexTreeConfig<?>> getAllEntries() {
-        return new FeatureConfigEntries<ComplexTreeConfig<?>>(new ComplexTreeConfig[] {
-                MAPLE
-        });
+
+    private static final FeatureConfigEntries<TreeType<?>> ENTRIES = new FeatureConfigEntries<TreeType<?>>(new TreeType[] {
+            MAPLE
+    });
+    public static FeatureConfigEntries<TreeType<?>> getTypes() {
+        return ENTRIES;
     }
 }
