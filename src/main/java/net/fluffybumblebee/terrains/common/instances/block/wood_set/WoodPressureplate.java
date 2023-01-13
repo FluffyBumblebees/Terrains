@@ -4,7 +4,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.sound.BlockSoundGroup;
 
-public class WoodPressureplate extends PressurePlateBlock {
+public class WoodPressureplate extends PressurePlateBlock implements Wood {
     public WoodPressureplate() {
         super(ActivationRule.EVERYTHING, Settings.copy(Blocks.OAK_PRESSURE_PLATE).sounds(BlockSoundGroup.WOOD));
     }

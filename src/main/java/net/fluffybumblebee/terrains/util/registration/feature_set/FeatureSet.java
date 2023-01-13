@@ -1,10 +1,9 @@
 package net.fluffybumblebee.terrains.util.registration.feature_set;
 
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
+import net.minecraft.item.Item;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class FeatureSet<Type, FeatureConfig extends FeatureRegistrar<BlockSet<?>>> implements AbstractFeatureSet<Type, FeatureConfig> {
     private final BasicIterator<Type> ITERATOR;
@@ -27,6 +26,13 @@ public class FeatureSet<Type, FeatureConfig extends FeatureRegistrar<BlockSet<?>
     @Override
     public Map<Type, FeatureConfig> getTypes() {
         return ALL_TYPES;
+    }
+
+    @Override
+    public BasicIterator<Item> getItemIterator() {
+        List<Item> list = new ArrayList<>();
+        getIterator().forEach(element -> list.addAll(getTypes().get(element).getAllItems()));
+        return () -> list;
     }
 
     public interface FeatureSetFactory<E, F extends FeatureRegistrar<BlockSet<?>>> {

@@ -6,6 +6,7 @@ import net.fluffybumblebee.terrains.util.registration.feature_set.BasicIterator;
 import net.fluffybumblebee.terrains.util.registration.feature_set.FeatureRegistrar;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.sapling.SaplingGenerator;
+import net.minecraft.item.Item;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -18,14 +19,14 @@ import static net.fluffybumblebee.terrains.util.registration.feature_set.EasyIf.
 public class FullTreeSetConfig<Generator extends SaplingGenerator> implements FeatureRegistrar<BlockSet<?>> {
     public final HashMap<String, PrimitiveTreeSetConfig<Generator>> TREE_CONFIG;
     private final List<BlockSet<?>> ALL_BLOCKS;
-    public final ExperimentalWoodSetConfig WOOD_SET;
+    public final WoodSetConfig WOOD_SET;
 
 
     public FullTreeSetConfig(
             @NotNull TreeType<Generator> config
     ) {
         ALL_BLOCKS = new ArrayList<>();
-        WOOD_SET = new ExperimentalWoodSetConfig(config.woodType());
+        WOOD_SET = new WoodSetConfig(config.woodType());
         TREE_CONFIG = new HashMap<>();
 
         List<BlockSet<?>> logVariants;
@@ -63,6 +64,11 @@ public class FullTreeSetConfig<Generator extends SaplingGenerator> implements Fe
                     StrippableBlockRegistry.register(variants.BLOCK, WOOD_SET.STRIPPED_LOG.BLOCK)
             );
         }
+    }
+
+    @Override
+    public List<Item> getAllItems() {
+        return WOOD_SET.getAllItems();
     }
 
     @Override

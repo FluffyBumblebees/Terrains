@@ -2,6 +2,7 @@ package net.fluffybumblebee.terrains.common.registry.itemgroup;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredFlowerPotBlock;
+import net.fluffybumblebee.terrains.common.instances.block.wood_set.Wood;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -10,6 +11,7 @@ import static net.fluffybumblebee.terrains.common.registry.sets.AllFeatureSets.F
 import static net.fluffybumblebee.terrains.common.registry.sets.AllFeatureSets.STAINED_TREES;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.stained.StainedTreeTypes.PURPLE;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.NAMESPACE;
+import static net.fluffybumblebee.terrains.util.registration.feature_set.EasyIf.onIf;
 
 public class NatureItemGroup {
     public static void register() {}
@@ -17,12 +19,18 @@ public class NatureItemGroup {
 
     static {
         NATURE = FabricItemGroupBuilder.create(new Identifier(NAMESPACE, "nature"))
-                .icon(() -> new ItemStack(STAINED_TREES.getTypes().get(PURPLE).FOLIAGE.LEAVES.BLOCK_ITEM.asItem()))
+                .icon(() -> new ItemStack(STAINED_TREES.getTypes().get(PURPLE).FOLIAGE.LEAVES.ITEM.asItem()))
                 .appendItems(stacks -> {
-                    FULL_TREE_SETS.forEach(element -> stacks.add(element.BLOCK_ITEM.getDefaultStack()));
+                    FULL_TREE_SETS.addAllToStack(stacks, true, true,
+                            (element, booleanHolder, iterator, itemConditions, blockConditions) -> {
+                        if (!(element.BLOCK instanceof Wood) && booleanHolder.bool) {
+                            iterator.forEach(variant -> onIf(itemConditions, () -> stacks.add(variant.getDefaultStack())));
+                            booleanHolder.bool = false;
+                        }
+                    });
                     STAINED_TREES.forEach(element -> {
                         if (!(element.BLOCK instanceof ConfiguredFlowerPotBlock)) {
-                            stacks.add(element.BLOCK_ITEM.getDefaultStack());
+                            stacks.add(element.ITEM.getDefaultStack());
                         }
                     });
                 }).build();

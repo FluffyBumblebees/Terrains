@@ -11,7 +11,6 @@ import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet.Builder;
 import net.fluffybumblebee.terrains.util.registration.entity.BoatRegistration;
 import net.fluffybumblebee.terrains.util.registration.feature_set.FeatureRegistrar;
-import net.fluffybumblebee.terrains.util.type.wood.MFWoodTypes;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -24,7 +23,7 @@ import java.util.List;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildFlammableBlock;
 
-public class ExperimentalWoodSetConfig implements FeatureRegistrar<BlockSet<?>> {
+public class WoodSetConfig implements FeatureRegistrar<BlockSet<?>> {
     private final List<BlockSet<?>> ALL_BLOCKS;
     public static TerraformBoatType BOAT;
 
@@ -45,9 +44,9 @@ public class ExperimentalWoodSetConfig implements FeatureRegistrar<BlockSet<?>> 
     public final BlockSet<?> SIGN;
     public final BlockSet<?> WALL_SIGN;
 
-    public ExperimentalWoodSetConfig(String woodType) {
+    public WoodSetConfig(String woodType) {
         ALL_BLOCKS = new ArrayList<>();
-        new BoatRegistration(MFWoodTypes.MAPLE, BOAT);
+        BoatRegistration.register(woodType, () -> BOAT, item -> BOAT = new TerraformBoatType.Builder().item(item).build());
 
         LOG = buildFlammableBlock(new WoodBlock(), woodType + "_log");
         WOOD = buildFlammableBlock(new WoodBlock(), woodType + "_wood");
@@ -89,6 +88,10 @@ public class ExperimentalWoodSetConfig implements FeatureRegistrar<BlockSet<?>> 
         StrippableBlockRegistry.register(LOG.BLOCK, STRIPPED_LOG.BLOCK);
     }
 
+    @Override
+    public List<Item> getAllItems() {
+        return List.of(BOAT.getItem());
+    }
 
     @Override
     public List<BlockSet<?>> getAll() {

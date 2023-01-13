@@ -15,13 +15,13 @@ import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 
 public class BlockSet<B extends Block> {
     public final B BLOCK;
-    public final BlockItem BLOCK_ITEM;
+    public final Item ITEM;
     public final Identifier IDENTIFIER;
 
-    private BlockSet(B BLOCK, BlockItem BLOCK_ITEM, Identifier IDENTIFIER) {
-        this.BLOCK = BLOCK;
-        this.BLOCK_ITEM = BLOCK_ITEM;
-        this.IDENTIFIER = IDENTIFIER;
+    private BlockSet(B block, Item item, Identifier identifier) {
+        BLOCK = block;
+        ITEM = item;
+        IDENTIFIER = identifier;
     }
 
     public static <B extends Block> BlockSet<B> buildBlock(B block, String name) {
