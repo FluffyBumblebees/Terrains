@@ -1,15 +1,19 @@
 package net.fluffybumblebee.terrains.common.registry.sets.experimental;
 
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.feature_set.BasicIterator;
 import net.fluffybumblebee.terrains.util.registration.feature_set.FeatureRegistrar;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.sapling.SaplingGenerator;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
+import static net.fluffybumblebee.terrains.util.registration.feature_set.EasyIf.onIf;
 
 public class FullTreeSetConfig<Generator extends SaplingGenerator> implements FeatureRegistrar<BlockSet<?>> {
     public final HashMap<String, PrimitiveTreeSetConfig<Generator>> TREE_CONFIG;
@@ -18,7 +22,7 @@ public class FullTreeSetConfig<Generator extends SaplingGenerator> implements Fe
 
 
     public FullTreeSetConfig(
-            TreeType<Generator> config
+            @NotNull TreeType<Generator> config
     ) {
         ALL_BLOCKS = new ArrayList<>();
         WOOD_SET = new ExperimentalWoodSetConfig(config.woodType());
@@ -43,15 +47,22 @@ public class FullTreeSetConfig<Generator extends SaplingGenerator> implements Fe
             ));
         }
 
-        ALL_BLOCKS.addAll(config.logVariants());
+        if (config.logVariants() != null) {
+            ALL_BLOCKS.addAll(config.logVariants());
+        }
         ALL_BLOCKS.addAll(WOOD_SET.getAll());
 
-        BasicIterator<String> iterator = () -> Arrays.asList(config.treeVariants());
-        iterator.forEach(featureSets -> TREE_CONFIG.get(featureSets).getIterator().forEach(blockSet -> {
-            if (!(blockSet.BLOCK instanceof FlowerPotBlock)) {
-                ALL_BLOCKS.add(blockSet);
-            }
-        }));
+        BasicIterator<String> treeVariantIterator = () -> Arrays.asList(config.treeVariants());
+        treeVariantIterator.forEach(featureSets -> TREE_CONFIG.get(featureSets).getIterator().forEach(blockSet ->
+                onIf(!(blockSet.BLOCK instanceof FlowerPotBlock),() -> ALL_BLOCKS.add(blockSet)))
+        );
+
+       if (config.logVariants() != null) {
+            BasicIterator<BlockSet<?>> woodSetIterator = config::logVariants;
+            woodSetIterator.forEach(variants ->
+                    StrippableBlockRegistry.register(variants.BLOCK, WOOD_SET.STRIPPED_LOG.BLOCK)
+            );
+        }
     }
 
     @Override

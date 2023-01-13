@@ -5,6 +5,7 @@ import com.terraformersmc.terraform.boat.api.TerraformBoatType;
 import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fluffybumblebee.terrains.common.instances.block.wood_set.*;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet.Builder;
@@ -84,6 +85,8 @@ public class ExperimentalWoodSetConfig implements FeatureRegistrar<BlockSet<?>> 
                 BUTTON,
                 SIGN
         });
+
+        StrippableBlockRegistry.register(LOG.BLOCK, STRIPPED_LOG.BLOCK);
     }
 
 
