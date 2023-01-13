@@ -16,4 +16,7 @@ public class FoodItem extends Item {
                                 .build()
                 ));
     }
+    public FoodItem(int hunger) {
+        this(hunger, 0.5F);
+    }
 }
