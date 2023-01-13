@@ -38,8 +38,7 @@ public class FullTreeSetConfig<Generator extends SaplingGenerator> implements Se
         for (String treeVariant : config.treeVariants()) {
             TREE_CONFIG.put(treeVariant, new PrimitiveTreeSetConfig<>(
                     logVariants,
-                    config.woodType(),
-                    treeVariant,
+                    treeVariant + "_" + config.woodType(),
                     config.configuredVariants(),
                     config.uniquePlacedVariants(),
                     config.treePattern(),

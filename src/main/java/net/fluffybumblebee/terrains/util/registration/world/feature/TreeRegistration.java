@@ -22,6 +22,7 @@ import java.util.OptionalInt;
 import java.util.function.Predicate;
 
 import static net.fabricmc.fabric.api.biome.v1.BiomeModifications.addFeature;
+import static net.minecraft.world.gen.feature.VegetationPlacedFeatures.modifiers;
 
 @SuppressWarnings("OptionalGetWithoutIsPresent")
 public class TreeRegistration {
@@ -41,7 +42,7 @@ public class TreeRegistration {
     }
     public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> defOakBees(String colour, Block block) {
         return ConfiguredFeatures.register(
-                TerrainsDefaults.NAMESPACE + ":" + colour + "_tree",
+                TerrainsDefaults.getNamespaceVar() + colour + "_tree_bees",
                 Feature.TREE,
                 new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(Blocks.OAK_LOG.getDefaultState()),
@@ -56,7 +57,7 @@ public class TreeRegistration {
     }
     public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> fatOak(String colour, Block block) {
         return ConfiguredFeatures.register(
-                TerrainsDefaults.NAMESPACE + ":" + colour + "_tree",
+                TerrainsDefaults.getNamespaceVar() + "fat_" + colour + "_tree",
                 Feature.TREE,
                 new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(Blocks.OAK_LOG.getDefaultState()),
@@ -71,7 +72,7 @@ public class TreeRegistration {
     }
     public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> fatOakBees(String colour, Block block) {
         return ConfiguredFeatures.register(
-                TerrainsDefaults.NAMESPACE + ":" + colour + "_tree",
+                TerrainsDefaults.getNamespaceVar() + "fat_" + colour + "_tree_bees",
                 Feature.TREE,
                 new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(Blocks.OAK_LOG.getDefaultState()),
@@ -114,10 +115,11 @@ public class TreeRegistration {
     ) {
         return PlacedFeatures.register(TerrainsDefaults.NAMESPACE + ":" + colour + "_placed",
                 registerTreeSpawn(def, def_bees, fat, fat_bees, colour, saplingBlock),
-                VegetationPlacedFeatures.modifiers(
+                modifiers(
                         PlacedFeatures.createCountExtraModifier(0, 0.01f, 1)
                 ));
     }
+
     public static void generateFeature(RegistryEntry<PlacedFeature> feature, Predicate<BiomeSelectionContext> predicate, GenerationStep.Feature featureType) {
         addFeature(predicate, featureType, feature.getKey().get());
     }

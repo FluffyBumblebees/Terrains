@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.common.registry.sets.tree.component;
+package net.fluffybumblebee.terrains.common.registry.sets.IAMANIDIOT;
 
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredLeavesBlock;
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredSaplingBlock;

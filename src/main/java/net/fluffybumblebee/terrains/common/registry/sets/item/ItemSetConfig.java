@@ -14,10 +14,10 @@ import java.util.List;
 public class ItemSetConfig<I extends Item> implements SetRegistrar {
     private final List<Item> ALL_ITEMS;
 
-    public ItemSetConfig(ItemTypes<I> foods) {
+    public ItemSetConfig(ItemTypes<I> items) {
         ALL_ITEMS = new ArrayList<>();
 
-        final BasicIterator<IdentifiableItem<I>> iterator = foods::items;
+        final BasicIterator<IdentifiableItem<I>> iterator = items::items;
         iterator.forEach(element -> {
             Registry.register(Registry.ITEM, element.identifier, element.item);
             ALL_ITEMS.add(element.item);

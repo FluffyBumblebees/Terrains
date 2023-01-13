@@ -13,7 +13,7 @@ import net.minecraft.util.registry.Registry;
 
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 
-public class BlockSet<B extends Block> {
+public final class BlockSet<B extends Block> {
     public final B BLOCK;
     public final Item ITEM;
     public final Identifier IDENTIFIER;
@@ -22,6 +22,10 @@ public class BlockSet<B extends Block> {
         BLOCK = block;
         ITEM = item;
         IDENTIFIER = identifier;
+    }
+
+    public static <B extends Block> BlockSet<B> of(B block, Identifier identifier) {
+        return new BlockSet<>(block, block.asItem(), identifier);
     }
 
     public static <B extends Block> BlockSet<B> buildBlock(B block, String name) {

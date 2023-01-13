@@ -34,15 +34,13 @@ public final class PrimitiveTreeSetConfig<Generator extends SaplingGenerator> im
 
     public PrimitiveTreeSetConfig(
             final List<BlockSet<?>> logVariants,
-            final String woodType,
-            final String treeVariant,
+            final String type,
             final String[] configuredVariants,
             final String[] uniquePlacedVariants,
             final TreePattern treePattern,
             final Configurator featureConfigurator,
             final SaplingGeneratorProvider<Generator> saplingGeneratorProvider
     ) {
-        final String typeString = treeVariant + "_" + woodType;
 
         CONFIGURED_VARIANTS = configuredVariants;
         CONFIGURED_FEATURE_HOLDER = new HashMap<>();
@@ -51,10 +49,10 @@ public final class PrimitiveTreeSetConfig<Generator extends SaplingGenerator> im
 
         ALL_BLOCKS = new ArrayList<>();
 
-        LEAVES = buildBlock(new ConfiguredLeavesBlock(), typeString + "_leaves");
+        LEAVES = buildBlock(new ConfiguredLeavesBlock(), type + "_leaves");
 
         featureConfigurator.configureAndPlace(
-                typeString,
+                type,
                 logVariants,
                 LEAVES.BLOCK,
                 treePattern,
@@ -67,12 +65,12 @@ public final class PrimitiveTreeSetConfig<Generator extends SaplingGenerator> im
         SAPLING = buildBlock(
                 new ConfiguredSaplingBlock(saplingGeneratorProvider.register(CONFIGURED_FEATURE_HOLDER,
                         configuredVariants)),
-                typeString + "_sapling"
+                type + "_sapling"
         );
 
         POTTED_SAPLING = new BlockSet.Builder<>(
                 new ConfiguredFlowerPotBlock(SAPLING.BLOCK),
-                getIdentifier("potted_" + typeString +  "_sapling")
+                getIdentifier("potted_" + type +  "_sapling")
         ).addBlockItem(new Item.Settings()).build();
 
         addAllBlocks(new BlockSet[] {
