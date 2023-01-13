@@ -4,7 +4,7 @@ import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredLeave
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredSaplingBlock;
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredFlowerPotBlock;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
-import net.fluffybumblebee.terrains.util.registration.feature_set.FeatureRegistrar;
+import net.fluffybumblebee.terrains.util.registration.feature_set.SetRegistrar;
 import net.minecraft.block.Block;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.Item;
@@ -15,7 +15,7 @@ import java.util.List;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildBlock;
 
-public final class TreeFoliageSetConfig<E extends Enum<?>, S extends SaplingGenerator> implements FeatureRegistrar<BlockSet<?>> {
+public final class TreeFoliageSetConfig<E extends Enum<?>, S extends SaplingGenerator> implements SetRegistrar {
     private final List<BlockSet<?>> ALL_BLOCKS;
     public final BlockSet<ConfiguredLeavesBlock> LEAVES;
     public final BlockSet<ConfiguredSaplingBlock> SAPLING;
@@ -33,7 +33,7 @@ public final class TreeFoliageSetConfig<E extends Enum<?>, S extends SaplingGene
                 getIdentifier("potted_" + leafType +  "_sapling")
         ).addBlockItem(new Item.Settings()).build();
 
-        addAll(new BlockSet[] {
+        addAllBlocks(new BlockSet[] {
                 LEAVES,
                 SAPLING,
                 POTTED_SAPLING
@@ -41,8 +41,13 @@ public final class TreeFoliageSetConfig<E extends Enum<?>, S extends SaplingGene
     }
 
     @Override
-    public List<BlockSet<?>> getAll() {
+    public List<BlockSet<?>> getAllBlockSets() {
         return ALL_BLOCKS;
+    }
+
+    @Override
+    public List<Item> getAllItems() {
+        return List.of();
     }
 
     public interface AfterLeaves <S extends SaplingGenerator> {

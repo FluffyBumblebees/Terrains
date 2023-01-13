@@ -3,7 +3,7 @@ package net.fluffybumblebee.terrains.common.registry.sets.experimental;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.feature_set.BasicIterator;
-import net.fluffybumblebee.terrains.util.registration.feature_set.FeatureRegistrar;
+import net.fluffybumblebee.terrains.util.registration.feature_set.SetRegistrar;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.Item;
@@ -16,7 +16,7 @@ import java.util.List;
 
 import static net.fluffybumblebee.terrains.util.registration.feature_set.EasyIf.onIf;
 
-public class FullTreeSetConfig<Generator extends SaplingGenerator> implements FeatureRegistrar<BlockSet<?>> {
+public class FullTreeSetConfig<Generator extends SaplingGenerator> implements SetRegistrar {
     public final HashMap<String, PrimitiveTreeSetConfig<Generator>> TREE_CONFIG;
     private final List<BlockSet<?>> ALL_BLOCKS;
     public final WoodSetConfig WOOD_SET;
@@ -51,10 +51,10 @@ public class FullTreeSetConfig<Generator extends SaplingGenerator> implements Fe
         if (config.logVariants() != null) {
             ALL_BLOCKS.addAll(config.logVariants());
         }
-        ALL_BLOCKS.addAll(WOOD_SET.getAll());
+        ALL_BLOCKS.addAll(WOOD_SET.getAllBlockSets());
 
         BasicIterator<String> treeVariantIterator = () -> Arrays.asList(config.treeVariants());
-        treeVariantIterator.forEach(featureSets -> TREE_CONFIG.get(featureSets).getIterator().forEach(blockSet ->
+        treeVariantIterator.forEach(featureSets -> TREE_CONFIG.get(featureSets).getBlockIterator().forEach(blockSet ->
                 onIf(!(blockSet.BLOCK instanceof FlowerPotBlock),() -> ALL_BLOCKS.add(blockSet)))
         );
 
@@ -72,7 +72,7 @@ public class FullTreeSetConfig<Generator extends SaplingGenerator> implements Fe
     }
 
     @Override
-    public List<BlockSet<?>> getAll() {
+    public List<BlockSet<?>> getAllBlockSets() {
         return ALL_BLOCKS;
     }
 }

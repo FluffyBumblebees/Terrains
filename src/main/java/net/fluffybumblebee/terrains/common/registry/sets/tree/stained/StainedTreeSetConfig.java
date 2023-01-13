@@ -4,7 +4,8 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.TreeFoliageSetConfig;
 import net.fluffybumblebee.terrains.common.world.feature.raw.StainedSaplingGenerator;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
-import net.fluffybumblebee.terrains.util.registration.feature_set.FeatureRegistrar;
+import net.fluffybumblebee.terrains.util.registration.feature_set.SetRegistrar;
+import net.minecraft.item.Item;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
@@ -17,7 +18,7 @@ import java.util.List;
 
 import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.*;
 
-public final class StainedTreeSetConfig<E extends Enum<?>> implements FeatureRegistrar<BlockSet<?>> {
+public final class StainedTreeSetConfig<E extends Enum<?>> implements SetRegistrar {
     private final List<BlockSet<?>> ALL_BLOCKS;
     private RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> TREE;
     private RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> TREE_BEES;
@@ -44,7 +45,7 @@ public final class StainedTreeSetConfig<E extends Enum<?>> implements FeatureReg
         });
 
         var sapling = FOLIAGE.SAPLING.BLOCK;
-        addAll(new BlockSet[] {
+        addAllBlocks(new BlockSet[] {
                 FOLIAGE.LEAVES,
                 FOLIAGE.SAPLING,
                 FOLIAGE.POTTED_SAPLING
@@ -61,12 +62,17 @@ public final class StainedTreeSetConfig<E extends Enum<?>> implements FeatureReg
     }
 
     @Override
-    public List<BlockSet<?>> getAll() {
+    public List<BlockSet<?>> getAllBlockSets() {
         return ALL_BLOCKS;
     }
 
     @Override
-    public void optionalGenerationEvent() {
+    public List<Item> getAllItems() {
+        return List.of();
+    }
+
+    @Override
+    public void generationEvent() {
         generateFeature(TREE_PLACED, BiomeSelectors.categories(Biome.Category.PLAINS), GenerationStep.Feature.VEGETAL_DECORATION);
 
     }

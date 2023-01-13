@@ -5,8 +5,11 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class MFItemRegistration {
-    public static <I extends Item> I register(I item, String name) {
+import java.util.List;
+
+public class ItemRegistration {
+    public static <I extends Item> I create(I item, String name, List<I> collection) {
+        collection.add(item);
         Registry.register(Registry.ITEM, new Identifier(TerrainsDefaults.NAMESPACE, name), item);
         return item;
     }

@@ -6,11 +6,11 @@ import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
-import net.fluffybumblebee.terrains.common.instances.block.wood_set.*;
+import net.fluffybumblebee.terrains.common.instances.block.wood.*;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet.Builder;
 import net.fluffybumblebee.terrains.util.registration.entity.BoatRegistration;
-import net.fluffybumblebee.terrains.util.registration.feature_set.FeatureRegistrar;
+import net.fluffybumblebee.terrains.util.registration.feature_set.SetRegistrar;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -23,7 +23,7 @@ import java.util.List;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildFlammableBlock;
 
-public class WoodSetConfig implements FeatureRegistrar<BlockSet<?>> {
+public class WoodSetConfig implements SetRegistrar {
     private final List<BlockSet<?>> ALL_BLOCKS;
     public static TerraformBoatType BOAT;
 
@@ -68,7 +68,7 @@ public class WoodSetConfig implements FeatureRegistrar<BlockSet<?>> {
                 .addBlockItem(block -> new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), block, WALL_SIGN.BLOCK))
                 .build();
 
-        addAll(new BlockSet<?>[] {
+        addAllBlocks(new BlockSet<?>[] {
                 LOG,
                 WOOD,
                 STRIPPED_LOG,
@@ -86,6 +86,7 @@ public class WoodSetConfig implements FeatureRegistrar<BlockSet<?>> {
         });
 
         StrippableBlockRegistry.register(LOG.BLOCK, STRIPPED_LOG.BLOCK);
+        StrippableBlockRegistry.register(WOOD.BLOCK, STRIPPED_WOOD.BLOCK);
     }
 
     @Override
@@ -94,7 +95,7 @@ public class WoodSetConfig implements FeatureRegistrar<BlockSet<?>> {
     }
 
     @Override
-    public List<BlockSet<?>> getAll() {
+    public List<BlockSet<?>> getAllBlockSets() {
         return ALL_BLOCKS;
     }
 

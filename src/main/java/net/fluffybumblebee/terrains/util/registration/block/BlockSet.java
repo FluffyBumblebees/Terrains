@@ -2,7 +2,7 @@ package net.fluffybumblebee.terrains.util.registration.block;
 
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.fluffybumblebee.terrains.common.instances.block.wood_set.WoodBlock;
+import net.fluffybumblebee.terrains.common.instances.block.wood.WoodBlock;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;

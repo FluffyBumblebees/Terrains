@@ -3,7 +3,8 @@ package net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fluffybumblebee.terrains.common.instances.block.crystals.*;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
-import net.fluffybumblebee.terrains.util.registration.feature_set.FeatureRegistrar;
+import net.fluffybumblebee.terrains.util.registration.feature_set.SetRegistrar;
+import net.minecraft.item.Item;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
@@ -20,7 +21,7 @@ import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buil
 import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.generateFeature;
 
 @SuppressWarnings("FieldCanBeLocal")
-public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRegistrar<BlockSet<?>> {
+public final class CrystalGeodeSetConfig<Type extends Enum<?>> implements SetRegistrar {
     public final List<BlockSet<?>> ALL_BLOCKS;
 
     public final BlockSet<CorundumCluster> CORUNDUM_CLUSTER;
@@ -41,7 +42,7 @@ public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRe
     private final RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> CONFIGURED_GEODE;
     private final RegistryEntry<PlacedFeature> PLACED_GEODE;
 
-    public CrystalGeodeSetConfig(E type) {
+    public CrystalGeodeSetConfig(Type type) {
         final String colour = type.name().toLowerCase();
         ALL_BLOCKS = new ArrayList<>();
 
@@ -60,7 +61,7 @@ public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRe
         CRYSTAL_PANE = buildBlock(new CorundumCrystalPane(), colour + "_crystal_pane");
 
 
-        addAll(new BlockSet[] {
+        addAllBlocks(new BlockSet[] {
                 CORUNDUM_CLUSTER,
                 WAXED_CORUNDUM,
                 CORUNDUM,
@@ -88,12 +89,17 @@ public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRe
     }
 
     @Override
-    public List<BlockSet<?>> getAll() {
+    public List<BlockSet<?>> getAllBlockSets() {
         return ALL_BLOCKS;
     }
 
     @Override
-    public void optionalGenerationEvent() {
+    public List<Item> getAllItems() {
+        return List.of();
+    }
+
+    @Override
+    public void generationEvent() {
         generateFeature(PLACED_GEODE, BiomeSelectors.all(), GenerationStep.Feature.UNDERGROUND_STRUCTURES);
 
     }

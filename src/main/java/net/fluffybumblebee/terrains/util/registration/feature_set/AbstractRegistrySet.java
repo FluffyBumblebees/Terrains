@@ -11,10 +11,10 @@ import java.util.Map;
 
 import static net.fluffybumblebee.terrains.util.registration.feature_set.EasyIf.onIf;
 
-public interface AbstractFeatureSet<E, C extends FeatureRegistrar<BlockSet<?>>> extends BasicIterator<BlockSet<?>> {
-    BasicIterator<E> getIterator();
+public interface AbstractRegistrySet<Types, RegistryConfig extends SetRegistrar> extends BasicIterator<BlockSet<?>> {
+    BasicIterator<Types> getIterator();
 
-    Map<E, C> getTypes();
+    Map<Types, RegistryConfig> getTypes();
 
     BasicIterator<Item> getItemIterator();
 
@@ -38,7 +38,7 @@ public interface AbstractFeatureSet<E, C extends FeatureRegistrar<BlockSet<?>>> 
 
     default List<BlockSet<?>> getAllRegistryEntries() {
         List<BlockSet<?>> list = new ArrayList<>();
-        getIterator().forEach(colour -> list.addAll(getTypes().get(colour).getAll()));
+        getIterator().forEach(colour -> list.addAll(getTypes().get(colour).getAllBlockSets()));
         return list;
     }
 

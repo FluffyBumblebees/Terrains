@@ -6,7 +6,7 @@ import net.fluffybumblebee.terrains.common.instances.block.crystals.CorundumClus
 import net.minecraft.block.*;
 import net.minecraft.client.render.RenderLayer;
 
-import static net.fluffybumblebee.terrains.common.registry.sets.AllFeatureSets.*;
+import static net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets.*;
 import static net.fluffybumblebee.terrains.util.registration.feature_set.EasyIf.onIf;
 
 public class RendererCutouts {

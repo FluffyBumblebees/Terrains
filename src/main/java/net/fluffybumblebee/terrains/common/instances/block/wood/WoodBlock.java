@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.common.instances.block.wood_set;
+package net.fluffybumblebee.terrains.common.instances.block.wood;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.block.PillarBlock;

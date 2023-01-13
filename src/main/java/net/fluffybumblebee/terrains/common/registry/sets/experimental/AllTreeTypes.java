@@ -1,6 +1,6 @@
 package net.fluffybumblebee.terrains.common.registry.sets.experimental;
 
-import net.fluffybumblebee.terrains.common.instances.block.wood_set.WoodBlock;
+import net.fluffybumblebee.terrains.common.instances.block.wood.WoodBlock;
 import net.fluffybumblebee.terrains.common.world.feature.raw.MapleSaplingGenerator;
 import net.fluffybumblebee.terrains.common.world.feature.raw.component.ConeFoliagePlacer;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
