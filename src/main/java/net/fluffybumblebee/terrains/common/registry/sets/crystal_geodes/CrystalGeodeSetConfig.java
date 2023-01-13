@@ -23,18 +23,20 @@ import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeR
 public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRegistrar<BlockSet<?>> {
     public final List<BlockSet<?>> ALL_BLOCKS;
 
-    public final BlockSet<CorundumBlock> WAXED_CORUNDUM;
     public final BlockSet<CorundumCluster> CORUNDUM_CLUSTER;
+    public final BlockSet<CorundumBlock> WAXED_CORUNDUM;
 
     public final BlockSet<CorundumBlock> CORUNDUM;
-    public final BlockSet<CorundumCrystalPane> CORUNDUM_PANE;
     public final BlockSet<CorundumCrystalSlab> CORUNDUM_SLAB;
     public final BlockSet<CorundumCrystalStairs> CORUNDUM_STAIRS;
+    public final BlockSet<CorundumCrystalPane> CORUNDUM_PANE;
+
 
     public final BlockSet<CrystalBlock> CRYSTAL;
-    public final BlockSet<CorundumCrystalPane> CRYSTAL_PANE;
     public final BlockSet<CorundumCrystalSlab> CRYSTAL_SLAB;
     public final BlockSet<CorundumCrystalStairs> CRYSTAL_STAIRS;
+    public final BlockSet<CorundumCrystalPane> CRYSTAL_PANE;
+
 
     private final RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> CONFIGURED_GEODE;
     private final RegistryEntry<PlacedFeature> PLACED_GEODE;
@@ -43,30 +45,32 @@ public final class CrystalGeodeSetConfig<E extends Enum<?>> implements FeatureRe
         final String colour = type.name().toLowerCase();
         ALL_BLOCKS = new ArrayList<>();
 
-        WAXED_CORUNDUM = buildBlock(new CorundumBlock(), "waxed_" + colour + "_corundum");
         CORUNDUM_CLUSTER = buildBlock(new CorundumCluster(), colour + "_corundum_cluster");
+        WAXED_CORUNDUM = buildBlock(new CorundumBlock(), "waxed_" + colour + "_corundum");
+
 
         CORUNDUM = buildBlock(new CorundumBlock(() -> CORUNDUM_CLUSTER.BLOCK), colour + "_corundum");
-        CORUNDUM_PANE = buildBlock(new CorundumCrystalPane(), colour + "_corundum_pane");
         CORUNDUM_SLAB = buildBlock(new CorundumCrystalSlab(), colour + "_corundum_slab");
         CORUNDUM_STAIRS = buildBlock(new CorundumCrystalStairs(), colour + "_corundum_stairs");
+        CORUNDUM_PANE = buildBlock(new CorundumCrystalPane(), colour + "_corundum_pane");
 
         CRYSTAL = buildBlock(new CrystalBlock(), colour + "_crystal");
-        CRYSTAL_PANE = buildBlock(new CorundumCrystalPane(), colour + "_crystal_pane");
         CRYSTAL_SLAB = buildBlock(new CorundumCrystalSlab(), colour + "_crystal_slab");
         CRYSTAL_STAIRS = buildBlock(new CorundumCrystalStairs(), colour + "_crystal_stairs");
+        CRYSTAL_PANE = buildBlock(new CorundumCrystalPane(), colour + "_crystal_pane");
 
-        addAllElements(new BlockSet[] {
-                WAXED_CORUNDUM,
+
+        addAll(new BlockSet[] {
                 CORUNDUM_CLUSTER,
+                WAXED_CORUNDUM,
                 CORUNDUM,
-                CORUNDUM_PANE,
                 CORUNDUM_SLAB,
                 CORUNDUM_STAIRS,
+                CORUNDUM_PANE,
                 CRYSTAL,
-                CRYSTAL_PANE,
                 CRYSTAL_SLAB,
-                CRYSTAL_STAIRS
+                CRYSTAL_STAIRS,
+                CRYSTAL_PANE
         });
 
         registerWaxableBlockPair(CORUNDUM.BLOCK, WAXED_CORUNDUM.BLOCK);

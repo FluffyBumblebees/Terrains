@@ -12,10 +12,10 @@ import static net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.C
 
 public class UndergroundItemGroup {
     public static void register() {}
-    public static final ItemGroup underground;
+    public static final ItemGroup UNDERGROUND;
 
     static {
-        underground = FabricItemGroupBuilder.create(new Identifier(TerrainsDefaults.NAMESPACE, "underground"))
+        UNDERGROUND = FabricItemGroupBuilder.create(new Identifier(TerrainsDefaults.NAMESPACE, "underground"))
                 .icon(() -> new ItemStack(CRYSTAL_GEODES.getTypes().get(PURPLE).CORUNDUM.BLOCK_ITEM.asItem()))
                 .appendItems(stacks ->
                         CRYSTAL_GEODES.forEach(element ->

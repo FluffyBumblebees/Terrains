@@ -13,9 +13,13 @@ public class RendererTranslucents {
         CRYSTAL_GEODES.forEach(element -> {
             Block block = element.BLOCK;
             if (!(block instanceof CorundumCluster)) {
-                BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+                putBlock(block);
             }
         });
+    }
+
+    private static void putBlock(Block block) {
+        BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
     }
 }
 

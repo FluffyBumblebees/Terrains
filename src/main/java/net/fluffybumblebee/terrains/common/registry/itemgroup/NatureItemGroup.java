@@ -1,7 +1,7 @@
 package net.fluffybumblebee.terrains.common.registry.itemgroup;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fluffybumblebee.terrains.common.instances.block.plant.ShortenedFlowerPotBlock;
+import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredFlowerPotBlock;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -19,12 +19,12 @@ public class NatureItemGroup {
         NATURE = FabricItemGroupBuilder.create(new Identifier(NAMESPACE, "nature"))
                 .icon(() -> new ItemStack(STAINED_TREES.getTypes().get(PURPLE).FOLIAGE.LEAVES.BLOCK_ITEM.asItem()))
                 .appendItems(stacks -> {
+                    FULL_TREE_SETS.forEach(element -> stacks.add(element.BLOCK_ITEM.getDefaultStack()));
                     STAINED_TREES.forEach(element -> {
-                        if (!(element.BLOCK instanceof ShortenedFlowerPotBlock)) {
+                        if (!(element.BLOCK instanceof ConfiguredFlowerPotBlock)) {
                             stacks.add(element.BLOCK_ITEM.getDefaultStack());
                         }
                     });
-                    FULL_TREE_SETS.forEach(element -> stacks.add(element.BLOCK_ITEM.getDefaultStack()));
                 }).build();
     }
 }

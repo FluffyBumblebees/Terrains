@@ -1,8 +1,8 @@
 package net.fluffybumblebee.terrains.common.registry.sets.experimental;
 
-import net.fluffybumblebee.terrains.common.instances.block.plant.LeavesBlock;
-import net.fluffybumblebee.terrains.common.instances.block.plant.SaplingBlock;
-import net.fluffybumblebee.terrains.common.instances.block.plant.ShortenedFlowerPotBlock;
+import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredLeavesBlock;
+import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredSaplingBlock;
+import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredFlowerPotBlock;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.feature_set.FeatureRegistrar;
 import net.minecraft.block.Block;
@@ -22,9 +22,9 @@ import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buil
 
 public final class PrimitiveTreeSetConfig<Generator extends SaplingGenerator> implements FeatureRegistrar<BlockSet<?>> {
     private final List<BlockSet<?>> ALL_BLOCKS;
-    public final BlockSet<LeavesBlock> LEAVES;
-    public final BlockSet<SaplingBlock> SAPLING;
-    public final BlockSet<ShortenedFlowerPotBlock> POTTED_SAPLING;
+    public final BlockSet<ConfiguredLeavesBlock> LEAVES;
+    public final BlockSet<ConfiguredSaplingBlock> SAPLING;
+    public final BlockSet<ConfiguredFlowerPotBlock> POTTED_SAPLING;
 
     public final String[] CONFIGURED_VARIANTS;
     public final String[] PLACED_VARIANTS;
@@ -51,7 +51,7 @@ public final class PrimitiveTreeSetConfig<Generator extends SaplingGenerator> im
 
         ALL_BLOCKS = new ArrayList<>();
 
-        LEAVES = buildBlock(new LeavesBlock(), typeString + "_leaves");
+        LEAVES = buildBlock(new ConfiguredLeavesBlock(), typeString + "_leaves");
 
         featureConfigurator.configureAndPlace(
                 typeString,
@@ -65,17 +65,17 @@ public final class PrimitiveTreeSetConfig<Generator extends SaplingGenerator> im
         );
 
         SAPLING = buildBlock(
-                new SaplingBlock(saplingGeneratorProvider.register(CONFIGURED_FEATURE_HOLDER,
+                new ConfiguredSaplingBlock(saplingGeneratorProvider.register(CONFIGURED_FEATURE_HOLDER,
                         configuredVariants)),
                 typeString + "_sapling"
         );
 
         POTTED_SAPLING = new BlockSet.Builder<>(
-                new ShortenedFlowerPotBlock(SAPLING.BLOCK),
+                new ConfiguredFlowerPotBlock(SAPLING.BLOCK),
                 getIdentifier("potted_" + typeString +  "_sapling")
         ).addBlockItem(new Item.Settings()).build();
 
-        addAllElements(new BlockSet[] {
+        addAll(new BlockSet[] {
                 LEAVES,
                 SAPLING,
                 POTTED_SAPLING

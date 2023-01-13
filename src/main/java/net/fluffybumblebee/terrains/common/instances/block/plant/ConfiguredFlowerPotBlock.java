@@ -5,8 +5,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerPotBlock;
 
-public class ShortenedFlowerPotBlock extends FlowerPotBlock {
-    public ShortenedFlowerPotBlock(Block content) {
+public class ConfiguredFlowerPotBlock extends FlowerPotBlock {
+    public ConfiguredFlowerPotBlock(Block content) {
         super(content, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING));
     }
 }

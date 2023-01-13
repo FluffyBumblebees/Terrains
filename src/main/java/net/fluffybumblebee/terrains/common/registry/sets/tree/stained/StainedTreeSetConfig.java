@@ -17,7 +17,7 @@ import java.util.List;
 
 import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.*;
 
-public final class OakLikeSetConfig<E extends Enum<?>> implements FeatureRegistrar<BlockSet<?>> {
+public final class StainedTreeSetConfig<E extends Enum<?>> implements FeatureRegistrar<BlockSet<?>> {
     private final List<BlockSet<?>> ALL_BLOCKS;
     private RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> TREE;
     private RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> TREE_BEES;
@@ -26,7 +26,7 @@ public final class OakLikeSetConfig<E extends Enum<?>> implements FeatureRegistr
     public final TreeFoliageSetConfig<E, StainedSaplingGenerator> FOLIAGE;
     public final RegistryEntry<PlacedFeature> TREE_PLACED;
 
-    public OakLikeSetConfig(E type) {
+    public StainedTreeSetConfig(E type) {
         final String colour = type.name().toLowerCase();
         ALL_BLOCKS = new ArrayList<>();
 
@@ -44,7 +44,7 @@ public final class OakLikeSetConfig<E extends Enum<?>> implements FeatureRegistr
         });
 
         var sapling = FOLIAGE.SAPLING.BLOCK;
-        addAllElements(new BlockSet[] {
+        addAll(new BlockSet[] {
                 FOLIAGE.LEAVES,
                 FOLIAGE.SAPLING,
                 FOLIAGE.POTTED_SAPLING

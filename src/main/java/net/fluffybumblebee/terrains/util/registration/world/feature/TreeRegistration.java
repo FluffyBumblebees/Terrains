@@ -1,7 +1,7 @@
 package net.fluffybumblebee.terrains.util.registration.world.feature;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
-import net.fluffybumblebee.terrains.common.instances.block.plant.SaplingBlock;
+import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredSaplingBlock;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -91,7 +91,7 @@ public class TreeRegistration {
             RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> fat,
             RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> fat_bees,
             String colour,
-            SaplingBlock saplingBlock
+            ConfiguredSaplingBlock saplingBlock
     ) {
         PlacedFeatures.register(TerrainsDefaults.NAMESPACE + ":" + colour + "_checked", def, PlacedFeatures.wouldSurvive(saplingBlock));
         PlacedFeatures.register(TerrainsDefaults.NAMESPACE + ":" + "fat_" + colour + "_checked", fat, PlacedFeatures.wouldSurvive(saplingBlock));
@@ -109,7 +109,7 @@ public class TreeRegistration {
             RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> def_bees,
             RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> fat,
             RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> fat_bees,
-            SaplingBlock saplingBlock,
+            ConfiguredSaplingBlock saplingBlock,
             String colour
     ) {
         return PlacedFeatures.register(TerrainsDefaults.NAMESPACE + ":" + colour + "_placed",

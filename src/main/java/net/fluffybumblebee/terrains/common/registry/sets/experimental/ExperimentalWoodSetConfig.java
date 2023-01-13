@@ -68,7 +68,7 @@ public class ExperimentalWoodSetConfig implements FeatureRegistrar<BlockSet<?>> 
                 .addBlockItem(block -> new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), block, WALL_SIGN.BLOCK))
                 .build();
 
-        addAllElements(new BlockSet<?>[] {
+        addAll(new BlockSet<?>[] {
                 LOG,
                 WOOD,
                 STRIPPED_LOG,

@@ -2,10 +2,11 @@ package net.fluffybumblebee.terrains.common.instances.block.plant;
 
 import net.fluffybumblebee.terrains.util.predicates.BlockPredicates;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.sound.BlockSoundGroup;
 
-public class LeavesBlock extends net.minecraft.block.LeavesBlock {
-    public LeavesBlock() {
+public class ConfiguredLeavesBlock extends LeavesBlock {
+    public ConfiguredLeavesBlock() {
         super(Settings
                 .copy(Blocks.OAK_LEAVES)
                 .nonOpaque()

@@ -7,7 +7,11 @@ public interface FeatureRegistrar<T> {
 
     default void optionalGenerationEvent() {}
 
-    default void addAllElements(T[] all) {
+    default BasicIterator<T> getIterator() {
+        return this::getAll;
+    }
+
+    default void addAll(T[] all) {
         for (T element : all) {
             getAll().add(element);
         }
