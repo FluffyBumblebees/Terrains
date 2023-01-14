@@ -5,17 +5,19 @@ import net.minecraft.item.Item;
 
 import java.util.List;
 
-public interface SetRegistrar extends BasicIterator<Item> {
+public interface RegistrySetCreator extends Quickerator<Item> {
     List<BlockSet<?>> getAllBlockSets();
 
     List<Item> getAllItems();
 
     default void generationEvent() {}
 
-    default BasicIterator<BlockSet<?>> getBlockIterator() {
+    default Quickerator<BlockSet<?>> getBlockIterator() {
         return this::getAllBlockSets;
     }
-    default BasicIterator<Item> getItemIterator() {
+
+    @SuppressWarnings("unused")
+    default Quickerator<Item> getItemIterator() {
         return this::getAllItems;
     }
 

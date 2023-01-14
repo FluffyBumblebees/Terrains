@@ -1,12 +1,11 @@
-package net.fluffybumblebee.terrains.common.registry.sets.experimental;
+package net.fluffybumblebee.terrains.common.registry.sets.tree.whole;
 
-import net.fluffybumblebee.terrains.common.registry.sets.experimental.PrimitiveTreeSetConfig.Configurator;
-import net.fluffybumblebee.terrains.common.registry.sets.experimental.PrimitiveTreeSetConfig.SaplingGeneratorProvider;
-import net.fluffybumblebee.terrains.common.registry.sets.experimental.PrimitiveTreeSetConfig.TreePattern;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.minecraft.block.sapling.SaplingGenerator;
 
 import java.util.List;
+
+import static net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeRegistrySetConfig.*;
 
 public record TreeType<Generator extends SaplingGenerator>(
         List<BlockSet<?>> logVariants,

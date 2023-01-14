@@ -1,10 +1,10 @@
 package net.fluffybumblebee.terrains.common.registry.sets.tree.stained;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fluffybumblebee.terrains.common.registry.sets.experimental.PrimitiveTreeSetConfig;
+import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeRegistrySetConfig;
 import net.fluffybumblebee.terrains.common.world.feature.raw.StainedSaplingGenerator;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
-import net.fluffybumblebee.terrains.util.registration.feature_set.SetRegistrar;
+import net.fluffybumblebee.terrains.util.registration.feature_set.RegistrySetCreator;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
@@ -21,17 +21,17 @@ import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getNamespaceVar
 import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.*;
 import static net.minecraft.world.gen.feature.PlacedFeatures.register;
 
-public final class StainedTreeSetConfig<Colour extends Enum<?>> implements SetRegistrar {
+public final class StainedTreeRegistrySetConfig<Colour extends Enum<?>> implements RegistrySetCreator {
     private final List<BlockSet<?>> ALL_BLOCKS;
-    public final PrimitiveTreeSetConfig<StainedSaplingGenerator> TREE_CONFIG;
+    public final PrimitiveTreeRegistrySetConfig<StainedSaplingGenerator> TREE_CONFIG;
     public final RegistryEntry<PlacedFeature> TREE_PLACED;
 
-    public StainedTreeSetConfig(Colour type) {
+    public StainedTreeRegistrySetConfig(Colour type) {
         final String colour = type.name().toLowerCase();
         ALL_BLOCKS = new ArrayList<>();
 
 
-        TREE_CONFIG = new PrimitiveTreeSetConfig<>(
+        TREE_CONFIG = new PrimitiveTreeRegistrySetConfig<>(
                 List.of(BlockSet.of(Blocks.OAK_LOG, new Identifier("oak_log"))),
                 colour,
                 new String[] {

@@ -1,11 +1,11 @@
 package net.fluffybumblebee.terrains.common.registry.sets.item;
 
 import net.fluffybumblebee.terrains.common.instances.item.food.FoodItem;
-import net.fluffybumblebee.terrains.common.registry.sets.item.ItemSetConfig.IdentifiableItem;
+import net.fluffybumblebee.terrains.common.registry.sets.item.ItemRegistrySetConfig.IdentifiableItem;
 
 import java.util.List;
 
-import static net.fluffybumblebee.terrains.common.registry.sets.item.ItemSetConfig.getItem;
+import static net.fluffybumblebee.terrains.common.registry.sets.item.ItemRegistrySetConfig.getItem;
 
 public class FoodItemType {
 

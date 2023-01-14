@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.common.registry.sets.experimental;
+package net.fluffybumblebee.terrains.common.registry.sets.tree.whole;
 
 import net.fluffybumblebee.terrains.common.instances.block.wood.WoodBlock;
 import net.fluffybumblebee.terrains.common.world.feature.raw.MapleSaplingGenerator;

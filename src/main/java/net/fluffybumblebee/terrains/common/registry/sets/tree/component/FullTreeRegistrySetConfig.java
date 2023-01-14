@@ -1,9 +1,10 @@
-package net.fluffybumblebee.terrains.common.registry.sets.experimental;
+package net.fluffybumblebee.terrains.common.registry.sets.tree.component;
 
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.fluffybumblebee.terrains.common.registry.sets.tree.whole.TreeType;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
-import net.fluffybumblebee.terrains.util.registration.feature_set.BasicIterator;
-import net.fluffybumblebee.terrains.util.registration.feature_set.SetRegistrar;
+import net.fluffybumblebee.terrains.util.registration.feature_set.Quickerator;
+import net.fluffybumblebee.terrains.util.registration.feature_set.RegistrySetCreator;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.Item;
@@ -16,17 +17,17 @@ import java.util.List;
 
 import static net.fluffybumblebee.terrains.util.registration.feature_set.EasyIf.onIf;
 
-public class FullTreeSetConfig<Generator extends SaplingGenerator> implements SetRegistrar {
-    public final HashMap<String, PrimitiveTreeSetConfig<Generator>> TREE_CONFIG;
+public class FullTreeRegistrySetConfig<Generator extends SaplingGenerator> implements RegistrySetCreator {
+    public final HashMap<String, PrimitiveTreeRegistrySetConfig<Generator>> TREE_CONFIG;
     private final List<BlockSet<?>> ALL_BLOCKS;
-    public final WoodSetConfig WOOD_SET;
+    public final WoodRegistrySetConfig WOOD_SET;
 
 
-    public FullTreeSetConfig(
+    public FullTreeRegistrySetConfig(
             @NotNull TreeType<Generator> config
     ) {
         ALL_BLOCKS = new ArrayList<>();
-        WOOD_SET = new WoodSetConfig(config.woodType());
+        WOOD_SET = new WoodRegistrySetConfig(config.woodType());
         TREE_CONFIG = new HashMap<>();
 
         List<BlockSet<?>> logVariants;
@@ -36,7 +37,7 @@ public class FullTreeSetConfig<Generator extends SaplingGenerator> implements Se
         } else logVariants = List.of(WOOD_SET.LOG);
 
         for (String treeVariant : config.treeVariants()) {
-            TREE_CONFIG.put(treeVariant, new PrimitiveTreeSetConfig<>(
+            TREE_CONFIG.put(treeVariant, new PrimitiveTreeRegistrySetConfig<>(
                     logVariants,
                     treeVariant + "_" + config.woodType(),
                     config.configuredVariants(),
@@ -52,13 +53,13 @@ public class FullTreeSetConfig<Generator extends SaplingGenerator> implements Se
         }
         ALL_BLOCKS.addAll(WOOD_SET.getAllBlockSets());
 
-        BasicIterator<String> treeVariantIterator = () -> Arrays.asList(config.treeVariants());
+        Quickerator<String> treeVariantIterator = () -> Arrays.asList(config.treeVariants());
         treeVariantIterator.forEach(featureSets -> TREE_CONFIG.get(featureSets).getBlockIterator().forEach(blockSet ->
                 onIf(!(blockSet.BLOCK instanceof FlowerPotBlock),() -> ALL_BLOCKS.add(blockSet)))
         );
 
        if (config.logVariants() != null) {
-            BasicIterator<BlockSet<?>> woodSetIterator = config::logVariants;
+            Quickerator<BlockSet<?>> woodSetIterator = config::logVariants;
             woodSetIterator.forEach(variants ->
                     StrippableBlockRegistry.register(variants.BLOCK, WOOD_SET.STRIPPED_LOG.BLOCK)
             );

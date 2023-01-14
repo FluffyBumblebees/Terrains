@@ -19,7 +19,7 @@ public class NatureItemGroup {
 
     static {
         NATURE = FabricItemGroupBuilder.create(new Identifier(NAMESPACE, "nature"))
-                .icon(() -> new ItemStack(STAINED_TREES.getTypes().get(PURPLE).TREE_CONFIG.LEAVES.ITEM))
+                .icon(() -> new ItemStack(STAINED_TREES.getTypeMap().get(PURPLE).TREE_CONFIG.LEAVES.ITEM))
                 .appendItems(stacks -> {
                     FULL_TREE_SETS.addAllToStack(stacks, true, true,
                             (element, booleanHolder, iterator, itemConditions, blockConditions) -> {

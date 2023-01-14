@@ -4,7 +4,7 @@ import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredLeave
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredSaplingBlock;
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredFlowerPotBlock;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
-import net.fluffybumblebee.terrains.util.registration.feature_set.SetRegistrar;
+import net.fluffybumblebee.terrains.util.registration.feature_set.RegistrySetCreator;
 import net.minecraft.block.Block;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.Item;
@@ -15,13 +15,13 @@ import java.util.List;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildBlock;
 
-public final class TreeFoliageSetConfig<E extends Enum<?>, S extends SaplingGenerator> implements SetRegistrar {
+public final class TreeFoliageRegistrySetConfig<E extends Enum<?>, S extends SaplingGenerator> implements RegistrySetCreator {
     private final List<BlockSet<?>> ALL_BLOCKS;
     public final BlockSet<ConfiguredLeavesBlock> LEAVES;
     public final BlockSet<ConfiguredSaplingBlock> SAPLING;
     public final BlockSet<ConfiguredFlowerPotBlock> POTTED_SAPLING;
 
-    public TreeFoliageSetConfig(E type, AfterLeaves<S> afterLeaves) {
+    public TreeFoliageRegistrySetConfig(E type, AfterLeaves<S> afterLeaves) {
         final String leafType = type.name().toLowerCase();
         ALL_BLOCKS = new ArrayList<>();
         LEAVES = buildBlock(new ConfiguredLeavesBlock(), leafType + "_leaves");

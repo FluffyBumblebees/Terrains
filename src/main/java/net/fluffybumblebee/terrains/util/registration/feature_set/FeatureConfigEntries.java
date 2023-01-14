@@ -3,7 +3,7 @@ package net.fluffybumblebee.terrains.util.registration.feature_set;
 import java.util.Arrays;
 import java.util.List;
 
-public class FeatureConfigEntries<T> implements BasicIterator<T> {
+public class FeatureConfigEntries<T> implements Quickerator<T> {
     private final T[] ALL_ENTRIES;
 
     public FeatureConfigEntries(T[] allEntries) {

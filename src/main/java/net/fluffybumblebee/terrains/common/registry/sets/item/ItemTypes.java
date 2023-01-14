@@ -1,6 +1,6 @@
 package net.fluffybumblebee.terrains.common.registry.sets.item;
 
-import net.fluffybumblebee.terrains.common.registry.sets.item.ItemSetConfig.IdentifiableItem;
+import net.fluffybumblebee.terrains.common.registry.sets.item.ItemRegistrySetConfig.IdentifiableItem;
 import net.minecraft.item.Item;
 
 import java.util.List;

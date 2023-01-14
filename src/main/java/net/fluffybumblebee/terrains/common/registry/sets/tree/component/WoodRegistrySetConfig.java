@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.common.registry.sets.experimental;
+package net.fluffybumblebee.terrains.common.registry.sets.tree.component;
 
 
 import com.terraformersmc.terraform.boat.api.TerraformBoatType;
@@ -10,7 +10,7 @@ import net.fluffybumblebee.terrains.common.instances.block.wood.*;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet.Builder;
 import net.fluffybumblebee.terrains.util.registration.entity.BoatRegistration;
-import net.fluffybumblebee.terrains.util.registration.feature_set.SetRegistrar;
+import net.fluffybumblebee.terrains.util.registration.feature_set.RegistrySetCreator;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -23,7 +23,7 @@ import java.util.List;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildFlammableBlock;
 
-public class WoodSetConfig implements SetRegistrar {
+public class WoodRegistrySetConfig implements RegistrySetCreator {
     private final List<BlockSet<?>> ALL_BLOCKS;
     public static TerraformBoatType BOAT;
 
@@ -44,7 +44,7 @@ public class WoodSetConfig implements SetRegistrar {
     public final BlockSet<?> SIGN;
     public final BlockSet<?> WALL_SIGN;
 
-    public WoodSetConfig(String woodType) {
+    public WoodRegistrySetConfig(String woodType) {
         ALL_BLOCKS = new ArrayList<>();
         BoatRegistration.register(woodType, () -> BOAT, item -> BOAT = new TerraformBoatType.Builder().item(item).build());
 

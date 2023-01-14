@@ -3,7 +3,7 @@ package net.fluffybumblebee.terrains.common.registry.sets.IAMANIDIOT;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fluffybumblebee.terrains.common.world.feature.raw.StainedSaplingGenerator;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
-import net.fluffybumblebee.terrains.util.registration.feature_set.SetRegistrar;
+import net.fluffybumblebee.terrains.util.registration.feature_set.RegistrySetCreator;
 import net.minecraft.item.Item;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.biome.Biome;
@@ -17,20 +17,20 @@ import java.util.List;
 
 import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.*;
 
-public final class StainedTreeSetConfig<E extends Enum<?>> implements SetRegistrar {
+public final class StainedTreeRegistrySetConfig<E extends Enum<?>> implements RegistrySetCreator {
     private final List<BlockSet<?>> ALL_BLOCKS;
     private RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> TREE;
     private RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> TREE_BEES;
     private RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> FAT_TREE;
     private RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> FAT_TREE_BEES;
-    public final TreeFoliageSetConfig<E, StainedSaplingGenerator> FOLIAGE;
+    public final TreeFoliageRegistrySetConfig<E, StainedSaplingGenerator> FOLIAGE;
     public final RegistryEntry<PlacedFeature> TREE_PLACED;
 
-    public StainedTreeSetConfig(E type) {
+    public StainedTreeRegistrySetConfig(E type) {
         final String colour = type.name().toLowerCase();
         ALL_BLOCKS = new ArrayList<>();
 
-        FOLIAGE = new TreeFoliageSetConfig<>(type, block -> {
+        FOLIAGE = new TreeFoliageRegistrySetConfig<>(type, block -> {
             TREE = defOak(colour, block);
             TREE_BEES = defOakBees(colour + "_bees", block);
             FAT_TREE = fatOak("fat_" + colour, block);

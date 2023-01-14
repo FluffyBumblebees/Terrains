@@ -11,12 +11,12 @@ import java.util.Map;
 
 import static net.fluffybumblebee.terrains.util.registration.feature_set.EasyIf.onIf;
 
-public interface AbstractRegistrySet<Types, RegistryConfig extends SetRegistrar> extends BasicIterator<BlockSet<?>> {
-    BasicIterator<Types> getIterator();
+public interface AbstractRegistrySet<Types, RegistryConfig extends RegistrySetCreator> extends Quickerator<BlockSet<?>> {
+    Quickerator<Types> getIterator();
 
-    Map<Types, RegistryConfig> getTypes();
+    Map<Types, RegistryConfig> getTypeMap();
 
-    BasicIterator<Item> getItemIterator();
+    Quickerator<Item> getItemIterator();
 
     default void addAllToStack(List<ItemStack> stacks, boolean itemConditions,
                                boolean blockConditions, @Nullable Access access) {
@@ -38,7 +38,7 @@ public interface AbstractRegistrySet<Types, RegistryConfig extends SetRegistrar>
 
     default List<BlockSet<?>> getAllRegistryEntries() {
         List<BlockSet<?>> list = new ArrayList<>();
-        getIterator().forEach(colour -> list.addAll(getTypes().get(colour).getAllBlockSets()));
+        getIterator().forEach(colour -> list.addAll(getTypeMap().get(colour).getAllBlockSets()));
         return list;
     }
 
@@ -58,7 +58,7 @@ public interface AbstractRegistrySet<Types, RegistryConfig extends SetRegistrar>
     interface Access {
         void invoke(BlockSet<?> element,
                     BooleanHolder booleanHolder,
-                    BasicIterator<Item> iterator,
+                    Quickerator<Item> iterator,
                     boolean itemConditions,
                     boolean blockConditions);
     }

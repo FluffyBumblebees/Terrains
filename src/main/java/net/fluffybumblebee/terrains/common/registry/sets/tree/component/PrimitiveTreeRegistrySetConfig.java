@@ -1,10 +1,10 @@
-package net.fluffybumblebee.terrains.common.registry.sets.experimental;
+package net.fluffybumblebee.terrains.common.registry.sets.tree.component;
 
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredLeavesBlock;
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredSaplingBlock;
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredFlowerPotBlock;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
-import net.fluffybumblebee.terrains.util.registration.feature_set.SetRegistrar;
+import net.fluffybumblebee.terrains.util.registration.feature_set.RegistrySetCreator;
 import net.minecraft.block.Block;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.Item;
@@ -20,7 +20,7 @@ import java.util.List;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildBlock;
 
-public final class PrimitiveTreeSetConfig<Generator extends SaplingGenerator> implements SetRegistrar {
+public final class PrimitiveTreeRegistrySetConfig<Generator extends SaplingGenerator> implements RegistrySetCreator {
     private final List<BlockSet<?>> ALL_BLOCKS;
     public final BlockSet<ConfiguredLeavesBlock> LEAVES;
     public final BlockSet<ConfiguredSaplingBlock> SAPLING;
@@ -32,7 +32,7 @@ public final class PrimitiveTreeSetConfig<Generator extends SaplingGenerator> im
     public final HashMap<String, RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>>> CONFIGURED_FEATURE_HOLDER;
     public final HashMap<String, RegistryEntry<PlacedFeature>> PLACED_FEATURES_HOLDER;
 
-    public PrimitiveTreeSetConfig(
+    public PrimitiveTreeRegistrySetConfig(
             final List<BlockSet<?>> logVariants,
             final String type,
             final String[] configuredVariants,

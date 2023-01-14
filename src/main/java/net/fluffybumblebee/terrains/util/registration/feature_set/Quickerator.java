@@ -2,7 +2,7 @@ package net.fluffybumblebee.terrains.util.registration.feature_set;
 
 import java.util.List;
 
-public interface BasicIterator<T> {
+public interface Quickerator<T> {
     List<T> getValues();
 
     default void forEach(TypeIterator<T> iterator) {
@@ -11,7 +11,7 @@ public interface BasicIterator<T> {
         }
     }
 
-    interface TypeIterator <E> {
-        void with(E element);
+    interface TypeIterator <T> {
+        void with(T element);
     }
 }
