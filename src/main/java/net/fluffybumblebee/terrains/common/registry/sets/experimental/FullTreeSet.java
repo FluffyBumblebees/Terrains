@@ -5,8 +5,8 @@ import net.fluffybumblebee.terrains.common.instances.block.wood.WoodBlock;
 import net.fluffybumblebee.terrains.common.registry.sets.experimental.PrimitiveTreeSet.SaplingGeneratorProvider;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WoodRegistrySetConfig;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
-import net.fluffybumblebee.terrains.util.registration.feature_set.Quickerator;
-import net.fluffybumblebee.terrains.util.registration.feature_set.RegistrySetCreator;
+import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.Item;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-import static net.fluffybumblebee.terrains.util.registration.feature_set.EasyIf.onIf;
+import static net.fluffybumblebee.terrains.util.registration.registry_set.helper.EasyIf.onIf;
 
 public class FullTreeSet<Generator extends SaplingGenerator,
         Configurator extends FullTreeSet.FeatureConfigurator<Generator>>

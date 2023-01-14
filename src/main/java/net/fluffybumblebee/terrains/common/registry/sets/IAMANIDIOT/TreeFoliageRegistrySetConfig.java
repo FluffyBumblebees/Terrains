@@ -4,7 +4,7 @@ import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredLeave
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredSaplingBlock;
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredFlowerPotBlock;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
-import net.fluffybumblebee.terrains.util.registration.feature_set.RegistrySetCreator;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.minecraft.block.Block;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.Item;

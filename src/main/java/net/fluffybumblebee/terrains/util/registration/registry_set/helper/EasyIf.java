@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.util.registration.feature_set;
+package net.fluffybumblebee.terrains.util.registration.registry_set.helper;
 
 public class EasyIf {
     public static void onIf(boolean condition, Runnable runnable) {

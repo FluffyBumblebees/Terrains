@@ -1,6 +1,7 @@
-package net.fluffybumblebee.terrains.util.registration.feature_set;
+package net.fluffybumblebee.terrains.util.registration.registry_set.registrars;
 
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
+import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static net.fluffybumblebee.terrains.util.registration.feature_set.EasyIf.onIf;
+import static net.fluffybumblebee.terrains.util.registration.registry_set.helper.EasyIf.onIf;
 
 public interface AbstractRegistrySet<Types, RegistryConfig extends RegistrySetCreator> extends Quickerator<BlockSet<?>> {
     Quickerator<Types> getIterator();

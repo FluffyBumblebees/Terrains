@@ -3,8 +3,8 @@ package net.fluffybumblebee.terrains.common.registry.sets.tree.component;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.whole.TreeType;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
-import net.fluffybumblebee.terrains.util.registration.feature_set.Quickerator;
-import net.fluffybumblebee.terrains.util.registration.feature_set.RegistrySetCreator;
+import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.Item;
@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import static net.fluffybumblebee.terrains.util.registration.feature_set.EasyIf.onIf;
+import static net.fluffybumblebee.terrains.util.registration.registry_set.helper.EasyIf.onIf;
 
 public class FullTreeRegistrySetConfig<Generator extends SaplingGenerator> implements RegistrySetCreator {
     public final HashMap<String, PrimitiveTreeRegistrySetConfig<Generator>> TREE_CONFIG;

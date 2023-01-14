@@ -10,7 +10,7 @@ import net.fluffybumblebee.terrains.common.instances.block.wood.*;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet.Builder;
 import net.fluffybumblebee.terrains.util.registration.entity.BoatRegistration;
-import net.fluffybumblebee.terrains.util.registration.feature_set.RegistrySetCreator;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;

@@ -7,7 +7,7 @@ import net.minecraft.block.*;
 import net.minecraft.client.render.RenderLayer;
 
 import static net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets.*;
-import static net.fluffybumblebee.terrains.util.registration.feature_set.EasyIf.onIf;
+import static net.fluffybumblebee.terrains.util.registration.registry_set.helper.EasyIf.onIf;
 
 public class RendererCutouts {
     public static void registerCutouts() {

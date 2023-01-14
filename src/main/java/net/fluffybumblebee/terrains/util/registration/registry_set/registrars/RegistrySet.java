@@ -1,5 +1,6 @@
-package net.fluffybumblebee.terrains.util.registration.feature_set;
+package net.fluffybumblebee.terrains.util.registration.registry_set.registrars;
 
+import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
 import net.minecraft.item.Item;
 
 import java.util.*;

@@ -9,7 +9,7 @@ import net.fluffybumblebee.terrains.common.registry.sets.item.ItemRegistrySetCon
 import net.fluffybumblebee.terrains.common.registry.sets.item.ItemTypes;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.stained.StainedTreeRegistrySetConfig;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.stained.StainedTreeTypes;
-import net.fluffybumblebee.terrains.util.registration.feature_set.RegistrySet;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySet;
 
 public final class AllRegistrySets {
     public static final RegistrySet<StainedTreeTypes, StainedTreeRegistrySetConfig<StainedTreeTypes>> STAINED_TREES;

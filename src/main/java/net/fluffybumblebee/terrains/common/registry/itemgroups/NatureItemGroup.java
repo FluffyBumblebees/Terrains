@@ -11,7 +11,7 @@ import static net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets.
 import static net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets.STAINED_TREES;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.stained.StainedTreeTypes.PURPLE;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.NAMESPACE;
-import static net.fluffybumblebee.terrains.util.registration.feature_set.EasyIf.onIf;
+import static net.fluffybumblebee.terrains.util.registration.registry_set.helper.EasyIf.onIf;
 
 public class NatureItemGroup {
     public static void register() {}

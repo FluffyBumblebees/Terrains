@@ -5,7 +5,7 @@ import net.fluffybumblebee.terrains.common.world.feature.raw.MapleSaplingGenerat
 import net.fluffybumblebee.terrains.common.world.feature.raw.component.ConeFoliagePlacer;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
-import net.fluffybumblebee.terrains.util.registration.feature_set.FeatureConfigEntries;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.FeatureConfigEntries;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.collection.DataPool;

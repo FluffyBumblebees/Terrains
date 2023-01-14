@@ -9,11 +9,11 @@ public final class MapleTreeType
             new FullTreeSet.TreeType<>(
                     "maple",
                     new String[] {
-                            "yellow",
-                            "orange",
-                            "green",
+                            "red",
                             "brown",
-                            "red"
+                            "orange",
+                            "yellow",
+                            "green"
                     },
                     null,
                     MapleTreeType::new
