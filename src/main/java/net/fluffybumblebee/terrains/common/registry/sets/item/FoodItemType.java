@@ -1,11 +1,12 @@
 package net.fluffybumblebee.terrains.common.registry.sets.item;
 
 import net.fluffybumblebee.terrains.common.instances.item.food.FoodItem;
-import net.fluffybumblebee.terrains.common.registry.sets.item.ItemRegistrySetConfig.IdentifiableItem;
+import net.fluffybumblebee.terrains.common.registry.sets.item.component.ItemRegistrySet.IdentifiableItem;
+import net.fluffybumblebee.terrains.common.registry.sets.item.food.TypesItem;
 
 import java.util.List;
 
-import static net.fluffybumblebee.terrains.common.registry.sets.item.ItemRegistrySetConfig.getItem;
+import static net.fluffybumblebee.terrains.common.registry.sets.item.component.ItemRegistrySet.getItem;
 
 public class FoodItemType {
 
@@ -19,7 +20,7 @@ public class FoodItemType {
     public static final IdentifiableItem<FoodItem> HONEYCOMB_PANCAKE_SANDWICH = getItem(new FoodItem(8),
             "honeycomb_pancake_sandwich");
 
-    public static final ItemTypes<FoodItem> FOOD_ITEMS = new ItemTypes<>(
+    public static final TypesItem<FoodItem> FOOD_ITEMS = new TypesItem<>(
             List.of(
                     PANCAKE_DOUGH,
                     MAPLE_SAP,

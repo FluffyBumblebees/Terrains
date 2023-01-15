@@ -1,28 +1,29 @@
 package net.fluffybumblebee.terrains.common.registry.sets;
 
-import net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.CrystalGeodeRegistrySetConfig;
-import net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.CrystalGeodeTypes;
-import net.fluffybumblebee.terrains.common.registry.sets.tree.component.FullTreeRegistrySetConfig;
-import net.fluffybumblebee.terrains.common.registry.sets.tree.whole.AllTreeTypes;
-import net.fluffybumblebee.terrains.common.registry.sets.tree.whole.TreeType;
-import net.fluffybumblebee.terrains.common.registry.sets.item.ItemRegistrySetConfig;
-import net.fluffybumblebee.terrains.common.registry.sets.item.ItemTypes;
-import net.fluffybumblebee.terrains.common.registry.sets.tree.stained.StainedTreeRegistrySetConfig;
-import net.fluffybumblebee.terrains.common.registry.sets.tree.stained.StainedTreeTypes;
+import net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.component.CrystalGeodeSet;
+import net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.TypesCrystalGeode;
+import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet;
+import net.fluffybumblebee.terrains.common.registry.sets.tree.whole.TypesWholeTree;
+import net.fluffybumblebee.terrains.common.registry.sets.item.component.ItemRegistrySet;
+import net.fluffybumblebee.terrains.common.registry.sets.item.food.TypesItem;
+import net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained.StainedTreeType;
+import net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained.TypesStainedTree;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySet;
 
 public final class AllRegistrySets {
-    public static final RegistrySet<StainedTreeTypes, StainedTreeRegistrySetConfig<StainedTreeTypes>> STAINED_TREES;
-    public static final RegistrySet<CrystalGeodeTypes, CrystalGeodeRegistrySetConfig<CrystalGeodeTypes>> CRYSTAL_GEODES;
-    public static final RegistrySet<TreeType<?>, FullTreeRegistrySetConfig<?>> FULL_TREE_SETS;
-    public static final RegistrySet<ItemTypes<?>, ItemRegistrySetConfig<?>> ITEMS;
+    public static final RegistrySet<TypesStainedTree, StainedTreeType<TypesStainedTree>> STAINED_TREES;
+    //public static final RegistrySet<StainedTreeTypes, StainedTreeRegistrySetConfig<StainedTreeTypes>>
+    // STAINED_TREES_SET;
+    public static final RegistrySet<TypesCrystalGeode, CrystalGeodeSet<TypesCrystalGeode>> CRYSTAL_GEODES;
+    public static final RegistrySet<WholeTreeSet.TreeType<?, ?>, WholeTreeSet<?, ?>> FULL_TREES;
+    public static final RegistrySet<TypesItem<?>, ItemRegistrySet<?>> ITEMS;
 
 
     static {
-        STAINED_TREES = new RegistrySet<>(StainedTreeTypes.values(), StainedTreeRegistrySetConfig::new);
-        CRYSTAL_GEODES = new RegistrySet<>(CrystalGeodeTypes.values(), CrystalGeodeRegistrySetConfig::new);
-        FULL_TREE_SETS = new RegistrySet<>(AllTreeTypes.getTypes().getAllEntries(), FullTreeRegistrySetConfig::new);
-        ITEMS = new RegistrySet<>(ItemTypes.ALL_ITEMS, ItemRegistrySetConfig::new);
+        STAINED_TREES = new RegistrySet<>(TypesStainedTree.values(), StainedTreeType::new);
+        CRYSTAL_GEODES = new RegistrySet<>(TypesCrystalGeode.values(), CrystalGeodeSet::new);
+        FULL_TREES = new RegistrySet<>(TypesWholeTree.ALL_WHOLE_TREES, WholeTreeSet::new);
+        ITEMS = new RegistrySet<>(TypesItem.ALL_ITEMS, ItemRegistrySet::new);
     }
 
     private AllRegistrySets() {}

@@ -1,6 +1,6 @@
 package net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes;
 
-public enum CrystalGeodeTypes {
+public enum TypesCrystalGeode {
     DARK,
     BLACK,
     RED,

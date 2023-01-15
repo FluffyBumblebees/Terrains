@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes;
+package net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.component;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fluffybumblebee.terrains.common.instances.block.crystals.*;
@@ -21,7 +21,7 @@ import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buil
 import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.generateFeature;
 
 @SuppressWarnings("FieldCanBeLocal")
-public final class CrystalGeodeRegistrySetConfig<Type extends Enum<?>> implements RegistrySetCreator {
+public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetCreator {
     public final List<BlockSet<?>> ALL_BLOCKS;
 
     public final BlockSet<CorundumCluster> CORUNDUM_CLUSTER;
@@ -42,7 +42,7 @@ public final class CrystalGeodeRegistrySetConfig<Type extends Enum<?>> implement
     private final RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> CONFIGURED_GEODE;
     private final RegistryEntry<PlacedFeature> PLACED_GEODE;
 
-    public CrystalGeodeRegistrySetConfig(Type type) {
+    public CrystalGeodeSet(Type type) {
         final String colour = type.name().toLowerCase();
         ALL_BLOCKS = new ArrayList<>();
 

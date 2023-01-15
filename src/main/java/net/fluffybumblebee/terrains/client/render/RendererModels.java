@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 
 public class RendererModels {
     public static void registerModels() {
-        AllRegistrySets.FULL_TREE_SETS.forEach(element -> {
+        AllRegistrySets.FULL_TREES.forEach(element -> {
             if (element.BLOCK instanceof SignBlock)
                 RendererRegistration.registerTextures(element.IDENTIFIER);
         });

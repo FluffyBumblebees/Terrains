@@ -5,7 +5,8 @@ import net.minecraft.item.Item;
 
 import java.util.*;
 
-public class RegistrySet<Types, RegistryConfig extends RegistrySetCreator> implements AbstractRegistrySet<Types, RegistryConfig> {
+public final class RegistrySet<Types, RegistryConfig extends RegistrySetCreator> implements AbstractRegistrySet<Types,
+        RegistryConfig> {
     private final Quickerator<Types> ITERATOR;
     private final Map<Types, RegistryConfig> TYPE_MAP;
     public RegistrySet(List<Types> values, RegistrySetFactory<Types, RegistryConfig> factory) {

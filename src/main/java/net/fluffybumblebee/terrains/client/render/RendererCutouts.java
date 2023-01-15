@@ -11,8 +11,8 @@ import static net.fluffybumblebee.terrains.util.registration.registry_set.helper
 
 public class RendererCutouts {
     public static void registerCutouts() {
-        FULL_TREE_SETS.forEach(element -> onIf(element.BLOCK instanceof LeavesBlock || element.BLOCK instanceof DoorBlock
-                        || element.BLOCK instanceof TrapdoorBlock || element.BLOCK instanceof SaplingBlock,
+        FULL_TREES.forEach(element -> onIf(element.BLOCK instanceof LeavesBlock || element.BLOCK instanceof DoorBlock
+                || element.BLOCK instanceof TrapdoorBlock || element.BLOCK instanceof SaplingBlock,
                 () -> putBlock(element.BLOCK))
         );
 

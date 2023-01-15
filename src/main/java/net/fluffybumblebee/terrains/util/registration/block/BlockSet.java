@@ -32,7 +32,8 @@ public final class BlockSet<B extends Block> {
         return new Builder<>(block, getIdentifier(name)).addBlockItem().build();
     }
 
-    public static <B extends Block> BlockSet<?> buildFlammableBlock(B block, String name) {
+    public static <B extends Block> BlockSet<?> buildFlammableBlock(
+            final B block, final String name, final ItemGroup itemGroup) {
         BlockSet.Builder<B> builder = new BlockSet.Builder<>(block, TerrainsDefaults.getIdentifier(name));
         if (block instanceof LeavesBlock) {
             builder.addFlammability(30, 60);
@@ -50,8 +51,12 @@ public final class BlockSet<B extends Block> {
                 builder.addBurnable(300);
             }
         }
-        builder.addBlockItem(ItemGroup.BUILDING_BLOCKS);
+        builder.addBlockItem(itemGroup);
         return builder.build();
+    }
+
+    public static <B extends Block> BlockSet<?> buildFlammableBlock(final B block, final String name) {
+        return buildFlammableBlock(block, name, ItemGroup.BUILDING_BLOCKS);
     }
 
     @Override
