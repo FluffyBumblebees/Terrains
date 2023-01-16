@@ -1,6 +1,6 @@
 package net.fluffybumblebee.terrains.mixins.mixin;
 
-import net.fluffybumblebee.terrains.common.world.biome_defaults.MeadowDefaults;
+import net.fluffybumblebee.terrains.common.world.inbuilt_biomes.MeadowDefaults;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static net.fluffybumblebee.terrains.common.world.feature.TerrainsPlacedFeatures.MEADOW_BUSH;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.MEADOW_BUSH;
 import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 
 @Mixin(OverworldBiomeCreator.class)

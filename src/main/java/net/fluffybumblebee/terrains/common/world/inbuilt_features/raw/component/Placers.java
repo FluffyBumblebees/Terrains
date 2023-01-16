@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.common.world.feature.raw.component;
+package net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.component;
 
 import com.terraformersmc.terraform.tree.placer.PlacerTypes;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;

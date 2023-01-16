@@ -28,7 +28,7 @@ public class WholeTreeSet<
     public final HashMap<String, PrimitiveTreeSet<Generator, FeatureProvider>> PRIMITIVE_TREE_CONFIGS;
     public final String WOOD_TYPE;
     public final String[] TREE_VARIANTS;
-    final List<BlockSet<WoodBlock>> ADDITIONAL_LOG_VARIANTS;
+    public final List<BlockSet<WoodBlock>> ADDITIONAL_LOG_VARIANTS;
 
     private final List<BlockSet<?>> ALL_BLOCKS;
     public final WoodSet WOOD_SET;

@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.common.world.feature.raw;
+package net.fluffybumblebee.terrains.common.world.inbuilt_features.raw;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;

@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry.registerWaxableBlockPair;
-import static net.fluffybumblebee.terrains.util.registration.world.feature.CrystalFeatures.registerGeode;
-import static net.fluffybumblebee.terrains.util.registration.world.feature.CrystalFeatures.registerPlacedGeode;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsConfiguredFeatures.registerGeode;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.registerPlacedGeode;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildBlock;
 import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.generateFeature;
 
@@ -101,6 +101,5 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
     @Override
     public void generationEvent() {
         generateFeature(PLACED_GEODE, BiomeSelectors.all(), GenerationStep.Feature.UNDERGROUND_STRUCTURES);
-
     }
 }

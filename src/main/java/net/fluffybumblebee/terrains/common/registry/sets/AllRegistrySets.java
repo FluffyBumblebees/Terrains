@@ -16,7 +16,6 @@ public final class AllRegistrySets {
     public static final RegistrySet<WholeTreeSet.TreeType<?, ?>, WholeTreeSet<?, ?>> FULL_TREES;
     public static final RegistrySet<TypesItem<?>, ItemRegistrySet<?>> ITEMS;
 
-
     static {
         STAINED_TREES = new RegistrySet<>(TypesStainedTree.values(), StainedTreeType::new);
         CRYSTAL_GEODES = new RegistrySet<>(TypesCrystalGeode.values(), CrystalGeodeSet::new);

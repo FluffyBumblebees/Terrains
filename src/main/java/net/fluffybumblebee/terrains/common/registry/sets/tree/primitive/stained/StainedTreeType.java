@@ -3,7 +3,8 @@ package net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.Config;
-import net.fluffybumblebee.terrains.common.world.feature.raw.StainedSaplingGenerator;
+import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
+import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.StainedSaplingGenerator;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
@@ -12,15 +13,19 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.item.Item;
+import net.minecraft.tag.BlockTags;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.LargeOakFoliagePlacer;
+import net.minecraft.world.gen.placementmodifier.BlockFilterPlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
@@ -30,7 +35,7 @@ import net.minecraft.world.gen.trunk.TrunkPlacer;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.*;
+import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.generateFeature;
 import static net.minecraft.world.gen.feature.VegetationPlacedFeatures.modifiers;
 
 public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySetCreator {
@@ -64,11 +69,14 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
 
     @Override
     public void generationEvent() {
-        generateFeature(TREE_CONFIG.TREE_FEATURES.RANDOM_TREE_PLACED, BiomeSelectors.categories(Biome.Category.PLAINS),
-                GenerationStep.Feature.VEGETAL_DECORATION);
+        generateFeature(
+                TREE_CONFIG.TREE_FEATURES.RANDOM_TREE_PLACED,
+                BiomeSelectors.categories(Biome.Category.PLAINS),
+                GenerationStep.Feature.VEGETAL_DECORATION
+        );
     }
 
-    private static class StainedConfig implements PrimitiveTreeSet.FeatureCreator<StainedSaplingGenerator> {
+    private static class StainedConfig implements FeatureCreator<StainedSaplingGenerator> {
 
         public final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> RANDOM_TREE;
         public final RegistryEntry<PlacedFeature> RANDOM_TREE_PLACED;
@@ -130,7 +138,8 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
             return PlacedFeatures.register(
                     type + "_" + size + "_tree_" + beeState + "_placed",
                     tree,
-                    PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING)
+                    PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING),
+                    BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.DIRT, Direction.DOWN.getVector()))
 
             );
         }

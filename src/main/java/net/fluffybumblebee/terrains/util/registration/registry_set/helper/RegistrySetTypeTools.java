@@ -17,9 +17,10 @@ public class RegistrySetTypeTools {
     }
 
     @SuppressWarnings("unused")
-    public static <Generator extends SaplingGenerator, GeneratorSupplier extends PrimitiveTreeSet.FeatureCreator<Generator>>
+    public static <Generator extends SaplingGenerator, GeneratorSupplier extends PrimitiveTreeSet.FeatureCreator<Generator>,
+            Types extends Enum<?>>
     GeneratorSupplier accessTreeFeatures(TreeType<Generator, GeneratorSupplier> treeType,
-                                         Enum<?> treeVariant) {
+                                         Types treeVariant) {
         return accessTreeFeatures(treeType, treeVariant.name().toLowerCase());
     }
 

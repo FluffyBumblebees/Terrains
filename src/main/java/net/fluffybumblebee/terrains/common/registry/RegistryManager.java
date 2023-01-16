@@ -10,21 +10,14 @@ public class RegistryManager {
     public static void init() {
         registerBlocks();
         registerItems();
-        registerWorldGen();
         registerSets();
         registerItemGroups();
+        registerWorldGen();
     }
 
-    public static void registerBlocks() {
-    }
+    public static void registerBlocks() {}
 
-    public static void registerItems() {
-        //MapleBasedItems.register();
-    }
-
-    public static void registerWorldGen() {
-        WorldManager.init();
-    }
+    public static void registerItems() {}
 
     public static void registerSets() {
         AllRegistrySets.register();
@@ -35,4 +28,8 @@ public class RegistryManager {
         NatureItemGroup.register();
         FoodItemGroup.register();
     }
+    public static void registerWorldGen() {
+        WorldManager.init();
+    }
+
 }

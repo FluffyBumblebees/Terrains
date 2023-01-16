@@ -9,6 +9,4 @@ public class RendererModels {
     public static void registerModels() {
         registerWoodSetEntities(AllRegistrySets.FULL_TREES.getTypeMap().get(MapleTreeType.MAPLE_TREES).WOOD_SET);
     }
-
-
 }

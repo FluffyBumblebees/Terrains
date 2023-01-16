@@ -2,18 +2,22 @@ package net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple;
 
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet.TreeType;
-import net.fluffybumblebee.terrains.common.world.feature.raw.MapleSaplingGenerator;
-import net.fluffybumblebee.terrains.common.world.feature.raw.component.ConeFoliagePlacer;
+import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.MapleSaplingGenerator;
+import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.component.ConeFoliagePlacer;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.collection.DataPool;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.registry.RegistryEntry;
+import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
+import net.minecraft.world.gen.placementmodifier.BlockFilterPlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
@@ -101,7 +105,8 @@ public final class MapleTreeType implements FeatureCreator<MapleSaplingGenerator
                 type + "_tree_"+ beeState + "_placed",
                 tree,
                 PlacedFeatures.createCountExtraModifier(1, 0.05F, 1),
-                PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING)
+                PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING),
+                BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.DIRT, Direction.DOWN.getVector()))
 
         );
     }

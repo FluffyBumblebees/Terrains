@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.common.world.biome_defaults;
+package net.fluffybumblebee.terrains.common.world.inbuilt_biomes;
 
 import net.fluffybumblebee.terrains.mixins.intercomm.OverworldBiomeCreatorMixinInterface;
 import net.minecraft.client.sound.MusicType;
@@ -9,7 +9,7 @@ import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.gen.GenerationStep;
 
-import static net.fluffybumblebee.terrains.common.world.feature.TerrainsPlacedFeatures.*;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.*;
 
 public class MeadowDefaults {
     private static int getSkyColor(@SuppressWarnings("SameParameterValue") float temperature) {
