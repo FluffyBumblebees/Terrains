@@ -9,6 +9,7 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getPlacedNoBees;
+import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getUniqueMapleFeatures;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.*;
 import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.*;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
@@ -38,8 +39,8 @@ public class BarrenMapleWoods {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(ORANGE));
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(YELLOW));
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(BROWN));
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, FALLEN_MAPLE_TRUNK);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, DEAD_MAPLE_TREE);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getUniqueMapleFeatures().FALLEN_MAPLE_TRUNK);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getUniqueMapleFeatures().DEAD_MAPLE_TREE);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_DEAD_BUSH);
         DefaultBiomeFeatures.addSavannaGrass(builder);
         DefaultBiomeFeatures.addDefaultMushrooms(builder);

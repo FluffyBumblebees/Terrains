@@ -10,7 +10,6 @@ import net.minecraft.world.gen.placementmodifier.*;
 import java.util.List;
 
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getNamespaceVar;
-import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.registerGenericPlaced;
 import static net.minecraft.world.gen.feature.PlacedFeatures.createCountExtraModifier;
 import static net.minecraft.world.gen.feature.PlacedFeatures.register;
 import static net.minecraft.world.gen.feature.VegetationPlacedFeatures.modifiers;
@@ -100,17 +99,6 @@ public class TerrainsPlacedFeatures {
             SquarePlacementModifier.of(),
             PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
             BiomePlacementModifier.of()
-    );
-
-    public static final RegistryEntry<PlacedFeature> DEAD_MAPLE_TREE = registerGenericPlaced(
-            "dead_maple_tree_placed",
-            TerrainsConfiguredFeatures.DEAD_MAPLE_TREE,
-            1
-    );
-    public static final RegistryEntry<PlacedFeature> FALLEN_MAPLE_TRUNK = registerGenericPlaced(
-            "fallen_maple_tree_placed",
-            TerrainsConfiguredFeatures.FALLEN_MAPLE_TREE_CONFIG,
-            1
     );
 
     public static RegistryEntry<PlacedFeature> registerPlacedGeode(RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> geode, String name) {

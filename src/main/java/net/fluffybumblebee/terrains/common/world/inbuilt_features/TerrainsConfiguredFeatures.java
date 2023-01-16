@@ -1,7 +1,5 @@
 package net.fluffybumblebee.terrains.common.world.inbuilt_features;
 
-import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.component.FallenTrunkPlacer;
-import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.component.NoneFoliagePlacer;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.block.AmethystClusterBlock;
 import net.minecraft.block.Block;
@@ -21,11 +19,9 @@ import net.minecraft.world.gen.foliage.BushFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
-import net.minecraft.world.gen.trunk.TrunkPlacer;
 
 import java.util.List;
 
-import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.MAPLE_LOGS;
 import static net.minecraft.world.gen.feature.ConfiguredFeatures.register;
 
 @SuppressWarnings("deprecation")
@@ -53,30 +49,6 @@ public class TerrainsConfiguredFeatures {
                     BlockStateProvider.of(Blocks.OBSIDIAN)
             )
     );
-
-    private static TreeFeatureConfig getDeadMapleTree(TrunkPlacer trunkPlacer) {
-        return new TreeFeatureConfig.Builder(
-                new WeightedBlockStateProvider(MAPLE_LOGS),
-                trunkPlacer,
-                BlockStateProvider.of(Blocks.OAK_LEAVES.getDefaultState()),
-                new NoneFoliagePlacer(),
-                new TwoLayersFeatureSize(0, 0, 0)
-        ).build();
-    }
-
-    public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> DEAD_MAPLE_TREE =
-            ConfiguredFeatures.register(
-                    TerrainsDefaults.getNamespaceVar() + "dead_maple_tree",
-                    Feature.TREE,
-                    getDeadMapleTree(new StraightTrunkPlacer(5, 4, 4))
-            );
-
-    public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> FALLEN_MAPLE_TREE_CONFIG =
-            ConfiguredFeatures.register(
-                    TerrainsDefaults.getNamespaceVar() + "fallen_maple_trunk",
-                    Feature.TREE,
-                    getDeadMapleTree(new FallenTrunkPlacer(3, 2, 0))
-            );
 
     public static <B extends Block, C extends AmethystClusterBlock> RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> registerGeode(
             B corundum,

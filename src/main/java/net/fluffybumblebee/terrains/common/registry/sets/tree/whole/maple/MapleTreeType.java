@@ -1,9 +1,11 @@
 package net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple;
 
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
-import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet.TreeType;
+import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet;
 import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.MapleSaplingGenerator;
 import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.component.ConeFoliagePlacer;
+import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.component.FallenTrunkPlacer;
+import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.component.NoneFoliagePlacer;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -17,18 +19,32 @@ import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
+import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.placementmodifier.BlockFilterPlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
+import net.minecraft.world.gen.trunk.TrunkPlacer;
 
 import java.util.List;
 import java.util.OptionalInt;
 
 import static net.fluffybumblebee.terrains.util.registration.registry_set.helper.RegistrySetTypeTools.EnumArrayToString;
+import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.registerGenericPlaced;
 
-public final class MapleTreeType implements FeatureCreator<MapleSaplingGenerator> {
+public final class MapleTreeType {
+    public static final WholeTreeSet.TreeType<MapleSaplingGenerator, MapleFeatures, UniqueMapleFeatures> MAPLE_TREES =
+            new WholeTreeSet.TreeType<>(
+                    "maple",
+                    EnumArrayToString(MapleTypes.values()),
+                    new String[]{
+                            "sappy_maple_log"
+                    },
+                    MapleFeatures::new,
+                    UniqueMapleFeatures::new
+            );
+
     public enum MapleTypes {
         RED,
         BROWN,
@@ -36,78 +52,117 @@ public final class MapleTreeType implements FeatureCreator<MapleSaplingGenerator
         YELLOW,
         GREEN
     }
+    public static final class MapleFeatures implements FeatureCreator<MapleSaplingGenerator> {
+        private final List<Block> ALL_LOGS;
+        public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>> CONFIGURED_TREE_NO_BEES;
+        public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>> CONFIGURED_TREE_BEES;
+        public final RegistryEntry<PlacedFeature> PLACED_TREE_NO_BEES;
+        public final RegistryEntry<PlacedFeature> PLACED_TREE_BEES;
 
-    public static final TreeType<MapleSaplingGenerator, MapleTreeType> MAPLE_TREES =
-            new TreeType<>(
-                    "maple",
-                    EnumArrayToString(MapleTypes.values()),
-                    new String[] {
-                            "sappy_maple_log"
-                    },
-                    MapleTreeType::new
-            );
-
-    private final List<Block> ALL_LOGS;
-    public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>> CONFIGURED_TREE_NO_BEES;
-    public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>> CONFIGURED_TREE_BEES;
-    public final RegistryEntry<PlacedFeature> PLACED_TREE_NO_BEES;
-    public final RegistryEntry<PlacedFeature> PLACED_TREE_BEES;
-
-    private MapleTreeType(final List<Block> allLogs, final LeavesBlock leaves, final String type) {
-        ALL_LOGS = allLogs;
-        CONFIGURED_TREE_NO_BEES = getConfiguredMaple(type, leaves, false);
-        CONFIGURED_TREE_BEES = getConfiguredMaple(type, leaves, true);
-        PLACED_TREE_NO_BEES = getPlacedMaple(type, CONFIGURED_TREE_NO_BEES, false);
-        PLACED_TREE_BEES = getPlacedMaple(type, CONFIGURED_TREE_BEES, true);
-    }
-
-    @Override
-    public MapleSaplingGenerator createNew() {
-        return new MapleSaplingGenerator(
-                ctx -> CONFIGURED_TREE_NO_BEES,
-                ctx -> CONFIGURED_TREE_BEES
-        );
-    }
-
-    private RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>>
-    getConfiguredMaple(final String type, final LeavesBlock leaves, final boolean bees) {
-        final DataPool<BlockState> dataPool = new DataPool.Builder<BlockState>()
-                .add(ALL_LOGS.get(0).getDefaultState(), 2)
-                .add(ALL_LOGS.get(1).getDefaultState(), 1)
-                .build();
-
-        var builder = new TreeFeatureConfig.Builder(
-                new WeightedBlockStateProvider(dataPool),
-                new StraightTrunkPlacer(6, 5, 5),
-                BlockStateProvider.of(leaves),
-                new ConeFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0)),
-                new ThreeLayersFeatureSize(1, 1, 0, 0, 2, OptionalInt.empty())
-        );
-
-        String beeState = "no_bees";
-
-        if (bees) {
-            builder.decorators(List.of(new BeehiveTreeDecorator(0.05F)));
-            beeState = "bees";
+        private MapleFeatures(final List<Block> allLogs, final LeavesBlock leaves, final String type) {
+            ALL_LOGS = allLogs;
+            CONFIGURED_TREE_NO_BEES = getConfiguredMaple(type, leaves, false);
+            CONFIGURED_TREE_BEES = getConfiguredMaple(type, leaves, true);
+            PLACED_TREE_NO_BEES = getPlacedMaple(type, CONFIGURED_TREE_NO_BEES, false);
+            PLACED_TREE_BEES = getPlacedMaple(type, CONFIGURED_TREE_BEES, true);
         }
 
-        return ConfiguredFeatures.register(
-                TerrainsDefaults.getNamespaceVar() + type +  "_tree_" + beeState,
-                Feature.TREE,
-                builder.build());
-    }
-    private RegistryEntry<PlacedFeature> getPlacedMaple(
-            final String type, final RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>> tree, final boolean bees) {
-        String beeState = "no_bees";
-        if (bees)
-            beeState = "bees";
-        return PlacedFeatures.register(
-                type + "_tree_"+ beeState + "_placed",
-                tree,
-                PlacedFeatures.createCountExtraModifier(1, 0.05F, 1),
-                PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING),
-                BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.DIRT, Direction.DOWN.getVector()))
+        @Override
+        public MapleSaplingGenerator createNew() {
+            return new MapleSaplingGenerator(
+                    ctx -> CONFIGURED_TREE_NO_BEES,
+                    ctx -> CONFIGURED_TREE_BEES
+            );
+        }
 
-        );
+        private RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>>
+        getConfiguredMaple(final String type, final LeavesBlock leaves, final boolean bees) {
+            final DataPool<BlockState> dataPool = new DataPool.Builder<BlockState>()
+                    .add(ALL_LOGS.get(0).getDefaultState(), 2)
+                    .add(ALL_LOGS.get(1).getDefaultState(), 1)
+                    .build();
+
+            var builder = new TreeFeatureConfig.Builder(
+                    new WeightedBlockStateProvider(dataPool),
+                    new StraightTrunkPlacer(6, 5, 5),
+                    BlockStateProvider.of(leaves),
+                    new ConeFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0)),
+                    new ThreeLayersFeatureSize(1, 1, 0, 0, 2, OptionalInt.empty())
+            );
+
+            String beeState = "no_bees";
+
+            if (bees) {
+                builder.decorators(List.of(new BeehiveTreeDecorator(0.05F)));
+                beeState = "bees";
+            }
+
+            return ConfiguredFeatures.register(
+                    TerrainsDefaults.getNamespaceVar() + type +  "_tree_" + beeState,
+                    Feature.TREE,
+                    builder.build());
+        }
+        private RegistryEntry<PlacedFeature> getPlacedMaple(
+                final String type, final RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>> tree, final boolean bees) {
+            String beeState = "no_bees";
+            if (bees)
+                beeState = "bees";
+            return PlacedFeatures.register(
+                    type + "_tree_"+ beeState + "_placed",
+                    tree,
+                    PlacedFeatures.createCountExtraModifier(1, 0.05F, 1),
+                    PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING),
+                    BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.DIRT, Direction.DOWN.getVector()))
+
+            );
+        }
+    }
+
+    public static final class UniqueMapleFeatures {
+        private final DataPool<BlockState> MAPLE_LOGS;
+
+        public final RegistryEntry<PlacedFeature> DEAD_MAPLE_TREE;
+        public final RegistryEntry<PlacedFeature> FALLEN_MAPLE_TRUNK;
+
+        private UniqueMapleFeatures(final List<Block> allLogs, final List<Block> allLeaves, final String type) {
+            MAPLE_LOGS = DataPool.<BlockState>builder()
+                    .add(allLogs.get(0).getDefaultState(), 2)
+                    .add(allLogs.get(1).getDefaultState(), 1)
+                    .build();
+
+            final var DEAD_MAPLE_TREE_CONFIG = ConfiguredFeatures.register(
+                    TerrainsDefaults.getNamespaceVar() + "dead_" + type + "_tree",
+                    Feature.TREE,
+                    getDeadMapleTree(new StraightTrunkPlacer(5, 4, 4))
+            );
+
+            final var FALLEN_MAPLE_TREE_CONFIG = ConfiguredFeatures.register(
+                    TerrainsDefaults.getNamespaceVar() + "fallen_" + type + "_trunk",
+                    Feature.TREE,
+                    getDeadMapleTree(new FallenTrunkPlacer(3, 2, 0))
+            );
+
+            this.DEAD_MAPLE_TREE = registerGenericPlaced(
+                    "dead_maple_tree_placed",
+                    DEAD_MAPLE_TREE_CONFIG,
+                    1
+            );
+
+            FALLEN_MAPLE_TRUNK = registerGenericPlaced(
+                    "fallen_maple_tree_placed",
+                    FALLEN_MAPLE_TREE_CONFIG,
+                    1
+            );
+        }
+
+        private TreeFeatureConfig getDeadMapleTree(TrunkPlacer trunkPlacer) {
+            return new TreeFeatureConfig.Builder(
+                    new WeightedBlockStateProvider(MAPLE_LOGS),
+                    trunkPlacer,
+                    BlockStateProvider.of(Blocks.OAK_LEAVES.getDefaultState()),
+                    new NoneFoliagePlacer(),
+                    new TwoLayersFeatureSize(0, 0, 0)
+            ).build();
+        }
     }
 }

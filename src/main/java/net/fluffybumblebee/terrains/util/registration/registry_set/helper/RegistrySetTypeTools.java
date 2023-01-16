@@ -1,12 +1,14 @@
 package net.fluffybumblebee.terrains.util.registration.registry_set.helper;
 
+import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
+import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet.TreeType;
-import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet;
 import net.minecraft.block.sapling.SaplingGenerator;
 
 import static net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets.FULL_TREES;
 
 
+@SuppressWarnings("unchecked")
 public class RegistrySetTypeTools {
     public static String[] EnumArrayToString(Enum<?>[] values) {
         int length = values.length;
@@ -17,21 +19,32 @@ public class RegistrySetTypeTools {
     }
 
     @SuppressWarnings("unused")
-    public static <Generator extends SaplingGenerator, GeneratorSupplier extends PrimitiveTreeSet.FeatureCreator<Generator>,
-            Types extends Enum<?>>
-    GeneratorSupplier accessTreeFeatures(TreeType<Generator, GeneratorSupplier> treeType,
+    public static <
+            Generator extends SaplingGenerator,
+            GeneratorSupplier extends FeatureCreator<Generator>,
+            UniqueFeatures,
+            Types extends Enum<?>
+            >
+    GeneratorSupplier accessTreeFeatures(TreeType<Generator, GeneratorSupplier, UniqueFeatures> treeType,
                                          Types treeVariant) {
         return accessTreeFeatures(treeType, treeVariant.name().toLowerCase());
     }
 
-    @SuppressWarnings("unchecked")
-    public static <Generator extends SaplingGenerator, GeneratorSupplier extends PrimitiveTreeSet.FeatureCreator<Generator>>
-    GeneratorSupplier accessTreeFeatures(TreeType<Generator, GeneratorSupplier> treeType, String treeVariant) {
+    public static <
+            Generator extends SaplingGenerator,
+            GeneratorSupplier extends FeatureCreator<Generator>,
+            UniqueFeatures
+            >
+    GeneratorSupplier accessTreeFeatures(TreeType<Generator, GeneratorSupplier, UniqueFeatures> treeType, String treeVariant) {
         return (GeneratorSupplier) FULL_TREES
                 .getTypeMap()
                 .get(treeType)
                 .PRIMITIVE_TREE_CONFIGS
                 .get(treeVariant)
                 .TREE_FEATURES;
+    }
+
+    public static <UniqueFeatures> UniqueFeatures getUniqueFeatures(WholeTreeSet<?, ?, ?> treeVariant) {
+        return (UniqueFeatures) treeVariant.UNIQUE_FEATURES;
     }
 }

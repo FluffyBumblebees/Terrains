@@ -2,6 +2,8 @@ package net.fluffybumblebee.terrains.common.registry.sets.tree.component;
 
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fluffybumblebee.terrains.common.instances.block.wood.WoodBlock;
+import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
+import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureSupplier;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
@@ -22,10 +24,13 @@ import static net.fluffybumblebee.terrains.util.registration.registry_set.helper
 @SuppressWarnings("unchecked")
 public class WholeTreeSet<
         Generator extends SaplingGenerator,
-        FeatureProvider extends PrimitiveTreeSet.FeatureCreator<Generator>>
+        FeatureProvider extends FeatureCreator<Generator>,
+        UniqueFeatures>
         implements RegistrySetCreator {
 
     public final HashMap<String, PrimitiveTreeSet<Generator, FeatureProvider>> PRIMITIVE_TREE_CONFIGS;
+    public final UniqueFeatures UNIQUE_FEATURES;
+
     public final String WOOD_TYPE;
     public final String[] TREE_VARIANTS;
     public final List<BlockSet<WoodBlock>> ADDITIONAL_LOG_VARIANTS;
@@ -33,10 +38,8 @@ public class WholeTreeSet<
     private final List<BlockSet<?>> ALL_BLOCKS;
     public final WoodSet WOOD_SET;
 
-
-
     public WholeTreeSet(
-            @NotNull final TreeType<Generator, FeatureProvider> config
+            @NotNull final TreeType<Generator, FeatureProvider, UniqueFeatures> config
     ) {
         WOOD_TYPE = config.woodType;
         TREE_VARIANTS = config.treeVariants;
@@ -54,19 +57,24 @@ public class WholeTreeSet<
         WOOD_SET = new WoodSet(WOOD_TYPE);
         ADDITIONAL_LOG_VARIANTS.add((BlockSet<WoodBlock>) WOOD_SET.LOG);
 
+        final List<Block> logs = new ArrayList<>();
+        for (BlockSet<WoodBlock> log : ADDITIONAL_LOG_VARIANTS) {
+            logs.add(log.BLOCK);
+        }
+
+        final List<Block> leaves = new ArrayList<>();
         for (String treeVariant : config.treeVariants) {
-            final List<Block> list = new ArrayList<>();
-            for (BlockSet<WoodBlock> log : ADDITIONAL_LOG_VARIANTS) {
-                list.add(log.BLOCK);
-            }
             PRIMITIVE_TREE_CONFIGS.put(treeVariant, new PrimitiveTreeSet<>(
                     new PrimitiveTreeSet.Config<>(
                             treeVariant + "_" + WOOD_TYPE ,
-                            list,
+                            logs,
                             config.featureSupplier
                     )
             ));
+            leaves.add(PRIMITIVE_TREE_CONFIGS.get(treeVariant).LEAVES.BLOCK);
         }
+
+        UNIQUE_FEATURES = config.uniqueFeatureSupplier.get(logs, leaves, WOOD_TYPE);
 
         ALL_BLOCKS = new ArrayList<>();
         ALL_BLOCKS.addAll(ADDITIONAL_LOG_VARIANTS);
@@ -94,12 +102,18 @@ public class WholeTreeSet<
     }
 
 
-    public record TreeType<Generator extends SaplingGenerator,
-            FeatureProvider extends PrimitiveTreeSet.FeatureCreator<Generator>>(
+    public record TreeType<
+            Generator extends SaplingGenerator,
+            FeatureProvider extends FeatureCreator<Generator>,
+            UniqueFeatures>(
             String woodType,
             String[] treeVariants,
             @Nullable String[] additionalLogVariants,
-            PrimitiveTreeSet.FeatureSupplier<Generator, FeatureProvider> featureSupplier
-    ) {
+            FeatureSupplier<Generator, FeatureProvider> featureSupplier,
+            UniqueFeatureSupplier<UniqueFeatures> uniqueFeatureSupplier
+    ) {}
+
+    public interface UniqueFeatureSupplier <UniqueFeatures> {
+        UniqueFeatures get(final List<Block> allLogs, final List<Block> allLeaves, final String type);
     }
 }

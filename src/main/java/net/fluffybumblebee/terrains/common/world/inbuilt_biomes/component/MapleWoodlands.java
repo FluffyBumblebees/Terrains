@@ -11,8 +11,8 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getPlacedNoBees;
+import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getUniqueMapleFeatures;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.*;
-import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.FALLEN_MAPLE_TRUNK;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
 
 
@@ -40,7 +40,7 @@ public class MapleWoodlands {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(ORANGE));
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(YELLOW));
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(RED));
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, FALLEN_MAPLE_TRUNK);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getUniqueMapleFeatures().FALLEN_MAPLE_TRUNK);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TerrainsPlacedFeatures.PUMPKINS);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_SAVANNA);
         DefaultBiomeFeatures.addForestGrass(builder);
