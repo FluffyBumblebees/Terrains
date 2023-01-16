@@ -16,8 +16,8 @@ import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
 
 
-public class MapleWoodlands {
-    public static final Biome MAPLE_WOODLANDS = new Biome.Builder()
+public class PumpkinRidges {
+    public static final Biome PUMPKIN_RIDGES = new Biome.Builder()
             .precipitation(Biome.Precipitation.NONE)
             .generationSettings(generationSettings())
             .category(Biome.Category.FOREST)
@@ -41,7 +41,7 @@ public class MapleWoodlands {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(YELLOW));
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(RED));
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getUniqueMapleFeatures().FALLEN_MAPLE_TRUNK);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TerrainsPlacedFeatures.PUMPKINS);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TerrainsPlacedFeatures.SCATTERED_PUMPKINS);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_SAVANNA);
         DefaultBiomeFeatures.addForestGrass(builder);
         DefaultBiomeFeatures.addDefaultMushrooms(builder);

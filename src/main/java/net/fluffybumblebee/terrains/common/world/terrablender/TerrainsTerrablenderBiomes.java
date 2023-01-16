@@ -54,7 +54,7 @@ public class TerrainsTerrablenderBiomes extends Region implements Runnable, Terr
                 ParameterUtils.Weirdness.HIGH_SLICE_NORMAL_ASCENDING,
                 ParameterUtils.Depth.SURFACE,
                 0L,
-                MAPLE_WOODLANDS
+                PUMPKIN_RIDGES
         );
 
         this.addBiome(

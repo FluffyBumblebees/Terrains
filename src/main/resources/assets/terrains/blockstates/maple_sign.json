@@ -1,5 +1,5 @@
 {
   "variants": {
-    "": { "model": "block/maple_sign" }
+    "": { "model": "terrains:block/maple_sign" }
   }
 }

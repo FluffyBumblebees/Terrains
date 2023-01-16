@@ -1,6 +1,5 @@
 package net.fluffybumblebee.terrains.common.world.inbuilt_features;
 
-import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.YOffset;
@@ -21,10 +20,9 @@ public class TerrainsPlacedFeatures {
             RegistryEntry<? extends ConfiguredFeature<?, ?>> registryEntry,
             List<PlacementModifier> modifiers
     ) {
-        return register(TerrainsDefaults.getNamespaceVar() +  id, registryEntry, modifiers);
+        return register(getNamespaceVar() +  id, registryEntry, modifiers);
     }
 
-    @SuppressWarnings("unused")
     private static RegistryEntry<PlacedFeature> registerToMod(
             String id,
             RegistryEntry<? extends ConfiguredFeature<?, ?>> registryEntry,
@@ -70,31 +68,31 @@ public class TerrainsPlacedFeatures {
             modifiers(createCountExtraModifier(0, 0.1f, 1))
     );
 
-    public static final RegistryEntry<PlacedFeature> PUMPKINS = PlacedFeatures.register(
-            getNamespaceVar() + "pumpkins",
-            VegetationConfiguredFeatures.PATCH_PUMPKIN,
-            RarityFilterPlacementModifier.of(4),
+    public static final RegistryEntry<PlacedFeature> SCATTERED_PUMPKINS = registerToMod(
+            "scattered_pumpkins",
+            TerrainsConfiguredFeatures.SCATTERED_PUMPKIN,
+            createCountExtraModifier(3, 0.05F, 1),
             SquarePlacementModifier.of(),
             PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
             BiomePlacementModifier.of()
     );
 
-    public static final RegistryEntry<PlacedFeature> FLOWER_MEADOW = PlacedFeatures.register(
-            getNamespaceVar() + "meadow_flowers",
+    public static final RegistryEntry<PlacedFeature> FLOWER_MEADOW = registerToMod(
+            "meadow_flowers",
             VegetationConfiguredFeatures.FLOWER_MEADOW,
             SquarePlacementModifier.of(),
             PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
             BiomePlacementModifier.of()
     );
 
-    public static final RegistryEntry<PlacedFeature> PATCH_GRASS_JUNGLE = PlacedFeatures.register(
-            getNamespaceVar() + "patch_grass_forest",
+    public static final RegistryEntry<PlacedFeature> PATCH_GRASS_JUNGLE = registerToMod(
+            "patch_grass_forest",
             VegetationConfiguredFeatures.PATCH_GRASS_JUNGLE,
             modifiers(2)
     );
 
-    public static final RegistryEntry<PlacedFeature> PATCH_DEAD_BUSH = PlacedFeatures.register(
-            getNamespaceVar() + "patch_dead_bush",
+    public static final RegistryEntry<PlacedFeature> PATCH_DEAD_BUSH = registerToMod(
+            "patch_dead_bush",
             VegetationConfiguredFeatures.PATCH_DEAD_BUSH,
             SquarePlacementModifier.of(),
             PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
@@ -102,8 +100,8 @@ public class TerrainsPlacedFeatures {
     );
 
     public static RegistryEntry<PlacedFeature> registerPlacedGeode(RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> geode, String name) {
-        return PlacedFeatures.register(
-                name + "_geode_placed",
+        return register(
+                getNamespaceVar() + name + "_geode_placed",
                 geode,
                 RarityFilterPlacementModifier.of(1440),
                 SquarePlacementModifier.of(),

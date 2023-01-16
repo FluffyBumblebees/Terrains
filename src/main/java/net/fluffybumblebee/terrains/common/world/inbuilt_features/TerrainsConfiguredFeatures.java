@@ -1,6 +1,5 @@
 package net.fluffybumblebee.terrains.common.world.inbuilt_features;
 
-import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.block.AmethystClusterBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -10,7 +9,6 @@ import net.minecraft.tag.BlockTags;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.TreeFeatureConfig.Builder;
@@ -22,16 +20,21 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.List;
 
+import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getNamespaceVar;
+import static net.minecraft.util.registry.BuiltinRegistries.CONFIGURED_FEATURE;
+import static net.minecraft.util.registry.BuiltinRegistries.method_40360;
+import static net.minecraft.world.gen.feature.ConfiguredFeatures.createRandomPatchFeatureConfig;
 import static net.minecraft.world.gen.feature.ConfiguredFeatures.register;
 
 @SuppressWarnings("deprecation")
 public class TerrainsConfiguredFeatures {
     private static <FC extends FeatureConfig, F extends Feature<FC>> RegistryEntry<ConfiguredFeature<FC, ?>> registerToMod(String id, F feature, FC config) {
-        return BuiltinRegistries.method_40360(BuiltinRegistries.CONFIGURED_FEATURE, TerrainsDefaults.getNamespaceVar() + id, new ConfiguredFeature<>(feature, config));
+        return method_40360(CONFIGURED_FEATURE, getNamespaceVar() + id, new ConfiguredFeature<>(feature, config));
     }
 
     public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> MEADOW_BUSH = registerToMod(
-            "meadow_bush", Feature.TREE,
+            "meadow_bush",
+            Feature.TREE,
             new Builder(
                     BlockStateProvider.of(Blocks.OAK_LOG),
                     new StraightTrunkPlacer(1, 0, 0),
@@ -50,6 +53,16 @@ public class TerrainsConfiguredFeatures {
             )
     );
 
+    public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> SCATTERED_PUMPKIN = register(
+            "scattered_pumpkin",
+            TerrainsFeatures.SCATTERED_BLOCk,
+            createRandomPatchFeatureConfig(
+                    Feature.SIMPLE_BLOCK,
+                    new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.PUMPKIN)),
+                    List.of(Blocks.GRASS_BLOCK)
+            )
+    );
+
     public static <B extends Block, C extends AmethystClusterBlock> RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> registerGeode(
             B corundum,
             B crystal,
@@ -64,7 +77,7 @@ public class TerrainsConfiguredFeatures {
                 .build());
 
         return register(
-                TerrainsDefaults.getNamespaceVar() + colour + "_geode",
+                getNamespaceVar() + colour + "_geode",
                 Feature.GEODE,
                 new GeodeFeatureConfig(
                         new GeodeLayerConfig(
