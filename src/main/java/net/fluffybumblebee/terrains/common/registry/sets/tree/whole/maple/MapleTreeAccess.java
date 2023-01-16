@@ -12,11 +12,13 @@ import static net.fluffybumblebee.terrains.util.registration.registry_set.helper
 import static net.fluffybumblebee.terrains.util.registration.registry_set.helper.RegistrySetTypeTools.getUniqueFeatures;
 
 public class MapleTreeAccess {
-    public static final WholeTreeSet<?, ?, ?> MAPLE_TREE = AllRegistrySets.FULL_TREES
-            .getTypeMap().get(MapleTreeType.MAPLE_TREES);
+
+    public static WholeTreeSet<?, ?, ?> getMapleTree() {
+        return AllRegistrySets.FULL_TREES.getTypeMap().get(MapleTreeType.MAPLE_TREES);
+    }
 
     public static UniqueMapleFeatures getUniqueMapleFeatures() {
-        return getUniqueFeatures(MAPLE_TREE);
+        return getUniqueFeatures(getMapleTree());
     }
 
     public static MapleFeatures getFeature(String treeVariant) {

@@ -12,7 +12,8 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+
+import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 
 public class BiomeRegistryTools {
     @SuppressWarnings("SameParameterValue")
@@ -23,12 +24,12 @@ public class BiomeRegistryTools {
     }
 
     public static void addBasicFeatures(GenerationSettings.Builder generationSettings) {
-        DefaultBiomeFeatures.addLandCarvers(generationSettings);
-        DefaultBiomeFeatures.addAmethystGeodes(generationSettings);
-        DefaultBiomeFeatures.addDungeons(generationSettings);
-        DefaultBiomeFeatures.addMineables(generationSettings);
-        DefaultBiomeFeatures.addSprings(generationSettings);
-        DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
+        addLandCarvers(generationSettings);
+        addAmethystGeodes(generationSettings);
+        addDungeons(generationSettings);
+        addMineables(generationSettings);
+        addSprings(generationSettings);
+        addFrozenTopLayer(generationSettings);
     }
 
     public static SpawnSettings.Builder createDefaultSpawnSettings() {

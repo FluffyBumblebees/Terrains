@@ -11,16 +11,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.collection.DataPool;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.placementmodifier.BlockFilterPlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
@@ -31,7 +27,8 @@ import java.util.List;
 import java.util.OptionalInt;
 
 import static net.fluffybumblebee.terrains.util.registration.registry_set.helper.RegistrySetTypeTools.EnumArrayToString;
-import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.registerGenericPlaced;
+import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.treePlacementModifiers;
+import static net.minecraft.world.gen.feature.PlacedFeatures.createCountExtraModifier;
 
 public final class MapleTreeType {
     public static final WholeTreeSet.TreeType<MapleSaplingGenerator, MapleFeatures, UniqueMapleFeatures> MAPLE_TREES =
@@ -110,10 +107,7 @@ public final class MapleTreeType {
             return PlacedFeatures.register(
                     type + "_tree_"+ beeState + "_placed",
                     tree,
-                    PlacedFeatures.createCountExtraModifier(1, 0.05F, 1),
-                    PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING),
-                    BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.DIRT, Direction.DOWN.getVector()))
-
+                    treePlacementModifiers(createCountExtraModifier(1, 0.05F, 1))
             );
         }
     }
@@ -142,16 +136,16 @@ public final class MapleTreeType {
                     getDeadMapleTree(new FallenTrunkPlacer(3, 2, 0))
             );
 
-            this.DEAD_MAPLE_TREE = registerGenericPlaced(
+            DEAD_MAPLE_TREE = PlacedFeatures.register(
                     "dead_maple_tree_placed",
                     DEAD_MAPLE_TREE_CONFIG,
-                    1
+                    treePlacementModifiers(createCountExtraModifier(0, 0.5F, 1))
             );
 
-            FALLEN_MAPLE_TRUNK = registerGenericPlaced(
+            FALLEN_MAPLE_TRUNK = PlacedFeatures.register(
                     "fallen_maple_tree_placed",
                     FALLEN_MAPLE_TREE_CONFIG,
-                    1
+                    treePlacementModifiers(createCountExtraModifier(0, 0.5F, 1))
             );
         }
 

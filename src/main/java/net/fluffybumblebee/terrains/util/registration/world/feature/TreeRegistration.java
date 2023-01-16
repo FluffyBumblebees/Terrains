@@ -1,37 +1,47 @@
 package net.fluffybumblebee.terrains.util.registration.world.feature;
 
+import com.google.common.collect.ImmutableList;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
-import net.minecraft.tag.BlockTags;
-import net.minecraft.util.math.Direction;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.blockpredicate.BlockPredicate;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
-import net.minecraft.world.gen.feature.TreeFeatureConfig;
+import net.minecraft.world.gen.placementmodifier.BiomePlacementModifier;
 import net.minecraft.world.gen.placementmodifier.BlockFilterPlacementModifier;
-import net.minecraft.world.gen.placementmodifier.CountPlacementModifier;
+import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
 
 import java.util.function.Predicate;
 
 import static net.fabricmc.fabric.api.biome.v1.BiomeModifications.addFeature;
+import static net.minecraft.tag.BlockTags.DIRT;
+import static net.minecraft.util.math.Direction.DOWN;
+import static net.minecraft.world.gen.blockpredicate.BlockPredicate.matchingBlockTag;
+import static net.minecraft.world.gen.feature.PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP;
+import static net.minecraft.world.gen.feature.VegetationPlacedFeatures.NOT_IN_SURFACE_WATER_MODIFIER;
 
 public class TreeRegistration {
+
     @SuppressWarnings("OptionalGetWithoutIsPresent")
     public static void generateFeature(RegistryEntry<PlacedFeature> feature, Predicate<BiomeSelectionContext> predicate, GenerationStep.Feature featureType) {
         addFeature(predicate, featureType, feature.getKey().get());
     }
 
-    public static RegistryEntry<PlacedFeature> registerGenericPlaced(String type, RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> tree, int countMod) {
-        return PlacedFeatures.register(
-                type,
-                tree,
-                CountPlacementModifier.of(countMod),
-                SquarePlacementModifier.of(),
-                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
-                BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.DIRT, Direction.DOWN.getVector()))
-        );
+    public static ImmutableList.Builder<PlacementModifier> standardPlacementModifiers(PlacementModifier countModifier) {
+        var list = new ImmutableList.Builder<PlacementModifier>();
+        list    .add(countModifier)
+                .add(SquarePlacementModifier.of())
+                .add(NOT_IN_SURFACE_WATER_MODIFIER)
+                .add(MOTION_BLOCKING_HEIGHTMAP)
+                .add(BiomePlacementModifier.of());
+        return list;
+    }
+
+    public static ImmutableList<PlacementModifier> treePlacementModifiers(PlacementModifier countModifier) {
+        return standardPlacementModifiers(countModifier)
+                .add(PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING))
+                .add(BlockFilterPlacementModifier.of(matchingBlockTag(DIRT, DOWN.getVector())))
+                .build();
     }
 }

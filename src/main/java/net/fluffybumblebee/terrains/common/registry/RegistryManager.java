@@ -8,16 +8,11 @@ import net.fluffybumblebee.terrains.common.world.WorldManager;
 
 public class RegistryManager {
     public static void init() {
-        registerBlocks();
-        registerItems();
         registerSets();
         registerItemGroups();
         registerWorldGen();
     }
 
-    public static void registerBlocks() {}
-
-    public static void registerItems() {}
 
     public static void registerSets() {
         AllRegistrySets.register();

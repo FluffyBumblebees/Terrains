@@ -11,20 +11,20 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getPlacedNoBees;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getUniqueMapleFeatures;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.*;
-import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.*;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.PATCH_DEAD_BUSH;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
 
 
-public class BarrenMapleWoods {
-    private static final int biomeColour =  0xE69600;
-    public static final Biome BARREN_MAPLE_WOODS = new Biome.Builder()
+public class MapleDryLands {
+    private static final int BIOME_COLOUR =  0xE69600;
+    public static final Biome MAPLE_DRY_LANDS = new Biome.Builder()
             .precipitation(Biome.Precipitation.NONE)
             .generationSettings(generationSettings())
             .category(Biome.Category.FOREST)
             .spawnSettings(spawnSettings())
             .effects(createDefaultBiomeEffects()
-                    .grassColor(biomeColour)
-                    .foliageColor(biomeColour)
+                    .grassColor(BIOME_COLOUR)
+                    .foliageColor(BIOME_COLOUR)
                     .build()
             )
             .temperature(0.9F)

@@ -66,7 +66,7 @@ public class TerrainsTerrablenderBiomes extends Region implements Runnable, Terr
                 ParameterUtils.Weirdness.LOW_SLICE_VARIANT_ASCENDING,
                 ParameterUtils.Depth.SURFACE,
                 0L,
-                BARREN_MAPLE_WOODS
+                MAPLE_DRY_LANDS
         );
     }
 
