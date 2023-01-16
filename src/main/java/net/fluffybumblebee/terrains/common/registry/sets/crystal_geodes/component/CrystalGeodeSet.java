@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry.registerWaxableBlockPair;
-import static net.fluffybumblebee.terrains.util.QCUtil.registerGeode;
-import static net.fluffybumblebee.terrains.util.QCUtil.registerPlacedGeode;
+import static net.fluffybumblebee.terrains.util.registration.world.feature.CrystalFeatures.registerGeode;
+import static net.fluffybumblebee.terrains.util.registration.world.feature.CrystalFeatures.registerPlacedGeode;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildBlock;
 import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.generateFeature;
 

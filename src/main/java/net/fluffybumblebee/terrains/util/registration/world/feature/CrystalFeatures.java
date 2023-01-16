@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.util;
+package net.fluffybumblebee.terrains.util.registration.world.feature;
 
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.block.AmethystClusterBlock;
@@ -22,7 +22,7 @@ import java.util.List;
 
 import static net.minecraft.world.gen.feature.ConfiguredFeatures.register;
 
-public class QCUtil {
+public class CrystalFeatures {
 
     public static <B extends Block, C extends AmethystClusterBlock> RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> registerGeode(
             B corundum,
