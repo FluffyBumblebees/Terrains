@@ -23,10 +23,11 @@ import java.util.List;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildFlammableBlock;
 
-public class WoodRegistrySet implements RegistrySetCreator {
+public class WoodSet implements RegistrySetCreator {
     private final List<BlockSet<?>> ALL_BLOCKS;
-    public static TerraformBoatType BOAT;
+    public final String TYPE;
 
+    public static TerraformBoatType BOAT;
     public final BlockSet<?> LOG;
     public final BlockSet<?> WOOD;
     public final BlockSet<?> STRIPPED_LOG;
@@ -41,30 +42,33 @@ public class WoodRegistrySet implements RegistrySetCreator {
     public final BlockSet<?> TRAPDOOR;
     public final BlockSet<?> BUTTON;
 
-    public final BlockSet<?> SIGN;
+    public final BlockSet<TerraformSignBlock> SIGN;
     public final BlockSet<?> WALL_SIGN;
 
-    public WoodRegistrySet(String woodType) {
+    public WoodSet(String woodType) {
         ALL_BLOCKS = new ArrayList<>();
-        BoatRegistration.register(woodType, () -> BOAT, item -> BOAT = new TerraformBoatType.Builder().item(item).build());
+        TYPE = woodType;
+        BoatRegistration.register(TYPE, () -> BOAT, item -> BOAT = new TerraformBoatType.Builder().item(item).build());
 
-        LOG = buildFlammableBlock(new WoodBlock(), woodType + "_log");
-        WOOD = buildFlammableBlock(new WoodBlock(), woodType + "_wood");
-        STRIPPED_LOG = buildFlammableBlock(new WoodBlock(), "stripped_" + woodType + "_log");
-        STRIPPED_WOOD = buildFlammableBlock(new WoodBlock(), "stripped_" + woodType + "_wood");
-        PLANKS = buildFlammableBlock(new WoodBlock(), woodType + "_planks");
-        STAIRS = buildFlammableBlock(new WoodStairs(), woodType + "_stairs");
-        SLAB = buildFlammableBlock(new WoodSlabs(), woodType + "_slab");
-        FENCE = buildFlammableBlock(new WoodFence(), woodType + "_fence", ItemGroup.DECORATIONS);
-        FENCE_GATE = buildFlammableBlock(new WoodFenceGate(), woodType + "_fence_gate", ItemGroup.REDSTONE);
-        PRESSURE_PLATE =  buildFlammableBlock(new WoodPressureplate(), woodType + "_pressure_plate", ItemGroup.REDSTONE);
-        DOOR = buildFlammableBlock(new WoodDoor(), woodType + "_door", ItemGroup.REDSTONE);
-        TRAPDOOR = buildFlammableBlock(new WoodTrapDoor(), woodType + "_trapdoor", ItemGroup.REDSTONE);
-        BUTTON = buildFlammableBlock(new WoodButton(), woodType + "_button", ItemGroup.REDSTONE);
+        LOG = buildFlammableBlock(new WoodBlock(), TYPE + "_log");
+        WOOD = buildFlammableBlock(new WoodBlock(), TYPE + "_wood");
+        STRIPPED_LOG = buildFlammableBlock(new WoodBlock(), "stripped_" + TYPE + "_log");
+        STRIPPED_WOOD = buildFlammableBlock(new WoodBlock(), "stripped_" + TYPE + "_wood");
+        PLANKS = buildFlammableBlock(new WoodBlock(), TYPE + "_planks");
+        STAIRS = buildFlammableBlock(new WoodStairs(), TYPE + "_stairs");
+        SLAB = buildFlammableBlock(new WoodSlabs(), TYPE + "_slab");
+        FENCE = buildFlammableBlock(new WoodFence(), TYPE + "_fence", ItemGroup.DECORATIONS);
+        FENCE_GATE = buildFlammableBlock(new WoodFenceGate(), TYPE + "_fence_gate", ItemGroup.REDSTONE);
+        PRESSURE_PLATE =  buildFlammableBlock(new WoodPressureplate(), TYPE + "_pressure_plate", ItemGroup.REDSTONE);
+        DOOR = buildFlammableBlock(new WoodDoor(), TYPE + "_door", ItemGroup.REDSTONE);
+        TRAPDOOR = buildFlammableBlock(new WoodTrapDoor(), TYPE + "_trapdoor", ItemGroup.REDSTONE);
+        BUTTON = buildFlammableBlock(new WoodButton(), TYPE + "_button", ItemGroup.REDSTONE);
 
-        Identifier SIGN_TEXTURE = getIdentifier("entity/signs/" + woodType);
-        WALL_SIGN = new Builder<>(new TerraformWallSignBlock(SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)), getIdentifier(woodType + "_wall_sign")).build();
-        SIGN = new Builder<>(new TerraformSignBlock(SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_SIGN)), getIdentifier(woodType + "_sign"))
+        Identifier SIGN_TEXTURE = getIdentifier("entity/signs/" + TYPE);
+        WALL_SIGN = new Builder<>(new TerraformWallSignBlock(SIGN_TEXTURE,
+                FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)), getIdentifier(TYPE + "_wall_sign")).build();
+        SIGN = new Builder<>(new TerraformSignBlock(SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_SIGN)),
+                getIdentifier(TYPE + "_sign"))
                 .addBlockItem(block -> new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), block, WALL_SIGN.BLOCK))
                 .build();
 

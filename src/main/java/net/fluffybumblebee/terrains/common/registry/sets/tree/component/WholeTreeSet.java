@@ -31,7 +31,7 @@ public class WholeTreeSet<
     final List<BlockSet<WoodBlock>> ADDITIONAL_LOG_VARIANTS;
 
     private final List<BlockSet<?>> ALL_BLOCKS;
-    public final WoodRegistrySet WOOD_SET;
+    public final WoodSet WOOD_SET;
 
 
 
@@ -51,7 +51,7 @@ public class WholeTreeSet<
             }
         }
 
-        WOOD_SET = new WoodRegistrySet(WOOD_TYPE);
+        WOOD_SET = new WoodSet(WOOD_TYPE);
         ADDITIONAL_LOG_VARIANTS.add((BlockSet<WoodBlock>) WOOD_SET.LOG);
 
         for (String treeVariant : config.treeVariants) {

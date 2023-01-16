@@ -12,8 +12,6 @@ import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.Re
 
 public final class AllRegistrySets {
     public static final RegistrySet<TypesStainedTree, StainedTreeType<TypesStainedTree>> STAINED_TREES;
-    //public static final RegistrySet<StainedTreeTypes, StainedTreeRegistrySetConfig<StainedTreeTypes>>
-    // STAINED_TREES_SET;
     public static final RegistrySet<TypesCrystalGeode, CrystalGeodeSet<TypesCrystalGeode>> CRYSTAL_GEODES;
     public static final RegistrySet<WholeTreeSet.TreeType<?, ?>, WholeTreeSet<?, ?>> FULL_TREES;
     public static final RegistrySet<TypesItem<?>, ItemRegistrySet<?>> ITEMS;
