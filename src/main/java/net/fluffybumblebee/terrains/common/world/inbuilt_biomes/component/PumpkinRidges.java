@@ -7,13 +7,13 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getPlacedNoBees;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getUniqueMapleFeatures;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.*;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
+import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.addForestGrass;
+import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.addSavannaGrass;
 
 
 public class PumpkinRidges {
@@ -33,19 +33,16 @@ public class PumpkinRidges {
 
     private static GenerationSettings generationSettings(){
         GenerationSettings.Builder builder = new GenerationSettings.Builder();
-        addBasicFeatures(builder);
-        DefaultBiomeFeatures.addDefaultOres(builder);
-        DefaultBiomeFeatures.addDefaultDisks(builder);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(GREEN));
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(ORANGE));
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(YELLOW));
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(RED));
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getUniqueMapleFeatures().FALLEN_MAPLE_TRUNK);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TerrainsPlacedFeatures.SCATTERED_PUMPKINS);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_SAVANNA);
-        DefaultBiomeFeatures.addForestGrass(builder);
-        DefaultBiomeFeatures.addDefaultMushrooms(builder);
-        DefaultBiomeFeatures.addDefaultVegetation(builder);
+        addDefaultFeatures(builder, () -> {
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TerrainsPlacedFeatures.SCATTERED_PUMPKINS);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(GREEN));
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(ORANGE));
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(YELLOW));
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(RED));
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getUniqueMapleFeatures().FALLEN_MAPLE_TRUNK);
+            addForestGrass(builder);
+            addSavannaGrass(builder);
+        });
         return builder.build();
     }
 

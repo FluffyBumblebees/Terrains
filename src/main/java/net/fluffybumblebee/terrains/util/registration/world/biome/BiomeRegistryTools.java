@@ -7,11 +7,14 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
+import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.feature.PlacedFeature;
 
 import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 
@@ -23,13 +26,27 @@ public class BiomeRegistryTools {
         return MathHelper.hsvToRgb(0.62222224F - f * 0.05F, 0.5F + f * 0.1F, 1.0F);
     }
 
-    public static void addBasicFeatures(GenerationSettings.Builder generationSettings) {
-        addLandCarvers(generationSettings);
-        addAmethystGeodes(generationSettings);
-        addDungeons(generationSettings);
-        addMineables(generationSettings);
-        addSprings(generationSettings);
-        addFrozenTopLayer(generationSettings);
+    @SafeVarargs
+    public static void addVegetalFeatures(
+            GenerationSettings.Builder builder, RegistryEntry<PlacedFeature>... features) {
+        for (RegistryEntry<PlacedFeature> feature : features)
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, feature);
+    }
+
+    public static void addBasicFeatures(GenerationSettings.Builder builder) {
+        addLandCarvers(builder);
+        addAmethystGeodes(builder);
+        addDungeons(builder);
+        addMineables(builder);
+        addSprings(builder);
+        addFrozenTopLayer(builder);
+    }
+
+    public static void addDefaultFeatures(GenerationSettings.Builder builder) {
+        addBasicFeatures(builder);
+        addDefaultOres(builder);
+        addDefaultDisks(builder);
+        addDefaultVegetation(builder);
     }
 
     public static SpawnSettings.Builder createDefaultSpawnSettings() {

@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.Config;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
-import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.StainedSaplingGenerator;
+import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.StainedSaplingGenerator;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;

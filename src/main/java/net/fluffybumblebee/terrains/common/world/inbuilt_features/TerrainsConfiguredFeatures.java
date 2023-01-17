@@ -13,19 +13,14 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.List;
 
-import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getNamespaceVar;
-import static net.minecraft.util.registry.BuiltinRegistries.CONFIGURED_FEATURE;
-import static net.minecraft.util.registry.BuiltinRegistries.method_40360;
+import static net.fluffybumblebee.terrains.util.registration.world.feature.TerrainsFeatureRegistrar.registerConfiguredFeature;
 import static net.minecraft.world.gen.feature.ConfiguredFeatures.createRandomPatchFeatureConfig;
 import static net.minecraft.world.gen.feature.ConfiguredFeatures.register;
 
 @SuppressWarnings("deprecation")
 public class TerrainsConfiguredFeatures {
-    private static <FC extends FeatureConfig, F extends Feature<FC>> RegistryEntry<ConfiguredFeature<FC, ?>> registerToMod(String id, F feature, FC config) {
-        return method_40360(CONFIGURED_FEATURE, getNamespaceVar() + id, new ConfiguredFeature<>(feature, config));
-    }
 
-    public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> MEADOW_BUSH = registerToMod(
+    public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> OAK_BUSH = registerConfiguredFeature(
             "meadow_bush",
             Feature.TREE,
             new Builder(
@@ -37,7 +32,7 @@ public class TerrainsConfiguredFeatures {
             ).build()
     );
 
-    public static final RegistryEntry<ConfiguredFeature<LakeFeature.Config, ?>> MEADOW_LAKE = registerToMod(
+    public static final RegistryEntry<ConfiguredFeature<LakeFeature.Config, ?>> LAKE = registerConfiguredFeature(
             "spring_water",
             TerrainsFeatures.LAKE,
             new LakeFeature.Config(BlockStateProvider.of(

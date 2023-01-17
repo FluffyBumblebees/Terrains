@@ -1,18 +1,16 @@
 package net.fluffybumblebee.terrains.common.world.inbuilt_biomes.component;
 
-import net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures;
+import net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained.StainedTreeAccess;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
-import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getPlacedBees;
-import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.GREEN;
-import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.RED;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
+import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 
 
 public class MapleBlossom {
@@ -29,25 +27,23 @@ public class MapleBlossom {
             .downfall(0.5F)
             .build();
 
-    private static GenerationSettings generationSettings(){
+    private static GenerationSettings generationSettings() {
         GenerationSettings.Builder builder = new GenerationSettings.Builder();
         addBasicFeatures(builder);
-        DefaultBiomeFeatures.addDefaultOres(builder);
-        DefaultBiomeFeatures.addDefaultDisks(builder);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedBees(GREEN));
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedBees(RED));
+        addDefaultFlowers(builder);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.FLOWER_FLOWER_FOREST);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TerrainsPlacedFeatures.FLOWER_MEADOW);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TerrainsPlacedFeatures.PATCH_GRASS_JUNGLE);
-        DefaultBiomeFeatures.addForestFlowers(builder);
-        DefaultBiomeFeatures.addDefaultFlowers(builder);
-        DefaultBiomeFeatures.addForestGrass(builder);
-        DefaultBiomeFeatures.addDefaultMushrooms(builder);
-        DefaultBiomeFeatures.addDefaultVegetation(builder);
+        addForestFlowers(builder);
+        addDefaultOres(builder);
+        addDefaultDisks(builder);
+        StainedTreeAccess.addStainedTrees(builder);
+        addDefaultGrass(builder);
+        addForestGrass(builder);
+        addMeadowFlowers(builder);
+        addJungleGrass(builder);
         return builder.build();
     }
 
-    private static SpawnSettings spawnSettings(){
+    private static SpawnSettings spawnSettings() {
         SpawnSettings.Builder builder = createDefaultSpawnSettings();
         builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.WOLF, 5, 4, 4));
         return builder.build();

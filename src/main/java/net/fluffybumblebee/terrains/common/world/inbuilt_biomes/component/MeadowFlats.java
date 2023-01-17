@@ -8,6 +8,7 @@ import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
+import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.addDefaultFeatures;
 import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 
 
@@ -24,16 +25,12 @@ public class MeadowFlats {
 
     private static GenerationSettings generationSettings() {
         GenerationSettings.Builder builder = new GenerationSettings.Builder();
-        MeadowDefaults.ACCESS.basicFeatures(builder);
+        addDefaultFeatures(builder, () -> {
+            addExtraDefaultFlowers(builder);
+            addForestFlowers(builder);
+            addMeadowFlowers(builder);
+        });
         MeadowDefaults.addLargeMeadowFeatures(builder);
-        addPlainsTallGrass(builder);
-        addForestFlowers(builder);
-        addDefaultGrass(builder);
-        addDefaultOres(builder);
-        addDefaultDisks(builder);
-        addMeadowFlowers(builder);
-        addExtraDefaultFlowers(builder);
-        addInfestedStone(builder);
         return builder.build();
     }
 

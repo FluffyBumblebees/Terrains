@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.component;
+package net.fluffybumblebee.terrains.common.world.inbuilt_features.component.component;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

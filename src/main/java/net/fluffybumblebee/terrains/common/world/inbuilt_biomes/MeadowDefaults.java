@@ -33,11 +33,11 @@ public class MeadowDefaults {
             .build();
 
     public static void addLargeMeadowFeatures(GenerationSettings.Builder generationBuilder) {
-        generationBuilder.feature(GenerationStep.Feature.FLUID_SPRINGS, MEADOW_LAKE);
-        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HUGE_BROWN_MUSHROOM);
-        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HUGE_RED_MUSHROOM);
-        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, MEADOW_SPRUCE);
-        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, MEADOW_SPRUCE_SPARSE);
-        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OAK_BUSH_COMMON);
+        generationBuilder.feature(GenerationStep.Feature.FLUID_SPRINGS, LAKE_SMALL);
+        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TREES_MUSHROOM_BROWN);
+        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TREES_MUSHROOM_RED);
+        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TREES_SPRUCE_PATCH);
+        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TREES_SPRUCE_SPARSE);
+        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TREES_OAK_BUSH_COMMON);
     }
 }

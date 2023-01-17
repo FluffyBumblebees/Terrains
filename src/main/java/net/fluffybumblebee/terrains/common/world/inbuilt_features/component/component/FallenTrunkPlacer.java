@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.component;
+package net.fluffybumblebee.terrains.common.world.inbuilt_features.component.component;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;

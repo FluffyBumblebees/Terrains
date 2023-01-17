@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.common.world.inbuilt_features.raw;
+package net.fluffybumblebee.terrains.common.world.inbuilt_features.component;
 
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.util.registry.RegistryEntry;

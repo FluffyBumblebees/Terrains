@@ -3,7 +3,7 @@ package net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained
 import net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained.StainedTreeType.StainedConfig;
-import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.StainedSaplingGenerator;
+import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.StainedSaplingGenerator;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.gen.GenerationStep;
@@ -25,7 +25,7 @@ public class StainedTreeAccess {
         return ((StainedConfig)getFeatures(colour)).COMMON_RANDOM_TREE_PLACED;
     }
 
-    public static void addAllToBuilder(GenerationSettings.Builder builder) {
+    public static void addStainedTrees(GenerationSettings.Builder builder) {
         for (TypesStainedTree colour : TypesStainedTree.values()) {
             builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, StainedTreeAccess.getPlacedFeature(colour));
         }

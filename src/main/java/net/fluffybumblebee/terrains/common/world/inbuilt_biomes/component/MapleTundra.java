@@ -30,14 +30,11 @@ public class MapleTundra {
 
     private static GenerationSettings generationSettings(){
         GenerationSettings.Builder builder = new GenerationSettings.Builder();
-        addBasicFeatures(builder);
-        DefaultBiomeFeatures.addDefaultOres(builder);
-        DefaultBiomeFeatures.addDefaultDisks(builder);
+        addDefaultFeatures(builder, () -> {
+            DefaultBiomeFeatures.addTaigaGrass(builder);
+        });
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(WHITE));
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(BLUE));
-        DefaultBiomeFeatures.addTaigaGrass(builder);
-        DefaultBiomeFeatures.addDefaultMushrooms(builder);
-        DefaultBiomeFeatures.addDefaultVegetation(builder);
         return builder.build();
     }
 

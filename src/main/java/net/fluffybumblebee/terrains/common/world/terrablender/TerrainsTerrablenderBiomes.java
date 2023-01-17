@@ -49,7 +49,7 @@ public class TerrainsTerrablenderBiomes extends Region implements Runnable, Terr
                 mapper,
                 ParameterUtils.Temperature.WARM,
                 ParameterUtils.Humidity.NEUTRAL,
-                ParameterUtils.Continentalness.INLAND,
+                ParameterUtils.Continentalness.NEAR_INLAND,
                 ParameterUtils.Erosion.EROSION_0,
                 ParameterUtils.Weirdness.LOW_SLICE_NORMAL_DESCENDING,
                 ParameterUtils.Depth.SURFACE,
