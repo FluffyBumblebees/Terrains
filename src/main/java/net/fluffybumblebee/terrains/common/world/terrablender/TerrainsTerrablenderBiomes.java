@@ -80,6 +80,18 @@ public class TerrainsTerrablenderBiomes extends Region implements Runnable, Terr
                 0L,
                 MAPLE_TUNDRA
         );
+
+        this.addBiome(
+                mapper,
+                ParameterUtils.Temperature.WARM,
+                ParameterUtils.Humidity.NEUTRAL,
+                ParameterUtils.Continentalness.COAST,
+                ParameterUtils.Erosion.EROSION_6,
+                ParameterUtils.Weirdness.LOW_SLICE_VARIANT_ASCENDING,
+                ParameterUtils.Depth.SURFACE,
+                0L,
+                STAINED_FOREST
+        );
     }
 
     @Override

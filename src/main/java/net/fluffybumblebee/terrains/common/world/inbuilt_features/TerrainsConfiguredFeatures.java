@@ -71,7 +71,13 @@ public class TerrainsConfiguredFeatures {
     ) {
         WeightedBlockStateProvider outerLayers = new WeightedBlockStateProvider(new DataPool.Builder<BlockState>()
                 .add(crystal.getDefaultState(), 5000)
-                .add(corundum.getDefaultState(), 100)
+                .add(corundum.getDefaultState(), 500)
+                .add(Blocks.COAL_BLOCK.getDefaultState(), 30)
+                .add(Blocks.COPPER_BLOCK.getDefaultState(), 20)
+                .add(Blocks.IRON_BLOCK.getDefaultState(), 15)
+                .add(Blocks.REDSTONE_BLOCK.getDefaultState(), 15)
+                .add(Blocks.LAPIS_BLOCK.getDefaultState(), 15)
+                .add(Blocks.GOLD_BLOCK.getDefaultState(), 10)
                 .add(Blocks.EMERALD_BLOCK.getDefaultState(), 2)
                 .add(Blocks.DIAMOND_BLOCK.getDefaultState(), 1)
                 .build());

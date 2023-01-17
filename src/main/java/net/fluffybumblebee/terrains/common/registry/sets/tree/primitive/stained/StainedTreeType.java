@@ -8,6 +8,7 @@ import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.StainedSap
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
+import net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerPotBlock;
@@ -36,7 +37,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.generateFeature;
-import static net.minecraft.world.gen.feature.VegetationPlacedFeatures.modifiers;
 
 public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySetCreator {
     private final List<BlockSet<?>> ALL_BLOCKS;
@@ -76,10 +76,11 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
         );
     }
 
-    private static class StainedConfig implements FeatureCreator<StainedSaplingGenerator> {
+    public static class StainedConfig implements FeatureCreator<StainedSaplingGenerator> {
 
         public final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> RANDOM_TREE;
         public final RegistryEntry<PlacedFeature> RANDOM_TREE_PLACED;
+        public final RegistryEntry<PlacedFeature> COMMON_RANDOM_TREE_PLACED;
         private final StainedSaplingGenerator GENERATOR;
 
         private StainedConfig(final List<Block> allLogs, final LeavesBlock leaves, final String type) {
@@ -105,8 +106,15 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
             RANDOM_TREE_PLACED = PlacedFeatures.register(
                     TerrainsDefaults.getNamespaceVar() + type + "tree_bees_placed",
                     RANDOM_TREE,
-                    modifiers(
+                    TreeRegistration.treePlacementModifiers(
                             PlacedFeatures.createCountExtraModifier(0, 0.01f, 1)
+                    )
+            );
+            COMMON_RANDOM_TREE_PLACED = PlacedFeatures.register(
+                    TerrainsDefaults.getNamespaceVar() + type + "common_tree_bees_placed",
+                    RANDOM_TREE,
+                    TreeRegistration.treePlacementModifiers(
+                            PlacedFeatures.createCountExtraModifier(1, 0.1f, 1)
                     )
             );
 
