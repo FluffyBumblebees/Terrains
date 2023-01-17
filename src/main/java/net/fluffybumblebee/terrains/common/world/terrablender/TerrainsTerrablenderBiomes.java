@@ -73,9 +73,9 @@ public class TerrainsTerrablenderBiomes extends Region implements Runnable, Terr
                 mapper,
                 ParameterUtils.Temperature.COOL,
                 ParameterUtils.Humidity.NEUTRAL,
-                ParameterUtils.Continentalness.FULL_RANGE,
-                ParameterUtils.Erosion.FULL_RANGE,
-                ParameterUtils.Weirdness.PEAK_VARIANT,
+                ParameterUtils.Continentalness.MID_INLAND,
+                ParameterUtils.Erosion.EROSION_0,
+                ParameterUtils.Weirdness.LOW_SLICE_VARIANT_ASCENDING,
                 ParameterUtils.Depth.SURFACE,
                 0L,
                 MAPLE_TUNDRA
@@ -87,7 +87,7 @@ public class TerrainsTerrablenderBiomes extends Region implements Runnable, Terr
                 ParameterUtils.Humidity.NEUTRAL,
                 ParameterUtils.Continentalness.COAST,
                 ParameterUtils.Erosion.EROSION_6,
-                ParameterUtils.Weirdness.LOW_SLICE_VARIANT_ASCENDING,
+                ParameterUtils.Weirdness.HIGH_SLICE_VARIANT_ASCENDING,
                 ParameterUtils.Depth.SURFACE,
                 0L,
                 STAINED_FOREST
