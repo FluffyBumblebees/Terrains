@@ -47,7 +47,9 @@ public final class MapleTreeType {
         BROWN,
         ORANGE,
         YELLOW,
-        GREEN
+        GREEN,
+        BLUE,
+        WHITE
     }
     public static final class MapleFeatures implements FeatureCreator<MapleSaplingGenerator> {
         private final List<Block> ALL_LOGS;
@@ -75,7 +77,7 @@ public final class MapleTreeType {
         private RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>>
         getConfiguredMaple(final String type, final LeavesBlock leaves, final boolean bees) {
             final DataPool<BlockState> dataPool = new DataPool.Builder<BlockState>()
-                    .add(ALL_LOGS.get(0).getDefaultState(), 4)
+                    .add(ALL_LOGS.get(0).getDefaultState(), 15)
                     .add(ALL_LOGS.get(1).getDefaultState(), 1)
                     .build();
 

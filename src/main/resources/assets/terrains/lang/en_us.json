@@ -1,7 +1,8 @@
 {	
 	"biome.terrains.pumpkin_ridges": "Pumpkin Ridges",
 	"biome.terrains.maple_blossom": "Maple Blossom",
-	"biome.terrains.maple_drylands": "Maple Drylands",
+	"biome.terrains.maple_ghost_forest": "Maple Ghost Forest",
+	"biome.terrains.maple_tundra": "Maple Tundra",
 	"biome.terrains.meadow_flats": "Meadow Flats",
 
 	
@@ -239,6 +240,12 @@
 
 	"block.terrains.green_maple_leaves": "Green Maple Leaves",
 	"block.terrains.green_maple_sapling": "Green Maple Sapling",
+
+	"block.terrains.white_maple_leaves": "White Maple Leaves",
+	"block.terrains.white_maple_sapling": "White Maple Sapling",
+
+	"block.terrains.blue_maple_leaves": "Blue Maple Leaves",
+	"block.terrains.blue_maple_sapling": "Blue Maple Sapling",
 
 
 	"block.terrains.sappy_maple_log": "Sappy Maple Log",

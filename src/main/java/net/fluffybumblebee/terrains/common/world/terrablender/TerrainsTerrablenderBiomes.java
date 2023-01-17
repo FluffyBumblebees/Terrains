@@ -11,7 +11,7 @@ import terrablender.api.*;
 
 import java.util.function.Consumer;
 
-import static net.fluffybumblebee.terrains.common.world.inbuilt_biomes.BiomeRegistry.*;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_biomes.TerrainsBiomeRegistry.*;
 
 public class TerrainsTerrablenderBiomes extends Region implements Runnable, TerraBlenderApi {
 
@@ -66,7 +66,19 @@ public class TerrainsTerrablenderBiomes extends Region implements Runnable, Terr
                 ParameterUtils.Weirdness.LOW_SLICE_VARIANT_ASCENDING,
                 ParameterUtils.Depth.SURFACE,
                 0L,
-                MAPLE_DRY_LANDS
+                MAPLE_GHOST_FOREST
+        );
+
+        this.addBiome(
+                mapper,
+                ParameterUtils.Temperature.COOL,
+                ParameterUtils.Humidity.NEUTRAL,
+                ParameterUtils.Continentalness.FULL_RANGE,
+                ParameterUtils.Erosion.FULL_RANGE,
+                ParameterUtils.Weirdness.PEAK_VARIANT,
+                ParameterUtils.Depth.SURFACE,
+                0L,
+                MAPLE_TUNDRA
         );
     }
 

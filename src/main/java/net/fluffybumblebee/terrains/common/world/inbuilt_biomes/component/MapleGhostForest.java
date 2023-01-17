@@ -15,9 +15,9 @@ import static net.fluffybumblebee.terrains.common.world.inbuilt_features.Terrain
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
 
 
-public class MapleDryLands {
+public class MapleGhostForest {
     private static final int BIOME_COLOUR =  0xE69600;
-    public static final Biome MAPLE_DRY_LANDS = new Biome.Builder()
+    public static final Biome MAPLE_GHOST_FOREST = new Biome.Builder()
             .precipitation(Biome.Precipitation.NONE)
             .generationSettings(generationSettings())
             .category(Biome.Category.FOREST)
