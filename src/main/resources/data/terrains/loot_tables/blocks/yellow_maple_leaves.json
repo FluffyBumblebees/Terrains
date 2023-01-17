@@ -42,7 +42,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "terrains:orange_maple_sapling",
+              "name": "terrains:yellow_maple_sapling",
               "conditions": [
                 {
                   "condition": "minecraft:survives_explosion"

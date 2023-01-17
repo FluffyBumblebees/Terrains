@@ -3,7 +3,7 @@ package net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet;
 import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.MapleSaplingGenerator;
-import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.component.ConeFoliagePlacer;
+import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.component.HemiEllipsoidFoliagePlacer;
 import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.component.FallenTrunkPlacer;
 import net.fluffybumblebee.terrains.common.world.inbuilt_features.raw.component.NoneFoliagePlacer;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
@@ -75,16 +75,16 @@ public final class MapleTreeType {
         private RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>>
         getConfiguredMaple(final String type, final LeavesBlock leaves, final boolean bees) {
             final DataPool<BlockState> dataPool = new DataPool.Builder<BlockState>()
-                    .add(ALL_LOGS.get(0).getDefaultState(), 2)
+                    .add(ALL_LOGS.get(0).getDefaultState(), 4)
                     .add(ALL_LOGS.get(1).getDefaultState(), 1)
                     .build();
 
             var builder = new TreeFeatureConfig.Builder(
                     new WeightedBlockStateProvider(dataPool),
-                    new StraightTrunkPlacer(6, 5, 5),
+                    new StraightTrunkPlacer(4, 3, 4),
                     BlockStateProvider.of(leaves),
-                    new ConeFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0)),
-                    new ThreeLayersFeatureSize(1, 1, 0, 0, 2, OptionalInt.empty())
+                    new HemiEllipsoidFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0)),
+                    new ThreeLayersFeatureSize(1, 1, 0, 0, 1, OptionalInt.empty())
             );
 
             String beeState = "no_bees";

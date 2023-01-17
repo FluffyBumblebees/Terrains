@@ -45,6 +45,8 @@ public class WholeTreeSet<
         TREE_VARIANTS = config.treeVariants;
         PRIMITIVE_TREE_CONFIGS = new HashMap<>();
         ADDITIONAL_LOG_VARIANTS = new ArrayList<>();
+        WOOD_SET = new WoodSet(WOOD_TYPE);
+        ADDITIONAL_LOG_VARIANTS.add((BlockSet<WoodBlock>) WOOD_SET.LOG);
 
         final var logVariants = config.additionalLogVariants;
         if (logVariants != null) {
@@ -53,9 +55,6 @@ public class WholeTreeSet<
                         logVariant));
             }
         }
-
-        WOOD_SET = new WoodSet(WOOD_TYPE);
-        ADDITIONAL_LOG_VARIANTS.add((BlockSet<WoodBlock>) WOOD_SET.LOG);
 
         final List<Block> logs = new ArrayList<>();
         for (BlockSet<WoodBlock> log : ADDITIONAL_LOG_VARIANTS) {
@@ -78,6 +77,7 @@ public class WholeTreeSet<
 
         ALL_BLOCKS = new ArrayList<>();
         ALL_BLOCKS.addAll(ADDITIONAL_LOG_VARIANTS);
+        ALL_BLOCKS.remove(WOOD_SET.LOG);
         ALL_BLOCKS.addAll(WOOD_SET.getAllBlockSets());
 
         Quickerator<String> treeVariantIterator = () -> Arrays.asList(TREE_VARIANTS);
