@@ -1,11 +1,13 @@
 package net.fluffybumblebee.terrains.common.world.inbuilt_biomes.component;
 
 import net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained.StainedTreeAccess;
+import net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
+import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
@@ -31,8 +33,9 @@ public class StainedForest {
         DefaultBiomeFeatures.addDefaultOres(builder);
         DefaultBiomeFeatures.addDefaultDisks(builder);
         StainedTreeAccess.addAllToBuilder(builder);
-        DefaultBiomeFeatures.addForestGrass(builder);
-        DefaultBiomeFeatures.addForestFlowers(builder);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TerrainsPlacedFeatures.FOREST_FLOWERS);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TerrainsPlacedFeatures.FOREST_GRASS_PATCH);
+
         return builder.build();
     }
 

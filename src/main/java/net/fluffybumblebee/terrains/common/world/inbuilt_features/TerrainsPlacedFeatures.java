@@ -1,8 +1,9 @@
 package net.fluffybumblebee.terrains.common.world.inbuilt_features;
 
 import net.minecraft.block.Blocks;
+import net.minecraft.util.math.intprovider.ClampedIntProvider;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
 
@@ -99,15 +100,22 @@ public class TerrainsPlacedFeatures {
             BiomePlacementModifier.of()
     );
 
-    public static RegistryEntry<PlacedFeature> registerPlacedGeode(RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> geode, String name) {
-        return register(
-                getNamespaceVar() + name + "_geode_placed",
-                geode,
-                RarityFilterPlacementModifier.of(1440),
-                SquarePlacementModifier.of(),
-                HeightRangePlacementModifier.uniform(YOffset.aboveBottom(6),
-                        YOffset.fixed(30)),
-                BiomePlacementModifier.of()
-        );
-    }
+    public static final RegistryEntry<PlacedFeature> FOREST_FLOWERS = registerToMod(
+            "forest_flowers",
+            VegetationConfiguredFeatures.FOREST_FLOWERS,
+            RarityFilterPlacementModifier.of(7),
+            SquarePlacementModifier.of(),
+            PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+            CountPlacementModifier.of(ClampedIntProvider.create(UniformIntProvider.create(-3, 1), 0, 1)),
+            BiomePlacementModifier.of()
+    );
+
+    public static final RegistryEntry<PlacedFeature> FOREST_GRASS_PATCH = registerToMod(
+            "forest_grass_patch",
+            VegetationConfiguredFeatures.PATCH_GRASS,
+            modifiers(2)
+    );
+
+
+
 }

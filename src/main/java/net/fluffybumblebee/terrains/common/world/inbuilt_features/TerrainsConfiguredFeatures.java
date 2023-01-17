@@ -1,21 +1,14 @@
 package net.fluffybumblebee.terrains.common.world.inbuilt_features;
 
-import net.minecraft.block.AmethystClusterBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.tag.BlockTags;
-import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.TreeFeatureConfig.Builder;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BushFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.List;
@@ -62,47 +55,4 @@ public class TerrainsConfiguredFeatures {
                     List.of(Blocks.GRASS_BLOCK)
             )
     );
-
-    public static <B extends Block, C extends AmethystClusterBlock> RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> registerGeode(
-            B corundum,
-            B crystal,
-            C cluster,
-            String colour
-    ) {
-        WeightedBlockStateProvider outerLayers = new WeightedBlockStateProvider(new DataPool.Builder<BlockState>()
-                .add(crystal.getDefaultState(), 5000)
-                .add(corundum.getDefaultState(), 500)
-                .add(Blocks.COAL_BLOCK.getDefaultState(), 30)
-                .add(Blocks.COPPER_BLOCK.getDefaultState(), 20)
-                .add(Blocks.IRON_BLOCK.getDefaultState(), 15)
-                .add(Blocks.REDSTONE_BLOCK.getDefaultState(), 15)
-                .add(Blocks.LAPIS_BLOCK.getDefaultState(), 15)
-                .add(Blocks.GOLD_BLOCK.getDefaultState(), 10)
-                .add(Blocks.EMERALD_BLOCK.getDefaultState(), 2)
-                .add(Blocks.DIAMOND_BLOCK.getDefaultState(), 1)
-                .build());
-
-        return register(
-                getNamespaceVar() + colour + "_geode",
-                Feature.GEODE,
-                new GeodeFeatureConfig(
-                        new GeodeLayerConfig(
-                                BlockStateProvider.of(Blocks.AIR),
-                                BlockStateProvider.of(crystal),
-                                BlockStateProvider.of(corundum),
-                                outerLayers,
-                                outerLayers,
-                                List.of(cluster.getDefaultState()),
-                                BlockTags.FEATURES_CANNOT_REPLACE, BlockTags.GEODE_INVALID_BLOCKS),
-                        new GeodeLayerThicknessConfig(3.4, 5.6, 7.2, 9.4),
-                        new GeodeCrackConfig(0.95, 2.0, 2), 0.35, 0.083, true,
-                        UniformIntProvider.create(4, 6),
-                        UniformIntProvider.create(3, 4),
-                        UniformIntProvider.create(1, 2),
-                        -16,
-                        16,
-                        0.05,
-                        1)
-        );
-    }
 }
