@@ -38,6 +38,6 @@ public class MeadowDefaults {
         generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, HUGE_RED_MUSHROOM);
         generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, MEADOW_SPRUCE);
         generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, MEADOW_SPRUCE_SPARSE);
-        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, MEADOW_BUSH);
+        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OAK_BUSH_COMMON);
     }
 }

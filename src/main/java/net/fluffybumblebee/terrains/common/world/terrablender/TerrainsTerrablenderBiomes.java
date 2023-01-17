@@ -48,6 +48,18 @@ public class TerrainsTerrablenderBiomes extends Region implements Runnable, Terr
         this.addBiome(
                 mapper,
                 ParameterUtils.Temperature.WARM,
+                ParameterUtils.Humidity.NEUTRAL,
+                ParameterUtils.Continentalness.INLAND,
+                ParameterUtils.Erosion.EROSION_0,
+                ParameterUtils.Weirdness.LOW_SLICE_NORMAL_DESCENDING,
+                ParameterUtils.Depth.SURFACE,
+                0L,
+                MAPLE_MEADOW
+        );
+
+        this.addBiome(
+                mapper,
+                ParameterUtils.Temperature.WARM,
                 ParameterUtils.Humidity.DRY,
                 ParameterUtils.Continentalness.MID_INLAND,
                 ParameterUtils.Erosion.FULL_RANGE,

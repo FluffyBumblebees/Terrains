@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.MEADOW_BUSH;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.OAK_BUSH_COMMON;
 import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 
 @Mixin(OverworldBiomeCreator.class)
@@ -38,7 +38,7 @@ public class OverworldBiomeCreatorMixin {
         DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
         addBatsAndMonsters(spawnBuilder);
         addBasicFeatures(generationBuilder);
-        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, MEADOW_BUSH);
+        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OAK_BUSH_COMMON);
         addPlainsTallGrass(generationBuilder);
         addForestFlowers(generationBuilder);
         addDefaultGrass(generationBuilder);

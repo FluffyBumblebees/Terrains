@@ -6,13 +6,16 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.minecraft.world.gen.GenerationStep;
 
+import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getPlacedNoBees;
+import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.GREEN;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.OAK_BUSH_UNCOMMON;
 import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 
 
-public class MeadowFlats {
-    public static final Biome MEADOW_FLATS = new Biome.Builder()
+public class MapleMeadow {
+    public static final Biome MAPLE_MEADOW = new Biome.Builder()
             .precipitation(Biome.Precipitation.RAIN)
             .generationSettings(generationSettings())
             .category(Biome.Category.PLAINS)
@@ -24,15 +27,14 @@ public class MeadowFlats {
 
     private static GenerationSettings generationSettings() {
         GenerationSettings.Builder builder = new GenerationSettings.Builder();
-        MeadowDefaults.ACCESS.basicFeatures(builder);
-        MeadowDefaults.addLargeMeadowFeatures(builder);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(GREEN));
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OAK_BUSH_UNCOMMON);
+        addDefaultFlowers(builder);
         addPlainsTallGrass(builder);
         addForestFlowers(builder);
         addDefaultGrass(builder);
         addDefaultOres(builder);
         addDefaultDisks(builder);
-        addMeadowFlowers(builder);
-        addExtraDefaultFlowers(builder);
         addInfestedStone(builder);
         return builder.build();
     }
@@ -40,7 +42,7 @@ public class MeadowFlats {
     private static SpawnSettings spawnSettings() {
         SpawnSettings.Builder builder = new SpawnSettings.Builder();
         builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.WOLF, 5, 4, 4));
-        DefaultBiomeFeatures.addFarmAnimals(builder);
+        addFarmAnimals(builder);
         return builder.build();
     }
 }

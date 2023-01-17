@@ -44,8 +44,8 @@ public class TerrainsPlacedFeatures {
             modifiers(createCountExtraModifier(0, 0.5f, 1))
     );
 
-    public static final RegistryEntry<PlacedFeature> MEADOW_BUSH = registerToMod(
-            "meadow_bush",
+    public static final RegistryEntry<PlacedFeature> OAK_BUSH_COMMON = registerToMod(
+            "meadow_bush_common",
             TerrainsConfiguredFeatures.MEADOW_BUSH,
             modifiersWithWouldSurvive(createCountExtraModifier(1, 0.5f, 2), Blocks.OAK_SAPLING)
     );
@@ -116,6 +116,9 @@ public class TerrainsPlacedFeatures {
             modifiers(2)
     );
 
-
-
+    public static final RegistryEntry<PlacedFeature> OAK_BUSH_UNCOMMON = registerToMod(
+            "meadow_bush_uncommon",
+            TerrainsConfiguredFeatures.MEADOW_BUSH,
+            modifiersWithWouldSurvive(createCountExtraModifier(0, 0.5f, 1), Blocks.OAK_SAPLING)
+    );
 }
