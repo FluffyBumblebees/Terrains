@@ -9,7 +9,7 @@ import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getPlacedNoBees;
-import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.PASTEL_GREEN;
+import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.GREEN;
 import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.*;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.addDefaultFeatures;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.addVegetalFeatures;
@@ -31,7 +31,7 @@ public class MapleMeadow {
     private static GenerationSettings generationSettings() {
         GenerationSettings.Builder builder = new GenerationSettings.Builder();
         addDefaultFeatures(builder);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(PASTEL_GREEN));
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(GREEN));
         addVegetalFeatures(builder, TREES_OAK_BUSH_UNCOMMON, SCATTERED_MELON, PATCH_GRASS_JUNGLE, PATCH_GRASS_FOREST,
                 PATCH_GRASS_TALL, FLOWERS_FOREST, FLOWERS_MEADOW, FLOWERS_PLAINS, FLOWER_WARM);
         addMelons(builder);
