@@ -53,8 +53,6 @@ public final class PrimitiveTreeSet<
                 SAPLING,
                 POTTED_SAPLING
         });
-
-        System.out.println(LEAVES.IDENTIFIER);
     }
 
     @Override

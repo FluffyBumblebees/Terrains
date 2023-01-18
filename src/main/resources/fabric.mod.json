@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Terrains",
-  "description": "Random things that I want to add because I can.",
+  "description": "Random worldgen things for minecraft.",
   "authors": [
     "Fluffy Bumblebee [Owner]",
     "IIpho3nix [Contributor-Artist]"
@@ -14,7 +14,7 @@
     "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
 
-  "license": "LGPL-3.0",
+  "license": "All Rights Reserved",
   "icon": "assets/terrains/icon.png",
 
   "environment": "*",
@@ -35,7 +35,7 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.14.8",
+    "fabricloader": ">=0.14.12",
     "fabric": "*",
     "minecraft": "~1.18.2",
     "java": ">=17"
