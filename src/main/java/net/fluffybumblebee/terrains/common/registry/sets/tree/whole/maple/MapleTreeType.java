@@ -47,9 +47,11 @@ public final class MapleTreeType {
         BROWN,
         ORANGE,
         YELLOW,
+        PASTEL_GREEN,
         GREEN,
         BLUE,
-        WHITE
+        WHITE,
+        TYRIAN_PURPLE
     }
     public static final class MapleFeatures implements FeatureCreator<MapleSaplingGenerator> {
         private final List<Block> ALL_LOGS;

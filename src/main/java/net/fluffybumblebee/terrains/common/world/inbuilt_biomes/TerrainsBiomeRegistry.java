@@ -8,6 +8,8 @@ import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRe
 
 
 public class TerrainsBiomeRegistry {
+    public static final RegistryKey<Biome> LUSH_MAPLE_BLOSSOM = add("lush_maple_blossom",
+            LushMapleBlossom.LUSH_MAPLE_BLOSSOM);
     public static final RegistryKey<Biome> MAPLE_BLOSSOM = add("maple_blossom", MapleBlossom.MAPLE_BLOSSOM);
     public static final RegistryKey<Biome> MAPLE_GHOST_FOREST = add("maple_ghost_forest",
             MapleGhostForest.MAPLE_GHOST_FOREST);

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "terrains:block/tyrian_purple_maple_sapling"
+  }
+}

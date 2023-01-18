@@ -1,13 +1,14 @@
 {	
 	"biome.terrains.pumpkin_ridges": "Pumpkin Ridges",
+	"biome.terrains.lush_maple_blossom": "Lush Maple Blossom",
 	"biome.terrains.maple_blossom": "Maple Blossom",
-	"biome.terrains.maple_meadow": "Maple Meadow",
 	"biome.terrains.maple_ghost_forest": "Maple Ghost Forest",
-	"biome.terrains.stained_forest": "Stained Forest",
+	"biome.terrains.maple_meadow": "Maple Meadow",
 	"biome.terrains.maple_tundra": "Maple Tundra",
 	"biome.terrains.meadow_flats": "Meadow Flats",
+	"biome.terrains.stained_forest": "Stained Forest",
 
-	
+
 	"itemGroup.terrains.nature": "Terrains Nature",
 	"itemGroup.terrains.underground": "Terrains Underground",
 	"itemGroup.terrains.foods": "Terrains Foods",
@@ -243,11 +244,17 @@
 	"block.terrains.green_maple_leaves": "Green Maple Leaves",
 	"block.terrains.green_maple_sapling": "Green Maple Sapling",
 
+	"block.terrains.pastel_green_maple_leaves": "Pastel Green Maple Leaves",
+	"block.terrains.pastel_green_maple_sapling": "Pastel Green Maple Sapling",
+
 	"block.terrains.white_maple_leaves": "White Maple Leaves",
 	"block.terrains.white_maple_sapling": "White Maple Sapling",
 
 	"block.terrains.blue_maple_leaves": "Blue Maple Leaves",
 	"block.terrains.blue_maple_sapling": "Blue Maple Sapling",
+
+	"block.terrains.tyrian_purple_maple_leaves": "Tyrian Purple Maple Leaves",
+	"block.terrains.tyrian_purple_maple_sapling": "Tyrian Purple Maple Sapling",
 
 
 	"block.terrains.sappy_maple_log": "Sappy Maple Log",
