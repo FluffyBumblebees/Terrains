@@ -48,7 +48,8 @@ public class OverworldBiomeCreatorMixin {
         GenerationSettings.Builder builder = new GenerationSettings.Builder();
 
         addDefaultFeatures(builder);
-        addVegetalFeatures(builder, TREES_OAK_BUSH_UNCOMMON, PATCH_GRASS_JUNGLE, PATCH_GRASS_FOREST, PATCH_GRASS_TALL,
+        addVegetalFeatures(builder, TREES_OAK_BUSH_UNCOMMON, TREES_OAK_BUSH_COMMON, PATCH_GRASS_JUNGLE, PATCH_GRASS_FOREST,
+                PATCH_GRASS_TALL,
                 FLOWERS_FOREST, FLOWERS_MEADOW, FLOWER_WARM
         );
         return builder;

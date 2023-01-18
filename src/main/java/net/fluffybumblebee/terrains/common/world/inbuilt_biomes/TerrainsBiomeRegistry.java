@@ -8,14 +8,15 @@ import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRe
 
 
 public class TerrainsBiomeRegistry {
-    public static final RegistryKey<Biome> MEADOW_FLATS = add("meadow_flats", MeadowFlats.MEADOW_FLATS);
     public static final RegistryKey<Biome> MAPLE_BLOSSOM = add("maple_blossom", MapleBlossom.MAPLE_BLOSSOM);
-    public static final RegistryKey<Biome> MAPLE_MEADOW = add("maple_meadow", MapleMeadow.MAPLE_MEADOW);
-    public static final RegistryKey<Biome> MAPLE_TUNDRA = add("maple_tundra", MapleTundra.MAPLE_TUNDRA);
-    public static final RegistryKey<Biome> PUMPKIN_RIDGES = add("pumpkin_ridges", PumpkinRidges.PUMPKIN_RIDGES);
-    public static final RegistryKey<Biome> STAINED_FOREST = add("stained_forest", StainedForest.STAINED_FOREST);
     public static final RegistryKey<Biome> MAPLE_GHOST_FOREST = add("maple_ghost_forest",
             MapleGhostForest.MAPLE_GHOST_FOREST);
+    public static final RegistryKey<Biome> MAPLE_MEADOW = add("maple_meadow", MapleMeadow.MAPLE_MEADOW);
+    public static final RegistryKey<Biome> MAPLE_TUNDRA = add("maple_tundra", MapleTundra.MAPLE_TUNDRA);
+    public static final RegistryKey<Biome> MEADOW_FLATS = add("meadow_flats", MeadowFlats.MEADOW_FLATS);
+    public static final RegistryKey<Biome> PUMPKIN_RIDGES = add("pumpkin_ridges", PumpkinRidges.PUMPKIN_RIDGES);
+    public static final RegistryKey<Biome> STAINED_FOREST = add("stained_forest", StainedForest.STAINED_FOREST);
+
 
     public static void register() {}
 }

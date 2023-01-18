@@ -14,16 +14,16 @@ import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRe
 
 
 public class PumpkinRidges {
+    private static final int BIOME_COLOUR =  0xB2B207;
     public static final Biome PUMPKIN_RIDGES = new Biome.Builder()
             .precipitation(Biome.Precipitation.NONE)
             .generationSettings(generationSettings())
             .category(Biome.Category.FOREST)
             .spawnSettings(spawnSettings())
             .effects(createDefaultBiomeEffects()
-                    .grassColor(0xB2B207)
-                    .foliageColor(0xB2B207)
-                    .build()
-            )
+                    .grassColor(BIOME_COLOUR)
+                    .foliageColor(BIOME_COLOUR)
+                    .build())
             .temperature(0.9F)
             .downfall(0F)
             .build();

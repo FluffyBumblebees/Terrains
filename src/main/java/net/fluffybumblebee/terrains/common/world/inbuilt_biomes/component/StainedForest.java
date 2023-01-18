@@ -12,15 +12,17 @@ import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRe
 
 
 public class StainedForest {
+    private static final int BIOME_COLOUR =  0x2CB2B2;
+
     public static final Biome STAINED_FOREST = new Biome.Builder()
             .precipitation(Biome.Precipitation.RAIN)
             .generationSettings(generationSettings())
             .category(Biome.Category.FOREST)
             .spawnSettings(spawnSettings())
             .effects(createDefaultBiomeEffects()
-                    .grassColor(0x2CB2B2)
-                    .foliageColor(0x2CB2B2).build()
-            )
+                    .grassColor(BIOME_COLOUR)
+                    .foliageColor(BIOME_COLOUR)
+                    .build())
             .temperature(0.5F)
             .downfall(0.5F)
             .build();

@@ -107,14 +107,14 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
                     TerrainsDefaults.getNamespaceVar() + type + "tree_bees_placed",
                     RANDOM_TREE,
                     TreeRegistration.treePlacementModifiers(
-                            PlacedFeatures.createCountExtraModifier(0, 0.01f, 1)
+                            PlacedFeatures.createCountExtraModifier(0, 0.005f, 1)
                     )
             );
             COMMON_RANDOM_TREE_PLACED = PlacedFeatures.register(
                     TerrainsDefaults.getNamespaceVar() + type + "common_tree_bees_placed",
                     RANDOM_TREE,
                     TreeRegistration.treePlacementModifiers(
-                            PlacedFeatures.createCountExtraModifier(1, 0.1f, 1)
+                            PlacedFeatures.createCountExtraModifier(0, 0.5f, 1)
                     )
             );
 

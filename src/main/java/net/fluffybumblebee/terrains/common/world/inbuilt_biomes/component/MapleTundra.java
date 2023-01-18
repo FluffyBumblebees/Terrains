@@ -15,15 +15,17 @@ import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRe
 
 
 public class MapleTundra {
+    private static final int BIOME_COLOUR =  0x00703C;
+
     public static final Biome MAPLE_TUNDRA = new Biome.Builder()
             .precipitation(Biome.Precipitation.SNOW)
             .generationSettings(generationSettings())
             .category(Biome.Category.TAIGA)
             .spawnSettings(spawnSettings())
             .effects(createDefaultBiomeEffects()
-                    .grassColor(0x00703C)
-                    .foliageColor(0x00703C).build()
-            )
+                    .grassColor(BIOME_COLOUR)
+                    .foliageColor(BIOME_COLOUR)
+                    .build())
             .temperature(-0.5F)
             .downfall(0.25F)
             .build();
