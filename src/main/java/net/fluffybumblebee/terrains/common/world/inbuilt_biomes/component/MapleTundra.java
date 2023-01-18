@@ -10,12 +10,13 @@ import net.minecraft.world.gen.GenerationStep;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getPlacedNoBees;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.BLUE;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.WHITE;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_biomes.TerrainsBiomeRegistry.COLD_WATER;
 import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.*;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
 
 
 public class MapleTundra {
-    private static final int BIOME_COLOUR =  0x00703C;
+    private static final int BIOME_COLOUR =  0x00A54A;
 
     public static final Biome MAPLE_TUNDRA = new Biome.Builder()
             .precipitation(Biome.Precipitation.SNOW)
@@ -25,6 +26,8 @@ public class MapleTundra {
             .effects(createDefaultBiomeEffects()
                     .grassColor(BIOME_COLOUR)
                     .foliageColor(BIOME_COLOUR)
+                    .waterColor(COLD_WATER)
+                    .waterFogColor(COLD_WATER)
                     .build())
             .temperature(-0.5F)
             .downfall(0.25F)

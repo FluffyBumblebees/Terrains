@@ -9,6 +9,7 @@ import net.minecraft.world.biome.SpawnSettings;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getPlacedNoBees;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getUniqueMapleFeatures;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.*;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_biomes.TerrainsBiomeRegistry.HOT_WATER;
 import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.*;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
 
@@ -23,6 +24,8 @@ public class PumpkinRidges {
             .effects(createDefaultBiomeEffects()
                     .grassColor(BIOME_COLOUR)
                     .foliageColor(BIOME_COLOUR)
+                    .waterColor(HOT_WATER)
+                    .waterFogColor(HOT_WATER)
                     .build())
             .temperature(0.9F)
             .downfall(0F)

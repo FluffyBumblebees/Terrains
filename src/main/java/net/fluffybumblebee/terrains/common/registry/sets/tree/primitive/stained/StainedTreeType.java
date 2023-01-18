@@ -11,7 +11,6 @@ import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.Re
 import net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.item.Item;
 import net.minecraft.tag.BlockTags;
@@ -52,9 +51,7 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
                 StainedConfig::new
         ));
 
-        for (BlockSet<?> block : TREE_CONFIG.getAllBlockSets())
-            if (!(block.BLOCK instanceof FlowerPotBlock))
-                ALL_BLOCKS.add(block);
+        ALL_BLOCKS.addAll(TREE_CONFIG.getAllBlockSets());
     }
 
     @Override
@@ -173,7 +170,7 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
             );
 
             if (bees)
-                config.decorators(List.of(new BeehiveTreeDecorator(0.05F)));
+                config.decorators(List.of(new BeehiveTreeDecorator(0.03F)));
 
             return config;
         }

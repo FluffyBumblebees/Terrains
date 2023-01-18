@@ -7,6 +7,7 @@ import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained.StainedTreeAccess.addStainedTrees;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_biomes.TerrainsBiomeRegistry.WARM_WATER;
 import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.*;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
 
@@ -22,6 +23,8 @@ public class StainedForest {
             .effects(createDefaultBiomeEffects()
                     .grassColor(BIOME_COLOUR)
                     .foliageColor(BIOME_COLOUR)
+                    .waterColor(WARM_WATER)
+                    .waterFogColor(WARM_WATER)
                     .build())
             .temperature(0.5F)
             .downfall(0.5F)

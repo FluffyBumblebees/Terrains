@@ -8,7 +8,6 @@ import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.minecraft.block.Block;
-import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.Item;
 import org.jetbrains.annotations.NotNull;
@@ -18,8 +17,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
-import static net.fluffybumblebee.terrains.util.registration.registry_set.helper.EasyIf.onIf;
 
 @SuppressWarnings("unchecked")
 public class WholeTreeSet<
@@ -81,8 +78,8 @@ public class WholeTreeSet<
         ALL_BLOCKS.addAll(WOOD_SET.getAllBlockSets());
 
         Quickerator<String> treeVariantIterator = () -> Arrays.asList(TREE_VARIANTS);
-        treeVariantIterator.forEach(featureSets -> PRIMITIVE_TREE_CONFIGS.get(featureSets).getBlockIterator().forEach(blockSet ->
-                onIf(!(blockSet.BLOCK instanceof FlowerPotBlock),() -> ALL_BLOCKS.add(blockSet)))
+        treeVariantIterator.forEach(featureSets -> PRIMITIVE_TREE_CONFIGS.get(featureSets).getBlockIterator()
+                .forEach(ALL_BLOCKS::add)
         );
 
         Quickerator<BlockSet<WoodBlock>> woodSetIterator = () -> ADDITIONAL_LOG_VARIANTS;

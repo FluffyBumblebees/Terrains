@@ -7,7 +7,9 @@ import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getPlacedBees;
-import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.*;
+import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.PASTEL_GREEN;
+import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.TYRIAN_PURPLE;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_biomes.TerrainsBiomeRegistry.WARM_WATER;
 import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.*;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
 import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
@@ -24,6 +26,8 @@ public class LushMapleBlossom {
             .effects(createDefaultBiomeEffects()
                     .grassColor(BIOME_COLOUR)
                     .foliageColor(BIOME_COLOUR)
+                    .waterColor(WARM_WATER)
+                    .waterFogColor(WARM_WATER)
                     .build())
             .temperature(0.8F)
             .downfall(0.5F)

@@ -19,22 +19,31 @@ public interface AbstractRegistrySet<Types, RegistryConfig extends RegistrySetCr
 
     Quickerator<Item> getItemIterator();
 
-    default void addAllToStack(List<ItemStack> stacks, boolean itemConditions,
-                               boolean blockConditions, @Nullable Access access) {
+    default void addAllToStack(
+            List<ItemStack> stacks,
+            InformedCondition itemConditions,
+            InformedCondition blockConditions,
+            @Nullable Access access
+    ) {
         final BooleanHolder booleanHolder = new BooleanHolder(true);
-        forEach(element -> onIf(blockConditions, () -> {
-            if (access != null) {
-                access.invoke(element, booleanHolder, getItemIterator(), itemConditions, blockConditions);
-            } else {
-                getItemIterator().forEach(variant -> onIf(itemConditions, () -> stacks.add(variant.getDefaultStack())));
+        forEach(element -> {
+            if (blockConditions.get(element)) {
+                if (access != null) {
+                    access.invoke(element, booleanHolder, getItemIterator(), itemConditions.get(element),
+                            blockConditions.get(element));
+                } else {
+                    getItemIterator().forEach(variant ->
+                            onIf(itemConditions.get(element), () -> stacks.add(variant.getDefaultStack()))
+                    );
+                }
+                stacks.add(element.ITEM.getDefaultStack());
             }
-            stacks.add(element.ITEM.getDefaultStack());
-        }));
+        });
     }
 
     @SuppressWarnings("unused")
     default void addAllToStack(List<ItemStack> stacks) {
-        addAllToStack(stacks, true, true, null);
+        addAllToStack(stacks, (element) -> true, (element) -> true, null);
     }
 
     default List<BlockSet<?>> getAllRegistryEntries() {
@@ -62,5 +71,9 @@ public interface AbstractRegistrySet<Types, RegistryConfig extends RegistrySetCr
                     Quickerator<Item> iterator,
                     boolean itemConditions,
                     boolean blockConditions);
+    }
+
+    interface InformedCondition {
+        boolean get(BlockSet<?> element);
     }
 }
