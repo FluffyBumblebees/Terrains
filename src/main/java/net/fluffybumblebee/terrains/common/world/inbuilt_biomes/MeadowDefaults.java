@@ -34,10 +34,10 @@ public class MeadowDefaults {
 
     public static void addLargeMeadowFeatures(GenerationSettings.Builder generationBuilder) {
         generationBuilder.feature(GenerationStep.Feature.FLUID_SPRINGS, LAKE_SMALL);
-        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TREES_MUSHROOM_BROWN);
-        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TREES_MUSHROOM_RED);
         generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TREES_SPRUCE_PATCH);
         generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TREES_SPRUCE_SPARSE);
+        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TREES_MUSHROOM_BROWN);
+        generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TREES_MUSHROOM_RED);
         generationBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TREES_OAK_BUSH_COMMON);
     }
 }

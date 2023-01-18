@@ -1,14 +1,12 @@
 package net.fluffybumblebee.terrains.common.world.inbuilt_biomes.component;
 
-import net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained.StainedTreeAccess;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
-import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
+import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.*;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
 import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 
@@ -29,13 +27,10 @@ public class MapleBlossom {
 
     private static GenerationSettings generationSettings() {
         GenerationSettings.Builder builder = new GenerationSettings.Builder();
-        addBasicFeatures(builder);
         addDefaultFlowers(builder);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.FLOWER_FLOWER_FOREST);
-        addForestFlowers(builder);
-        addDefaultOres(builder);
-        addDefaultDisks(builder);
-        StainedTreeAccess.addStainedTrees(builder);
+        addVegetalFeatures(builder, PATCH_GRASS_FOREST, PATCH_GRASS_TALL,
+                FLOWERS_DEFAULT, FLOWERS_FOREST, FLOWERS_FLOWER_FOREST, FLOWERS_MEADOW, FLOWER_WARM
+        );
         addDefaultGrass(builder);
         addForestGrass(builder);
         addMeadowFlowers(builder);

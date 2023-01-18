@@ -10,6 +10,7 @@ import net.minecraft.world.gen.GenerationStep;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getPlacedNoBees;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeAccess.getUniqueMapleFeatures;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes.*;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.*;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
 import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 
@@ -32,15 +33,13 @@ public class MapleGhostForest {
 
     private static GenerationSettings generationSettings(){
         GenerationSettings.Builder builder = new GenerationSettings.Builder();
-        addDefaultFeatures(builder, () -> {
-            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(ORANGE));
-            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(YELLOW));
-            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(BROWN));
-            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getUniqueMapleFeatures().FALLEN_MAPLE_TRUNK);
-            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getUniqueMapleFeatures().DEAD_MAPLE_TREE);
-            addSavannaGrass(builder);
-            addDesertDeadBushes(builder);
-        });
+        addDefaultFeatures(builder);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(ORANGE));
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(YELLOW));
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getPlacedNoBees(BROWN));
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getUniqueMapleFeatures().FALLEN_MAPLE_TRUNK);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, getUniqueMapleFeatures().DEAD_MAPLE_TREE);
+        addVegetalFeatures(builder, PATCH_GRASS_FOREST, PATCH_GRASS_TALL, PATCH_GRASS_SAVANNA, PATCH_DEAD_BUSH);
         return builder.build();
     }
 

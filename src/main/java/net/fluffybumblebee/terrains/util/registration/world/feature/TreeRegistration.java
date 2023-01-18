@@ -19,7 +19,6 @@ import static net.minecraft.tag.BlockTags.DIRT;
 import static net.minecraft.util.math.Direction.DOWN;
 import static net.minecraft.world.gen.blockpredicate.BlockPredicate.matchingBlockTag;
 import static net.minecraft.world.gen.feature.PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP;
-import static net.minecraft.world.gen.feature.VegetationPlacedFeatures.NOT_IN_SURFACE_WATER_MODIFIER;
 
 public class TreeRegistration {
 
@@ -32,7 +31,6 @@ public class TreeRegistration {
         var list = new ImmutableList.Builder<PlacementModifier>();
         list    .add(countModifier)
                 .add(SquarePlacementModifier.of())
-                .add(NOT_IN_SURFACE_WATER_MODIFIER)
                 .add(MOTION_BLOCKING_HEIGHTMAP)
                 .add(BiomePlacementModifier.of());
         return list;

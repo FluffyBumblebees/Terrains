@@ -1,6 +1,5 @@
 package net.fluffybumblebee.terrains.common.world.inbuilt_biomes.component;
 
-import net.fluffybumblebee.terrains.common.world.inbuilt_biomes.MeadowDefaults;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
@@ -8,8 +7,11 @@ import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
+import static net.fluffybumblebee.terrains.common.world.inbuilt_biomes.MeadowDefaults.EFFECTS;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_biomes.MeadowDefaults.addLargeMeadowFeatures;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.*;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.addDefaultFeatures;
-import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
+import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.addVegetalFeatures;
 
 
 public class MeadowFlats {
@@ -18,19 +20,18 @@ public class MeadowFlats {
             .generationSettings(generationSettings())
             .category(Biome.Category.PLAINS)
             .spawnSettings(spawnSettings())
-            .effects(MeadowDefaults.EFFECTS)
+            .effects(EFFECTS)
             .temperature(0.5F)
             .downfall(0.8F)
             .build();
 
     private static GenerationSettings generationSettings() {
         GenerationSettings.Builder builder = new GenerationSettings.Builder();
-        addDefaultFeatures(builder, () -> {
-            addExtraDefaultFlowers(builder);
-            addForestFlowers(builder);
-            addMeadowFlowers(builder);
-        });
-        MeadowDefaults.addLargeMeadowFeatures(builder);
+        addDefaultFeatures(builder);
+        addLargeMeadowFeatures(builder);
+        addVegetalFeatures(builder, PATCH_GRASS_JUNGLE, PATCH_GRASS_FOREST, PATCH_GRASS_TALL, FLOWERS_DEFAULT,
+                FLOWERS_FOREST, FLOWERS_MEADOW, FLOWER_WARM, PATCH_BERRY_BUSH_COMMON
+        );
         return builder.build();
     }
 

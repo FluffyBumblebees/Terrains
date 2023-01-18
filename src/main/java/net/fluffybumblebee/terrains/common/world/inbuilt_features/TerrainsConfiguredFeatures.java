@@ -50,4 +50,14 @@ public class TerrainsConfiguredFeatures {
                     List.of(Blocks.GRASS_BLOCK)
             )
     );
+
+    public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> SCATTERED_MELON = register(
+            "scattered_melon",
+            TerrainsFeatures.SCATTERED_BLOCk,
+            createRandomPatchFeatureConfig(
+                    Feature.SIMPLE_BLOCK,
+                    new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.MELON)),
+                    List.of(Blocks.GRASS_BLOCK)
+            )
+    );
 }
