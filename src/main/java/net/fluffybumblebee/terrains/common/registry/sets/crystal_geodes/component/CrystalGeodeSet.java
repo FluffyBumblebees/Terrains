@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -58,19 +59,19 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
         final String colour = type.name().toLowerCase();
         ALL_BLOCKS = new ArrayList<>();
 
-        CORUNDUM_CLUSTER = buildBlock(new CorundumCluster(), colour + "_corundum_cluster");
-        WAXED_CORUNDUM = buildBlock(new CorundumBlock(), "waxed_" + colour + "_corundum");
+        CORUNDUM_CLUSTER = buildCrystal(new CorundumCluster(), colour + "_corundum_cluster");
+        WAXED_CORUNDUM = buildCrystal(new CorundumBlock(), "waxed_" + colour + "_corundum");
 
 
-        CORUNDUM = buildBlock(new CorundumBlock(() -> CORUNDUM_CLUSTER.BLOCK), colour + "_corundum");
-        CORUNDUM_SLAB = buildBlock(new CorundumCrystalSlab(), colour + "_corundum_slab");
-        CORUNDUM_STAIRS = buildBlock(new CorundumCrystalStairs(), colour + "_corundum_stairs");
-        CORUNDUM_PANE = buildBlock(new CorundumCrystalPane(), colour + "_corundum_pane");
+        CORUNDUM = buildCrystal(new CorundumBlock(() -> CORUNDUM_CLUSTER.BLOCK), colour + "_corundum");
+        CORUNDUM_SLAB = buildCrystal(new CorundumCrystalSlab(), colour + "_corundum_slab");
+        CORUNDUM_STAIRS = buildCrystal(new CorundumCrystalStairs(), colour + "_corundum_stairs");
+        CORUNDUM_PANE = buildCrystal(new CorundumCrystalPane(), colour + "_corundum_pane");
 
-        CRYSTAL = buildBlock(new CrystalBlock(), colour + "_crystal");
-        CRYSTAL_SLAB = buildBlock(new CorundumCrystalSlab(), colour + "_crystal_slab");
-        CRYSTAL_STAIRS = buildBlock(new CorundumCrystalStairs(), colour + "_crystal_stairs");
-        CRYSTAL_PANE = buildBlock(new CorundumCrystalPane(), colour + "_crystal_pane");
+        CRYSTAL = buildCrystal(new CrystalBlock(), colour + "_crystal");
+        CRYSTAL_SLAB = buildCrystal(new CorundumCrystalSlab(), colour + "_crystal_slab");
+        CRYSTAL_STAIRS = buildCrystal(new CorundumCrystalStairs(), colour + "_crystal_stairs");
+        CRYSTAL_PANE = buildCrystal(new CorundumCrystalPane(), colour + "_crystal_pane");
 
 
         addAllBlocks(new BlockSet[] {
@@ -98,6 +99,10 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
                 CONFIGURED_GEODE,
                 colour
         );
+    }
+
+    private static <B extends Block> BlockSet<B> buildCrystal(B block, String name) {
+        return buildBlock(block, name, ItemGroup.BUILDING_BLOCKS);
     }
 
     @Override

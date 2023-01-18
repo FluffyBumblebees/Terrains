@@ -1,13 +1,15 @@
 package net.fluffybumblebee.terrains.common.instances.block.plant;
 
 import net.fluffybumblebee.terrains.util.predicates.BlockPredicates;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.Material;
+import net.minecraft.sound.BlockSoundGroup;
 
 public class ConfiguredLeavesBlock extends LeavesBlock {
     public ConfiguredLeavesBlock() {
         super(Settings
-                .copy(Blocks.OAK_LEAVES)
+                .of(Material.LEAVES)
+                .sounds(BlockSoundGroup.GRASS)
                 .nonOpaque()
                 .ticksRandomly()
                 .strength(0.2F)

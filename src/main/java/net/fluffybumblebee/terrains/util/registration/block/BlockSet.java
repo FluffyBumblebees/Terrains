@@ -32,6 +32,10 @@ public final class BlockSet<B extends Block> {
         return new Builder<>(block, getIdentifier(name)).addBlockItem().build();
     }
 
+    public static <B extends Block> BlockSet<B> buildBlock(B block, String name, ItemGroup group) {
+        return new Builder<>(block, getIdentifier(name)).addBlockItem(group).build();
+    }
+
     public static <B extends Block> BlockSet<?> buildFlammableBlock(
             final B block, final String name, final ItemGroup itemGroup) {
         BlockSet.Builder<B> builder = new BlockSet.Builder<>(block, TerrainsDefaults.getIdentifier(name));

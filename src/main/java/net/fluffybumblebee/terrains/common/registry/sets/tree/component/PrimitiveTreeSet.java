@@ -6,7 +6,6 @@ import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredSapli
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.minecraft.block.Block;
-import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.Item;
 
@@ -54,6 +53,8 @@ public final class PrimitiveTreeSet<
                 SAPLING,
                 POTTED_SAPLING
         });
+
+        System.out.println(LEAVES.IDENTIFIER);
     }
 
     @Override
@@ -73,7 +74,7 @@ public final class PrimitiveTreeSet<
     ) {}
 
     public interface FeatureSupplier <Generator extends SaplingGenerator, FeatureProvider extends FeatureCreator<Generator>> {
-        FeatureProvider get(final List<Block> allLogs, final LeavesBlock leavesBlock, final String type);
+        FeatureProvider get(final List<Block> allLogs, final ConfiguredLeavesBlock leavesBlock, final String type);
     }
 
     public interface FeatureCreator<Generator extends SaplingGenerator> {

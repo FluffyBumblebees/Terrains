@@ -1,9 +1,30 @@
 {
   "replace": false,
   "values": [
-    "terrains:green_maple_sapling",
+    "terrains:black_sapling",
+    "terrains:blue_sapling",
+    "terrains:brown_sapling",
+    "terrains:cyan_sapling",
+    "terrains:gray_sapling",
+    "terrains:light_blue_sapling",
+    "terrains:light_gray_sapling",
+    "terrains:lime_sapling",
+    "terrains:magenta_sapling",
+    "terrains:orange_sapling",
+    "terrains:pink_sapling",
+    "terrains:purple_sapling",
+    "terrains:rainbow_sapling",
+    "terrains:red_sapling",
+    "terrains:white_sapling",
+    "terrains:yellow_sapling",
     "terrains:red_maple_sapling",
+    "terrains:brown_maple_sapling",
+    "terrains:orange_maple_sapling",
     "terrains:yellow_maple_sapling",
-    "terrains:orange_maple_sapling"
+    "terrains:pastel_green_maple_sapling",
+    "terrains:green_maple_sapling",
+    "terrains:blue_maple_sapling",
+    "terrains:white_maple_sapling",
+    "terrains:tyrian_purple_maple_sapling"
   ]
 }

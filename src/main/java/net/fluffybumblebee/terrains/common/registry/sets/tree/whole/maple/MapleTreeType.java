@@ -1,10 +1,10 @@
 package net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple;
 
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
-import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet;
+import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet.TreeType;
 import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.MapleSaplingGenerator;
-import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.component.HemiEllipsoidFoliagePlacer;
 import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.component.FallenTrunkPlacer;
+import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.component.HemiEllipsoidFoliagePlacer;
 import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.component.NoneFoliagePlacer;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.block.Block;
@@ -31,8 +31,8 @@ import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeR
 import static net.minecraft.world.gen.feature.PlacedFeatures.createCountExtraModifier;
 
 public final class MapleTreeType {
-    public static final WholeTreeSet.TreeType<MapleSaplingGenerator, MapleFeatures, UniqueMapleFeatures> MAPLE_TREES =
-            new WholeTreeSet.TreeType<>(
+    public static final TreeType<MapleSaplingGenerator, MapleFeatures, UniqueMapleFeatures> MAPLE_TREES =
+            new TreeType<>(
                     "maple",
                     EnumArrayToString(MapleTypes.values()),
                     new String[]{
