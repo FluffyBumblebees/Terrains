@@ -2,32 +2,37 @@ package net.fluffybumblebee.terrains.util.registration.entity;
 
 import com.terraformersmc.terraform.boat.api.TerraformBoatType;
 import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
-import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
 import net.minecraft.item.Item;
 import net.minecraft.util.registry.Registry;
 
 import java.util.function.Supplier;
 
+import static com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper.registerBoatItem;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 
 public class BoatRegistration {
     public static void register(
             String material,
             final Supplier<TerraformBoatType> type,
-            final RegisterWithItem registerWithItem,
-            final boolean chest
+            final Item planks,
+            final BoatItemProvider boatItemProvider
+
     ) {
 
-        material = material + (chest ? "_chest_boat" : "_boat");
-        final var item = TerraformBoatItemHelper.registerBoatItem(getIdentifier(material), type, chest);
+        final var boat = registerBoatItem(getIdentifier(material + "_boat"), type, false);
+        final var chestBoat = registerBoatItem(getIdentifier(material + "_chest_boat"), type, true);
 
-        registerWithItem.register(item);
+        boatItemProvider.register(new TerraformBoatType.Builder()
+                .item(boat)
+                .chestItem(chestBoat)
+                .planks(planks)
+                .build());
 
         Registry.register(TerraformBoatTypeRegistry.INSTANCE, getIdentifier(material), type.get());
 
     }
 
-    public interface RegisterWithItem {
-        void register(final Item item);
+    public interface BoatItemProvider {
+        void register(final TerraformBoatType boatType);
     }
 }

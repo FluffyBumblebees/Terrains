@@ -13,8 +13,6 @@ public record MinecraftRandomUtil(Random random) {
      * @return a random float.
      */
     public float randomFloat(final int bound, final int divisor) {
-        if (bound >= divisor)
-            throw new NumberFormatException();
         return (float) random.nextInt(bound) / divisor;
     }
 
