@@ -13,7 +13,6 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.LakeFeature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 
-import java.util.Random;
 
 @SuppressWarnings("deprecation")
 public class MeadowLakeFeature extends LakeFeature {
@@ -29,7 +28,7 @@ public class MeadowLakeFeature extends LakeFeature {
         int s;
         BlockPos blockPos = context.getOrigin();
         StructureWorldAccess structureWorldAccess = context.getWorld();
-        Random random = context.getRandom();
+        var random = context.getRandom();
         Config config = context.getConfig();
         if (blockPos.getY() <= structureWorldAccess.getBottomY() + 4) {
             return false;

@@ -3,21 +3,25 @@ package net.fluffybumblebee.terrains.util.registration.entity;
 import com.terraformersmc.terraform.boat.api.TerraformBoatType;
 import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
 import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
-import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.item.Item;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.function.Supplier;
 
-public class BoatRegistration {
+import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 
+public class BoatRegistration {
     public static void register(String material, Supplier<TerraformBoatType> type, RegisterWithItem registerWithItem) {
-        var item = TerraformBoatItemHelper.registerBoatItem(new Identifier(TerrainsDefaults.NAMESPACE,
-                material + "_boat"), type);
+        register(material, type, registerWithItem, true);
+        register(material, type, registerWithItem, false);
+    }
+
+    public static void register(String material, Supplier<TerraformBoatType> type, RegisterWithItem registerWithItem,
+                                boolean chest) {
+        var item = TerraformBoatItemHelper.registerBoatItem(getIdentifier(material + "_boat"), type, chest);
 
         registerWithItem.register(item);
-        Registry.register(TerraformBoatTypeRegistry.INSTANCE, new Identifier(TerrainsDefaults.NAMESPACE, material), type.get());
+        Registry.register(TerraformBoatTypeRegistry.INSTANCE, getIdentifier(material), type.get());
 
     }
 
