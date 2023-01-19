@@ -18,7 +18,6 @@ public class MeadowFlats {
     public static final Biome MEADOW_FLATS = new Biome.Builder()
             .precipitation(Biome.Precipitation.RAIN)
             .generationSettings(generationSettings())
-            .category(Biome.Category.PLAINS)
             .spawnSettings(spawnSettings())
             .effects(EFFECTS)
             .temperature(0.5F)
