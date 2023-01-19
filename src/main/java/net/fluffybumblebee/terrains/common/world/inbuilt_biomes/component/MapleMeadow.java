@@ -21,7 +21,6 @@ public class MapleMeadow {
     public static final Biome MAPLE_MEADOW = new Biome.Builder()
             .precipitation(Biome.Precipitation.RAIN)
             .generationSettings(generationSettings())
-            .category(Biome.Category.PLAINS)
             .spawnSettings(spawnSettings())
             .effects(MeadowDefaults.EFFECTS)
             .temperature(0.5F)

@@ -21,7 +21,6 @@ public class MapleGhostForest {
     public static final Biome MAPLE_GHOST_FOREST = new Biome.Builder()
             .precipitation(Biome.Precipitation.NONE)
             .generationSettings(generationSettings())
-            .category(Biome.Category.FOREST)
             .spawnSettings(spawnSettings())
             .effects(createDefaultBiomeEffects()
                     .grassColor(BIOME_COLOUR)
