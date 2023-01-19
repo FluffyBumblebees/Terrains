@@ -14,6 +14,7 @@ import java.util.List;
 
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildBlock;
+import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildFlammableBlock;
 
 public final class PrimitiveTreeSet<
         Generator extends SaplingGenerator,
@@ -34,7 +35,7 @@ public final class PrimitiveTreeSet<
     ) {
         ALL_BLOCKS = new ArrayList<>();
         TREE_TYPE = config.treeType;
-        LEAVES = buildBlock(new ConfiguredLeavesBlock(), TREE_TYPE + "_leaves");
+        LEAVES = buildFlammableBlock(new ConfiguredLeavesBlock(), TREE_TYPE + "_leaves");
         TREE_FEATURES = config.generatorSupplier.get(config.logs, LEAVES.BLOCK, TREE_TYPE);
         final Generator saplingGenerator = TREE_FEATURES.createNew();
 
