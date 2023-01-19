@@ -11,21 +11,23 @@ import java.util.function.Supplier;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 
 public class BoatRegistration {
-    public static void register(String material, Supplier<TerraformBoatType> type, RegisterWithItem registerWithItem) {
-        register(material, type, registerWithItem, true);
-        register(material, type, registerWithItem, false);
-    }
+    public static void register(
+            String material,
+            final Supplier<TerraformBoatType> type,
+            final RegisterWithItem registerWithItem,
+            final boolean chest
+    ) {
 
-    public static void register(String material, Supplier<TerraformBoatType> type, RegisterWithItem registerWithItem,
-                                boolean chest) {
-        var item = TerraformBoatItemHelper.registerBoatItem(getIdentifier(material + "_boat"), type, chest);
+        material = material + (chest ? "_chest_boat" : "_boat");
+        final var item = TerraformBoatItemHelper.registerBoatItem(getIdentifier(material), type, chest);
 
         registerWithItem.register(item);
+
         Registry.register(TerraformBoatTypeRegistry.INSTANCE, getIdentifier(material), type.get());
 
     }
 
     public interface RegisterWithItem {
-        void register(Item item);
+        void register(final Item item);
     }
 }

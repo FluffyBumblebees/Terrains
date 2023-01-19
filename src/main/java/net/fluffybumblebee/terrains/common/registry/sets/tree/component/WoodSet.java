@@ -28,6 +28,7 @@ public class WoodSet implements RegistrySetCreator {
     public final String TYPE;
 
     public static TerraformBoatType BOAT;
+    public static TerraformBoatType CHEST_BOAT;
     public final BlockSet<?> LOG;
     public final BlockSet<?> WOOD;
     public final BlockSet<?> STRIPPED_LOG;
@@ -48,7 +49,18 @@ public class WoodSet implements RegistrySetCreator {
     public WoodSet(String woodType) {
         ALL_BLOCKS = new ArrayList<>();
         TYPE = woodType;
-        BoatRegistration.register(TYPE, () -> BOAT, item -> BOAT = new TerraformBoatType.Builder().item(item).build());
+        BoatRegistration.register(
+                TYPE,
+                () -> BOAT,
+                item -> BOAT = new TerraformBoatType.Builder().item(item).build(),
+                false
+        );
+        BoatRegistration.register(
+                TYPE,
+                () -> CHEST_BOAT,
+                item -> CHEST_BOAT = new TerraformBoatType.Builder().item(item).build(),
+                true
+        );
 
         LOG = buildFlammableBlock(new WoodBlock(), TYPE + "_log");
         WOOD = buildFlammableBlock(new WoodBlock(), TYPE + "_wood");
