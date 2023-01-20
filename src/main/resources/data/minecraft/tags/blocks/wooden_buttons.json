@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "terrains:maple_button"
+    "terrains:maple_button",
+    "terrains:jacaranda_button"
   ]
 }

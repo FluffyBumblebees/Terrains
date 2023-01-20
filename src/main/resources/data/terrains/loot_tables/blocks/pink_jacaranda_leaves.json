@@ -17,7 +17,7 @@
                   "terms": [
                     {
                       "condition": "minecraft:match_tool",
-                      "ppinkicate": {
+                      "predicate": {
                         "items": [
                           "minecraft:shears"
                         ]
@@ -25,7 +25,7 @@
                     },
                     {
                       "condition": "minecraft:match_tool",
-                      "ppinkicate": {
+                      "predicate": {
                         "enchantments": [
                           {
                             "enchantment": "minecraft:silk_touch",
@@ -42,7 +42,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "terrains:orange_jacaranda_sapling",
+              "name": "terrains:pink_jacaranda_sapling",
               "conditions": [
                 {
                   "condition": "minecraft:survives_explosion"
@@ -107,7 +107,7 @@
             "terms": [
               {
                 "condition": "minecraft:match_tool",
-                "ppinkicate": {
+                "predicate": {
                   "items": [
                     "minecraft:shears"
                   ]
@@ -115,7 +115,7 @@
               },
               {
                 "condition": "minecraft:match_tool",
-                "ppinkicate": {
+                "predicate": {
                   "enchantments": [
                     {
                       "enchantment": "minecraft:silk_touch",
@@ -133,3 +133,4 @@
     }
   ]
 }
+
