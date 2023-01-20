@@ -48,7 +48,7 @@ public class WholeTreeSet<
         final var logVariants = config.additionalLogVariants;
         if (logVariants != null) {
             for (String logVariant : logVariants) {
-                ADDITIONAL_LOG_VARIANTS.add((BlockSet<WoodBlock>) BlockSet.buildFlammableBlock(new WoodBlock(),
+                ADDITIONAL_LOG_VARIANTS.add(BlockSet.buildFlammableBlock(new WoodBlock(),
                         logVariant));
             }
         }

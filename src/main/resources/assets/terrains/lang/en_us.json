@@ -259,6 +259,7 @@
 
 	"block.terrains.sappy_maple_log": "Sappy Maple Log",
 
+	"item.terrains.maple_boat": "Maple Boat",
 	"block.terrains.maple_log": "Maple Log",
 	"block.terrains.maple_wood": "Maple Wood",
 	"block.terrains.stripped_maple_log": "Stripped Maple Log",
@@ -275,7 +276,6 @@
 	"block.terrains.maple_sign": "Maple Sign",
 
 
-	"item.terrains.maple_boat": "Maple Boat",
 	"item.terrains.maple_sap": "Maple Sap",
 	"item.terrains.pancake": "Pancake",
 	"item.terrains.pancake_dough": "Pancake Dough",
@@ -291,6 +291,7 @@
 	"block.terrains.pink_jacaranda_sapling": "Pink Jacaranda Sapling",
 
 
+	"item.terrains.jacaranda_boat": "Jacaranda Boat",
 	"block.terrains.jacaranda_log": "Jacaranda Log",
 	"block.terrains.jacaranda_wood": "Jacaranda Wood",
 	"block.terrains.stripped_jacaranda_log": "Stripped Jacaranda Log",

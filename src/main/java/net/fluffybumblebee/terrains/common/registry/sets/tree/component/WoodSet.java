@@ -25,6 +25,7 @@ import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buil
 
 public class WoodSet implements RegistrySetCreator {
     private final List<BlockSet<?>> ALL_BLOCKS;
+    private final List<Item> ALL_ITEMS;
     public final String TYPE;
 
     public static TerraformBoatType BOAT;
@@ -47,6 +48,7 @@ public class WoodSet implements RegistrySetCreator {
 
     public WoodSet(String woodType) {
         ALL_BLOCKS = new ArrayList<>();
+        ALL_ITEMS = new ArrayList<>();
         TYPE = woodType;
         BoatRegistration.register(TYPE, () -> BOAT, boat -> BOAT = boat);
 
@@ -72,6 +74,7 @@ public class WoodSet implements RegistrySetCreator {
                 .addBlockItem(block -> new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), block, WALL_SIGN.BLOCK))
                 .build();
 
+        ALL_ITEMS.add(BOAT.getItem());
         addAllBlocks(new BlockSet<?>[] {
                 LOG,
                 WOOD,
@@ -95,7 +98,7 @@ public class WoodSet implements RegistrySetCreator {
 
     @Override
     public List<Item> getAllItems() {
-        return List.of(BOAT.getItem());
+        return ALL_ITEMS;
     }
 
     @Override

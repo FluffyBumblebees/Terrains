@@ -6,8 +6,9 @@ public interface Quickerator<T> {
     List<T> getValues();
 
     default void forEach(TypeIterator<T> iterator) {
-        for (T colour : getValues()) {
-            iterator.with(colour);
+        for (T type : getValues()) {
+            if (type != null)
+                iterator.with(type);
         }
     }
 
