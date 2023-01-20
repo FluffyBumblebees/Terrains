@@ -34,7 +34,6 @@ public class OverworldBiomeCreatorMixin {
     private static void changeMeadow(CallbackInfoReturnable<Biome> cir) {
         cir.setReturnValue(new Biome.Builder()
                 .precipitation(Biome.Precipitation.RAIN)
-                .category(Biome.Category.MOUNTAIN)
                 .temperature(0.5F)
                 .downfall(0.8F)
                 .effects(MeadowDefaults.EFFECTS)

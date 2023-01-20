@@ -1,6 +1,7 @@
 package net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.Config;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
@@ -17,7 +18,6 @@ import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
@@ -68,7 +68,7 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
     public void generationEvent() {
         generateFeature(
                 TREE_CONFIG.TREE_FEATURES.RANDOM_TREE_PLACED,
-                BiomeSelectors.categories(Biome.Category.PLAINS),
+                BiomeSelectors.tag(ConventionalBiomeTags.PLAINS),
                 GenerationStep.Feature.VEGETAL_DECORATION
         );
     }
@@ -144,7 +144,8 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
                     type + "_" + size + "_tree_" + beeState + "_placed",
                     tree,
                     PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING),
-                    BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.DIRT, Direction.DOWN.getVector()))
+                    BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(),
+                            BlockTags.DIRT))
 
             );
         }

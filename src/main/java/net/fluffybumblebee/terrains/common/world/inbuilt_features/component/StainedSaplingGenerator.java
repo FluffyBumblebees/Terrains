@@ -1,12 +1,12 @@
 package net.fluffybumblebee.terrains.common.world.inbuilt_features.component;
 
 import net.minecraft.block.sapling.SaplingGenerator;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Random;
 import java.util.function.Supplier;
 
 public class StainedSaplingGenerator extends SaplingGenerator {

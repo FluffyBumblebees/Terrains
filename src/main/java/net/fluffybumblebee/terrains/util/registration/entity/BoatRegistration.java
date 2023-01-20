@@ -2,25 +2,37 @@ package net.fluffybumblebee.terrains.util.registration.entity;
 
 import com.terraformersmc.terraform.boat.api.TerraformBoatType;
 import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
-import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
-import net.fluffybumblebee.terrains.core.TerrainsDefaults;
-import net.minecraft.util.Identifier;
+import net.minecraft.item.Item;
 import net.minecraft.util.registry.Registry;
 
 import java.util.function.Supplier;
 
+import static com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper.registerBoatItem;
+import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
+
 public class BoatRegistration {
+    public static void register(
+            String material,
+            final Supplier<TerraformBoatType> type,
+            final Item planks,
+            final BoatItemProvider boatItemProvider
 
-    public static void register(String material, Supplier<TerraformBoatType> type, WithBoat withBoat) {
-        var boat = TerraformBoatItemHelper.registerBoatItem(new Identifier(TerrainsDefaults.NAMESPACE,
-                material + "_boat"), type);
+    ) {
 
-        withBoat.register(new TerraformBoatType.Builder().item(boat).build());
-        Registry.register(TerraformBoatTypeRegistry.INSTANCE, new Identifier(TerrainsDefaults.NAMESPACE, material), type.get());
+        final var boat = registerBoatItem(getIdentifier(material + "_boat"), type, false);
+        final var chestBoat = registerBoatItem(getIdentifier(material + "_chest_boat"), type, true);
+
+        boatItemProvider.register(new TerraformBoatType.Builder()
+                .item(boat)
+                .chestItem(chestBoat)
+                .planks(planks)
+                .build());
+
+        Registry.register(TerraformBoatTypeRegistry.INSTANCE, getIdentifier(material), type.get());
 
     }
 
-    public interface WithBoat {
-        void register(final TerraformBoatType item);
+    public interface BoatItemProvider {
+        void register(final TerraformBoatType boatType);
     }
 }

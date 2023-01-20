@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "terrains:lush_maple_blossom",
+    "terrains:maple_blossom",
+    "terrains:maple_meadow",
+    "terrains:meadow_flats",
+    "terrains:stained_forest"
+  ]
+}
