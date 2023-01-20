@@ -42,7 +42,7 @@ public class HemiEllipsoidFoliagePlacer extends FoliagePlacer {
         Shapes.hemiEllipsoid(newRadius, newRadius, heightAffectsRadius * 1.45
                         - (1.25 * newRadius) / newRadius - random.nextFloat(0.35F))
                 .applyLayer(TranslateLayer.of(Position.of(treeNode.getCenter()).move(0,
-                        - 2 - random.nextFloat(1), 0)))
+                        - 1.25 - random.nextFloat(0.25F) + random.nextFloat(0.75F), 0)))
                 .stream()
                 .forEach((block) -> setBlockState(world, block.toBlockPos(), random, replacer, config));
     }
