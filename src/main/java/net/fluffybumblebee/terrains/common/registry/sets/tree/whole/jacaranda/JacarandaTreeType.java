@@ -89,7 +89,7 @@ public final class JacarandaTreeType {
             return PlacedFeatures.register(
                     type + "_tree_"+ beeState + "_placed",
                     tree,
-                    treePlacementModifiers(createCountExtraModifier(1, 0.05F, 1))
+                    treePlacementModifiers(createCountExtraModifier(0, 0.25F, 1))
             );
         }
     }

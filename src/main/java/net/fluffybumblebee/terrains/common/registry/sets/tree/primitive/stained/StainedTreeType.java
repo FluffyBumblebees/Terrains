@@ -48,16 +48,6 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
         TREE_CONFIG.registryEvent(registry);
     }
 
-
-    /*@Override
-    public void generationEvent() {
-        generateFeature(
-                TREE_CONFIG.TREE_FEATURES.RANDOM_TREE_PLACED,
-                BiomeSelectors.categories(Biome.Category.PLAINS),
-                GenerationStep.Feature.VEGETAL_DECORATION
-        );
-    }*/
-
     public static class StainedConfig implements FeatureCreator<StainedSaplingGenerator> {
 
         public final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> RANDOM_TREE;
@@ -85,13 +75,6 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
                     )
             );
 
-            /*RANDOM_TREE_PLACED = PlacedFeatures.register(
-                    TerrainsDefaults.getNamespaceVar() + type + "tree_bees_placed",
-                    RANDOM_TREE,
-                    TreeRegistration.treePlacementModifiers(
-                            PlacedFeatures.createCountExtraModifier(0, 0.005f, 1)
-                    )
-            );*/
             COMMON_RANDOM_TREE_PLACED = PlacedFeatures.register(
                     TerrainsDefaults.getNamespaceVar() + type + "common_tree_bees_placed",
                     RANDOM_TREE,
