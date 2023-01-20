@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "terrains:block/jacaranda_slab" },
+    "type=top": { "model": "terrains:block/jacaranda_slab_top" },
+    "type=double": { "model": "terrains:block/jacaranda_planks" }
+  }
+}

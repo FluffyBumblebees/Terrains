@@ -8,12 +8,12 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class MapleSaplingGenerator extends SaplingGenerator {
+public class StandardSaplingGenerator extends SaplingGenerator {
 
     private final SaplingGeneratorContext treeNoBees;
     private final SaplingGeneratorContext treeBees;
 
-    public MapleSaplingGenerator(
+    public StandardSaplingGenerator(
             SaplingGeneratorContext treeNoBees,
             SaplingGeneratorContext treeBees
     ) {

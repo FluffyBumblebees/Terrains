@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "terrains:block/purple_jacaranda_sapling"
+  }
+}
