@@ -11,6 +11,7 @@ import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
+import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
@@ -38,17 +39,24 @@ public final class JacarandaTreeType {
     }
     public static final class JacarandaFeatures implements FeatureCreator<StandardSaplingGenerator> {
         private final List<Block> ALL_LOGS;
-        public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>> CONFIGURED_TREE_NO_BEES;
-        public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>> CONFIGURED_TREE_BEES;
+        public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> CONFIGURED_TREE_NO_BEES;
+        public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> CONFIGURED_TREE_BEES;
         public final RegistryEntry<PlacedFeature> PLACED_TREE_NO_BEES;
         public final RegistryEntry<PlacedFeature> PLACED_TREE_BEES;
 
+        public final RegistryEntry<PlacedFeature> COMMON_PLACED_TREE_BEES;
+
         private JacarandaFeatures(final List<Block> allLogs, final LeavesBlock leaves, final String type) {
             ALL_LOGS = allLogs;
-            CONFIGURED_TREE_NO_BEES = getConfiguredMaple(type, leaves, false);
-            CONFIGURED_TREE_BEES = getConfiguredMaple(type, leaves, true);
-            PLACED_TREE_NO_BEES = getPlacedMaple(type, CONFIGURED_TREE_NO_BEES, false);
-            PLACED_TREE_BEES = getPlacedMaple(type, CONFIGURED_TREE_BEES, true);
+            CONFIGURED_TREE_NO_BEES = getConfiguredJacaranda(type, leaves, false);
+            CONFIGURED_TREE_BEES = getConfiguredJacaranda(type, leaves, true);
+            PLACED_TREE_NO_BEES = getPlacedJacaranda(type, CONFIGURED_TREE_NO_BEES, false,
+                    createCountExtraModifier(0, 0.5F, 1));
+            PLACED_TREE_BEES = getPlacedJacaranda(type, CONFIGURED_TREE_BEES, true,
+                    createCountExtraModifier(0, 0.5F, 1));
+
+            COMMON_PLACED_TREE_BEES = getPlacedJacaranda("common" + type, CONFIGURED_TREE_BEES, true,
+                    createCountExtraModifier(4, 0.25F, 2));
         }
 
         @Override
@@ -59,8 +67,8 @@ public final class JacarandaTreeType {
             );
         }
 
-        private RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>>
-        getConfiguredMaple(final String type, final LeavesBlock leaves, final boolean bees) {
+        private RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>>
+        getConfiguredJacaranda(final String type, final LeavesBlock leaves, final boolean bees) {
             final var builder = new TreeFeatureConfig.Builder(
                     BlockStateProvider.of(ALL_LOGS.get(0).getDefaultState()),
                     new StraightTrunkPlacer(3, 2, 0),
@@ -77,19 +85,21 @@ public final class JacarandaTreeType {
             }
 
             return ConfiguredFeatures.register(
-                    TerrainsDefaults.getNamespaceVar() + type +  "_tree_" + beeState,
+                    TerrainsDefaults.getNamespaceVar() + type + "_tree_" + beeState,
                     Feature.TREE,
                     builder.build());
         }
-        private RegistryEntry<PlacedFeature> getPlacedMaple(
-                final String type, final RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>> tree, final boolean bees) {
+
+        private RegistryEntry<PlacedFeature> getPlacedJacaranda(
+                final String type, final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> tree,
+                final boolean bees, PlacementModifier modifier) {
             String beeState = "no_bees";
             if (bees)
                 beeState = "bees";
             return PlacedFeatures.register(
-                    type + "_tree_"+ beeState + "_placed",
+                    type + "_tree_" + beeState + "_placed",
                     tree,
-                    treePlacementModifiers(createCountExtraModifier(0, 0.5F, 1))
+                    treePlacementModifiers(modifier)
             );
         }
     }

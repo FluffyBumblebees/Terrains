@@ -27,6 +27,10 @@ public class JacarandaTreeAccess {
         return accessTreeFeatures(JACARANDA_TREES, treeVariant);
     }
 
+    public static JacarandaFeatures getFeature(JacarandaTypes type) {
+        return accessTreeFeatures(JACARANDA_TREES, type);
+    }
+
     public static RegistryEntry<PlacedFeature> getPlacedNoBees(JacarandaTypes type) {
         return getFeature(type.name().toLowerCase()).PLACED_TREE_NO_BEES;
     }
