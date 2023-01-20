@@ -15,7 +15,7 @@ import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 
 
 public class JacarandaForest {
-    private static final int BIOME_COLOUR = 0x4EBC00;
+    private static final int BIOME_COLOUR = 0x96DD4F;
 
     public static final Biome JACARANDA_FOREST = new Biome.Builder()
             .precipitation(Biome.Precipitation.RAIN)

@@ -1,6 +1,5 @@
 package net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained;
 
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.Config;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
@@ -17,8 +16,6 @@ import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
@@ -34,8 +31,6 @@ import net.minecraft.world.gen.trunk.TrunkPlacer;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.generateFeature;
 
 public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySetCreator {
     private final List<BlockSet<?>> ALL_BLOCKS;
@@ -64,19 +59,19 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
         return List.of();
     }
 
-    @Override
+    /*@Override
     public void generationEvent() {
         generateFeature(
                 TREE_CONFIG.TREE_FEATURES.RANDOM_TREE_PLACED,
                 BiomeSelectors.categories(Biome.Category.PLAINS),
                 GenerationStep.Feature.VEGETAL_DECORATION
         );
-    }
+    }*/
 
     public static class StainedConfig implements FeatureCreator<StainedSaplingGenerator> {
 
         public final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> RANDOM_TREE;
-        public final RegistryEntry<PlacedFeature> RANDOM_TREE_PLACED;
+        //public final RegistryEntry<PlacedFeature> RANDOM_TREE_PLACED;
         public final RegistryEntry<PlacedFeature> COMMON_RANDOM_TREE_PLACED;
         private final StainedSaplingGenerator GENERATOR;
 
@@ -100,18 +95,18 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
                     )
             );
 
-            RANDOM_TREE_PLACED = PlacedFeatures.register(
+            /*RANDOM_TREE_PLACED = PlacedFeatures.register(
                     TerrainsDefaults.getNamespaceVar() + type + "tree_bees_placed",
                     RANDOM_TREE,
                     TreeRegistration.treePlacementModifiers(
                             PlacedFeatures.createCountExtraModifier(0, 0.005f, 1)
                     )
-            );
+            );*/
             COMMON_RANDOM_TREE_PLACED = PlacedFeatures.register(
                     TerrainsDefaults.getNamespaceVar() + type + "common_tree_bees_placed",
                     RANDOM_TREE,
                     TreeRegistration.treePlacementModifiers(
-                            PlacedFeatures.createCountExtraModifier(0, 0.5f, 1)
+                            PlacedFeatures.createCountExtraModifier(0, 0.4f, 1)
                     )
             );
 
