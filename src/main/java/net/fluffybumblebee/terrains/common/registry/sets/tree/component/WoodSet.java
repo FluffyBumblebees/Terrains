@@ -10,23 +10,25 @@ import net.fluffybumblebee.terrains.common.instances.block.wood.*;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet.Builder;
 import net.fluffybumblebee.terrains.util.registration.entity.BoatRegistration;
+import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SignItem;
 import net.minecraft.util.Identifier;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildFlammableBlock;
+import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry.Storage;
 
 public class WoodSet implements RegistrySetCreator {
-    private final List<BlockSet<?>> ALL_BLOCKS;
-    private final List<Item> ALL_ITEMS;
     public final String TYPE;
+    public final List<BlockSet<?>> ALL_BLOCKS;
 
     public static TerraformBoatType BOAT;
     public final BlockSet<?> LOG;
@@ -47,8 +49,6 @@ public class WoodSet implements RegistrySetCreator {
     public final BlockSet<?> WALL_SIGN;
 
     public WoodSet(String woodType) {
-        ALL_BLOCKS = new ArrayList<>();
-        ALL_ITEMS = new ArrayList<>();
         TYPE = woodType;
         BoatRegistration.register(TYPE, () -> BOAT, boat -> BOAT = boat);
 
@@ -74,8 +74,7 @@ public class WoodSet implements RegistrySetCreator {
                 .addBlockItem(block -> new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), block, WALL_SIGN.BLOCK))
                 .build();
 
-        ALL_ITEMS.add(BOAT.getItem());
-        addAllBlocks(new BlockSet<?>[] {
+        ALL_BLOCKS = List.of(
                 LOG,
                 WOOD,
                 STRIPPED_LOG,
@@ -90,20 +89,37 @@ public class WoodSet implements RegistrySetCreator {
                 TRAPDOOR,
                 BUTTON,
                 SIGN
-        });
+        );
 
         StrippableBlockRegistry.register(LOG.BLOCK, STRIPPED_LOG.BLOCK);
         StrippableBlockRegistry.register(WOOD.BLOCK, STRIPPED_WOOD.BLOCK);
     }
 
-    @Override
-    public List<Item> getAllItems() {
-        return ALL_ITEMS;
+    public Quickerator<BlockSet<?>> iterateBlocks() {
+        return () -> ALL_BLOCKS;
     }
 
     @Override
-    public List<BlockSet<?>> getAllBlockSets() {
-        return ALL_BLOCKS;
-    }
+    public void registryEvent(SetRegistry registry) {
+        registry.blockSet(RegistryTypes.WOOD,
+                LOG,
+                WOOD,
+                STRIPPED_LOG,
+                STRIPPED_WOOD,
+                PLANKS,
+                STAIRS,
+                SLAB,
+                FENCE,
+                FENCE_GATE,
+                PRESSURE_PLATE,
+                DOOR,
+                TRAPDOOR,
+                BUTTON,
+                SIGN
+        );
 
+        registry.storage.get(RegistryTypes.WOOD).add(new Storage(
+                BOAT.getItem()
+        ));
+    }
 }

@@ -7,14 +7,14 @@ import net.fluffybumblebee.terrains.common.registry.sets.tree.component.Primitiv
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.sapling.SaplingGenerator;
-import net.minecraft.item.Item;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,8 +31,6 @@ public class WholeTreeSet<
     public final String WOOD_TYPE;
     public final String[] TREE_VARIANTS;
     public final List<BlockSet<WoodBlock>> ADDITIONAL_LOG_VARIANTS;
-
-    private final List<BlockSet<?>> ALL_BLOCKS;
     public final WoodSet WOOD_SET;
 
     public WholeTreeSet(
@@ -72,16 +70,6 @@ public class WholeTreeSet<
 
         UNIQUE_FEATURES = config.uniqueFeatureSupplier.get(logs, leaves, WOOD_TYPE);
 
-        ALL_BLOCKS = new ArrayList<>();
-        ALL_BLOCKS.addAll(ADDITIONAL_LOG_VARIANTS);
-        ALL_BLOCKS.remove(WOOD_SET.LOG);
-        ALL_BLOCKS.addAll(WOOD_SET.getAllBlockSets());
-
-        Quickerator<String> treeVariantIterator = () -> Arrays.asList(TREE_VARIANTS);
-        treeVariantIterator.forEach(featureSets -> PRIMITIVE_TREE_CONFIGS.get(featureSets).getBlockIterator()
-                .forEach(ALL_BLOCKS::add)
-        );
-
         Quickerator<BlockSet<WoodBlock>> woodSetIterator = () -> ADDITIONAL_LOG_VARIANTS;
         woodSetIterator.forEach(variants ->
                 StrippableBlockRegistry.register(variants.BLOCK, WOOD_SET.STRIPPED_LOG.BLOCK)
@@ -89,13 +77,11 @@ public class WholeTreeSet<
     }
 
     @Override
-    public List<Item> getAllItems() {
-        return WOOD_SET.getAllItems();
-    }
+    public void registryEvent(SetRegistry registry) {
+        WOOD_SET.registryEvent(registry);
 
-    @Override
-    public List<BlockSet<?>> getAllBlockSets() {
-        return ALL_BLOCKS;
+        registry.iterate(ADDITIONAL_LOG_VARIANTS).forEach(element -> registry.blockSet(RegistryTypes.WOOD, element));
+        registry.iterate(TREE_VARIANTS).forEach(featureSets -> PRIMITIVE_TREE_CONFIGS.get(featureSets).registryEvent(registry));
     }
 
 

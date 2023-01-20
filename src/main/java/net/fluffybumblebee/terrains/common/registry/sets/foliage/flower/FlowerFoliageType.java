@@ -2,6 +2,7 @@ package net.fluffybumblebee.terrains.common.registry.sets.foliage.flower;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fluffybumblebee.terrains.common.registry.sets.foliage.component.TypesFoliage;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
 import net.minecraft.block.FlowerBlock;
 import net.minecraft.block.Material;
 import net.minecraft.entity.effect.StatusEffect;
@@ -22,7 +23,8 @@ public final  class FlowerFoliageType {
                             .sounds(BlockSoundGroup.GRASS)
             ),
             "flower",
-            true
+            true,
+            RegistryTypes.FLOWER
     );
 
     public enum FlowerTypes {

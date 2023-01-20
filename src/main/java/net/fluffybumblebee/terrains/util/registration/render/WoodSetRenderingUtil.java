@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 
 public class WoodSetRenderingUtil {
     public static void registerWoodSetEntities(WoodSet woodSet) {
-        woodSet.getBlockIterator().forEach(element -> {
+        woodSet.iterateBlocks().forEach(element -> {
             if (element.BLOCK instanceof TerraformSignBlock signBlock)
                 SignRenderingUtil.registerTextures(signBlock.getTexture());
         });

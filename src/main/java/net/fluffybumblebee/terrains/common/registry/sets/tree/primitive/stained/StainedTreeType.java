@@ -5,13 +5,12 @@ import net.fluffybumblebee.terrains.common.registry.sets.tree.component.Primitiv
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
 import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.StainedSaplingGenerator;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
-import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry;
 import net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
-import net.minecraft.item.Item;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
@@ -29,35 +28,26 @@ import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySetCreator {
-    private final List<BlockSet<?>> ALL_BLOCKS;
     public final PrimitiveTreeSet<StainedSaplingGenerator, StainedConfig> TREE_CONFIG;
 
     public StainedTreeType(final Colour type) {
         final String colour = type.name().toLowerCase();
-        ALL_BLOCKS = new ArrayList<>();
 
         TREE_CONFIG = new PrimitiveTreeSet<>(new Config<>(
                 colour,
                 List.of(Blocks.OAK_LOG),
                 StainedConfig::new
         ));
-
-        ALL_BLOCKS.addAll(TREE_CONFIG.getAllBlockSets());
     }
 
     @Override
-    public List<BlockSet<?>> getAllBlockSets() {
-        return ALL_BLOCKS;
+    public void registryEvent(SetRegistry registry) {
+        TREE_CONFIG.registryEvent(registry);
     }
 
-    @Override
-    public List<Item> getAllItems() {
-        return List.of();
-    }
 
     /*@Override
     public void generationEvent() {
@@ -106,7 +96,7 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
                     TerrainsDefaults.getNamespaceVar() + type + "common_tree_bees_placed",
                     RANDOM_TREE,
                     TreeRegistration.treePlacementModifiers(
-                            PlacedFeatures.createCountExtraModifier(0, 0.4f, 1)
+                            PlacedFeatures.createCountExtraModifier(0, 0.1f, 1)
                     )
             );
 

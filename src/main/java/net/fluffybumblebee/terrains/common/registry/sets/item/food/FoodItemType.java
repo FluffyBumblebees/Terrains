@@ -3,6 +3,7 @@ package net.fluffybumblebee.terrains.common.registry.sets.item.food;
 import net.fluffybumblebee.terrains.common.instances.item.food.FoodItem;
 import net.fluffybumblebee.terrains.common.registry.sets.item.TypesItem;
 import net.fluffybumblebee.terrains.common.registry.sets.item.component.ItemSet.IdentifiableItem;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
 
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class FoodItemType {
                     HONEY_FLAVOURED_PANCAKE,
                     MAPLE_FLAVOURED_PANCAKE,
                     HONEYCOMB_PANCAKE_SANDWICH
-            )
+            ),
+            RegistryTypes.FOOD
     );
 }

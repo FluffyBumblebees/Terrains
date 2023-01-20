@@ -2,6 +2,7 @@ package net.fluffybumblebee.terrains.common.registry.itemgroups;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 
@@ -16,7 +17,11 @@ public class FoodItemGroup {
     static {
         FOOD = FabricItemGroupBuilder.create(new Identifier(NAMESPACE, "foods"))
                 .icon(() -> HONEYCOMB_PANCAKE_SANDWICH.item().getDefaultStack())
-                .appendItems(stacks -> AllRegistrySets.ITEMS.getItemIterator().forEach(element -> stacks.add(element.getDefaultStack())))
+                .appendItems(stacks -> AllRegistrySets.ITEMS.iterateRegistry(RegistryTypes.FOOD).forEach(element -> {
+                    final var item = element.item();
+                    if (item.isPresent())
+                        stacks.add(element.item().orElseThrow().getDefaultStack());
+                }))
                 .build();
     }
 

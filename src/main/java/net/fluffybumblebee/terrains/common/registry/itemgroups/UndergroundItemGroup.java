@@ -2,6 +2,7 @@ package net.fluffybumblebee.terrains.common.registry.itemgroups;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -18,9 +19,8 @@ public class UndergroundItemGroup {
         UNDERGROUND = FabricItemGroupBuilder.create(new Identifier(TerrainsDefaults.NAMESPACE, "underground"))
                 .icon(() -> new ItemStack(CRYSTAL_GEODES.getTypeMap().get(PURPLE).CORUNDUM.ITEM))
                 .appendItems(stacks ->
-                        CRYSTAL_GEODES.forEach(element ->
-                                stacks.add(element.ITEM.asItem().getDefaultStack())
-                        )
+                        CRYSTAL_GEODES.iterateRegistry(RegistryTypes.CRYSTAL).forEach(element ->
+                                stacks.add(element.item().orElseThrow().getDefaultStack()))
                 ).build();
     }
 }

@@ -12,9 +12,12 @@ import net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained.
 import net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained.TypesStainedTree;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySet;
 
+import java.util.List;
+
 import static net.fluffybumblebee.terrains.common.registry.sets.foliage.component.TypesFoliage.ALL_FOLIAGE;
 import static net.fluffybumblebee.terrains.common.registry.sets.item.TypesItem.ALL_ITEMS;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.TypesWholeTree.ALL_WHOLE_TREES;
+import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes.*;
 
 public final class AllRegistrySets {
     public static final RegistrySet<TypesStainedTree, StainedTreeType<TypesStainedTree>> STAINED_TREES;
@@ -24,11 +27,47 @@ public final class AllRegistrySets {
     public static final RegistrySet<TypesItem<?>, ItemSet<?>> ITEMS;
 
     static {
-        STAINED_TREES = new RegistrySet<>(TypesStainedTree.values(), StainedTreeType::new);
-        CRYSTAL_GEODES = new RegistrySet<>(TypesCrystalGeode.values(), CrystalGeodeSet::new);
-        FULL_TREES = new RegistrySet<>(ALL_WHOLE_TREES, WholeTreeSet::new);
-        FOLIAGE = new RegistrySet<>(ALL_FOLIAGE, FoliageSet::new);
-        ITEMS = new RegistrySet<>(ALL_ITEMS, ItemSet::new);
+        STAINED_TREES = new RegistrySet<>(
+                TypesStainedTree.values(),
+                List.of(
+                        SAPLING,
+                        LEAVES,
+                        POTTED_BLOCK
+                ),
+                StainedTreeType::new
+        );
+        CRYSTAL_GEODES = new RegistrySet<>(
+                TypesCrystalGeode.values(),
+                List.of(
+                        CRYSTAL
+                ),
+                CrystalGeodeSet::new
+        );
+        FULL_TREES = new RegistrySet<>(
+                ALL_WHOLE_TREES,
+                List.of(
+                        SAPLING,
+                        LEAVES,
+                        POTTED_BLOCK,
+                        WOOD
+                ),
+                WholeTreeSet::new
+        );
+        FOLIAGE = new RegistrySet<>(
+                ALL_FOLIAGE,
+                List.of(
+                        FLOWER,
+                        POTTED_BLOCK
+                ),
+                FoliageSet::new
+        );
+        ITEMS = new RegistrySet<>(
+                ALL_ITEMS,
+                List.of(
+                        FOOD
+                ),
+                ItemSet::new
+        );
     }
 
     private AllRegistrySets() {}

@@ -4,11 +4,12 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fluffybumblebee.terrains.common.instances.block.crystals.*;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
+import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry;
 import net.minecraft.block.AmethystClusterBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.collection.DataPool;
@@ -73,20 +74,6 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
         CRYSTAL_STAIRS = buildCrystal(new CorundumCrystalStairs(), colour + "_crystal_stairs");
         CRYSTAL_PANE = buildCrystal(new CorundumCrystalPane(), colour + "_crystal_pane");
 
-
-        addAllBlocks(new BlockSet[] {
-                CORUNDUM_CLUSTER,
-                WAXED_CORUNDUM,
-                CORUNDUM,
-                CORUNDUM_SLAB,
-                CORUNDUM_STAIRS,
-                CORUNDUM_PANE,
-                CRYSTAL,
-                CRYSTAL_SLAB,
-                CRYSTAL_STAIRS,
-                CRYSTAL_PANE
-        });
-
         registerWaxableBlockPair(CORUNDUM.BLOCK, WAXED_CORUNDUM.BLOCK);
 
         CONFIGURED_GEODE = registerGeode(
@@ -106,13 +93,19 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
     }
 
     @Override
-    public List<BlockSet<?>> getAllBlockSets() {
-        return ALL_BLOCKS;
-    }
-
-    @Override
-    public List<Item> getAllItems() {
-        return List.of();
+    public void registryEvent(SetRegistry registry) {
+        registry.blockSet(RegistryTypes.CRYSTAL,
+                CORUNDUM_CLUSTER,
+                WAXED_CORUNDUM,
+                CORUNDUM,
+                CORUNDUM_SLAB,
+                CORUNDUM_STAIRS,
+                CORUNDUM_PANE,
+                CRYSTAL,
+                CRYSTAL_SLAB,
+                CRYSTAL_STAIRS,
+                CRYSTAL_PANE
+        );
     }
 
     @Override
