@@ -39,12 +39,15 @@ public class HemiEllipsoidFoliagePlacer extends FoliagePlacer {
         final double newRadius = (Math.min(trunkHeight * 1.25, 2 * radius) - offset - 0.5) - random.nextFloat(0.25F);
         final double heightAffectsRadius = (trunkHeight + (newRadius * 4)) / 5;
 
-        Shapes.hemiEllipsoid(newRadius, newRadius, heightAffectsRadius * 1.45
-                        - (1.25 * newRadius) / newRadius - random.nextFloat(0.35F))
+        Shapes.hemiEllipsoid(newRadius, newRadius,
+                        heightAffectsRadius * 1.45
+                        - (1.25 * newRadius) / newRadius
+                                - random.nextFloat(0.35F)
+                )
                 .applyLayer(TranslateLayer.of(Position.of(treeNode.getCenter()).move(0,
-                        - 1.25 - random.nextFloat(0.25F) + random.nextFloat(0.75F), 0)))
+                        - 2, 0)))
                 .stream()
-                .forEach((block) -> setBlockState(world, block.toBlockPos(), random, replacer, config));
+                .forEach(block -> setBlockState(world, block.toBlockPos(), random, replacer, config));
     }
 
     private void setBlockState(
