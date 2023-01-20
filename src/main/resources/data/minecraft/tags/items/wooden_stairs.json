@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "terrains:maple_stairs"
+    "terrains:maple_stairs",
+    "terrains:jacaranda_stairs"
   ]
 }

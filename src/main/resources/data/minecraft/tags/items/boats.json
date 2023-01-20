@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "terrains:maple_boat"
+    "terrains:maple_boat",
+    "terrains:jacaranda_boat"
   ]
 }

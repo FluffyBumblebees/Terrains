@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "terrains:jacaranda_log",
+    "terrains:stripped_jacaranda_log",
+	"terrains:jacaranda_wood",
+    "terrains:stripped_jacaranda_wood",
+    "terrains:sappy_jacaranda_log"
+  ]
+}

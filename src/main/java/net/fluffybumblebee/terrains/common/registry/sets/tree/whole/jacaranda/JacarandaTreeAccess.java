@@ -10,16 +10,17 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.jacaranda.JacarandaTreeType.JACARANDA_TREES;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.jacaranda.JacarandaTreeType.JacarandaFeatures;
 import static net.fluffybumblebee.terrains.util.registration.registry_set.helper.RegistrySetTypeTools.accessTreeFeatures;
-import static net.fluffybumblebee.terrains.util.registration.registry_set.helper.RegistrySetTypeTools.getUniqueFeatures;
+import static net.fluffybumblebee.terrains.util.registration.registry_set.helper.RegistrySetTypeTools.getUniqueTreeFeatures;
 
+@SuppressWarnings("unused")
 public class JacarandaTreeAccess {
 
     public static WholeTreeSet<?, ?, ?> getJacarandaTree() {
         return AllRegistrySets.FULL_TREES.getTypeMap().get(JACARANDA_TREES);
     }
 
-    public static UniqueMapleFeatures getUniqueMapleFeatures() {
-        return getUniqueFeatures(getJacarandaTree());
+    public static UniqueMapleFeatures getUniqueJacarandaFeatures() {
+        return getUniqueTreeFeatures(getJacarandaTree());
     }
 
     public static JacarandaFeatures getFeature(String treeVariant) {

@@ -9,10 +9,16 @@ import net.minecraft.block.Material;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.registry.RegistryEntry;
+import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 
 import java.util.Arrays;
 
 import static net.fluffybumblebee.terrains.common.registry.sets.foliage.component.FoliageSet.FeatureCreator;
+import static net.fluffybumblebee.terrains.util.registration.world.feature.TerrainsFeatureRegistrar.registerConfiguredFeature;
+import static net.fluffybumblebee.terrains.util.registration.world.feature.TerrainsFeatureRegistrar.registerPlacedFeature;
+import static net.minecraft.world.gen.feature.VegetationPlacedFeatures.modifiers;
 
 public final  class FlowerFoliageType {
     public static final TypesFoliage<FlowerBlock, FlowerTypes, FlowerFeatures> ALL_FLOWERS = new TypesFoliage<>(
@@ -47,9 +53,26 @@ public final  class FlowerFoliageType {
     }
 
     public static class FlowerFeatures implements FeatureCreator {
+        public final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig,?>> CONFIGURED_FLOWER_PATCH;
 
-        public FlowerFeatures(Block block) {
+        public final RegistryEntry<PlacedFeature> PLACED_FLOWER_PATCH;
 
+        public FlowerFeatures(Block block, String name) {
+            CONFIGURED_FLOWER_PATCH = registerConfiguredFeature(
+                    name  + "_patch",
+                    Feature.RANDOM_PATCH,
+                    new RandomPatchFeatureConfig(96, 6, 2,
+                            PlacedFeatures.createEntry(
+                                    Feature.SIMPLE_BLOCK,
+                                    new SimpleBlockFeatureConfig(BlockStateProvider.of(block))
+                            )
+                    )
+            );
+            PLACED_FLOWER_PATCH = registerPlacedFeature(
+                     name + "_patch",
+                    CONFIGURED_FLOWER_PATCH,
+                    modifiers(16)
+            );
         }
     }
 }

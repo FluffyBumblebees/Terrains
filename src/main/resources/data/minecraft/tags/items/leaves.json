@@ -4,6 +4,12 @@
     "terrains:green_maple_leaves",
     "terrains:red_maple_leaves",
     "terrains:yellow_maple_leaves",
-    "terrains:orange_maple_leaves"
+    "terrains:orange_maple_leaves",
+    "terrains:brown_maple_leaves",
+    "terrains:green_maple_leaves",
+    "terrains:pastel_green_maple_leaves",
+    "terrains:tyrian_purple_maple_leaves",
+    "terrains:white_maple_leaves",
+    "terrains:blue_maple_leaves"
   ]
 }

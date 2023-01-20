@@ -4,6 +4,12 @@
     "terrains:green_maple_sapling",
     "terrains:red_maple_sapling",
     "terrains:yellow_maple_sapling",
-    "terrains:orange_maple_sapling"
+    "terrains:orange_maple_sapling",
+    "terrains:brown_maple_sapling",
+    "terrains:green_maple_sapling",
+    "terrains:pastel_green_maple_sapling",
+    "terrains:tyrian_purple_maple_sapling",
+    "terrains:white_maple_sapling",
+    "terrains:blue_maple_sapling"
   ]
 }

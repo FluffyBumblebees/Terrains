@@ -1,5 +1,8 @@
 package net.fluffybumblebee.terrains.util.registration.registry_set.helper;
 
+import net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets;
+import net.fluffybumblebee.terrains.common.registry.sets.foliage.TypesFoliage;
+import net.fluffybumblebee.terrains.common.registry.sets.foliage.component.FoliageSet;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet.TreeType;
@@ -44,7 +47,14 @@ public class RegistrySetTypeTools {
                 .TREE_FEATURES;
     }
 
-    public static <UniqueFeatures> UniqueFeatures getUniqueFeatures(WholeTreeSet<?, ?, ?> treeVariant) {
+    public static <UniqueFeatures> UniqueFeatures getUniqueTreeFeatures(WholeTreeSet<?, ?, ?> treeVariant) {
         return (UniqueFeatures) treeVariant.UNIQUE_FEATURES;
+    }
+
+    public static FoliageSet<?, ?, ?> accessFoliageSet(TypesFoliage<?, ?, ?> type) {
+        return AllRegistrySets
+                .FOLIAGE
+                .getTypeMap()
+                .get(type);
     }
 }

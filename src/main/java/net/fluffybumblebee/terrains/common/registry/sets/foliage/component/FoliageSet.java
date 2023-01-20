@@ -46,7 +46,7 @@ public final class FoliageSet<
             foliageHolder.put(type, new UniqueFoliageSetHolder<>(
                     foliage,
                     potBlock,
-                    foliageTypes.featureSupplier().get(foliage.BLOCK)
+                    foliageTypes.featureSupplier().get(foliage.BLOCK, string)
             ));
         }
     }
@@ -60,7 +60,7 @@ public final class FoliageSet<
         }
     }
 
-    private record UniqueFoliageSetHolder<
+    public record UniqueFoliageSetHolder<
             FeatureInstance extends FeatureCreator
             >(BlockSet<?> block, BlockSet<?> potBlock, FeatureInstance featureInstance) {}
 
@@ -70,7 +70,7 @@ public final class FoliageSet<
     }
 
     public interface FeatureSupplier <B extends Block, FeatureInstance extends FeatureCreator> {
-        FeatureInstance get(B block);
+        FeatureInstance get(B block, String name);
     }
 
     public interface FeatureCreator {}

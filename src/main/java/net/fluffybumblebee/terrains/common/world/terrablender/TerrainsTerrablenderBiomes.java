@@ -26,19 +26,19 @@ public class TerrainsTerrablenderBiomes extends Region implements Runnable, Terr
                 ParameterUtils.Temperature.WARM,
                 ParameterUtils.Humidity.NEUTRAL,
                 ParameterUtils.Continentalness.MID_INLAND,
-                ParameterUtils.Erosion.EROSION_0,
+                ParameterUtils.Erosion.EROSION_5,
                 ParameterUtils.Weirdness.LOW_SLICE_VARIANT_ASCENDING,
                 ParameterUtils.Depth.SURFACE,
                 0L,
-                JACARANDA_FOREST
+                JACARANDA_PLAINS
         );
         this.addBiome(
                 mapper,
                 ParameterUtils.Temperature.WARM,
                 ParameterUtils.Humidity.NEUTRAL,
                 ParameterUtils.Continentalness.INLAND,
-                ParameterUtils.Erosion.EROSION_5,
-                ParameterUtils.Weirdness.LOW_SLICE_VARIANT_ASCENDING,
+                ParameterUtils.Erosion.EROSION_4,
+                ParameterUtils.Weirdness.MID_SLICE_NORMAL_DESCENDING,
                 ParameterUtils.Depth.SURFACE,
                 0L,
                 LUSH_MAPLE_BLOSSOM

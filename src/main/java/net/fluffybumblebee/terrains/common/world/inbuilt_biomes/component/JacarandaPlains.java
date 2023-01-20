@@ -1,23 +1,25 @@
 package net.fluffybumblebee.terrains.common.world.inbuilt_biomes.component;
 
+import net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 
+import static net.fluffybumblebee.terrains.common.registry.sets.foliage.flower.FlowerFoliageAccess.accessDefaultPlacedFeature;
+import static net.fluffybumblebee.terrains.common.registry.sets.foliage.flower.FlowerFoliageType.FlowerTypes.LAVENDER;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.jacaranda.JacarandaTreeAccess.getPlacedBees;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.jacaranda.JacarandaTreeType.JacarandaTypes.PINK;
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.jacaranda.JacarandaTreeType.JacarandaTypes.PURPLE;
 import static net.fluffybumblebee.terrains.common.world.inbuilt_biomes.TerrainsBiomeRegistry.WARM_WATER;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
-import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 
 
-public class JacarandaForest {
+public class JacarandaPlains {
     private static final int BIOME_COLOUR = 0x96DD4F;
 
-    public static final Biome JACARANDA_FOREST = new Biome.Builder()
+    public static final Biome JACARANDA_PLAINS = new Biome.Builder()
             .precipitation(Biome.Precipitation.RAIN)
             .generationSettings(generationSettings())
             .category(Biome.Category.FOREST)
@@ -34,9 +36,8 @@ public class JacarandaForest {
 
     private static GenerationSettings generationSettings() {
         GenerationSettings.Builder builder = new GenerationSettings.Builder();
-        addDefaultFlowers(builder);
-
-        addVegetalFeatures(builder, getPlacedBees(PINK), getPlacedBees(PURPLE));
+        addVegetalFeatures(builder, getPlacedBees(PINK), getPlacedBees(PURPLE),
+                accessDefaultPlacedFeature(LAVENDER), TerrainsPlacedFeatures.PATCH_GRASS_FOREST);
         return builder.build();
     }
 
