@@ -12,6 +12,7 @@ public class TerrainsBiomeRegistry {
     public static final int WARM_WATER = 0x0089F5;
     public static final int COLD_WATER = 0x002D96;
 
+    public static final RegistryKey<Biome> JACARANDA_FOREST = add("jacaranda_forest", JacarandaForest.JACARANDA_FOREST);
     public static final RegistryKey<Biome> LUSH_MAPLE_BLOSSOM = add("lush_maple_blossom",
             LushMapleBlossom.LUSH_MAPLE_BLOSSOM);
     public static final RegistryKey<Biome> MAPLE_BLOSSOM = add("maple_blossom", MapleBlossom.MAPLE_BLOSSOM);
