@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@SuppressWarnings("unchecked")
 public class WholeTreeSet<
         Generator extends SaplingGenerator,
         FeatureProvider extends FeatureCreator<Generator>,
@@ -30,7 +29,7 @@ public class WholeTreeSet<
 
     public final String WOOD_TYPE;
     public final String[] TREE_VARIANTS;
-    public final List<BlockSet<WoodBlock>> ADDITIONAL_LOG_VARIANTS;
+    public final List<BlockSet<?>> LOG_VARIANTS;
     public final WoodSet WOOD_SET;
 
     public WholeTreeSet(
@@ -39,20 +38,20 @@ public class WholeTreeSet<
         WOOD_TYPE = config.woodType;
         TREE_VARIANTS = config.treeVariants;
         PRIMITIVE_TREE_CONFIGS = new HashMap<>();
-        ADDITIONAL_LOG_VARIANTS = new ArrayList<>();
         WOOD_SET = new WoodSet(WOOD_TYPE);
-        ADDITIONAL_LOG_VARIANTS.add((BlockSet<WoodBlock>) WOOD_SET.LOG);
+        LOG_VARIANTS = new ArrayList<>();
 
         final var logVariants = config.additionalLogVariants;
         if (logVariants != null) {
             for (String logVariant : logVariants) {
-                ADDITIONAL_LOG_VARIANTS.add(BlockSet.buildFlammableBlock(new WoodBlock(),
+                LOG_VARIANTS.add(BlockSet.buildFlammableBlock(new WoodBlock(),
                         logVariant));
             }
         }
 
         final List<Block> logs = new ArrayList<>();
-        for (BlockSet<WoodBlock> log : ADDITIONAL_LOG_VARIANTS) {
+        logs.add(WOOD_SET.LOG.BLOCK);
+        for (BlockSet<?> log : LOG_VARIANTS) {
             logs.add(log.BLOCK);
         }
 
@@ -70,7 +69,7 @@ public class WholeTreeSet<
 
         UNIQUE_FEATURES = config.uniqueFeatureSupplier.get(logs, leaves, WOOD_TYPE);
 
-        Quickerator<BlockSet<WoodBlock>> woodSetIterator = () -> ADDITIONAL_LOG_VARIANTS;
+        Quickerator<BlockSet<?>> woodSetIterator = () -> LOG_VARIANTS;
         woodSetIterator.forEach(variants ->
                 StrippableBlockRegistry.register(variants.BLOCK, WOOD_SET.STRIPPED_LOG.BLOCK)
         );
@@ -78,9 +77,8 @@ public class WholeTreeSet<
 
     @Override
     public void registryEvent(SetRegistry registry) {
+        registry.iterate(LOG_VARIANTS).forEach(element -> registry.blockSet(RegistryTypes.WOOD, element));
         WOOD_SET.registryEvent(registry);
-
-        registry.iterate(ADDITIONAL_LOG_VARIANTS).forEach(element -> registry.blockSet(RegistryTypes.WOOD, element));
         registry.iterate(TREE_VARIANTS).forEach(featureSets -> PRIMITIVE_TREE_CONFIGS.get(featureSets).registryEvent(registry));
     }
 
