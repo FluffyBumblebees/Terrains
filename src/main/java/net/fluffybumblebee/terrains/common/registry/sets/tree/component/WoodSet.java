@@ -48,7 +48,7 @@ public class WoodSet implements RegistrySetCreator {
     public WoodSet(String woodType) {
         ALL_BLOCKS = new ArrayList<>();
         TYPE = woodType;
-        BoatRegistration.register(TYPE, () -> BOAT, item -> BOAT = new TerraformBoatType.Builder().item(item).build());
+        BoatRegistration.register(TYPE, () -> BOAT, boat -> BOAT = boat);
 
         LOG = buildFlammableBlock(new WoodBlock(), TYPE + "_log");
         WOOD = buildFlammableBlock(new WoodBlock(), TYPE + "_wood");
