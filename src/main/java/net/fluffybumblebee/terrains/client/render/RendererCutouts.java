@@ -23,6 +23,8 @@ public class RendererCutouts {
 
         STAINED_TREES.forEach(element -> putBlock(element.BLOCK));
 
+        FOLIAGE.forEach(element -> onIf(!(element.BLOCK instanceof FlowerPotBlock), () -> putBlock(element.BLOCK)));
+
     }
 
     private static void putBlock(Block block) {

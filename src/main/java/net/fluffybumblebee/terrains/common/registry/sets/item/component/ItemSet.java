@@ -1,6 +1,6 @@
 package net.fluffybumblebee.terrains.common.registry.sets.item.component;
 
-import net.fluffybumblebee.terrains.common.registry.sets.item.food.TypesItem;
+import net.fluffybumblebee.terrains.common.registry.sets.item.TypesItem;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
@@ -12,10 +12,10 @@ import net.minecraft.util.registry.Registry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemRegistrySet<I extends Item> implements RegistrySetCreator {
+public class ItemSet<I extends Item> implements RegistrySetCreator {
     private final List<Item> ALL_ITEMS;
 
-    public ItemRegistrySet(TypesItem<I> items) {
+    public ItemSet(TypesItem<I> items) {
         ALL_ITEMS = new ArrayList<>();
 
         final Quickerator<IdentifiableItem<I>> iterator = items::items;

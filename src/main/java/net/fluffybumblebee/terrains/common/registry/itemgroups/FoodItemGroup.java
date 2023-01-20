@@ -5,7 +5,7 @@ import net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 
-import static net.fluffybumblebee.terrains.common.registry.sets.item.FoodItemType.HONEYCOMB_PANCAKE_SANDWICH;
+import static net.fluffybumblebee.terrains.common.registry.sets.item.food.FoodItemType.HONEYCOMB_PANCAKE_SANDWICH;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.NAMESPACE;
 
 public class FoodItemGroup {
