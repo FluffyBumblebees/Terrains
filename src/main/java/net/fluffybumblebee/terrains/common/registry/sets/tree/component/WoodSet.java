@@ -10,7 +10,6 @@ import net.fluffybumblebee.terrains.common.instances.block.wood.*;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
 import net.fluffybumblebee.terrains.util.registration.block.BlockSet.Builder;
 import net.fluffybumblebee.terrains.util.registration.entity.BoatRegistration;
-import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry;
@@ -30,7 +29,8 @@ public class WoodSet implements RegistrySetCreator {
     public final String TYPE;
     public final List<BlockSet<?>> ALL_BLOCKS;
 
-    public static TerraformBoatType BOAT;
+
+    private TerraformBoatType BOAT;
     public final BlockSet<?> LOG;
     public final BlockSet<?> WOOD;
     public final BlockSet<?> STRIPPED_LOG;
@@ -50,6 +50,7 @@ public class WoodSet implements RegistrySetCreator {
 
     public WoodSet(String woodType) {
         TYPE = woodType;
+
         BoatRegistration.register(TYPE, () -> BOAT, boat -> BOAT = boat);
 
         LOG = buildFlammableBlock(new WoodBlock(), TYPE + "_log");
@@ -95,12 +96,21 @@ public class WoodSet implements RegistrySetCreator {
         StrippableBlockRegistry.register(WOOD.BLOCK, STRIPPED_WOOD.BLOCK);
     }
 
-    public Quickerator<BlockSet<?>> iterateBlocks() {
-        return () -> ALL_BLOCKS;
+    public BlockSet<TerraformSignBlock> getSign() {
+        return SIGN;
+    }
+
+    @SuppressWarnings("unused")
+    public TerraformBoatType getBoat() {
+        return BOAT;
     }
 
     @Override
     public void registryEvent(SetRegistry registry) {
+        registry.blockSet(RegistryTypes.BLOCK_WITH_HOLE,
+                DOOR,
+                TRAPDOOR
+        );
         registry.blockSet(RegistryTypes.WOOD,
                 LOG,
                 WOOD,
@@ -112,8 +122,6 @@ public class WoodSet implements RegistrySetCreator {
                 FENCE,
                 FENCE_GATE,
                 PRESSURE_PLATE,
-                DOOR,
-                TRAPDOOR,
                 BUTTON,
                 SIGN
         );
@@ -121,5 +129,10 @@ public class WoodSet implements RegistrySetCreator {
         registry.storage.get(RegistryTypes.WOOD).add(new Storage(
                 BOAT.getItem()
         ));
+    }
+
+    @Override
+    public String toString() {
+        return "WoodSet[Type=" + TYPE.toUpperCase() + "]";
     }
 }

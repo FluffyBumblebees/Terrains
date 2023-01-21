@@ -18,9 +18,9 @@ public class UndergroundItemGroup {
     static {
         UNDERGROUND = FabricItemGroupBuilder.create(new Identifier(TerrainsDefaults.NAMESPACE, "underground"))
                 .icon(() -> new ItemStack(CRYSTAL_GEODES.getTypeMap().get(PURPLE).CORUNDUM.ITEM))
-                .appendItems(stacks ->
-                        CRYSTAL_GEODES.iterateRegistry(RegistryTypes.CRYSTAL).forEach(element ->
-                                stacks.add(element.item().orElseThrow().getDefaultStack()))
+                .appendItems(stacks -> CRYSTAL_GEODES.iterateRegistry(RegistryTypes.CRYSTAL).forEach(element ->
+                        stacks.add(element.item().orElseThrow().getDefaultStack())
+                )
                 ).build();
     }
 }

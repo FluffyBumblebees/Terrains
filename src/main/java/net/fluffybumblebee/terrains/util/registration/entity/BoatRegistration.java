@@ -17,7 +17,6 @@ public class BoatRegistration {
 
         withBoat.register(new TerraformBoatType.Builder().item(boat).build());
         Registry.register(TerraformBoatTypeRegistry.INSTANCE, new Identifier(TerrainsDefaults.NAMESPACE, material), type.get());
-
     }
 
     public interface WithBoat {

@@ -2,6 +2,7 @@ package net.fluffybumblebee.terrains.util.registration.registry_set.helper;
 
 import java.util.List;
 
+@FunctionalInterface
 public interface Quickerator<T> {
     List<T> getValues();
 
@@ -12,6 +13,7 @@ public interface Quickerator<T> {
         }
     }
 
+    @FunctionalInterface
     interface TypeIterator <T> {
         void with(T element);
     }

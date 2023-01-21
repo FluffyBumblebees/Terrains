@@ -50,11 +50,13 @@ public final class RegistrySet<Types, RegistryConfig extends RegistrySetCreator>
         return registry;
     }
 
-    public Quickerator<Storage> iterateRegistry(RegistryTypes types) {
-        return () -> registry.storage.get(types);
+    public Quickerator<Storage> iterateRegistry(final RegistryTypes types) {
+        if (registry.storage.get(types) != null)
+            return () -> registry.storage.get(types);
+        else return List::of;
     }
 
     public interface RegistrySetFactory<Types, RegistryConfig extends RegistrySetCreator> {
-        RegistryConfig getNewSet(Types type);
+        RegistryConfig getNewSet(final Types type);
     }
 }

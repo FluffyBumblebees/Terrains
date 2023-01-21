@@ -17,11 +17,13 @@ public class FoodItemGroup {
     static {
         FOOD = FabricItemGroupBuilder.create(new Identifier(NAMESPACE, "foods"))
                 .icon(() -> HONEYCOMB_PANCAKE_SANDWICH.item().getDefaultStack())
-                .appendItems(stacks -> AllRegistrySets.ITEMS.iterateRegistry(RegistryTypes.FOOD).forEach(element -> {
-                    final var item = element.item();
-                    if (item.isPresent())
-                        stacks.add(element.item().orElseThrow().getDefaultStack());
-                }))
+                .appendItems(stacks -> {
+                    AllRegistrySets.ITEMS.iterateRegistry(RegistryTypes.FOOD).forEach(element ->
+                            stacks.add(element.item().orElseThrow().getDefaultStack())
+                    );
+                    AllRegistrySets.ITEMS.iterateRegistry(RegistryTypes.TRANSPARENT_FOOD).forEach(element ->
+                            stacks.add(element.item().orElseThrow().getDefaultStack()));
+                })
                 .build();
     }
 

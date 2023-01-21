@@ -39,6 +39,8 @@ public final class AllRegistrySets {
         CRYSTAL_GEODES = new RegistrySet<>(
                 TypesCrystalGeode.values(),
                 List.of(
+                        TRANSPARENT_FULL_BLOCK,
+                        CLUSTER,
                         CRYSTAL
                 ),
                 CrystalGeodeSet::new
@@ -49,7 +51,8 @@ public final class AllRegistrySets {
                         SAPLING,
                         LEAVES,
                         POTTED_BLOCK,
-                        WOOD
+                        WOOD,
+                        BLOCK_WITH_HOLE
                 ),
                 WholeTreeSet::new
         );
@@ -64,7 +67,8 @@ public final class AllRegistrySets {
         ITEMS = new RegistrySet<>(
                 ALL_ITEMS,
                 List.of(
-                        FOOD
+                        FOOD,
+                        TRANSPARENT_FOOD
                 ),
                 ItemSet::new
         );

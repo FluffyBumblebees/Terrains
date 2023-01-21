@@ -94,8 +94,8 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
 
     @Override
     public void registryEvent(SetRegistry registry) {
-        registry.blockSet(RegistryTypes.CRYSTAL,
-                CORUNDUM_CLUSTER,
+        registry.blockSet(RegistryTypes.CLUSTER, CORUNDUM_CLUSTER);
+        registry.blockSet(RegistryTypes.TRANSPARENT_FULL_BLOCK,
                 WAXED_CORUNDUM,
                 CORUNDUM,
                 CORUNDUM_SLAB,
@@ -105,6 +105,18 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
                 CRYSTAL_SLAB,
                 CRYSTAL_STAIRS,
                 CRYSTAL_PANE
+        );
+        registry.blockSet(RegistryTypes.CRYSTAL,
+                WAXED_CORUNDUM,
+                CORUNDUM,
+                CORUNDUM_SLAB,
+                CORUNDUM_STAIRS,
+                CORUNDUM_PANE,
+                CRYSTAL,
+                CRYSTAL_SLAB,
+                CRYSTAL_STAIRS,
+                CRYSTAL_PANE,
+                CORUNDUM_CLUSTER
         );
     }
 

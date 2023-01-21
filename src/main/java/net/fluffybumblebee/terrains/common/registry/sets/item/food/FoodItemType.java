@@ -24,12 +24,18 @@ public class FoodItemType {
     public static final TypesItem<FoodItem> FOOD_ITEMS = new TypesItem<>(
             List.of(
                     PANCAKE_DOUGH,
-                    MAPLE_SAP,
                     PANCAKE,
                     HONEY_FLAVOURED_PANCAKE,
                     MAPLE_FLAVOURED_PANCAKE,
                     HONEYCOMB_PANCAKE_SANDWICH
             ),
             RegistryTypes.FOOD
+    );
+
+    public static final TypesItem<FoodItem> TRANSPARENT_FOOD_ITEMS = new TypesItem<>(
+            List.of(
+                    MAPLE_SAP
+            ),
+            RegistryTypes.TRANSPARENT_FOOD
     );
 }
