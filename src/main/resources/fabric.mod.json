@@ -20,7 +20,7 @@
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
-      "net.fluffybumblebee.terrains.core.datagen.TerrainsDatagen"
+      "net.fluffybumblebee.terrains.core.TerrainsDatagen"
     ],
     "main": [
       "net.fluffybumblebee.terrains.core.TerrainsCommon"

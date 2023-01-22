@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "terrains:jacaranda_forest",
+    "terrains:jacaranda_plains",
+    "terrains:lush_maple_blossom",
+    "terrains:maple_blossom"
+  ]
+}

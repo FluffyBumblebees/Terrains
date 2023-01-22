@@ -78,6 +78,7 @@ public class WholeTreeSet<
     @Override
     public void registryEvent(SetRegistry registry) {
         registry.iterate(LOG_VARIANTS).forEach(element -> registry.blockSet(RegistryTypes.WOOD, element));
+        registry.iterate(LOG_VARIANTS).forEach(element -> registry.blockSet(RegistryTypes.ALL_WOOD_BLOCKS, element));
         WOOD_SET.registryEvent(registry);
         registry.iterate(TREE_VARIANTS).forEach(featureSets -> PRIMITIVE_TREE_CONFIGS.get(featureSets).registryEvent(registry));
     }

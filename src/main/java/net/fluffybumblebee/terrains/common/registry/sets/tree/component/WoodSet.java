@@ -144,8 +144,11 @@ public class WoodSet implements RegistrySetCreator {
                 SIGN
         );
 
-
         registry.storage.get(RegistryTypes.WOOD).add(new Storage(
+                BOAT.getItem()
+        ));
+
+        registry.storage.get(RegistryTypes.ALL_WOOD_BLOCKS).add(new Storage(
                 BOAT.getItem()
         ));
     }

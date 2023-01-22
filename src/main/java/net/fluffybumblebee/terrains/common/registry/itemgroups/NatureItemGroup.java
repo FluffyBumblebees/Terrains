@@ -18,7 +18,7 @@ public class NatureItemGroup {
         NATURE = FabricItemGroupBuilder.create(new Identifier(NAMESPACE, "nature"))
                 .icon(() -> new ItemStack(STAINED_TREES.getTypeMap().get(PURPLE).TREE_CONFIG.LEAVES.ITEM))
                 .appendItems(stacks -> {
-                    FULL_TREES.iterateRegistry(RegistryTypes.WOOD).forEach(element -> stacks.add(element.item()
+                    FULL_TREES.iterateRegistry(RegistryTypes.ALL_WOOD_BLOCKS).forEach(element -> stacks.add(element.item()
                             .orElseThrow().getDefaultStack()));
                     FULL_TREES.iterateRegistry(RegistryTypes.LEAVES).forEach(element -> stacks.add(element.item()
                             .orElseThrow().getDefaultStack()));

@@ -95,6 +95,14 @@ public class DatagenRecipeUtil {
                 );
     }
 
+    public static void twoSquared(
+            final Consumer<RecipeJsonProvider> exporter,
+            final TriSet<?> output,
+            final TriSet<?> input
+    ) {
+        twoSquared(exporter, 1, output, input);
+    }
+
     public static void boat(
             final Consumer<RecipeJsonProvider> exporter,
             final TerraformBoatType output,

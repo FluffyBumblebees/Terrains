@@ -6,15 +6,15 @@ import java.util.List;
 public interface Quickerator<T> {
     List<T> getValues();
 
-    default void forEach(TypeIterator<T> iterator) {
+    default void forEach(final ElementProvider<T> provider) {
         for (T type : getValues()) {
             if (type != null)
-                iterator.with(type);
+                provider.with(type);
         }
     }
 
     @FunctionalInterface
-    interface TypeIterator <T> {
-        void with(T element);
+    interface ElementProvider<T> {
+        void with(final T element);
     }
 }

@@ -28,7 +28,7 @@ public class TerrainsRecipes extends FabricRecipeProvider {
             offerStonecuttingRecipe(exporter, element.CRYSTAL_SLAB.BLOCK, element.CRYSTAL_STAIRS.BLOCK);
             offerStonecuttingRecipe(exporter, element.CORUNDUM_SLAB.BLOCK, element.WAXED_CORUNDUM.BLOCK, 2);
             offerStonecuttingRecipe(exporter, element.CRYSTAL_SLAB.BLOCK, element.CRYSTAL.BLOCK, 2);
-            twoSquared(exporter, 1, element.CORUNDUM, element.CORUNDUM_CLUSTER);
+            twoSquared(exporter, element.CORUNDUM, element.CORUNDUM_CLUSTER);
             smelt(exporter, element.CRYSTAL, element.CORUNDUM);
             smelt(exporter, element.CRYSTAL, element.WAXED_CORUNDUM);
             slab(exporter, element.CORUNDUM_SLAB, element.WAXED_CORUNDUM);
