@@ -27,6 +27,7 @@ public class TerrainsLootTables extends SimpleFabricLootTableProvider {
 
         dropsItself(consumer, FOLIAGE, FLOWER);
         dropsItself(consumer, FULL_TREES, SAPLING);
+        dropsItself(consumer, FULL_TREES, ALL_WOOD_BLOCKS);
         dropsItself(consumer, STAINED_TREES, SAPLING);
         dropsItself(consumer, CRYSTAL_GEODES, CRYSTAL);
 

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:black_crystal_stairs_from_black_crystal_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_black_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "terrains:black_crystal"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:black_crystal_stairs_from_black_crystal_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_black_crystal",
+      "has_the_recipe"
+    ]
+  ]
+}

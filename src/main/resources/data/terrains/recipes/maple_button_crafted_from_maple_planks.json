@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "single",
+  "ingredients": [
+    {
+      "item": "terrains:maple_planks"
+    }
+  ],
+  "result": {
+    "item": "terrains:maple_button"
+  }
+}

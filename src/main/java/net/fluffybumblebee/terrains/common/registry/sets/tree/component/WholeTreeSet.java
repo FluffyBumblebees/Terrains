@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fluffybumblebee.terrains.common.instances.block.wood.WoodBlock;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureSupplier;
-import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
+import net.fluffybumblebee.terrains.util.registration.block.TriSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
@@ -29,7 +29,7 @@ public class WholeTreeSet<
 
     public final String WOOD_TYPE;
     public final String[] TREE_VARIANTS;
-    public final List<BlockSet<?>> LOG_VARIANTS;
+    public final List<TriSet<?>> LOG_VARIANTS;
     public final WoodSet WOOD_SET;
 
     public WholeTreeSet(
@@ -44,14 +44,14 @@ public class WholeTreeSet<
         final var logVariants = config.additionalLogVariants;
         if (logVariants != null) {
             for (String logVariant : logVariants) {
-                LOG_VARIANTS.add(BlockSet.buildFlammableBlock(new WoodBlock(),
+                LOG_VARIANTS.add(TriSet.buildFlammableBlock(new WoodBlock(),
                         logVariant));
             }
         }
 
         final List<Block> logs = new ArrayList<>();
         logs.add(WOOD_SET.LOG.BLOCK);
-        for (BlockSet<?> log : LOG_VARIANTS) {
+        for (TriSet<?> log : LOG_VARIANTS) {
             logs.add(log.BLOCK);
         }
 
@@ -69,7 +69,7 @@ public class WholeTreeSet<
 
         UNIQUE_FEATURES = config.uniqueFeatureSupplier.get(logs, leaves, WOOD_TYPE);
 
-        Quickerator<BlockSet<?>> woodSetIterator = () -> LOG_VARIANTS;
+        Quickerator<TriSet<?>> woodSetIterator = () -> LOG_VARIANTS;
         woodSetIterator.forEach(variants ->
                 StrippableBlockRegistry.register(variants.BLOCK, WOOD_SET.STRIPPED_LOG.BLOCK)
         );

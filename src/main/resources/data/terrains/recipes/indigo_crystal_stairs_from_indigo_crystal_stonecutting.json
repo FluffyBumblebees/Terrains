@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "terrains:indigo_crystal"
+  },
+  "result": "terrains:indigo_crystal_stairs",
+  "count": 1
+}

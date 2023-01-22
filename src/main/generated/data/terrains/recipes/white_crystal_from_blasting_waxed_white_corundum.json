@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "group": "blasting",
+  "ingredient": {
+    "item": "terrains:waxed_white_corundum"
+  },
+  "result": "terrains:white_crystal",
+  "experience": 0.5,
+  "cookingtime": 100
+}

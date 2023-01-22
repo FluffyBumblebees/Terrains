@@ -2,13 +2,16 @@ package net.fluffybumblebee.terrains.common.registry.sets.foliage.flower;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fluffybumblebee.terrains.common.registry.sets.foliage.TypesFoliage;
+import net.fluffybumblebee.terrains.util.registration.block.TriSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowerBlock;
 import net.minecraft.block.Material;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
@@ -38,17 +41,20 @@ public final  class FlowerFoliageType {
     );
 
     public enum FlowerTypes {
-        LAVENDER(StatusEffects.REGENERATION, 3);
+        LAVENDER(
+                StatusEffects.REGENERATION,
+                3,
+                TriSet.of(Items.PURPLE_DYE, new Identifier("purple_dye")));
 
 
-
-
+        public final TriSet<?> DYE;
         private final StatusEffect EFFECT;
         private final int EFFECT_TIME;
 
-        FlowerTypes(StatusEffect effect, int effectTime) {
+        FlowerTypes(StatusEffect effect, int effectTime, TriSet<?> dye) {
             EFFECT = effect;
             EFFECT_TIME = effectTime;
+            DYE = dye;
         }
     }
 

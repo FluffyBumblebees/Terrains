@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:brown_crystal_from_blasting_brown_corundum"
+    ]
+  },
+  "criteria": {
+    "has_brown_corundum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "terrains:brown_corundum"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:brown_crystal_from_blasting_brown_corundum"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_brown_corundum",
+      "has_the_recipe"
+    ]
+  ]
+}

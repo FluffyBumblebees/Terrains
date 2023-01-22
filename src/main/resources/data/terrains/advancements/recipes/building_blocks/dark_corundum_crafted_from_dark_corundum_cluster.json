@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "terrains:dark_corundum_crafted_from_dark_corundum_cluster"
+    ]
+  },
+  "criteria": {
+    "check_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "terrains:dark_corundum"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "terrains:dark_corundum_crafted_from_dark_corundum_cluster"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "check_block",
+      "has_the_recipe"
+    ]
+  ]
+}

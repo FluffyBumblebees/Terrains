@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "terrains:blue_corundum"
-  },
-  "result": "terrains:blue_corundum_cluster",
-  "count": 4
-}

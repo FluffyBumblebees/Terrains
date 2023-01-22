@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "terrains:blue_corundum_slab_crafted_from_waxed_blue_corundum"
+    ]
+  },
+  "criteria": {
+    "check_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "terrains:blue_corundum_slab"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "terrains:blue_corundum_slab_crafted_from_waxed_blue_corundum"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "check_block",
+      "has_the_recipe"
+    ]
+  ]
+}

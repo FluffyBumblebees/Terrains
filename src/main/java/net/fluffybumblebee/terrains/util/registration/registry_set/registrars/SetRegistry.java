@@ -1,6 +1,6 @@
 package net.fluffybumblebee.terrains.util.registration.registry_set.registrars;
 
-import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
+import net.fluffybumblebee.terrains.util.registration.block.TriSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -25,8 +25,8 @@ public final class SetRegistry {
         }
     }
 
-    public void blockSet(RegistryTypes type, BlockSet<?>... blockSets) {
-        for (BlockSet<?> set : blockSets) {
+    public void blockSet(RegistryTypes type, TriSet<?>... triSets) {
+        for (TriSet<?> set : triSets) {
             storage.get(type).add(new Storage(
                     Optional.of(set.BLOCK),
                     Optional.of(set.ITEM),
@@ -35,8 +35,8 @@ public final class SetRegistry {
         }
     }
 
-    public void blockSetPotted(RegistryTypes type, BlockSet<?>... blockSets) {
-        for (BlockSet<?> set : blockSets) {
+    public void blockSetPotted(RegistryTypes type, TriSet<?>... triSets) {
+        for (TriSet<?> set : triSets) {
             storage.get(type).add(new Storage(
                     set.BLOCK
             ));

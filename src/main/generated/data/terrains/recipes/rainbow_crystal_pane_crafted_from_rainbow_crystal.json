@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "pane",
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "terrains:rainbow_crystal"
+    }
+  },
+  "result": {
+    "item": "terrains:rainbow_crystal_pane",
+    "count": 16
+  }
+}

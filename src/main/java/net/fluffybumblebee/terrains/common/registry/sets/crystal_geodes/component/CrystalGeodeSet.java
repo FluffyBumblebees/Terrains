@@ -2,7 +2,7 @@ package net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.compone
 
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fluffybumblebee.terrains.common.instances.block.crystals.*;
-import net.fluffybumblebee.terrains.util.registration.block.BlockSet;
+import net.fluffybumblebee.terrains.util.registration.block.TriSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry;
@@ -30,28 +30,28 @@ import java.util.List;
 
 import static net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry.registerWaxableBlockPair;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getNamespaceVar;
-import static net.fluffybumblebee.terrains.util.registration.block.BlockSet.buildBlock;
+import static net.fluffybumblebee.terrains.util.registration.block.TriSet.buildBlock;
 import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.generateFeature;
 import static net.minecraft.world.gen.feature.PlacedFeatures.register;
 
 @SuppressWarnings("FieldCanBeLocal")
 public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetCreator {
     public final String TYPE;
-    public final List<BlockSet<?>> ALL_BLOCKS;
+    public final List<TriSet<?>> ALL_BLOCKS;
 
-    public final BlockSet<CorundumCluster> CORUNDUM_CLUSTER;
-    public final BlockSet<CorundumBlock> WAXED_CORUNDUM;
+    public final TriSet<CorundumCluster> CORUNDUM_CLUSTER;
+    public final TriSet<CorundumBlock> WAXED_CORUNDUM;
 
-    public final BlockSet<CorundumBlock> CORUNDUM;
-    public final BlockSet<CorundumCrystalSlab> CORUNDUM_SLAB;
-    public final BlockSet<CorundumCrystalStairs> CORUNDUM_STAIRS;
-    public final BlockSet<CorundumCrystalPane> CORUNDUM_PANE;
+    public final TriSet<CorundumBlock> CORUNDUM;
+    public final TriSet<CorundumCrystalSlab> CORUNDUM_SLAB;
+    public final TriSet<CorundumCrystalStairs> CORUNDUM_STAIRS;
+    public final TriSet<CorundumCrystalPane> CORUNDUM_PANE;
 
 
-    public final BlockSet<CrystalBlock> CRYSTAL;
-    public final BlockSet<CorundumCrystalSlab> CRYSTAL_SLAB;
-    public final BlockSet<CorundumCrystalStairs> CRYSTAL_STAIRS;
-    public final BlockSet<CorundumCrystalPane> CRYSTAL_PANE;
+    public final TriSet<CrystalBlock> CRYSTAL;
+    public final TriSet<CorundumCrystalSlab> CRYSTAL_SLAB;
+    public final TriSet<CorundumCrystalStairs> CRYSTAL_STAIRS;
+    public final TriSet<CorundumCrystalPane> CRYSTAL_PANE;
 
 
     private final RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> CONFIGURED_GEODE;
@@ -89,7 +89,7 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
         );
     }
 
-    private static <B extends Block> BlockSet<B> buildCrystal(B block, String name) {
+    private static <B extends Block> TriSet<B> buildCrystal(B block, String name) {
         return buildBlock(block, name, ItemGroup.BUILDING_BLOCKS);
     }
 

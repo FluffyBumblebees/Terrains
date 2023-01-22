@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "terrains:waxed_blue_corundum"
-  },
-  "result": "terrains:blue_crystal",
-  "experience": 0.5,
-  "cookingtime": 200
-}

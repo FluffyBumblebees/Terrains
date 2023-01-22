@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "fence_gate",
+  "pattern": [
+    "sxs",
+    "sxs"
+  ],
+  "key": {
+    "x": {
+      "item": "terrains:jacaranda_planks"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "terrains:jacaranda_fence_gate"
+  }
+}

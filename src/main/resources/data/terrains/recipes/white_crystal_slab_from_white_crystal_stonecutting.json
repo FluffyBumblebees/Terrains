@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "terrains:white_crystal"
+  },
+  "result": "terrains:white_crystal_slab",
+  "count": 2
+}

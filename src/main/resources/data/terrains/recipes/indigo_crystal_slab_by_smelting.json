@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "terrains:indigo_corundum_slab"
-  },
-  "result": "terrains:indigo_crystal_slab",
-  "experience": 0.25,
-  "cookingtime": 200
-}

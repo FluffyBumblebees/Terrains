@@ -2,11 +2,12 @@ package net.fluffybumblebee.terrains.util.registration.registry_set.registrars;
 
 public enum RegistryTypes {
     CRYSTAL,
-    BLOCK_WITH_HOLE,
+    WOOD_WITH_CUTOUT,
     OPAQUE_FULL_BLOCK,
     TRANSPARENT_FULL_BLOCK,
     CLUSTER,
     WOOD,
+    ALL_WOOD_BLOCKS,
     LEAVES,
     SAPLING,
     FLOWER,

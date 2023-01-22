@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:white_crystal_from_smelting_white_corundum"
+    ]
+  },
+  "criteria": {
+    "has_white_corundum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "terrains:white_corundum"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:white_crystal_from_smelting_white_corundum"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_white_corundum",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -52,7 +52,8 @@ public final class AllRegistrySets {
                         LEAVES,
                         POTTED_BLOCK,
                         WOOD,
-                        BLOCK_WITH_HOLE
+                        ALL_WOOD_BLOCKS,
+                        WOOD_WITH_CUTOUT
                 ),
                 WholeTreeSet::new
         );

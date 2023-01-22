@@ -11,7 +11,7 @@ import static net.fluffybumblebee.terrains.util.registration.registry_set.regist
 
 public class BlockRenderLayerMapUtil {
     public static final RegistryTypes[] CUTOUT_TYPES = {
-            BLOCK_WITH_HOLE,
+            WOOD_WITH_CUTOUT,
             LEAVES,
             SAPLING,
             POTTED_BLOCK,

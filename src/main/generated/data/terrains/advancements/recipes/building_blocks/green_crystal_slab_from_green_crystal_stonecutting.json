@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:green_crystal_slab_from_green_crystal_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_green_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "terrains:green_crystal"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:green_crystal_slab_from_green_crystal_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_green_crystal",
+      "has_the_recipe"
+    ]
+  ]
+}

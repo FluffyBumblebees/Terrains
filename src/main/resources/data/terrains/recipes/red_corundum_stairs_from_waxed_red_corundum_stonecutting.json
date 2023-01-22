@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "terrains:waxed_red_corundum"
+  },
+  "result": "terrains:red_corundum_stairs",
+  "count": 1
+}

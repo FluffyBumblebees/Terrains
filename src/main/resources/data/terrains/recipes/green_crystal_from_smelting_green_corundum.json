@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "smelting",
+  "ingredient": {
+    "item": "terrains:green_corundum"
+  },
+  "result": "terrains:green_crystal",
+  "experience": 0.5,
+  "cookingtime": 200
+}
