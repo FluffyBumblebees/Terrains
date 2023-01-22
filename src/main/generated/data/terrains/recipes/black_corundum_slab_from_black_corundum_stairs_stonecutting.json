@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "terrains:black_corundum_stairs"
-  },
-  "result": "terrains:black_corundum_slab",
-  "count": 1
-}

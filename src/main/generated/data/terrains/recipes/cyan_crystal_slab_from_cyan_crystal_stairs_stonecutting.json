@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "terrains:cyan_crystal_stairs"
-  },
-  "result": "terrains:cyan_crystal_slab",
-  "count": 1
-}
