@@ -36,6 +36,7 @@ import static net.minecraft.world.gen.feature.PlacedFeatures.register;
 
 @SuppressWarnings("FieldCanBeLocal")
 public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetCreator {
+    public final String TYPE;
     public final List<BlockSet<?>> ALL_BLOCKS;
 
     public final BlockSet<CorundumCluster> CORUNDUM_CLUSTER;
@@ -57,22 +58,22 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
     private final RegistryEntry<PlacedFeature> PLACED_GEODE;
 
     public CrystalGeodeSet(Type type) {
-        final String colour = type.name().toLowerCase();
+        TYPE = type.name().toLowerCase();
         ALL_BLOCKS = new ArrayList<>();
 
-        CORUNDUM_CLUSTER = buildCrystal(new CorundumCluster(), colour + "_corundum_cluster");
-        WAXED_CORUNDUM = buildCrystal(new CorundumBlock(), "waxed_" + colour + "_corundum");
+        CORUNDUM_CLUSTER = buildCrystal(new CorundumCluster(), TYPE + "_corundum_cluster");
+        WAXED_CORUNDUM = buildCrystal(new CorundumBlock(), "waxed_" + TYPE + "_corundum");
 
 
-        CORUNDUM = buildCrystal(new CorundumBlock(() -> CORUNDUM_CLUSTER.BLOCK), colour + "_corundum");
-        CORUNDUM_SLAB = buildCrystal(new CorundumCrystalSlab(), colour + "_corundum_slab");
-        CORUNDUM_STAIRS = buildCrystal(new CorundumCrystalStairs(), colour + "_corundum_stairs");
-        CORUNDUM_PANE = buildCrystal(new CorundumCrystalPane(), colour + "_corundum_pane");
+        CORUNDUM = buildCrystal(new CorundumBlock(() -> CORUNDUM_CLUSTER.BLOCK), TYPE + "_corundum");
+        CORUNDUM_SLAB = buildCrystal(new CorundumCrystalSlab(), TYPE + "_corundum_slab");
+        CORUNDUM_STAIRS = buildCrystal(new CorundumCrystalStairs(), TYPE + "_corundum_stairs");
+        CORUNDUM_PANE = buildCrystal(new CorundumCrystalPane(), TYPE + "_corundum_pane");
 
-        CRYSTAL = buildCrystal(new CrystalBlock(), colour + "_crystal");
-        CRYSTAL_SLAB = buildCrystal(new CorundumCrystalSlab(), colour + "_crystal_slab");
-        CRYSTAL_STAIRS = buildCrystal(new CorundumCrystalStairs(), colour + "_crystal_stairs");
-        CRYSTAL_PANE = buildCrystal(new CorundumCrystalPane(), colour + "_crystal_pane");
+        CRYSTAL = buildCrystal(new CrystalBlock(), TYPE + "_crystal");
+        CRYSTAL_SLAB = buildCrystal(new CorundumCrystalSlab(), TYPE + "_crystal_slab");
+        CRYSTAL_STAIRS = buildCrystal(new CorundumCrystalStairs(), TYPE + "_crystal_stairs");
+        CRYSTAL_PANE = buildCrystal(new CorundumCrystalPane(), TYPE + "_crystal_pane");
 
         registerWaxableBlockPair(CORUNDUM.BLOCK, WAXED_CORUNDUM.BLOCK);
 
@@ -80,11 +81,11 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
                 CORUNDUM.BLOCK,
                 CRYSTAL.BLOCK,
                 CORUNDUM_CLUSTER.BLOCK,
-                colour
+                TYPE
         );
         PLACED_GEODE = registerPlacedGeode(
                 CONFIGURED_GEODE,
-                colour
+                TYPE
         );
     }
 

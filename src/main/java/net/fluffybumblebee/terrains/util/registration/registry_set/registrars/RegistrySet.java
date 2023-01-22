@@ -3,16 +3,14 @@ package net.fluffybumblebee.terrains.util.registration.registry_set.registrars;
 import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry.Storage;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public final class RegistrySet<Types, RegistryConfig extends RegistrySetCreator> {
     private final SetRegistry registry;
     private final Quickerator<Types> typesQuickerator;
     private final Map<Types, RegistryConfig> typeMap;
 
+    private Quickerator<RegistryConfig> configQuickerator;
 
     public RegistrySet(
             final Types[] values,
@@ -41,9 +39,17 @@ public final class RegistrySet<Types, RegistryConfig extends RegistrySetCreator>
         return typeMap;
     }
 
-    @SuppressWarnings("unused")
     public Quickerator<Types> getTypesQuickerator() {
         return typesQuickerator;
+    }
+
+    public Quickerator<RegistryConfig> getConfigQuickerator() {
+        if (configQuickerator == null) {
+            final List<RegistryConfig> list = new ArrayList<>();
+            getTypesQuickerator().forEach(element -> list.add(typeMap.get(element)));
+            configQuickerator = () -> list;
+        }
+        return configQuickerator;
     }
 
     public SetRegistry getRegistry() {

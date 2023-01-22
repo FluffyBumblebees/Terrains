@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab",
+  "pattern": [
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "terrains:rainbow_corundum"
+    }
+  },
+  "result": {
+    "item": "terrains:rainbow_corundum_stairs",
+    "count": 6
+  }
+}

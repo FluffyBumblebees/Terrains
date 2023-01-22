@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "terrains:purple_crystal_stairs_from_purple_crystal"
+    ]
+  },
+  "criteria": {
+    "": {
+      "trigger": "terrains:purple_crystal_stairs",
+      "conditions": {}
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "terrains:purple_crystal_stairs_from_purple_crystal"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "",
+      "has_the_recipe"
+    ]
+  ]
+}

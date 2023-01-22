@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "terrains:indigo_corundum_stairs_from_indigo_corundum"
+    ]
+  },
+  "criteria": {
+    "": {
+      "trigger": "terrains:indigo_corundum_stairs",
+      "conditions": {}
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "terrains:indigo_corundum_stairs_from_indigo_corundum"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "",
+      "has_the_recipe"
+    ]
+  ]
+}

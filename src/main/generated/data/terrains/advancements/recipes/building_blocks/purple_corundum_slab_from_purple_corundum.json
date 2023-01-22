@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "terrains:purple_corundum_slab_from_purple_corundum"
+    ]
+  },
+  "criteria": {
+    "": {
+      "trigger": "terrains:purple_corundum_slab",
+      "conditions": {}
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "terrains:purple_corundum_slab_from_purple_corundum"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "pane",
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "terrains:yellow_corundum"
+    }
+  },
+  "result": {
+    "item": "terrains:yellow_corundum_pane",
+    "count": 16
+  }
+}

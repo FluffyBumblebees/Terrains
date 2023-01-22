@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "terrains:yellow_corundum_pane_from_yellow_corundum"
+    ]
+  },
+  "criteria": {
+    "": {
+      "trigger": "terrains:yellow_corundum_pane",
+      "conditions": {}
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "terrains:yellow_corundum_pane_from_yellow_corundum"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "",
+      "has_the_recipe"
+    ]
+  ]
+}
