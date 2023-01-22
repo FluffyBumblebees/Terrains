@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.core.datagen;
+package net.fluffybumblebee.terrains.cancer.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
