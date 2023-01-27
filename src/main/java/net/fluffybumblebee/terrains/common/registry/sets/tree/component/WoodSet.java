@@ -50,8 +50,6 @@ public class WoodSet implements RegistrySetCreator {
 
     public WoodSet(String woodType) {
         TYPE = woodType;
-        
-        BoatRegistration.register(TYPE, () -> BOAT, boat -> BOAT = boat);
 
         LOG = buildFlammableBlock(new WoodBlock(), TYPE + "_log");
         WOOD = buildFlammableBlock(new WoodBlock(), TYPE + "_wood");
@@ -74,6 +72,9 @@ public class WoodSet implements RegistrySetCreator {
                 getIdentifier(TYPE + "_sign"))
                 .addBlockItem(block -> new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), block, WALL_SIGN.BLOCK))
                 .build();
+
+        BoatRegistration.register(TYPE, () -> BOAT, PLANKS.ITEM, boat -> BOAT = boat);
+
 
         ALL_BLOCKS = List.of(
                 LOG,

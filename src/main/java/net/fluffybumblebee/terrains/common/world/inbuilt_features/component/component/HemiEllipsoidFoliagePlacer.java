@@ -39,13 +39,13 @@ public class HemiEllipsoidFoliagePlacer extends FoliagePlacer {
     ) {
         final var randomUtil = new MinecraftRandomUtil(random);
         final double newRadius = (Math.min(trunkHeight * 1.25, 2 * radius) - offset - 0.5) - randomUtil
-                .randomFloatInHundredths(25);
+                .nextFloat(25);
         final double heightAffectsRadius = (trunkHeight + (newRadius * 4)) / 5;
 
         Shapes.hemiEllipsoid(newRadius, newRadius,
                         heightAffectsRadius * 1.45
                         - (1.25 * newRadius) / newRadius
-                                - random.nextFloat(0.35F)
+                                - randomUtil.nextFloat(35)
                 )
                 .applyLayer(TranslateLayer.of(Position.of(treeNode.getCenter()).move(0,
                         - 2, 0)))

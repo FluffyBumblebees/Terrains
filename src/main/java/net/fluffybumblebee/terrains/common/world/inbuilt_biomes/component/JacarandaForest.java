@@ -21,7 +21,6 @@ public class JacarandaForest {
     public static final Biome JACARANDA_FOREST = new Biome.Builder()
             .precipitation(Biome.Precipitation.RAIN)
             .generationSettings(generationSettings())
-            .category(Biome.Category.FOREST)
             .spawnSettings(spawnSettings())
             .effects(createDefaultBiomeEffects()
                     .grassColor(BIOME_COLOUR)
