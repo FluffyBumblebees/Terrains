@@ -23,7 +23,6 @@ import java.util.List;
 
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.registration.block.TriSet.buildFlammableBlock;
-import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry.Storage;
 
 public class WoodSet implements RegistrySetCreator {
     public final String TYPE;
@@ -107,7 +106,7 @@ public class WoodSet implements RegistrySetCreator {
     }
 
     @Override
-    public void registryEvent(SetRegistry registry) {
+    public void registryEvent(final SetRegistry registry) {
         registry.blockSet(RegistryTypes.WOOD_WITH_CUTOUT,
                 DOOR,
                 TRAPDOOR
@@ -145,13 +144,10 @@ public class WoodSet implements RegistrySetCreator {
                 SIGN
         );
 
-        registry.storage.get(RegistryTypes.WOOD).add(new Storage(
-                BOAT.getItem()
-        ));
-
-        registry.storage.get(RegistryTypes.ALL_WOOD_BLOCKS).add(new Storage(
-                BOAT.getItem()
-        ));
+        registry.massItems(
+                List.of(RegistryTypes.WOOD, RegistryTypes.ALL_WOOD_BLOCKS),
+                List.of(BOAT.getItem(), BOAT.getChestItem())
+        );
     }
 
     @Override

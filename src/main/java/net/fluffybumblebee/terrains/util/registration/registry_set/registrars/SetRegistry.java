@@ -25,6 +25,21 @@ public final class SetRegistry {
         }
     }
 
+    public void massItems(List<RegistryTypes> types, List<Item> items) {
+        for (RegistryTypes type: types)
+            for (Item item : items) {
+                storage.get(type).add(new Storage(item));
+            }
+    }
+
+    @SuppressWarnings("unused")
+    public void massBlocks(List<RegistryTypes> types, List<Block> blocks) {
+        for (RegistryTypes type: types)
+            for (Block block : blocks) {
+                storage.get(type).add(new Storage(block));
+            }
+    }
+
     public void blockSet(RegistryTypes type, TriSet<?>... triSets) {
         for (TriSet<?> set : triSets) {
             storage.get(type).add(new Storage(
