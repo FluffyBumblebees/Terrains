@@ -21,7 +21,7 @@ public class JacarandaPlains {
     public static final Biome JACARANDA_PLAINS = new Biome.Builder()
             .precipitation(Biome.Precipitation.RAIN)
             .generationSettings(generationSettings())
-            .category(Biome.Category.FOREST)
+            .category(Biome.Category.PLAINS)
             .spawnSettings(spawnSettings())
             .effects(createDefaultBiomeEffects()
                     .grassColor(BIOME_COLOUR)
