@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "single",
+  "ingredients": [
+    {
+      "item": "terrains:maple_log"
+    }
+  ],
+  "result": {
+    "item": "terrains:maple_planks",
+    "count": 4
+  }
+}

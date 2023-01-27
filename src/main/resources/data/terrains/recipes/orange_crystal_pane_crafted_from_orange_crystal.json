@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "pane",
+  "pattern": [
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "terrains:orange_crystal"
+    }
+  },
+  "result": {
+    "item": "terrains:orange_crystal_pane",
+    "count": 16
+  }
+}

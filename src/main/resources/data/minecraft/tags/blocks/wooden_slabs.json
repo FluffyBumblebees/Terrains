@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "terrains:maple_slab"
+    "terrains:maple_slab",
+    "terrains:jacaranda_slab"
   ]
 }

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "terrains:maple_wall_sign"
+    "terrains:maple_wall_sign",
+    "terrains:jacaranda_wall_sign"
   ]
 }

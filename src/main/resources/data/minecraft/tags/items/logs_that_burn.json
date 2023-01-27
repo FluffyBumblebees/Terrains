@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#terrains:maple_logs"
+    "terrains:maple_log",
+    "terrains:jacaranda_log"
   ]
 }

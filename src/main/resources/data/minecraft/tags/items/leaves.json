@@ -1,9 +1,32 @@
 {
   "replace": false,
   "values": [
-    "terrains:green_maple_leaves",
     "terrains:red_maple_leaves",
+    "terrains:brown_maple_leaves",
+    "terrains:orange_maple_leaves",
     "terrains:yellow_maple_leaves",
-    "terrains:orange_maple_leaves"
+    "terrains:pastel_green_maple_leaves",
+    "terrains:green_maple_leaves",
+    "terrains:blue_maple_leaves",
+    "terrains:white_maple_leaves",
+    "terrains:tyrian_purple_maple_leaves",
+    "terrains:pink_jacaranda_leaves",
+    "terrains:purple_jacaranda_leaves",
+    "terrains:black_leaves",
+    "terrains:blue_leaves",
+    "terrains:brown_leaves",
+    "terrains:cyan_leaves",
+    "terrains:gray_leaves",
+    "terrains:light_blue_leaves",
+    "terrains:light_gray_leaves",
+    "terrains:lime_leaves",
+    "terrains:magenta_leaves",
+    "terrains:orange_leaves",
+    "terrains:pink_leaves",
+    "terrains:purple_leaves",
+    "terrains:rainbow_leaves",
+    "terrains:red_leaves",
+    "terrains:white_leaves",
+    "terrains:yellow_leaves"
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab",
+  "pattern": [
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "terrains:waxed_orange_corundum"
+    }
+  },
+  "result": {
+    "item": "terrains:orange_corundum_slab",
+    "count": 6
+  }
+}

@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "terrains:yellow_corundum_stairs"
-  },
-  "result": "terrains:yellow_crystal_stairs",
-  "experience": 0.375,
-  "cookingtime": 200
-}

@@ -8,6 +8,17 @@ group = project.maven_group
 
 loom {
 	accessWidenerPath = file("src/main/resources/terrains.accesswidener")
+	runs {
+		datagen {
+			inherit client
+			name "Data Generation"
+			vmArg "-Dfabric-api.datagen"
+			vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
+			vmArg "-Dfabric-api.datagen.modid=${project.modid}"
+
+			runDir "build/datagen"
+		}
+	}
 }
 
 repositories {

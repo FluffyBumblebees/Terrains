@@ -36,13 +36,9 @@ public class MapleBlossom {
         GenerationSettings.Builder builder = new GenerationSettings.Builder();
         addDefaultFlowers(builder);
 
-        addVegetalFeatures(builder, getPlacedBees(RED), getPlacedBees(GREEN), PATCH_GRASS_FOREST, PATCH_GRASS_TALL,
-                FLOWERS_DEFAULT, FLOWERS_FOREST, FLOWERS_FLOWER_FOREST, FLOWERS_MEADOW, FLOWER_WARM
+        addVegetalFeatures(builder, getPlacedBees(RED), getPlacedBees(GREEN), PATCH_GRASS_JUNGLE, PATCH_GRASS_FOREST,
+                PATCH_GRASS_TALL, FLOWERS_DEFAULT, FLOWERS_FOREST, FLOWERS_FLOWER_FOREST, FLOWERS_MEADOW, FLOWER_WARM
         );
-        addDefaultGrass(builder);
-        addForestGrass(builder);
-        addMeadowFlowers(builder);
-        addJungleGrass(builder);
         return builder.build();
     }
 

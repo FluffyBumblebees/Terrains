@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab",
+  "pattern": [
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "terrains:indigo_crystal"
+    }
+  },
+  "result": {
+    "item": "terrains:indigo_crystal_slab",
+    "count": 6
+  }
+}

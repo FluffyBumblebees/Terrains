@@ -9,7 +9,7 @@ import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
 import static net.fluffybumblebee.terrains.util.registration.registry_set.helper.RegistrySetTypeTools.accessTreeFeatures;
-import static net.fluffybumblebee.terrains.util.registration.registry_set.helper.RegistrySetTypeTools.getUniqueFeatures;
+import static net.fluffybumblebee.terrains.util.registration.registry_set.helper.RegistrySetTypeTools.getUniqueTreeFeatures;
 
 public class MapleTreeAccess {
 
@@ -18,7 +18,7 @@ public class MapleTreeAccess {
     }
 
     public static UniqueMapleFeatures getUniqueMapleFeatures() {
-        return getUniqueFeatures(getMapleTree());
+        return getUniqueTreeFeatures(getMapleTree());
     }
 
     public static MapleFeatures getFeature(String treeVariant) {

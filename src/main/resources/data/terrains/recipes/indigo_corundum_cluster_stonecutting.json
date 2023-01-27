@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "terrains:indigo_corundum"
-  },
-  "result": "terrains:indigo_corundum_cluster",
-  "count": 4
-}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "single",
+  "ingredients": [
+    {
+      "item": "terrains:jacaranda_wood"
+    }
+  ],
+  "result": {
+    "item": "terrains:jacaranda_planks",
+    "count": 4
+  }
+}

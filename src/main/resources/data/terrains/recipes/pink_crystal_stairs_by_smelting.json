@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "terrains:pink_corundum_stairs"
-  },
-  "result": "terrains:pink_crystal_stairs",
-  "experience": 0.375,
-  "cookingtime": 200
-}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "terrains:pink_corundum_slab_crafted_from_pink_corundum"
+    ]
+  },
+  "criteria": {
+    "check_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "terrains:pink_corundum_slab"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "terrains:pink_corundum_slab_crafted_from_pink_corundum"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "check_block",
+      "has_the_recipe"
+    ]
+  ]
+}

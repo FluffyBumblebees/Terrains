@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "smelting",
+  "ingredient": {
+    "item": "terrains:waxed_orange_corundum"
+  },
+  "result": "terrains:orange_crystal",
+  "experience": 0.5,
+  "cookingtime": 200
+}

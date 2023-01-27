@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "terrains:waxed_purple_corundum"
-  },
-  "result": "terrains:purple_crystal",
-  "experience": 0.5,
-  "cookingtime": 200
-}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "fence",
+  "pattern": [
+    "xsx",
+    "xsx"
+  ],
+  "key": {
+    "x": {
+      "item": "terrains:maple_planks"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "terrains:maple_fence",
+    "count": 3
+  }
+}

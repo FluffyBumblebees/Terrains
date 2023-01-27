@@ -18,7 +18,6 @@ public class BoatRegistration {
             final BoatItemProvider boatItemProvider
 
     ) {
-
         final var boat = registerBoatItem(getIdentifier(material + "_boat"), type, false);
         final var chestBoat = registerBoatItem(getIdentifier(material + "_chest_boat"), type, true);
 
@@ -29,7 +28,6 @@ public class BoatRegistration {
                 .build());
 
         Registry.register(TerraformBoatTypeRegistry.INSTANCE, getIdentifier(material), type.get());
-
     }
 
     public interface BoatItemProvider {

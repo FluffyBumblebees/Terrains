@@ -1,9 +1,32 @@
 {
   "replace": false,
   "values": [
-    "terrains:potted_green_maple_sapling",
     "terrains:potted_red_maple_sapling",
+    "terrains:potted_brown_maple_sapling",
+    "terrains:potted_orange_maple_sapling",
     "terrains:potted_yellow_maple_sapling",
-    "terrains:potted_orange_maple_sapling"
+    "terrains:potted_pastel_green_maple_sapling",
+    "terrains:potted_green_maple_sapling",
+    "terrains:potted_blue_maple_sapling",
+    "terrains:potted_white_maple_sapling",
+    "terrains:potted_tyrian_purple_maple_sapling",
+    "terrains:potted_pink_jacaranda_sapling",
+    "terrains:potted_purple_jacaranda_sapling",
+    "terrains:potted_black_sapling",
+    "terrains:potted_blue_sapling",
+    "terrains:potted_brown_sapling",
+    "terrains:potted_cyan_sapling",
+    "terrains:potted_gray_sapling",
+    "terrains:potted_light_blue_sapling",
+    "terrains:potted_light_gray_sapling",
+    "terrains:potted_lime_sapling",
+    "terrains:potted_magenta_sapling",
+    "terrains:potted_orange_sapling",
+    "terrains:potted_pink_sapling",
+    "terrains:potted_purple_sapling",
+    "terrains:potted_rainbow_sapling",
+    "terrains:potted_red_sapling",
+    "terrains:potted_white_sapling",
+    "terrains:potted_yellow_sapling"
   ]
 }

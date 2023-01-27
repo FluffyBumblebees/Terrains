@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "terrains:jacaranda_planks_crafted_from_jacaranda_log"
+    ]
+  },
+  "criteria": {
+    "check_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "terrains:jacaranda_planks"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "terrains:jacaranda_planks_crafted_from_jacaranda_log"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "check_block",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "terrains:yellow_corundum_slab"
-  },
-  "result": "terrains:yellow_crystal_slab",
-  "experience": 0.25,
-  "cookingtime": 200
-}

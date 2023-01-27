@@ -2,7 +2,7 @@ package net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple;
 
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet.TreeType;
-import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.MapleSaplingGenerator;
+import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.StandardSaplingGenerator;
 import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.component.FallenTrunkPlacer;
 import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.component.HemiEllipsoidFoliagePlacer;
 import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.component.NoneFoliagePlacer;
@@ -31,7 +31,7 @@ import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeR
 import static net.minecraft.world.gen.feature.PlacedFeatures.createCountExtraModifier;
 
 public final class MapleTreeType {
-    public static final TreeType<MapleSaplingGenerator, MapleFeatures, UniqueMapleFeatures> MAPLE_TREES =
+    public static final TreeType<StandardSaplingGenerator, MapleFeatures, UniqueMapleFeatures> MAPLE_TREES =
             new TreeType<>(
                     "maple",
                     EnumArrayToString(MapleTypes.values()),
@@ -53,7 +53,7 @@ public final class MapleTreeType {
         WHITE,
         TYRIAN_PURPLE
     }
-    public static final class MapleFeatures implements FeatureCreator<MapleSaplingGenerator> {
+    public static final class MapleFeatures implements FeatureCreator<StandardSaplingGenerator> {
         private final List<Block> ALL_LOGS;
         public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>> CONFIGURED_TREE_NO_BEES;
         public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>> CONFIGURED_TREE_BEES;
@@ -69,8 +69,8 @@ public final class MapleTreeType {
         }
 
         @Override
-        public MapleSaplingGenerator createNew() {
-            return new MapleSaplingGenerator(
+        public StandardSaplingGenerator createNew() {
+            return new StandardSaplingGenerator(
                     ctx -> CONFIGURED_TREE_NO_BEES,
                     ctx -> CONFIGURED_TREE_BEES
             );

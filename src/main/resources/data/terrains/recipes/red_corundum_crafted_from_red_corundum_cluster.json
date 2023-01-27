@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "two_squared",
+  "pattern": [
+    "xx",
+    "xx"
+  ],
+  "key": {
+    "x": {
+      "item": "terrains:red_corundum_cluster"
+    }
+  },
+  "result": {
+    "item": "terrains:red_corundum"
+  }
+}

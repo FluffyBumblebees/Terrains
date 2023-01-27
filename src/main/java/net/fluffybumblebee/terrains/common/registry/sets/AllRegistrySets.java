@@ -2,26 +2,77 @@ package net.fluffybumblebee.terrains.common.registry.sets;
 
 import net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.TypesCrystalGeode;
 import net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.component.CrystalGeodeSet;
-import net.fluffybumblebee.terrains.common.registry.sets.item.component.ItemRegistrySet;
-import net.fluffybumblebee.terrains.common.registry.sets.item.food.TypesItem;
+import net.fluffybumblebee.terrains.common.registry.sets.foliage.component.FoliageSet;
+import net.fluffybumblebee.terrains.common.registry.sets.foliage.TypesFoliage;
+import net.fluffybumblebee.terrains.common.registry.sets.item.TypesItem;
+import net.fluffybumblebee.terrains.common.registry.sets.item.component.ItemSet;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet.TreeType;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained.StainedTreeType;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained.TypesStainedTree;
-import net.fluffybumblebee.terrains.common.registry.sets.tree.whole.TypesWholeTree;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySet;
+
+import java.util.List;
+
+import static net.fluffybumblebee.terrains.common.registry.sets.foliage.TypesFoliage.ALL_FOLIAGE;
+import static net.fluffybumblebee.terrains.common.registry.sets.item.TypesItem.ALL_ITEMS;
+import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.TypesWholeTree.ALL_WHOLE_TREES;
+import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes.*;
 
 public final class AllRegistrySets {
     public static final RegistrySet<TypesStainedTree, StainedTreeType<TypesStainedTree>> STAINED_TREES;
     public static final RegistrySet<TypesCrystalGeode, CrystalGeodeSet<TypesCrystalGeode>> CRYSTAL_GEODES;
     public static final RegistrySet<TreeType<?, ?, ?>, WholeTreeSet<?, ?, ?>> FULL_TREES;
-    public static final RegistrySet<TypesItem<?>, ItemRegistrySet<?>> ITEMS;
+    public static final RegistrySet<TypesFoliage<?, ?, ?>, FoliageSet<?, ?, ?>> FOLIAGE;
+    public static final RegistrySet<TypesItem<?>, ItemSet<?>> ITEMS;
 
     static {
-        STAINED_TREES = new RegistrySet<>(TypesStainedTree.values(), StainedTreeType::new);
-        CRYSTAL_GEODES = new RegistrySet<>(TypesCrystalGeode.values(), CrystalGeodeSet::new);
-        FULL_TREES = new RegistrySet<>(TypesWholeTree.ALL_WHOLE_TREES, WholeTreeSet::new);
-        ITEMS = new RegistrySet<>(TypesItem.ALL_ITEMS, ItemRegistrySet::new);
+        STAINED_TREES = new RegistrySet<>(
+                TypesStainedTree.values(),
+                List.of(
+                        SAPLING,
+                        LEAVES,
+                        POTTED_BLOCK
+                ),
+                StainedTreeType::new
+        );
+        CRYSTAL_GEODES = new RegistrySet<>(
+                TypesCrystalGeode.values(),
+                List.of(
+                        TRANSPARENT_FULL_BLOCK,
+                        CLUSTER,
+                        CRYSTAL
+                ),
+                CrystalGeodeSet::new
+        );
+        FULL_TREES = new RegistrySet<>(
+                ALL_WHOLE_TREES,
+                List.of(
+                        SAPLING,
+                        LEAVES,
+                        POTTED_BLOCK,
+                        WOOD,
+                        ALL_WOOD_BLOCKS,
+                        WOOD_WITH_CUTOUT
+                ),
+                WholeTreeSet::new
+        );
+        FOLIAGE = new RegistrySet<>(
+                ALL_FOLIAGE,
+                List.of(
+                        FLOWER,
+                        POTTED_BLOCK
+                ),
+                FoliageSet::new
+        );
+        ITEMS = new RegistrySet<>(
+                ALL_ITEMS,
+                List.of(
+                        FOOD,
+                        TRANSPARENT_FOOD
+                ),
+                ItemSet::new
+        );
     }
 
     private AllRegistrySets() {}

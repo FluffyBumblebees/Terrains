@@ -1,4 +1,6 @@
-{	
+{
+	"biome.terrains.jacaranda_forest": "Jacaranda Forest",
+	"biome.terrains.jacaranda_plains": "Jacaranda Plains",
 	"biome.terrains.pumpkin_ridges": "Pumpkin Ridges",
 	"biome.terrains.lush_maple_blossom": "Lush Maple Blossom",
 	"biome.terrains.maple_blossom": "Maple Blossom",
@@ -258,9 +260,11 @@
 
 
 	"block.terrains.sappy_maple_log": "Sappy Maple Log",
+
+	"item.terrains.maple_boat": "Maple Boat",
 	"block.terrains.maple_log": "Maple Log",
-	"block.terrains.stripped_maple_log": "Stripped Maple Log",
 	"block.terrains.maple_wood": "Maple Wood",
+	"block.terrains.stripped_maple_log": "Stripped Maple Log",
 	"block.terrains.stripped_maple_wood": "Stripped Maple Wood",
 	"block.terrains.maple_planks": "Maple Planks",
 	"block.terrains.maple_stairs": "Maple Stairs",
@@ -280,5 +284,30 @@
 	"item.terrains.pancake_dough": "Pancake Dough",
 	"item.terrains.maple_flavoured_pancake": "Maple Flavoured Pancake",
 	"item.terrains.honey_flavoured_pancake": "Honey Flavoured Pancake",
-	"item.terrains.honeycomb_pancake_sandwich": "Honeycomb Pancake Sandwich"
+	"item.terrains.honeycomb_pancake_sandwich": "Honeycomb Pancake Sandwich",
+
+
+	"block.terrains.purple_jacaranda_leaves": "Purple Jacaranda Leaves",
+	"block.terrains.purple_jacaranda_sapling": "Purple Jacaranda Sapling",
+
+	"block.terrains.pink_jacaranda_leaves": "Pink Jacaranda Leaves",
+	"block.terrains.pink_jacaranda_sapling": "Pink Jacaranda Sapling",
+
+	"block.terrains.lavender_flower": "Lavender Flower",
+
+	"item.terrains.jacaranda_boat": "Jacaranda Boat",
+	"block.terrains.jacaranda_log": "Jacaranda Log",
+	"block.terrains.jacaranda_wood": "Jacaranda Wood",
+	"block.terrains.stripped_jacaranda_log": "Stripped Jacaranda Log",
+	"block.terrains.stripped_jacaranda_wood": "Stripped Jacaranda Wood",
+	"block.terrains.jacaranda_planks": "Jacaranda Planks",
+	"block.terrains.jacaranda_stairs": "Jacaranda Stairs",
+	"block.terrains.jacaranda_slab": "Jacaranda Slab",
+	"block.terrains.jacaranda_fence": "Jacaranda Fence",
+	"block.terrains.jacaranda_fence_gate": "Jacaranda Fence Gate",
+	"block.terrains.jacaranda_pressure_plate": "Jacaranda Pressure Plate",
+	"block.terrains.jacaranda_door": "Jacaranda Door",
+	"block.terrains.jacaranda_trapdoor": "Jacaranda Trapdoor",
+	"block.terrains.jacaranda_button": "Jacaranda Button",
+	"block.terrains.jacaranda_sign": "Jacaranda Sign"
 }
