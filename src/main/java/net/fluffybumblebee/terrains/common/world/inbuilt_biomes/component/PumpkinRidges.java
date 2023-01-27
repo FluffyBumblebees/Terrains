@@ -19,7 +19,6 @@ public class PumpkinRidges {
     public static final Biome PUMPKIN_RIDGES = new Biome.Builder()
             .precipitation(Biome.Precipitation.NONE)
             .generationSettings(generationSettings())
-            .category(Biome.Category.FOREST)
             .spawnSettings(spawnSettings())
             .effects(createDefaultBiomeEffects()
                     .grassColor(BIOME_COLOUR)

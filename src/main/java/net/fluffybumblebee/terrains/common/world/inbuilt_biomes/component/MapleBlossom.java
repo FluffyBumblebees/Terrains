@@ -21,7 +21,6 @@ public class MapleBlossom {
     public static final Biome MAPLE_BLOSSOM = new Biome.Builder()
             .precipitation(Biome.Precipitation.RAIN)
             .generationSettings(generationSettings())
-            .category(Biome.Category.FOREST)
             .spawnSettings(spawnSettings())
             .effects(createDefaultBiomeEffects()
                     .grassColor(BIOME_COLOUR)
@@ -29,7 +28,7 @@ public class MapleBlossom {
                     .waterColor(WARM_WATER)
                     .waterFogColor(WARM_WATER)
                     .build())
-            .temperature(0.8F)
+            .temperature(0.5F)
             .downfall(0.5F)
             .build();
 

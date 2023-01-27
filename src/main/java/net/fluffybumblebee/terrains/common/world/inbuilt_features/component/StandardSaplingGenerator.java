@@ -2,11 +2,11 @@ package net.fluffybumblebee.terrains.common.world.inbuilt_features.component;
 
 import net.fluffybumblebee.terrains.util.registration.world.feature.SaplingGeneratorContext;
 import net.minecraft.block.sapling.SaplingGenerator;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Random;
 
 public class StandardSaplingGenerator extends SaplingGenerator {
 

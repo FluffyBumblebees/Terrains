@@ -50,7 +50,7 @@ public class WoodSet implements RegistrySetCreator {
 
     public WoodSet(String woodType) {
         TYPE = woodType;
-
+        
         BoatRegistration.register(TYPE, () -> BOAT, boat -> BOAT = boat);
 
         LOG = buildFlammableBlock(new WoodBlock(), TYPE + "_log");
