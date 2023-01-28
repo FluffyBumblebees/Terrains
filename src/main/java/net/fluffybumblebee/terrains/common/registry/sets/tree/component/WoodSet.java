@@ -64,6 +64,8 @@ public class WoodSet implements RegistrySetCreator {
         TRAPDOOR = buildFlammableBlock(new WoodTrapDoor(), TYPE + "_trapdoor", ItemGroup.REDSTONE);
         BUTTON = buildFlammableBlock(new WoodButton(), TYPE + "_button", ItemGroup.REDSTONE);
 
+        BoatRegistration.register(TYPE, () -> BOAT, boat -> BOAT = boat);
+
         Identifier SIGN_TEXTURE = getIdentifier("entity/signs/" + TYPE);
         WALL_SIGN = new Builder<>(new TerraformWallSignBlock(SIGN_TEXTURE,
                 FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)), getIdentifier(TYPE + "_wall_sign")).build();
