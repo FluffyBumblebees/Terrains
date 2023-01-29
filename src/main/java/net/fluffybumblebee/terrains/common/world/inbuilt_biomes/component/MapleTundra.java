@@ -21,7 +21,6 @@ public class MapleTundra {
     public static final Biome MAPLE_TUNDRA = new Biome.Builder()
             .precipitation(Biome.Precipitation.SNOW)
             .generationSettings(generationSettings())
-            .category(Biome.Category.TAIGA)
             .spawnSettings(spawnSettings())
             .effects(createDefaultBiomeEffects()
                     .grassColor(BIOME_COLOUR)

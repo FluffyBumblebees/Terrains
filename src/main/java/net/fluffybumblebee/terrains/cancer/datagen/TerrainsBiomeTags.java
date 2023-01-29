@@ -1,7 +1,7 @@
 package net.fluffybumblebee.terrains.cancer.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.DynamicRegistryTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
 import net.fluffybumblebee.terrains.common.world.inbuilt_biomes.TerrainsBiomeRegistry;
 import net.minecraft.tag.BiomeTags;
@@ -9,9 +9,9 @@ import net.minecraft.tag.TagKey;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.world.biome.Biome;
 
-public class TerrainsBiomeTags extends FabricTagProvider.DynamicRegistryTagProvider<Biome> {
+public class TerrainsBiomeTags extends DynamicRegistryTagProvider<Biome> {
     public TerrainsBiomeTags(FabricDataGenerator dataGenerator) {
-        super(dataGenerator, BuiltinRegistries.BIOME.getKey(), "worldgen/biome", "Biome Tags");
+        super(dataGenerator, BuiltinRegistries.BIOME.getKey());
     }
 
     @Override

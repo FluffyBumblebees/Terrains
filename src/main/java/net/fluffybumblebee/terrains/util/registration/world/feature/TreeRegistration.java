@@ -39,7 +39,7 @@ public class TreeRegistration {
     public static ImmutableList<PlacementModifier> treePlacementModifiers(PlacementModifier countModifier) {
         return standardPlacementModifiers(countModifier)
                 .add(PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING))
-                .add(BlockFilterPlacementModifier.of(matchingBlockTag(DIRT, DOWN.getVector())))
+                .add(BlockFilterPlacementModifier.of(matchingBlockTag(DOWN.getVector(), DIRT)))
                 .build();
     }
 }

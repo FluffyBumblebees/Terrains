@@ -43,7 +43,7 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
         ));
     }
 
-    @Override
+    @Override 
     public void registryEvent(SetRegistry registry) {
         TREE_CONFIG.registryEvent(registry);
     }
@@ -112,7 +112,8 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
                     type + "_" + size + "_tree_" + beeState + "_placed",
                     tree,
                     PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING),
-                    BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.DIRT, Direction.DOWN.getVector()))
+                    BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(),
+                            BlockTags.DIRT))
 
             );
         }
