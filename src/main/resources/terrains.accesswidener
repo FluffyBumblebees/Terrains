@@ -1,3 +1,4 @@
 accessWidener	v1	named
 
 accessible    method    net/minecraft/world/gen/feature/VegetationPlacedFeatures    modifiersWithChance    (ILnet/minecraft/world/gen/placementmodifier/PlacementModifier;)Ljava/util/List;
+accessible    field    net/minecraft/registry/BuiltinRegistries    REGISTRY_BUILDER    Lnet/minecraft/registry/RegistryBuilder;

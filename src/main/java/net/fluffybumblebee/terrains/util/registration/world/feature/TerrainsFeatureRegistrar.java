@@ -1,5 +1,8 @@
 package net.fluffybumblebee.terrains.util.registration.world.feature;
 
+import net.minecraft.registry.BuiltinRegistries;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.*;

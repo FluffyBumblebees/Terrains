@@ -8,10 +8,13 @@ import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemGroups;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
+import static net.fluffybumblebee.terrains.util.registration.item.ItemGroupUtil.addGroupEntry;
 
 public final class TriSet<B extends Block> {
     public final B BLOCK;
@@ -65,7 +68,7 @@ public final class TriSet<B extends Block> {
     }
 
     public static <B extends Block> TriSet<B> buildFlammableBlock(final B block, final String name) {
-        return buildFlammableBlock(block, name, ItemGroup.BUILDING_BLOCKS);
+        return buildFlammableBlock(block, name, ItemGroups.BUILDING_BLOCKS);
     }
 
     @Override
@@ -112,17 +115,19 @@ public final class TriSet<B extends Block> {
         }
 
         public Builder<B> addBlockItem(ItemGroup group) {
-            return addBlockItem(new Item.Settings().group(group));
+            var triSet = addBlockItem(new Item.Settings());
+            addGroupEntry(triSet.blockItem, group);
+            return addBlockItem(new Item.Settings());
         }
 
         public Builder<B> addBlockItem() {
-            return addBlockItem(ItemGroup.DECORATIONS);
+            return addBlockItem(ItemGroups.NATURAL);
         }
 
         public TriSet<B> build() {
-            Registry.register(Registry.BLOCK, identifier, block);
+            Registry.register(Registries.BLOCK, identifier, block);
             if (blockItem != null)
-                Registry.register(Registry.ITEM, identifier, blockItem);
+                Registry.register(Registries.ITEM, identifier, blockItem);
             return new TriSet<>(block, blockItem, identifier);
         }
 

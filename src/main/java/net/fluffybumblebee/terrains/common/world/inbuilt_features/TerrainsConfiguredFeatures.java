@@ -2,6 +2,7 @@ package net.fluffybumblebee.terrains.common.world.inbuilt_features;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.*;
