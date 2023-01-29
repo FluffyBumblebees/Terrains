@@ -74,7 +74,6 @@ public class WoodSet implements RegistrySetCreator {
 
         BoatRegistration.register(TYPE, () -> BOAT, PLANKS.ITEM, boat -> BOAT = boat);
 
-
         ALL_BLOCKS = List.of(
                 LOG,
                 WOOD,
