@@ -34,7 +34,7 @@ public final class RegistrySet<Types, RegistryConfig extends RegistrySetCreator>
             RegistryConfig set = factory.getNewSet(element);
             set.generationEvent();
             set.registryEvent(registry);
-            renderTypes = set.getRenderType();
+            renderTypes = set.getRenderTypes();
             typeMap.put(element, set);
         });
     }

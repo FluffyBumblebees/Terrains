@@ -50,7 +50,7 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
     }
 
     @Override
-    public List<RenderTypes> getRenderType() {
+    public List<RenderTypes> getRenderTypes() {
         return List.of(RenderTypes.CUTOUT);
     }
 

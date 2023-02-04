@@ -7,7 +7,7 @@ import java.util.List;
 public interface RegistrySetCreator {
     void registryEvent(final SetRegistry registry);
 
-    List<RenderTypes> getRenderType();
+    List<RenderTypes> getRenderTypes();
 
     default void generationEvent() {}
 }

@@ -33,7 +33,7 @@ public class ItemSet<I extends Item> implements RegistrySetCreator {
     }
 
     @Override
-    public List<RenderTypes> getRenderType() {
+    public List<RenderTypes> getRenderTypes() {
         return List.of(RenderTypes.TRANSLUCENT, RenderTypes.CUTOUT);
     }
 

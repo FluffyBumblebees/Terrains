@@ -123,7 +123,7 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
     }
 
     @Override
-    public List<RenderTypes> getRenderType() {
+    public List<RenderTypes> getRenderTypes() {
         return List.of(RenderTypes.TRANSLUCENT);
     }
 

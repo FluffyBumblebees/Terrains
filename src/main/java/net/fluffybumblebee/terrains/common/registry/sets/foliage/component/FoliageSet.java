@@ -62,7 +62,7 @@ public final class FoliageSet<
     }
 
     @Override
-    public List<RenderTypes> getRenderType() {
+    public List<RenderTypes> getRenderTypes() {
         return List.of(RenderTypes.CUTOUT);
     }
 

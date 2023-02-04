@@ -58,7 +58,7 @@ public final class CloudSet implements RegistrySetCreator {
     }
 
     @Override
-    public List<RenderTypes> getRenderType() {
+    public List<RenderTypes> getRenderTypes() {
         return List.of(RenderTypes.TRANSLUCENT);
     }
 
