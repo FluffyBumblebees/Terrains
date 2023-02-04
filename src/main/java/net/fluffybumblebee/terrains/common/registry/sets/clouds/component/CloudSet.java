@@ -47,7 +47,7 @@ public final class CloudSet implements RegistrySetCreator {
         final var id = config.id;
         if (config.burnable)
             cloudBlock = new TriSet.Builder<>(config.cloudBlock, TerrainsDefaults.getIdentifier(id + "_cloud"))
-                    .addBlockItem().addBurnable(1000).addFlammability(10, 100).build();
+                    .addBlockItem().addBurnable(200).addFlammability(10, 500).build();
         else cloudBlock = TriSet.buildBlock(config.cloudBlock, id + "_cloud");
         CLOUD_CARVER = Registration.register(id + "_cloud_carver", cloudBlock.BLOCK, config.probability);
     }
