@@ -3,28 +3,31 @@ package net.fluffybumblebee.terrains.common.instances.block.cloud;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-import static net.fluffybumblebee.terrains.common.registry.particle.TerrainsParticles.chromaticSplash;
+import java.util.Random;
 
 public class RisingCloudBlock extends BasicCloudBlock {
 
     protected static VoxelShape SHAPE = VoxelShapes.empty();
 
-    public RisingCloudBlock(Settings settings) {
+    public RisingCloudBlock(final Settings settings) {
         super(settings);
     }
 
     @Override
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+    public void onEntityCollision(
+            final BlockState state, final World world, final BlockPos pos, final Entity entity
+    ) {
         entity.fallDistance = 0.0F;
-        Vec3d motion = entity.getVelocity();
+        final Vec3d motion = entity.getVelocity();
 
         if (entity.isSneaking()) {
             if (motion.y < 0) {
@@ -40,16 +43,19 @@ public class RisingCloudBlock extends BasicCloudBlock {
                 entity.setVelocity(motion.x, -1.4 * motion.y, motion.z);
             }
         }
+    }
 
-        if (world.isClient && !entity.verticalCollision && !(entity instanceof PlayerEntity player && player.isCreative())) {
-            for (int count = 0; count < 50; count++) {
-                double xOffset = pos.getX() + world.random.nextDouble();
-                double yOffset = pos.getY() + world.random.nextDouble();
-                double zOffset = pos.getZ() + world.random.nextDouble();
+    @Override
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        super.randomDisplayTick(state, world, pos, random);
 
-                world.addParticle(chromaticSplash(0x60_89_9E), xOffset, yOffset, zOffset, 0.0, 0.0, 0.0);
-            }
-        }
+        final double xOffset = pos.getX() + world.random.nextDouble();
+        final double yOffset = pos.getY() + world.random.nextDouble() + 0.5;
+        final double zOffset = pos.getZ() + world.random.nextDouble();
+
+        world.addParticle(ParticleTypes.CLOUD, xOffset, yOffset, zOffset, 0.0,
+                Direction.UP.getOffsetY() * ((random.nextFloat() * 0.75f) + 0.45f),
+                0.0);
     }
 
     @Override

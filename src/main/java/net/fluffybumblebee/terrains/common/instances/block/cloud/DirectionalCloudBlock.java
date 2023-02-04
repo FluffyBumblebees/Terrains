@@ -87,12 +87,12 @@ public class DirectionalCloudBlock extends BasicCloudBlock {
         final Direction facing = state.get(FACING);
 
         switch (facing) {
-            case EAST -> pos = new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ());
-            case WEST ->  new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ());
-            case UP -> pos = new BlockPos(pos.getX() , pos.getY() - 1, pos.getZ());
-            case DOWN -> pos = new BlockPos(pos.getX() , pos.getY() + 1, pos.getZ());
-            case SOUTH -> pos = new BlockPos(pos.getX() , pos.getY(), pos.getZ() - 1);
-            case NORTH -> pos = new BlockPos(pos.getX() , pos.getY(), pos.getZ() + 1);
+            case EAST -> pos = new BlockPos(pos.getX() + 0.5, pos.getY(), pos.getZ());
+            case WEST ->  new BlockPos(pos.getX() - 0.5, pos.getY(), pos.getZ());
+            case UP -> pos = new BlockPos(pos.getX() , pos.getY() + 0.5, pos.getZ());
+            case DOWN -> pos = new BlockPos(pos.getX() , pos.getY() - 0.5, pos.getZ());
+            case SOUTH -> pos = new BlockPos(pos.getX() , pos.getY(), pos.getZ() + 0.5);
+            case NORTH -> pos = new BlockPos(pos.getX() , pos.getY(), pos.getZ() - 0.5);
         }
 
         float x = pos.getX() + (random.nextFloat() * 0.7f) + 0.15f;
