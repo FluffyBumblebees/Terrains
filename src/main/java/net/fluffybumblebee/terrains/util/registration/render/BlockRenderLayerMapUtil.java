@@ -12,7 +12,7 @@ import static net.fluffybumblebee.terrains.util.registration.registry_set.regist
 
 public class BlockRenderLayerMapUtil {
     private static void basicIteration(
-            final RegistrySet<?, ?>[] sets, final RenderTypes toCompare, final RegistryTypes[] all, final LambdaPlace place
+            final RegistrySet<?, ?>[] sets, final RenderTypes toCompare, final RegistryTypes[] all, final LambdaPlacement place
     ) {
         for (RegistrySet<?, ?> set : sets) {
             set.iterateRenderType().forEach(element -> {
@@ -47,7 +47,7 @@ public class BlockRenderLayerMapUtil {
     }
 
     public static void standardCutouts(RegistrySet<?, ?>... sets) {
-        basicIteration(sets, RenderTypes.CUTOUT, CUTOUT_TYPES, new LambdaPlace() {
+        basicIteration(sets, RenderTypes.CUTOUT, CUTOUT_TYPES, new LambdaPlacement() {
             @Override
             public void item(Item element) {
                 cutout(element);
@@ -74,7 +74,7 @@ public class BlockRenderLayerMapUtil {
     }
 
     public static void standardTranslucents(RegistrySet<?, ?>[] sets) {
-        basicIteration(sets, RenderTypes.TRANSLUCENT, TRANSLUCENT_TYPES, new LambdaPlace() {
+        basicIteration(sets, RenderTypes.TRANSLUCENT, TRANSLUCENT_TYPES, new LambdaPlacement() {
             @Override
             public void item(Item element) {
                 translucent(element);
@@ -87,7 +87,7 @@ public class BlockRenderLayerMapUtil {
         });
     }
 
-    private interface LambdaPlace {
+    private interface LambdaPlacement {
         void item(Item element);
         void block(Block element);
     }

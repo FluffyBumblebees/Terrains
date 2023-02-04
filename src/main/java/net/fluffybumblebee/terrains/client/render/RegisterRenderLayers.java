@@ -1,7 +1,7 @@
 package net.fluffybumblebee.terrains.client.render;
 
 
-import static net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets.*;
+import static net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets.ALL_SETS;
 import static net.fluffybumblebee.terrains.util.registration.render.BlockRenderLayerMapUtil.standardCutouts;
 import static net.fluffybumblebee.terrains.util.registration.render.BlockRenderLayerMapUtil.standardTranslucents;
 

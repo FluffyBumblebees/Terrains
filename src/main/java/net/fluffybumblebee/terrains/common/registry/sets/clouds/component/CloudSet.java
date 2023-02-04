@@ -5,6 +5,7 @@ import net.fluffybumblebee.terrains.client.render.RenderTypes;
 import net.fluffybumblebee.terrains.common.instances.block.cloud.BasicCloudBlock;
 import net.fluffybumblebee.terrains.common.world.inbuilt_structures.carver.cloud.CloudCarver;
 import net.fluffybumblebee.terrains.common.world.inbuilt_structures.carver.cloud.CloudCarverConfig;
+import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.predicates.BlockPredicates;
 import net.fluffybumblebee.terrains.util.registration.block.TriSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
@@ -28,7 +29,6 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import java.util.List;
 
 import static net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings.of;
-import static net.fluffybumblebee.terrains.util.registration.block.TriSet.buildBlock;
 import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes.TRANSPARENT_FULL_BLOCK;
 import static net.fluffybumblebee.terrains.util.registration.world.modification.EasyBiomeModification.generateCarver;
 
@@ -45,7 +45,10 @@ public final class CloudSet implements RegistrySetCreator {
     public final TriSet<BasicCloudBlock> cloudBlock;
     public CloudSet(final Config config) {
         final var id = config.id;
-        cloudBlock = buildBlock(config.cloudBlock, id + "_cloud");
+        if (config.burnable)
+            cloudBlock = new TriSet.Builder<>(config.cloudBlock, TerrainsDefaults.getIdentifier(id + "_cloud"))
+                    .addBlockItem().addBurnable(1000).addFlammability(10, 100).build();
+        else cloudBlock = TriSet.buildBlock(config.cloudBlock, id + "_cloud");
         CLOUD_CARVER = Registration.register(id + "_cloud_carver", cloudBlock.BLOCK, config.probability);
     }
 
@@ -94,5 +97,5 @@ public final class CloudSet implements RegistrySetCreator {
             );
         }
     }
-    public record Config(BasicCloudBlock cloudBlock, float probability, String id) {}
+    public record Config(BasicCloudBlock cloudBlock, float probability, String id, boolean burnable) {}
 }

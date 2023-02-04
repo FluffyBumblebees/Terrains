@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "terrains:blazing_cloud",
+    "terrains:blue_cloud",
+    "terrains:cold_cloud",
+    "terrains:golden_cloud",
+    "terrains:green_cloud",
+    "terrains:irradiated_cloud",
+    "terrains:pink_cloud",
+    "terrains:purple_cloud",
+    "terrains:storm_cloud",
+    "terrains:teal_cloud"
+  ]
+}
