@@ -43,7 +43,7 @@ public final class TriSet<B extends Block> {
 
     public static <B extends Block> TriSet<B> buildFlammableBlock(
             final B block, final String name, final ItemGroup itemGroup) {
-        TriSet.Builder<B> builder = new TriSet.Builder<>(block, TerrainsDefaults.getIdentifier(name));
+        Builder<B> builder = new Builder<>(block, TerrainsDefaults.getIdentifier(name));
         if (block instanceof LeavesBlock) {
             builder.addFlammability(30, 60);
         }

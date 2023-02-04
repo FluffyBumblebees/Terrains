@@ -19,7 +19,7 @@ import java.util.Random;
 public class MeadowLakeFeature extends LakeFeature {
     private static final BlockState CAVE_AIR = Blocks.CAVE_AIR.getDefaultState();
 
-    public MeadowLakeFeature(Codec<LakeFeature.Config> codec) {
+    public MeadowLakeFeature(Codec<Config> codec) {
         super(codec);
     }
 
