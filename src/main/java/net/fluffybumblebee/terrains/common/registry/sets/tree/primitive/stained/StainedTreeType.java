@@ -1,9 +1,10 @@
 package net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained;
 
+import net.fluffybumblebee.terrains.client.render.RenderTypes;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.Config;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
-import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.StainedSaplingGenerator;
+import net.fluffybumblebee.terrains.common.world.inbuilt_structures.features.component.StainedSaplingGenerator;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry;
@@ -46,6 +47,11 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
     @Override
     public void registryEvent(SetRegistry registry) {
         TREE_CONFIG.registryEvent(registry);
+    }
+
+    @Override
+    public List<RenderTypes> getRenderType() {
+        return List.of(RenderTypes.CUTOUT);
     }
 
     public static class StainedConfig implements FeatureCreator<StainedSaplingGenerator> {

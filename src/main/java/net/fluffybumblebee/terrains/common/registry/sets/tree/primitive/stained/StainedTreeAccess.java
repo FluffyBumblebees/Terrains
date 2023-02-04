@@ -3,7 +3,7 @@ package net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained
 import net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained.StainedTreeType.StainedConfig;
-import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.StainedSaplingGenerator;
+import net.fluffybumblebee.terrains.common.world.inbuilt_structures.features.component.StainedSaplingGenerator;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.gen.GenerationStep;

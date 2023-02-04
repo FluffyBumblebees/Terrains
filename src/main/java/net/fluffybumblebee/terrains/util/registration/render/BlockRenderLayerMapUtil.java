@@ -1,5 +1,6 @@
 package net.fluffybumblebee.terrains.util.registration.render;
 
+import net.fluffybumblebee.terrains.client.render.RenderTypes;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
 import net.minecraft.block.Block;
@@ -10,6 +11,24 @@ import static net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap.IN
 import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes.*;
 
 public class BlockRenderLayerMapUtil {
+    private static void basicIteration(
+            final RegistrySet<?, ?>[] sets, final RenderTypes toCompare, final RegistryTypes[] all, final LambdaPlace place
+    ) {
+        for (RegistrySet<?, ?> set : sets) {
+            set.iterateRenderType().forEach(element -> {
+                if (element == toCompare)
+                    for (RegistryTypes type : all) {
+                        set.iterateRegistry(type).forEach(nextElement -> {
+                            if (nextElement.block().isPresent())
+                                place.block(nextElement.block().orElseThrow());
+                            if (nextElement.item().isPresent())
+                                place.item(nextElement.item().orElseThrow());
+                        });
+                    }
+            });
+        }
+    }
+
     public static final RegistryTypes[] CUTOUT_TYPES = {
             WOOD_WITH_CUTOUT,
             LEAVES,
@@ -28,19 +47,20 @@ public class BlockRenderLayerMapUtil {
     }
 
     public static void standardCutouts(RegistrySet<?, ?>... sets) {
-        for (RegistrySet<?, ?> set : sets) {
-            for (RegistryTypes type : CUTOUT_TYPES) {
-                set.iterateRegistry(type).forEach(element -> {
-                    if (element.block().isPresent())
-                        cutout(element.block().orElseThrow());
-                    if (element.item().isPresent())
-                        cutout(element.item().orElseThrow());
-                });
+        basicIteration(sets, RenderTypes.CUTOUT, CUTOUT_TYPES, new LambdaPlace() {
+            @Override
+            public void item(Item element) {
+                cutout(element);
             }
-        }
+
+            @Override
+            public void block(Block element) {
+                cutout(element);
+            }
+        });
     }
 
-    public static final RegistryTypes[] TRANSLUCENT_TYPES = {
+    private static final RegistryTypes[] TRANSLUCENT_TYPES = {
             TRANSPARENT_FOOD,
             TRANSPARENT_FULL_BLOCK
     };
@@ -53,17 +73,22 @@ public class BlockRenderLayerMapUtil {
         INSTANCE.putItem(item, RenderLayer.getTranslucent());
     }
 
-    public static void standardTranslucents(RegistrySet<?, ?>... sets) {
-        for (RegistrySet<?, ?> set : sets) {
-            for (RegistryTypes type : TRANSLUCENT_TYPES) {
-                set.iterateRegistry(type).forEach(element -> {
-                    if (element.block().isPresent())
-                        translucent(element.block().orElseThrow());
-
-                    if (element.item().isPresent())
-                        translucent(element.item().orElseThrow());
-                });
+    public static void standardTranslucents(RegistrySet<?, ?>[] sets) {
+        basicIteration(sets, RenderTypes.TRANSLUCENT, TRANSLUCENT_TYPES, new LambdaPlace() {
+            @Override
+            public void item(Item element) {
+                translucent(element);
             }
-        }
+
+            @Override
+            public void block(Block element) {
+                translucent(element);
+            }
+        });
+    }
+
+    private interface LambdaPlace {
+        void item(Item element);
+        void block(Block element);
     }
 }

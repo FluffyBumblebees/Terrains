@@ -1,5 +1,6 @@
 package net.fluffybumblebee.terrains.common.registry.sets.tree.component;
 
+import net.fluffybumblebee.terrains.client.render.RenderTypes;
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredFlowerPotBlock;
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredLeavesBlock;
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredSaplingBlock;
@@ -49,9 +50,14 @@ public final class PrimitiveTreeSet<
 
     @Override
     public void registryEvent(final SetRegistry registry) {
-        registry.blockSet(RegistryTypes.LEAVES, LEAVES);
-        registry.blockSet(RegistryTypes.SAPLING, SAPLING);
-        registry.blockSetPotted(RegistryTypes.POTTED_BLOCK, POTTED_SAPLING);
+        registry.triSet(RegistryTypes.LEAVES, LEAVES);
+        registry.triSet(RegistryTypes.SAPLING, SAPLING);
+        registry.triSetPotted(RegistryTypes.POTTED_BLOCK, POTTED_SAPLING);
+    }
+
+    @Override
+    public List<RenderTypes> getRenderType() {
+        return List.of(RenderTypes.CUTOUT);
     }
 
     public record Config<Generator extends SaplingGenerator, FeatureProvider extends FeatureCreator<Generator>>(

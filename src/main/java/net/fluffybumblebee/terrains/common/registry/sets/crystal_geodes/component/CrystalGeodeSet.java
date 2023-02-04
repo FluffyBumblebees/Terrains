@@ -1,6 +1,7 @@
 package net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.component;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fluffybumblebee.terrains.client.render.RenderTypes;
 import net.fluffybumblebee.terrains.common.instances.block.crystals.*;
 import net.fluffybumblebee.terrains.util.registration.block.TriSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
@@ -31,7 +32,7 @@ import java.util.List;
 import static net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry.registerWaxableBlockPair;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getNamespaceVar;
 import static net.fluffybumblebee.terrains.util.registration.block.TriSet.buildBlock;
-import static net.fluffybumblebee.terrains.util.registration.world.feature.TreeRegistration.generateFeature;
+import static net.fluffybumblebee.terrains.util.registration.world.modification.EasyBiomeModification.generateFeature;
 import static net.minecraft.world.gen.feature.PlacedFeatures.register;
 
 @SuppressWarnings("FieldCanBeLocal")
@@ -95,8 +96,8 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
 
     @Override
     public void registryEvent(SetRegistry registry) {
-        registry.blockSet(RegistryTypes.CLUSTER, CORUNDUM_CLUSTER);
-        registry.blockSet(RegistryTypes.TRANSPARENT_FULL_BLOCK,
+        registry.triSet(RegistryTypes.CLUSTER, CORUNDUM_CLUSTER);
+        registry.triSet(RegistryTypes.TRANSPARENT_FULL_BLOCK,
                 WAXED_CORUNDUM,
                 CORUNDUM,
                 CORUNDUM_SLAB,
@@ -107,7 +108,7 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
                 CRYSTAL_STAIRS,
                 CRYSTAL_PANE
         );
-        registry.blockSet(RegistryTypes.CRYSTAL,
+        registry.triSet(RegistryTypes.CRYSTAL,
                 WAXED_CORUNDUM,
                 CORUNDUM,
                 CORUNDUM_SLAB,
@@ -122,8 +123,13 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
     }
 
     @Override
+    public List<RenderTypes> getRenderType() {
+        return List.of(RenderTypes.TRANSLUCENT);
+    }
+
+    @Override
     public void generationEvent() {
-        generateFeature(PLACED_GEODE, BiomeSelectors.all(), GenerationStep.Feature.UNDERGROUND_STRUCTURES);
+        generateFeature(PLACED_GEODE, BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_STRUCTURES);
     }
 
     public static <B extends Block, C extends AmethystClusterBlock> RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> registerGeode(

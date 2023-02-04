@@ -1,13 +1,14 @@
 package net.fluffybumblebee.terrains.client;
 
-import net.fluffybumblebee.terrains.client.render.RendererCutouts;
+import net.fluffybumblebee.terrains.client.particles.ClientParticles;
+import net.fluffybumblebee.terrains.client.render.RegisterRenderLayers;
 import net.fluffybumblebee.terrains.client.render.RendererModels;
-import net.fluffybumblebee.terrains.client.render.RendererTranslucents;
 
 public class ClientManager {
     public static void register() {
-        RendererCutouts.registerCutouts();
+        RegisterRenderLayers.registerCutouts();
+        RegisterRenderLayers.registerTranslucents();
         RendererModels.registerModels();
-        RendererTranslucents.registerTranslucents();
+        ClientParticles.init();
     }
 }

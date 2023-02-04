@@ -1,6 +1,7 @@
 package net.fluffybumblebee.terrains.common.registry.sets.tree.component;
 
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.fluffybumblebee.terrains.client.render.RenderTypes;
 import net.fluffybumblebee.terrains.common.instances.block.wood.WoodBlock;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureSupplier;
@@ -77,12 +78,16 @@ public class WholeTreeSet<
 
     @Override
     public void registryEvent(SetRegistry registry) {
-        registry.iterate(LOG_VARIANTS).forEach(element -> registry.blockSet(RegistryTypes.WOOD, element));
-        registry.iterate(LOG_VARIANTS).forEach(element -> registry.blockSet(RegistryTypes.ALL_WOOD_BLOCKS, element));
+        registry.iterate(LOG_VARIANTS).forEach(element -> registry.triSet(RegistryTypes.WOOD, element));
+        registry.iterate(LOG_VARIANTS).forEach(element -> registry.triSet(RegistryTypes.ALL_WOOD_BLOCKS, element));
         WOOD_SET.registryEvent(registry);
         registry.iterate(TREE_VARIANTS).forEach(featureSets -> PRIMITIVE_TREE_CONFIGS.get(featureSets).registryEvent(registry));
     }
 
+    @Override
+    public List<RenderTypes> getRenderType() {
+        return List.of(RenderTypes.CUTOUT);
+    }
 
     public record TreeType<
             Generator extends SaplingGenerator,

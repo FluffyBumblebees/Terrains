@@ -1,11 +1,14 @@
 package net.fluffybumblebee.terrains.common.registry.sets.item.component;
 
+import net.fluffybumblebee.terrains.client.render.RenderTypes;
 import net.fluffybumblebee.terrains.common.registry.sets.item.TypesItem;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+
+import java.util.List;
 
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry.*;
@@ -27,6 +30,11 @@ public class ItemSet<I extends Item> implements RegistrySetCreator {
             Registry.register(Registry.ITEM, element.identifier, element.item);
             registry.storage.get(items.types()).add(new Storage(element.item));
         });
+    }
+
+    @Override
+    public List<RenderTypes> getRenderType() {
+        return List.of(RenderTypes.TRANSLUCENT, RenderTypes.CUTOUT);
     }
 
     public record IdentifiableItem<I extends Item>(I item, Identifier identifier) {}

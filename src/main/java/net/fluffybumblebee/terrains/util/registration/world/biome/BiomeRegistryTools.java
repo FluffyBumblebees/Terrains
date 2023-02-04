@@ -16,8 +16,8 @@ import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
-import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.PATCH_PUMPKIN;
-import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.PATCH_SUGAR_CANE;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_structures.features.TerrainsPlacedFeatures.PATCH_PUMPKIN;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_structures.features.TerrainsPlacedFeatures.PATCH_SUGAR_CANE;
 import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 
 public class BiomeRegistryTools {

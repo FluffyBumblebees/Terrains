@@ -1,7 +1,7 @@
 package net.fluffybumblebee.terrains.common.world;
 
 import net.fluffybumblebee.terrains.common.world.inbuilt_biomes.TerrainsBiomeRegistry;
-import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.component.Placers;
+import net.fluffybumblebee.terrains.common.world.inbuilt_structures.features.component.component.Placers;
 import net.fluffybumblebee.terrains.common.world.terrablender.TerrablenderManager;
 
 public class WorldManager {

@@ -8,7 +8,7 @@ import net.minecraft.world.biome.SpawnSettings;
 
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained.StainedTreeAccess.addStainedTrees;
 import static net.fluffybumblebee.terrains.common.world.inbuilt_biomes.TerrainsBiomeRegistry.WARM_WATER;
-import static net.fluffybumblebee.terrains.common.world.inbuilt_features.TerrainsPlacedFeatures.*;
+import static net.fluffybumblebee.terrains.common.world.inbuilt_structures.features.TerrainsPlacedFeatures.*;
 import static net.fluffybumblebee.terrains.util.registration.world.biome.BiomeRegistryTools.*;
 
 

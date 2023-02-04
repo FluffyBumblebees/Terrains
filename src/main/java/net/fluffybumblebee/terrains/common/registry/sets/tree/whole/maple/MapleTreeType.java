@@ -2,10 +2,10 @@ package net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple;
 
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet.TreeType;
-import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.StandardSaplingGenerator;
-import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.component.FallenTrunkPlacer;
-import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.component.HemiEllipsoidFoliagePlacer;
-import net.fluffybumblebee.terrains.common.world.inbuilt_features.component.component.NoneFoliagePlacer;
+import net.fluffybumblebee.terrains.common.world.inbuilt_structures.features.component.StandardSaplingGenerator;
+import net.fluffybumblebee.terrains.common.world.inbuilt_structures.features.component.component.FallenTrunkPlacer;
+import net.fluffybumblebee.terrains.common.world.inbuilt_structures.features.component.component.HemiEllipsoidFoliagePlacer;
+import net.fluffybumblebee.terrains.common.world.inbuilt_structures.features.component.component.NoneFoliagePlacer;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

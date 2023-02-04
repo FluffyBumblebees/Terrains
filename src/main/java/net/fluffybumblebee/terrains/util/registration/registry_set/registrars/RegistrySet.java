@@ -1,5 +1,6 @@
 package net.fluffybumblebee.terrains.util.registration.registry_set.registrars;
 
+import net.fluffybumblebee.terrains.client.render.RenderTypes;
 import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry.Storage;
 
@@ -9,7 +10,8 @@ public final class RegistrySet<Types, RegistryConfig extends RegistrySetCreator>
     private final SetRegistry registry;
     private final Quickerator<Types> typesQuickerator;
     private final Map<Types, RegistryConfig> typeMap;
-
+    private final List<RegistryTypes> registryTypes;
+    private List<RenderTypes> renderTypes;
     private Quickerator<RegistryConfig> configQuickerator;
 
     public RegistrySet(
@@ -26,11 +28,13 @@ public final class RegistrySet<Types, RegistryConfig extends RegistrySetCreator>
     ) {
         typeMap = new HashMap<>();
         registry = new SetRegistry(registryTypes);
+        this.registryTypes = registryTypes;
         typesQuickerator = () -> values;
         typesQuickerator.forEach(element -> {
             RegistryConfig set = factory.getNewSet(element);
             set.generationEvent();
             set.registryEvent(registry);
+            renderTypes = set.getRenderType();
             typeMap.put(element, set);
         });
     }
@@ -41,6 +45,20 @@ public final class RegistrySet<Types, RegistryConfig extends RegistrySetCreator>
 
     public Quickerator<Types> getTypesQuickerator() {
         return typesQuickerator;
+    }
+
+    @SuppressWarnings("unused")
+    public List<RegistryTypes> getRegistryTypes() {
+        return registryTypes;
+    }
+
+    @SuppressWarnings("unused")
+    public List<RenderTypes> getRenderType() {
+        return renderTypes;
+    }
+
+    public Quickerator<RenderTypes> iterateRenderType() {
+        return () -> renderTypes;
     }
 
     public Quickerator<RegistryConfig> getConfigQuickerator() {
@@ -61,8 +79,16 @@ public final class RegistrySet<Types, RegistryConfig extends RegistrySetCreator>
             return () -> registry.storage.get(types);
         else return List::of;
     }
+    public void iterateRegistry(OnEachRegistryType type) {
+        for (RegistryTypes regType : registryTypes)
+            type.enMass(iterateRegistry(regType));
+    }
 
     public interface RegistrySetFactory<Types, RegistryConfig extends RegistrySetCreator> {
         RegistryConfig getNewSet(final Types type);
+    }
+
+    public interface OnEachRegistryType {
+        void enMass(Quickerator<Storage> element);
     }
 }

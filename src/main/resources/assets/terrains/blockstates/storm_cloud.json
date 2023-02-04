@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "terrains:block/storm_cloud"
+    }
+  }
+}

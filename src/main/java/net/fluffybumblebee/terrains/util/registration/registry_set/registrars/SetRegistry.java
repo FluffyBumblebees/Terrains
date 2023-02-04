@@ -25,7 +25,7 @@ public final class SetRegistry {
         }
     }
 
-    public void blockSet(RegistryTypes type, TriSet<?>... triSets) {
+    public void triSet(RegistryTypes type, TriSet<?>... triSets) {
         for (TriSet<?> set : triSets) {
             storage.get(type).add(new Storage(
                     Optional.of(set.BLOCK),
@@ -35,7 +35,7 @@ public final class SetRegistry {
         }
     }
 
-    public void blockSetPotted(RegistryTypes type, TriSet<?>... triSets) {
+    public void triSetPotted(RegistryTypes type, TriSet<?>... triSets) {
         for (TriSet<?> set : triSets) {
             storage.get(type).add(new Storage(
                     set.BLOCK

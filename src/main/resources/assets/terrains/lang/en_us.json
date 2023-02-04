@@ -14,7 +14,8 @@
 	"itemGroup.terrains.nature": "Terrains Nature",
 	"itemGroup.terrains.underground": "Terrains Underground",
 	"itemGroup.terrains.foods": "Terrains Foods",
-	
+	"itemGroup.terrains.skies": "Terrains Skies",
+
 
 	"block.terrains.black_leaves": "Black Stained Oak Leaves",
 	"block.terrains.black_sapling": "Black Stained Oak Sapling",
@@ -308,5 +309,16 @@
 	"block.terrains.jacaranda_door": "Jacaranda Door",
 	"block.terrains.jacaranda_trapdoor": "Jacaranda Trapdoor",
 	"block.terrains.jacaranda_button": "Jacaranda Button",
-	"block.terrains.jacaranda_sign": "Jacaranda Sign"
+	"block.terrains.jacaranda_sign": "Jacaranda Sign",
+
+	"block.terrains.cold_cloud": "Cold Cloud",
+	"block.terrains.storm_cloud": "Storm Cloud",
+	"block.terrains.teal_cloud": "Teal Cloud",
+	"block.terrains.blue_cloud": "Blue Cloud",
+	"block.terrains.pink_cloud": "Pink Cloud",
+	"block.terrains.golden_cloud": "Golden Cloud",
+	"block.terrains.purple_cloud": "Purple Cloud",
+	"block.terrains.green_cloud": "Green Cloud",
+	"block.terrains.irradiated_cloud": "Irradiated Cloud",
+	"block.terrains.blazing_cloud": "Blazing Cloud"
 }

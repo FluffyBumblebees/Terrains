@@ -1,5 +1,6 @@
 package net.fluffybumblebee.terrains.common.registry.sets.foliage.component;
 
+import net.fluffybumblebee.terrains.client.render.RenderTypes;
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredFlowerPotBlock;
 import net.fluffybumblebee.terrains.common.registry.sets.foliage.TypesFoliage;
 import net.fluffybumblebee.terrains.util.registration.block.TriSet;
@@ -55,9 +56,14 @@ public final class FoliageSet<
     public void registryEvent(SetRegistry registry) {
         for (T type : types) {
             var holder = foliageHolder.get(type);
-            registry.blockSet(this.type, holder.block);
-            registry.blockSetPotted(POTTED_BLOCK, holder.potBlock);
+            registry.triSet(this.type, holder.block);
+            registry.triSetPotted(POTTED_BLOCK, holder.potBlock);
         }
+    }
+
+    @Override
+    public List<RenderTypes> getRenderType() {
+        return List.of(RenderTypes.CUTOUT);
     }
 
     public record UniqueFoliageSetHolder<

@@ -6,6 +6,7 @@ import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.fluffybumblebee.terrains.client.render.RenderTypes;
 import net.fluffybumblebee.terrains.common.instances.block.wood.*;
 import net.fluffybumblebee.terrains.util.registration.block.TriSet;
 import net.fluffybumblebee.terrains.util.registration.block.TriSet.Builder;
@@ -107,12 +108,12 @@ public class WoodSet implements RegistrySetCreator {
 
     @Override
     public void registryEvent(SetRegistry registry) {
-        registry.blockSet(RegistryTypes.WOOD_WITH_CUTOUT,
+        registry.triSet(RegistryTypes.WOOD_WITH_CUTOUT,
                 DOOR,
                 TRAPDOOR
         );
 
-        registry.blockSet(RegistryTypes.ALL_WOOD_BLOCKS,
+        registry.triSet(RegistryTypes.ALL_WOOD_BLOCKS,
                 LOG,
                 WOOD,
                 STRIPPED_LOG,
@@ -129,7 +130,7 @@ public class WoodSet implements RegistrySetCreator {
                 SIGN
         );
 
-        registry.blockSet(RegistryTypes.WOOD,
+        registry.triSet(RegistryTypes.WOOD,
                 LOG,
                 WOOD,
                 STRIPPED_LOG,
@@ -151,6 +152,11 @@ public class WoodSet implements RegistrySetCreator {
         registry.storage.get(RegistryTypes.ALL_WOOD_BLOCKS).add(new Storage(
                 BOAT.getItem()
         ));
+    }
+
+    @Override
+    public List<RenderTypes> getRenderType() {
+        return List.of();
     }
 
     @Override
