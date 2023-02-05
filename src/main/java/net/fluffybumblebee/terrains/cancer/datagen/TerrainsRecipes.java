@@ -8,8 +8,8 @@ import net.minecraft.data.server.recipe.RecipeJsonProvider;
 
 import java.util.function.Consumer;
 
-import static net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets.CRYSTAL_GEODES;
-import static net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets.FULL_TREES;
+import static net.fluffybumblebee.terrains.common.registry.sets.RegistrySetManager.CRYSTAL_GEODES;
+import static net.fluffybumblebee.terrains.common.registry.sets.RegistrySetManager.FULL_TREES;
 import static net.fluffybumblebee.terrains.common.registry.sets.foliage.flower.FlowerFoliageAccess.accessFlowerConfig;
 import static net.fluffybumblebee.terrains.util.datagen.DatagenRecipeUtil.*;
 

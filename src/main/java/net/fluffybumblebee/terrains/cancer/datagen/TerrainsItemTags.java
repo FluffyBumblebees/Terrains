@@ -11,7 +11,7 @@ import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-import static net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets.*;
+import static net.fluffybumblebee.terrains.common.registry.sets.RegistrySetManager.*;
 import static net.minecraft.tag.ItemTags.*;
 
 

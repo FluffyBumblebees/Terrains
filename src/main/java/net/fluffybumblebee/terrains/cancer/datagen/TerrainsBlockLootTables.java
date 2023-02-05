@@ -6,7 +6,7 @@ import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.Re
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
 import net.minecraft.block.Block;
 
-import static net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets.*;
+import static net.fluffybumblebee.terrains.common.registry.sets.RegistrySetManager.*;
 import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes.*;
 import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry.Storage;
 

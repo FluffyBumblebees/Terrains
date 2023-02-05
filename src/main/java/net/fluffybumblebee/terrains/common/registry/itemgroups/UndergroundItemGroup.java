@@ -7,7 +7,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-import static net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets.CRYSTAL_GEODES;
+import static net.fluffybumblebee.terrains.common.registry.sets.RegistrySetManager.CRYSTAL_GEODES;
 import static net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.TypesCrystalGeode.PURPLE;
 
 

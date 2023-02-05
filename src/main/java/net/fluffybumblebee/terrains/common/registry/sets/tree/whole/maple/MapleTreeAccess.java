@@ -1,6 +1,6 @@
 package net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple;
 
-import net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets;
+import net.fluffybumblebee.terrains.common.registry.sets.RegistrySetManager;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleFeatures;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes;
@@ -14,7 +14,7 @@ import static net.fluffybumblebee.terrains.util.registration.registry_set.helper
 public class MapleTreeAccess {
 
     public static WholeTreeSet<?, ?, ?> getMapleTree() {
-        return AllRegistrySets.FULL_TREES.getTypeMap().get(MapleTreeType.MAPLE_TREES);
+        return RegistrySetManager.FULL_TREES.getTypeMap().get(MapleTreeType.MAPLE_TREES);
     }
 
     public static UniqueMapleFeatures getUniqueMapleFeatures() {

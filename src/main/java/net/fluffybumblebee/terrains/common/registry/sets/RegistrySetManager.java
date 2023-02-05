@@ -4,8 +4,8 @@ import net.fluffybumblebee.terrains.common.registry.sets.clouds.TypesCloudSet;
 import net.fluffybumblebee.terrains.common.registry.sets.clouds.component.CloudSet;
 import net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.TypesCrystalGeode;
 import net.fluffybumblebee.terrains.common.registry.sets.crystal_geodes.component.CrystalGeodeSet;
-import net.fluffybumblebee.terrains.common.registry.sets.foliage.component.FoliageSet;
 import net.fluffybumblebee.terrains.common.registry.sets.foliage.TypesFoliage;
+import net.fluffybumblebee.terrains.common.registry.sets.foliage.component.FoliageSet;
 import net.fluffybumblebee.terrains.common.registry.sets.item.TypesItem;
 import net.fluffybumblebee.terrains.common.registry.sets.item.component.ItemSet;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet;
@@ -21,7 +21,7 @@ import static net.fluffybumblebee.terrains.common.registry.sets.item.TypesItem.A
 import static net.fluffybumblebee.terrains.common.registry.sets.tree.whole.TypesWholeTree.ALL_WHOLE_TREES;
 import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes.*;
 
-public final class AllRegistrySets {
+public final class RegistrySetManager {
     public static final RegistrySet<?, ?>[] ALL_SETS;
 
     public static final RegistrySet<TypesStainedTree, StainedTreeType<TypesStainedTree>> STAINED_TREES;
@@ -87,6 +87,6 @@ public final class AllRegistrySets {
         };
     }
 
-    private AllRegistrySets() {}
-    public static void register() {}
+    private RegistrySetManager() {}
+    public static void init() {}
 }

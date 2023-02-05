@@ -1,6 +1,6 @@
 package net.fluffybumblebee.terrains.util.registration.registry_set.helper;
 
-import net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets;
+import net.fluffybumblebee.terrains.common.registry.sets.RegistrySetManager;
 import net.fluffybumblebee.terrains.common.registry.sets.foliage.TypesFoliage;
 import net.fluffybumblebee.terrains.common.registry.sets.foliage.component.FoliageSet;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
@@ -8,7 +8,7 @@ import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTre
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet.TreeType;
 import net.minecraft.block.sapling.SaplingGenerator;
 
-import static net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets.FULL_TREES;
+import static net.fluffybumblebee.terrains.common.registry.sets.RegistrySetManager.FULL_TREES;
 
 
 @SuppressWarnings("unchecked")
@@ -52,7 +52,7 @@ public class RegistrySetTypeTools {
     }
 
     public static FoliageSet<?, ?, ?> accessFoliageSet(TypesFoliage<?, ?, ?> type) {
-        return AllRegistrySets
+        return RegistrySetManager
                 .FOLIAGE
                 .getTypeMap()
                 .get(type);

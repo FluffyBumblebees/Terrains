@@ -1,6 +1,6 @@
 package net.fluffybumblebee.terrains.common.registry.sets.tree.whole.jacaranda;
 
-import net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets;
+import net.fluffybumblebee.terrains.common.registry.sets.RegistrySetManager;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WholeTreeSet;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.whole.jacaranda.JacarandaTreeType.JacarandaTypes;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.UniqueMapleFeatures;
@@ -16,7 +16,7 @@ import static net.fluffybumblebee.terrains.util.registration.registry_set.helper
 public class JacarandaTreeAccess {
 
     public static WholeTreeSet<?, ?, ?> getJacarandaTree() {
-        return AllRegistrySets.FULL_TREES.getTypeMap().get(JACARANDA_TREES);
+        return RegistrySetManager.FULL_TREES.getTypeMap().get(JACARANDA_TREES);
     }
 
     public static UniqueMapleFeatures getUniqueJacarandaFeatures() {

@@ -1,6 +1,6 @@
 package net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained;
 
-import net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets;
+import net.fluffybumblebee.terrains.common.registry.sets.RegistrySetManager;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.primitive.stained.StainedTreeType.StainedConfig;
 import net.fluffybumblebee.terrains.common.world.inbuilt_structures.features.component.StainedSaplingGenerator;
@@ -13,7 +13,7 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 public class StainedTreeAccess {
 
     public static StainedTreeType<TypesStainedTree> accessInstance(TypesStainedTree colour) {
-        return AllRegistrySets.STAINED_TREES.getTypeMap().get(colour);
+        return RegistrySetManager.STAINED_TREES.getTypeMap().get(colour);
     }
 
     public static <FeatureProvider extends FeatureCreator<StainedSaplingGenerator>>  FeatureProvider

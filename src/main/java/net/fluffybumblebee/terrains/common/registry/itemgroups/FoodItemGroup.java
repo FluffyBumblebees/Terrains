@@ -1,7 +1,7 @@
 package net.fluffybumblebee.terrains.common.registry.itemgroups;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets;
+import net.fluffybumblebee.terrains.common.registry.sets.RegistrySetManager;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
@@ -18,10 +18,10 @@ public class FoodItemGroup {
         FOOD = FabricItemGroupBuilder.create(new Identifier(NAMESPACE, "foods"))
                 .icon(() -> HONEYCOMB_PANCAKE_SANDWICH.item().getDefaultStack())
                 .appendItems(stacks -> {
-                    AllRegistrySets.ITEMS.iterateRegistry(RegistryTypes.FOOD).forEach(element ->
+                    RegistrySetManager.ITEMS.iterateRegistry(RegistryTypes.FOOD).forEach(element ->
                             stacks.add(element.item().orElseThrow().getDefaultStack())
                     );
-                    AllRegistrySets.ITEMS.iterateRegistry(RegistryTypes.TRANSPARENT_FOOD).forEach(element ->
+                    RegistrySetManager.ITEMS.iterateRegistry(RegistryTypes.TRANSPARENT_FOOD).forEach(element ->
                             stacks.add(element.item().orElseThrow().getDefaultStack()));
                 })
                 .build();

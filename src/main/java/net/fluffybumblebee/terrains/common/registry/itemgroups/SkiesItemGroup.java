@@ -7,7 +7,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-import static net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets.CLOUDS;
+import static net.fluffybumblebee.terrains.common.registry.sets.RegistrySetManager.CLOUDS;
 
 
 public class SkiesItemGroup {

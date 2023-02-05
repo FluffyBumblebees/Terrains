@@ -9,7 +9,7 @@ import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.Se
 import net.minecraft.block.Block;
 import net.minecraft.tag.TagKey;
 
-import static net.fluffybumblebee.terrains.common.registry.sets.AllRegistrySets.*;
+import static net.fluffybumblebee.terrains.common.registry.sets.RegistrySetManager.*;
 import static net.minecraft.tag.BlockTags.*;
 
 public class TerrainsBlockTags extends FabricTagProvider.BlockTagProvider {
