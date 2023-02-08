@@ -4,6 +4,7 @@ import java.util.List;
 
 @FunctionalInterface
 public interface Quickerator<T> {
+
     List<T> getValues();
 
     default void forEach(final ElementProvider<T> provider) {
