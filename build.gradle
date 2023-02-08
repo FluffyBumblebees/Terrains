@@ -22,11 +22,9 @@ loom {
 }
 
 repositories {
-	maven { url = 'https://maven.minecraftforge.net/' }
-	maven {
-		name = 'TerraformersMC'
-		url = 'https://maven.terraformersmc.com/'
-	}
+	maven {url = 'https://maven.minecraftforge.net/'}
+	maven {url = 'https://maven.terraformersmc.com/'}
+	maven {url = 'https://mvnrepository.com/artifact/it.unimi.dsi/fastutil/'}
 }
 
 dependencies {
@@ -36,6 +34,7 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}+${project.minecraft_version}"
 
+	implementation(include("it.unimi.dsi:fastutil:8.2.1"))
 	modImplementation(include("com.github.glitchfiend:TerraBlender-fabric:${project.minecraft_version}-${project.terrablender_version}"))
 	modImplementation(include("com.terraformersmc.terraform-api:terraform-tree-api-v1:${project.terraform_api_version}"))
 	modImplementation(include("com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_api_version}"))

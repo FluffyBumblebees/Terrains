@@ -58,7 +58,7 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
     private final RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> CONFIGURED_GEODE;
     private final RegistryEntry<PlacedFeature> PLACED_GEODE;
 
-    public CrystalGeodeSet(Type type) {
+    public CrystalGeodeSet(final Type type) {
         TYPE = type.name().toLowerCase();
         ALL_BLOCKS = new ArrayList<>();
 
@@ -90,12 +90,12 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
         );
     }
 
-    private static <B extends Block> TriSet<B> buildCrystal(B block, String name) {
+    private static <B extends Block> TriSet<B> buildCrystal(final B block, final String name) {
         return buildBlock(block, name, ItemGroup.BUILDING_BLOCKS);
     }
 
     @Override
-    public void registryEvent(SetRegistry registry) {
+    public void registryEvent(final SetRegistry registry) {
         registry.triSet(RegistryTypes.CLUSTER, CORUNDUM_CLUSTER);
         registry.triSet(RegistryTypes.TRANSPARENT_FULL_BLOCK,
                 WAXED_CORUNDUM,
@@ -133,10 +133,10 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
     }
 
     public static <B extends Block, C extends AmethystClusterBlock> RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> registerGeode(
-            B corundum,
-            B crystal,
-            C cluster,
-            String colour
+            final B corundum,
+            final B crystal,
+            final C cluster,
+            final String colour
     ) {
         WeightedBlockStateProvider outerLayers = new WeightedBlockStateProvider(new DataPool.Builder<BlockState>()
                 .add(crystal.getDefaultState(), 5000)
@@ -175,7 +175,9 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
         );
     }
 
-    public static RegistryEntry<PlacedFeature> registerPlacedGeode(RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> geode, String name) {
+    public static RegistryEntry<PlacedFeature> registerPlacedGeode(
+            final RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> geode, final String name
+    ) {
         return register(
                 getNamespaceVar() + name + "_geode_placed",
                 geode,

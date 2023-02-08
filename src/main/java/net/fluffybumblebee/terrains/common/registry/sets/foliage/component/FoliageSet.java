@@ -53,7 +53,7 @@ public final class FoliageSet<
     }
 
     @Override
-    public void registryEvent(SetRegistry registry) {
+    public void registryEvent(final SetRegistry registry) {
         for (T type : types) {
             var holder = foliageHolder.get(type);
             registry.triSet(this.type, holder.block);
@@ -68,15 +68,16 @@ public final class FoliageSet<
 
     public record UniqueFoliageSetHolder<
             FeatureInstance extends FeatureCreator
-            >(TriSet<?> block, TriSet<?> potBlock, FeatureInstance featureInstance) {}
+            >(TriSet<?> block, TriSet<?> potBlock, FeatureInstance featureInstance
+    ) {}
 
 
     public interface FoliageProvider <B extends Block, T extends Enum<?>> {
-        B getInstance(T type);
+        B getInstance(final T type);
     }
 
     public interface FeatureSupplier <B extends Block, FeatureInstance extends FeatureCreator> {
-        FeatureInstance get(B block, String name);
+        FeatureInstance get(final B block, final String name);
     }
 
     public interface FeatureCreator {}

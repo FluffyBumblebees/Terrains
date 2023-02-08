@@ -26,7 +26,7 @@ import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.fluffybumblebee.terrains.util.registration.block.TriSet.buildFlammableBlock;
 import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry.Storage;
 
-public class WoodSet implements RegistrySetCreator {
+public final class WoodSet implements RegistrySetCreator {
     public final String TYPE;
     public final List<TriSet<?>> ALL_BLOCKS;
 
@@ -49,7 +49,7 @@ public class WoodSet implements RegistrySetCreator {
     public final TriSet<TerraformSignBlock> SIGN;
     public final TriSet<?> WALL_SIGN;
 
-    public WoodSet(String woodType) {
+    public WoodSet(final String woodType) {
         TYPE = woodType;
 
         LOG = buildFlammableBlock(new WoodBlock(), TYPE + "_log");
@@ -107,7 +107,7 @@ public class WoodSet implements RegistrySetCreator {
     }
 
     @Override
-    public void registryEvent(SetRegistry registry) {
+    public void registryEvent(final SetRegistry registry) {
         registry.triSet(RegistryTypes.WOOD_WITH_CUTOUT,
                 DOOR,
                 TRAPDOOR

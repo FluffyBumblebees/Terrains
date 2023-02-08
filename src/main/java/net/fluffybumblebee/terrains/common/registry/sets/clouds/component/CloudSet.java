@@ -70,11 +70,15 @@ public final class CloudSet implements RegistrySetCreator {
     private static final class Registration {
         private Registration() {}
 
-        public static <B extends Block> RegistryEntry<ConfiguredCarver<?>> register(String id, B block, float probability) {
+        public static <B extends Block> RegistryEntry<ConfiguredCarver<?>> register(
+                final String id, final B block, final float probability
+        ) {
             return register(id, BlockStateProvider.of(block), probability);
         }
 
-        public static <B extends BlockStateProvider> RegistryEntry<ConfiguredCarver<?>> register(String id, B stateProvider, float probability) {
+        public static <B extends BlockStateProvider> RegistryEntry<ConfiguredCarver<?>> register(
+                final String id, final B stateProvider, final float probability
+        ) {
             return CarverRegistrationUtil.register(
                     id,
                     ABSTRACT_CLOUD_CARVER.configure(

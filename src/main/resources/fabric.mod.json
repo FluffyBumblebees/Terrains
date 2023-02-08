@@ -10,8 +10,11 @@
     "IIpho3nix [Contributor-Artist]"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/terrains",
+    "sources": "https://github.com/FluffyBumblebees/Terrains",
+    "issues": "https://github.com/FluffyBumblebees/Terrains/issues",
+    "wiki": "https://github.com/FluffyBumblebees/Terrains/wiki",
+    "discord": "https://discord.gg/fMSnenNSXM"
   },
 
   "license": "All Rights Reserved",

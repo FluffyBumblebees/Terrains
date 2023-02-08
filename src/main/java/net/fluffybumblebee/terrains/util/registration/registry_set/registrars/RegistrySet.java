@@ -1,15 +1,19 @@
 package net.fluffybumblebee.terrains.util.registration.registry_set.registrars;
 
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import net.fluffybumblebee.terrains.client.render.RenderTypes;
 import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry.Storage;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public final class RegistrySet<Types, RegistryConfig extends RegistrySetCreator> {
     private final SetRegistry registry;
     private final Quickerator<Types> typesQuickerator;
-    private final Map<Types, RegistryConfig> typeMap;
+    private final Object2ObjectMap<Types, RegistryConfig> typeMap;
     private final List<RegistryTypes> registryTypes;
     private List<RenderTypes> renderTypes;
     private Quickerator<RegistryConfig> configQuickerator;
@@ -26,7 +30,7 @@ public final class RegistrySet<Types, RegistryConfig extends RegistrySetCreator>
             final List<RegistryTypes> registryTypes,
             final RegistrySetFactory<Types, RegistryConfig> factory
     ) {
-        typeMap = new HashMap<>();
+        typeMap = new Object2ObjectLinkedOpenHashMap<>();
         registry = new SetRegistry(registryTypes);
         this.registryTypes = registryTypes;
         typesQuickerator = () -> values;
@@ -39,7 +43,7 @@ public final class RegistrySet<Types, RegistryConfig extends RegistrySetCreator>
         });
     }
 
-    public Map<Types, RegistryConfig> getTypeMap() {
+    public Object2ObjectMap<Types, RegistryConfig> getTypeMap() {
         return typeMap;
     }
 

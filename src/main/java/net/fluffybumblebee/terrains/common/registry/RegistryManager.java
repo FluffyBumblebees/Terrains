@@ -4,7 +4,7 @@ import net.fluffybumblebee.terrains.common.registry.itemgroups.*;
 import net.fluffybumblebee.terrains.common.registry.sets.RegistrySetManager;
 import net.fluffybumblebee.terrains.common.world.WorldManager;
 
-public class RegistryManager {
+public final class RegistryManager {
     private RegistryManager(){}
 
     public static void init() {

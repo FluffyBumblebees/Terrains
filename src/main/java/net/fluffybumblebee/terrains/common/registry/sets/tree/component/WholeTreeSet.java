@@ -77,7 +77,7 @@ public class WholeTreeSet<
     }
 
     @Override
-    public void registryEvent(SetRegistry registry) {
+    public void registryEvent(final SetRegistry registry) {
         registry.iterate(LOG_VARIANTS).forEach(element -> registry.triSet(RegistryTypes.WOOD, element));
         registry.iterate(LOG_VARIANTS).forEach(element -> registry.triSet(RegistryTypes.ALL_WOOD_BLOCKS, element));
         WOOD_SET.registryEvent(registry);
