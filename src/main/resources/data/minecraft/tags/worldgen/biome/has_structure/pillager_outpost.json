@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "terrains:jacaranda_plains",
+    "terrains:lush_maple_blossom",
+    "terrains:maple_blossom",
+    "terrains:maple_meadow",
+    "terrains:maple_tundra",
+    "terrains:meadow_flats",
+    "terrains:pumpkin_ridges"
+  ]
+}
