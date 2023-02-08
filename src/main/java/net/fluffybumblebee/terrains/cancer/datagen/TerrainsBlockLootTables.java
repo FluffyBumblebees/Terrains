@@ -4,11 +4,11 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
+import net.fluffybumblebee.terrains.util.registration.mass.SafeTriSet;
 import net.minecraft.block.Block;
 
 import static net.fluffybumblebee.terrains.common.registry.sets.RegistrySetManager.*;
 import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes.*;
-import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry.Storage;
 
 public class TerrainsBlockLootTables extends FabricBlockLootTableProvider {
     public TerrainsBlockLootTables(FabricDataGenerator dataGenerator) {
@@ -47,15 +47,15 @@ public class TerrainsBlockLootTables extends FabricBlockLootTableProvider {
             final RegistrySet<?, ?> set,
             final RegistryTypes type
     ) {
-        for (Storage storage : set.getRegistry().storage.get(type)) {
-            final var block = storage.block().orElseThrow();
+        for (SafeTriSet safeTriSet : set.getRegistry().storage.get(type)) {
+            final var block = safeTriSet.block().orElseThrow();
             addDrop(block);
         }
     }
 
     private void dropsPotted(RegistrySet<?, ?> foliage) {
-        for (Storage storage : foliage.getRegistry().storage.get(POTTED_BLOCK)) {
-            final var block = storage.block().orElseThrow();
+        for (SafeTriSet safeTriSet : foliage.getRegistry().storage.get(POTTED_BLOCK)) {
+            final var block = safeTriSet.block().orElseThrow();
             addPottedPlantDrop(block);
         }
     }

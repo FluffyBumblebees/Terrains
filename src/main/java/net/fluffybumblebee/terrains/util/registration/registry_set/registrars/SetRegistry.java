@@ -2,18 +2,16 @@ package net.fluffybumblebee.terrains.util.registration.registry_set.registrars;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import net.fluffybumblebee.terrains.util.registration.block.TriSet;
+import net.fluffybumblebee.terrains.util.registration.mass.SafeTriSet;
+import net.fluffybumblebee.terrains.util.registration.mass.UnsafeTriSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.util.Identifier;
 
 import java.util.*;
 
 
 public final class SetRegistry {
 
-    public final Object2ObjectMap<RegistryTypes, List<Storage>> storage;
+    public final Object2ObjectMap<RegistryTypes, List<SafeTriSet>> storage;
 
     @SuppressWarnings("unused")
     public SetRegistry(final RegistryTypes[] allTypes) {
@@ -27,9 +25,9 @@ public final class SetRegistry {
         }
     }
 
-    public void triSet(final RegistryTypes type, final TriSet<?>... triSets) {
-        for (TriSet<?> set : triSets) {
-            storage.get(type).add(new Storage(
+    public void triSet(final RegistryTypes type, final UnsafeTriSet<?>... unsafeTriSets) {
+        for (UnsafeTriSet<?> set : unsafeTriSets) {
+            storage.get(type).add(new SafeTriSet(
                     Optional.of(set.BLOCK),
                     Optional.of(set.ITEM),
                     Optional.of(set.IDENTIFIER)
@@ -37,9 +35,9 @@ public final class SetRegistry {
         }
     }
 
-    public void triSetPotted(final RegistryTypes type, final TriSet<?>... triSets) {
-        for (TriSet<?> set : triSets) {
-            storage.get(type).add(new Storage(
+    public void triSetPotted(final RegistryTypes type, final UnsafeTriSet<?>... unsafeTriSets) {
+        for (UnsafeTriSet<?> set : unsafeTriSets) {
+            storage.get(type).add(new SafeTriSet(
                     set.BLOCK
             ));
         }
@@ -53,38 +51,4 @@ public final class SetRegistry {
         return iterate(Arrays.asList(array));
     }
 
-    @SuppressWarnings("unused")
-    public record Storage(
-            Optional<Block> block,
-            Optional<Item> item,
-            Optional<Identifier> identifier
-    ) {
-        public Storage(final Block block, final Item item, final Identifier identifier) {
-            this(Optional.of(block), Optional.of(item), Optional.of(identifier));
-        }
-
-        public Storage(final Block block) {
-            this(Optional.of(block), Optional.empty(), Optional.empty());
-        }
-
-        public Storage(final Block block, final Item item) {
-            this(Optional.of(block), Optional.of(item), Optional.empty());
-        }
-
-        public Storage(final Item item) {
-            this(Optional.empty(), Optional.of(item), Optional.empty());
-        }
-
-        public Storage(final Item item, final Identifier identifier) {
-            this(Optional.empty(), Optional.of(item), Optional.of(identifier));
-        }
-
-        public Storage(final Identifier identifier) {
-            this (Optional.empty(), Optional.empty(), Optional.of(identifier));
-        }
-
-        public Storage(final Block block, final Identifier identifier) {
-            this (Optional.of(block), Optional.empty(), Optional.of(identifier));
-        }
-    }
 }

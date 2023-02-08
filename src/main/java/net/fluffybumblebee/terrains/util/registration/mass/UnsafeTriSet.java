@@ -1,4 +1,4 @@
-package net.fluffybumblebee.terrains.util.registration.block;
+package net.fluffybumblebee.terrains.util.registration.mass;
 
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
@@ -13,35 +13,35 @@ import net.minecraft.util.registry.Registry;
 
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 
-public final class TriSet<B extends Block> {
+public final class UnsafeTriSet<B extends Block> {
     public final B BLOCK;
     public final Item ITEM;
     public final Identifier IDENTIFIER;
 
-    private TriSet(B block, Item item, Identifier identifier) {
+    private UnsafeTriSet(B block, Item item, Identifier identifier) {
         BLOCK = block;
         ITEM = item;
         IDENTIFIER = identifier;
     }
 
-    public static <B extends Block> TriSet<B> of(B block, Identifier identifier) {
-        return new TriSet<>(block, block.asItem(), identifier);
+    public static <B extends Block> UnsafeTriSet<B> of(B block, Identifier identifier) {
+        return new UnsafeTriSet<>(block, block.asItem(), identifier);
     }
 
-    public static <B extends Block> TriSet<B> of(Item item, Identifier identifier) {
-        return new TriSet<>(null, item, identifier);
+    public static <B extends Block> UnsafeTriSet<B> of(Item item, Identifier identifier) {
+        return new UnsafeTriSet<>(null, item, identifier);
     }
 
 
-    public static <B extends Block> TriSet<B> buildBlock(B block, String name) {
+    public static <B extends Block> UnsafeTriSet<B> buildBlock(B block, String name) {
         return new Builder<>(block, getIdentifier(name)).addBlockItem().build();
     }
 
-    public static <B extends Block> TriSet<B> buildBlock(B block, String name, ItemGroup group) {
+    public static <B extends Block> UnsafeTriSet<B> buildBlock(B block, String name, ItemGroup group) {
         return new Builder<>(block, getIdentifier(name)).addBlockItem(group).build();
     }
 
-    public static <B extends Block> TriSet<B> buildFlammableBlock(
+    public static <B extends Block> UnsafeTriSet<B> buildFlammableBlock(
             final B block, final String name, final ItemGroup itemGroup) {
         Builder<B> builder = new Builder<>(block, TerrainsDefaults.getIdentifier(name));
         if (block instanceof LeavesBlock) {
@@ -64,7 +64,7 @@ public final class TriSet<B extends Block> {
         return builder.build();
     }
 
-    public static <B extends Block> TriSet<B> buildFlammableBlock(final B block, final String name) {
+    public static <B extends Block> UnsafeTriSet<B> buildFlammableBlock(final B block, final String name) {
         return buildFlammableBlock(block, name, ItemGroup.BUILDING_BLOCKS);
     }
 
@@ -119,11 +119,11 @@ public final class TriSet<B extends Block> {
             return addBlockItem(ItemGroup.DECORATIONS);
         }
 
-        public TriSet<B> build() {
+        public UnsafeTriSet<B> build() {
             Registry.register(Registry.BLOCK, identifier, block);
             if (blockItem != null)
                 Registry.register(Registry.ITEM, identifier, blockItem);
-            return new TriSet<>(block, blockItem, identifier);
+            return new UnsafeTriSet<>(block, blockItem, identifier);
         }
 
         @Override

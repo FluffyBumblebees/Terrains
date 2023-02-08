@@ -3,9 +3,9 @@ package net.fluffybumblebee.terrains.cancer.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fluffybumblebee.terrains.common.registry.sets.tree.component.WoodSet;
-import net.fluffybumblebee.terrains.util.registration.block.TriSet;
+import net.fluffybumblebee.terrains.util.registration.mass.UnsafeTriSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
-import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry.Storage;
+import net.fluffybumblebee.terrains.util.registration.mass.SafeTriSet;
 import net.minecraft.item.Item;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
@@ -56,12 +56,12 @@ public class TerrainsItemTags extends FabricTagProvider.ItemTagProvider {
     }
 
     @SafeVarargs
-    public final void addItemTags(final TriSet<?> block, final TagKey<Item>... tags) {
+    public final void addItemTags(final UnsafeTriSet<?> block, final TagKey<Item>... tags) {
         addItemTags(block.ITEM, tags);
     }
 
     @SafeVarargs
-    public final void addItemTags(final Storage block, final TagKey<Item>... tags) {
+    public final void addItemTags(final SafeTriSet block, final TagKey<Item>... tags) {
         addItemTags(block.item().orElseThrow(), tags);
     }
 
@@ -70,15 +70,15 @@ public class TerrainsItemTags extends FabricTagProvider.ItemTagProvider {
             getOrCreateTagBuilder(tag).add(item);
     }
 
-    public final void addItemTags(final TagKey<Item> tag, final TriSet<?>... blocks)  {
-        for (TriSet<?> set : blocks)
+    public final void addItemTags(final TagKey<Item> tag, final UnsafeTriSet<?>... blocks)  {
+        for (UnsafeTriSet<?> set : blocks)
             addItemTags(tag, set.ITEM);
     }
 
     @SuppressWarnings("unused")
-    public final void addItemTags(final TagKey<Item> tag, final Storage... blocks)  {
-        for (Storage storage : blocks)
-            addItemTags(tag, storage.item().orElseThrow());
+    public final void addItemTags(final TagKey<Item> tag, final SafeTriSet... blocks)  {
+        for (SafeTriSet safeTriSet : blocks)
+            addItemTags(tag, safeTriSet.item().orElseThrow());
     }
 
 

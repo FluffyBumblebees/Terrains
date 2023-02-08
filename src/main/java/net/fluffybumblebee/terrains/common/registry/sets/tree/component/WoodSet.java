@@ -8,11 +8,12 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fluffybumblebee.terrains.client.render.RenderTypes;
 import net.fluffybumblebee.terrains.common.instances.block.wood.*;
-import net.fluffybumblebee.terrains.util.registration.block.TriSet;
-import net.fluffybumblebee.terrains.util.registration.block.TriSet.Builder;
+import net.fluffybumblebee.terrains.util.registration.mass.UnsafeTriSet;
+import net.fluffybumblebee.terrains.util.registration.mass.UnsafeTriSet.Builder;
 import net.fluffybumblebee.terrains.util.registration.entity.BoatRegistration;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
+import net.fluffybumblebee.terrains.util.registration.mass.SafeTriSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
@@ -23,31 +24,30 @@ import net.minecraft.util.Identifier;
 import java.util.List;
 
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
-import static net.fluffybumblebee.terrains.util.registration.block.TriSet.buildFlammableBlock;
-import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry.Storage;
+import static net.fluffybumblebee.terrains.util.registration.mass.UnsafeTriSet.buildFlammableBlock;
 
 public final class WoodSet implements RegistrySetCreator {
     public final String TYPE;
-    public final List<TriSet<?>> ALL_BLOCKS;
+    public final List<UnsafeTriSet<?>> ALL_BLOCKS;
 
 
     private TerraformBoatType BOAT;
-    public final TriSet<?> LOG;
-    public final TriSet<?> WOOD;
-    public final TriSet<?> STRIPPED_LOG;
-    public final TriSet<?> STRIPPED_WOOD;
-    public final TriSet<?> PLANKS;
-    public final TriSet<?> STAIRS;
-    public final TriSet<?> SLAB;
-    public final TriSet<?> FENCE;
-    public final TriSet<?> FENCE_GATE;
-    public final TriSet<?> PRESSURE_PLATE;
-    public final TriSet<?> DOOR;
-    public final TriSet<?> TRAPDOOR;
-    public final TriSet<?> BUTTON;
+    public final UnsafeTriSet<?> LOG;
+    public final UnsafeTriSet<?> WOOD;
+    public final UnsafeTriSet<?> STRIPPED_LOG;
+    public final UnsafeTriSet<?> STRIPPED_WOOD;
+    public final UnsafeTriSet<?> PLANKS;
+    public final UnsafeTriSet<?> STAIRS;
+    public final UnsafeTriSet<?> SLAB;
+    public final UnsafeTriSet<?> FENCE;
+    public final UnsafeTriSet<?> FENCE_GATE;
+    public final UnsafeTriSet<?> PRESSURE_PLATE;
+    public final UnsafeTriSet<?> DOOR;
+    public final UnsafeTriSet<?> TRAPDOOR;
+    public final UnsafeTriSet<?> BUTTON;
 
-    public final TriSet<TerraformSignBlock> SIGN;
-    public final TriSet<?> WALL_SIGN;
+    public final UnsafeTriSet<TerraformSignBlock> SIGN;
+    public final UnsafeTriSet<?> WALL_SIGN;
 
     public WoodSet(final String woodType) {
         TYPE = woodType;
@@ -97,7 +97,7 @@ public final class WoodSet implements RegistrySetCreator {
         StrippableBlockRegistry.register(WOOD.BLOCK, STRIPPED_WOOD.BLOCK);
     }
 
-    public TriSet<TerraformSignBlock> getSign() {
+    public UnsafeTriSet<TerraformSignBlock> getSign() {
         return SIGN;
     }
 
@@ -145,11 +145,11 @@ public final class WoodSet implements RegistrySetCreator {
                 SIGN
         );
 
-        registry.storage.get(RegistryTypes.WOOD).add(new Storage(
+        registry.storage.get(RegistryTypes.WOOD).add(new SafeTriSet(
                 BOAT.getItem()
         ));
 
-        registry.storage.get(RegistryTypes.ALL_WOOD_BLOCKS).add(new Storage(
+        registry.storage.get(RegistryTypes.ALL_WOOD_BLOCKS).add(new SafeTriSet(
                 BOAT.getItem()
         ));
     }

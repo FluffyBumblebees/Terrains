@@ -2,7 +2,7 @@ package net.fluffybumblebee.terrains.common.registry.sets.foliage.flower;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fluffybumblebee.terrains.common.registry.sets.foliage.TypesFoliage;
-import net.fluffybumblebee.terrains.util.registration.block.TriSet;
+import net.fluffybumblebee.terrains.util.registration.mass.UnsafeTriSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowerBlock;
@@ -44,14 +44,14 @@ public final  class FlowerFoliageType {
         LAVENDER(
                 StatusEffects.REGENERATION,
                 3,
-                TriSet.of(Items.PURPLE_DYE, new Identifier("purple_dye")));
+                UnsafeTriSet.of(Items.PURPLE_DYE, new Identifier("purple_dye")));
 
 
-        public final TriSet<?> DYE;
+        public final UnsafeTriSet<?> DYE;
         private final StatusEffect EFFECT;
         private final int EFFECT_TIME;
 
-        FlowerTypes(StatusEffect effect, int effectTime, TriSet<?> dye) {
+        FlowerTypes(StatusEffect effect, int effectTime, UnsafeTriSet<?> dye) {
             EFFECT = effect;
             EFFECT_TIME = effectTime;
             DYE = dye;

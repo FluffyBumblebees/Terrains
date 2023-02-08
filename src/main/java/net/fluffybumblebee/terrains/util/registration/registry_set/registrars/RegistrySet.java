@@ -3,8 +3,8 @@ package net.fluffybumblebee.terrains.util.registration.registry_set.registrars;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import net.fluffybumblebee.terrains.client.render.RenderTypes;
+import net.fluffybumblebee.terrains.util.registration.mass.SafeTriSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.helper.Quickerator;
-import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry.Storage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -78,14 +78,11 @@ public final class RegistrySet<Types, RegistryConfig extends RegistrySetCreator>
         return registry;
     }
 
-    public Quickerator<Storage> iterateRegistry(final RegistryTypes types) {
-        if (registry.storage.get(types) != null)
-            return () -> registry.storage.get(types);
-        else return List::of;
+    public Quickerator<SafeTriSet> iterateRegistry(final RegistryTypes types) {
+        return Quickerator.of(registry.storage.get(types) != null, registry.storage.get(types));
     }
-    public void iterateRegistry(OnEachRegistryType type) {
-        for (RegistryTypes regType : registryTypes)
-            type.enMass(iterateRegistry(regType));
+    public void iterateRegistry(final OnEachRegistryType type) {
+        Quickerator.of(registryTypes).forEach(element -> type.enMass(iterateRegistry(element)));
     }
 
     public interface RegistrySetFactory<Types, RegistryConfig extends RegistrySetCreator> {
@@ -93,6 +90,6 @@ public final class RegistrySet<Types, RegistryConfig extends RegistrySetCreator>
     }
 
     public interface OnEachRegistryType {
-        void enMass(Quickerator<Storage> element);
+        void enMass(final Quickerator<SafeTriSet> element);
     }
 }

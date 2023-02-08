@@ -3,7 +3,7 @@ package net.fluffybumblebee.terrains.common.registry.sets.foliage.component;
 import net.fluffybumblebee.terrains.client.render.RenderTypes;
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredFlowerPotBlock;
 import net.fluffybumblebee.terrains.common.registry.sets.foliage.TypesFoliage;
-import net.fluffybumblebee.terrains.util.registration.block.TriSet;
+import net.fluffybumblebee.terrains.util.registration.mass.UnsafeTriSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry;
@@ -14,7 +14,7 @@ import java.util.List;
 
 import static net.fluffybumblebee.terrains.common.registry.sets.foliage.component.FoliageSet.FeatureCreator;
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
-import static net.fluffybumblebee.terrains.util.registration.block.TriSet.buildFlammableBlock;
+import static net.fluffybumblebee.terrains.util.registration.mass.UnsafeTriSet.buildFlammableBlock;
 import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes.POTTED_BLOCK;
 
 public final class FoliageSet<
@@ -34,13 +34,13 @@ public final class FoliageSet<
         for (T type : foliageTypes.types()) {
             final String string = type.name().toLowerCase() + "_" + foliageTypes.type_suffix();
 
-            final TriSet<B> foliage;
+            final UnsafeTriSet<B> foliage;
             foliage = buildFlammableBlock(
                     foliageTypes.blockInstanceProvider().getInstance(type),
                     string
             );
 
-            final var potBlock = new TriSet.Builder<>(
+            final var potBlock = new UnsafeTriSet.Builder<>(
                     new ConfiguredFlowerPotBlock(foliage.BLOCK),
                     getIdentifier("potted_" + string)
             ).build();
@@ -68,7 +68,7 @@ public final class FoliageSet<
 
     public record UniqueFoliageSetHolder<
             FeatureInstance extends FeatureCreator
-            >(TriSet<?> block, TriSet<?> potBlock, FeatureInstance featureInstance
+            >(UnsafeTriSet<?> block, UnsafeTriSet<?> potBlock, FeatureInstance featureInstance
     ) {}
 
 

@@ -13,6 +13,14 @@ public interface Quickerator<T> {
         }
     }
 
+    static <T> Quickerator<T> of(final List<T> list) {
+        return () -> list;
+    }
+
+    static <T> Quickerator<T> of(final boolean condition, final List<T> list) {
+        return condition ? of(list) : of(List.of());
+    }
+
     @FunctionalInterface
     interface ElementProvider<T> {
         void with(final T element);

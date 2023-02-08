@@ -4,6 +4,7 @@ import net.fluffybumblebee.terrains.client.render.RenderTypes;
 import net.fluffybumblebee.terrains.common.registry.sets.item.TypesItem;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry;
+import net.fluffybumblebee.terrains.util.registration.mass.SafeTriSet;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -11,7 +12,6 @@ import net.minecraft.util.registry.Registry;
 import java.util.List;
 
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
-import static net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry.*;
 
 public class ItemSet<I extends Item> implements RegistrySetCreator {
     private final TypesItem<I> items;
@@ -28,7 +28,7 @@ public class ItemSet<I extends Item> implements RegistrySetCreator {
     public void registryEvent(SetRegistry registry) {
         registry.iterate(items.items()).forEach(element -> {
             Registry.register(Registry.ITEM, element.identifier, element.item);
-            registry.storage.get(items.types()).add(new Storage(element.item));
+            registry.storage.get(items.types()).add(new SafeTriSet(element.item));
         });
     }
 

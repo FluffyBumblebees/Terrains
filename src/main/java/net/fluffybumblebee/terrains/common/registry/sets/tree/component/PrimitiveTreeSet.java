@@ -4,7 +4,7 @@ import net.fluffybumblebee.terrains.client.render.RenderTypes;
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredFlowerPotBlock;
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredLeavesBlock;
 import net.fluffybumblebee.terrains.common.instances.block.plant.ConfiguredSaplingBlock;
-import net.fluffybumblebee.terrains.util.registration.block.TriSet;
+import net.fluffybumblebee.terrains.util.registration.mass.UnsafeTriSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistryTypes;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry;
@@ -14,8 +14,8 @@ import net.minecraft.block.sapling.SaplingGenerator;
 import java.util.List;
 
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
-import static net.fluffybumblebee.terrains.util.registration.block.TriSet.buildBlock;
-import static net.fluffybumblebee.terrains.util.registration.block.TriSet.buildFlammableBlock;
+import static net.fluffybumblebee.terrains.util.registration.mass.UnsafeTriSet.buildBlock;
+import static net.fluffybumblebee.terrains.util.registration.mass.UnsafeTriSet.buildFlammableBlock;
 
 public final class PrimitiveTreeSet<
         Generator extends SaplingGenerator,
@@ -25,9 +25,9 @@ public final class PrimitiveTreeSet<
     public final String TREE_TYPE;
     public final FeatureProvider TREE_FEATURES;
 
-    public final TriSet<ConfiguredSaplingBlock> SAPLING;
-    public final TriSet<ConfiguredLeavesBlock> LEAVES;
-    public final TriSet<ConfiguredFlowerPotBlock> POTTED_SAPLING;
+    public final UnsafeTriSet<ConfiguredSaplingBlock> SAPLING;
+    public final UnsafeTriSet<ConfiguredLeavesBlock> LEAVES;
+    public final UnsafeTriSet<ConfiguredFlowerPotBlock> POTTED_SAPLING;
 
     public PrimitiveTreeSet(
             final Config<Generator, FeatureProvider> config
@@ -42,7 +42,7 @@ public final class PrimitiveTreeSet<
                 TREE_TYPE + "_sapling"
         );
 
-        POTTED_SAPLING = new TriSet.Builder<>(
+        POTTED_SAPLING = new UnsafeTriSet.Builder<>(
                 new ConfiguredFlowerPotBlock(SAPLING.BLOCK),
                 getIdentifier("potted_" + TREE_TYPE +  "_sapling")
         ).build();

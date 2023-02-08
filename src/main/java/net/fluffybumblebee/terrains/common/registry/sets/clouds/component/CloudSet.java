@@ -7,7 +7,7 @@ import net.fluffybumblebee.terrains.common.world.inbuilt_structures.carver.cloud
 import net.fluffybumblebee.terrains.common.world.inbuilt_structures.carver.cloud.CloudCarverConfig;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.fluffybumblebee.terrains.util.predicates.BlockPredicates;
-import net.fluffybumblebee.terrains.util.registration.block.TriSet;
+import net.fluffybumblebee.terrains.util.registration.mass.UnsafeTriSet;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.fluffybumblebee.terrains.util.registration.registry_set.registrars.SetRegistry;
 import net.fluffybumblebee.terrains.util.registration.world.carver.CarverRegistrationUtil;
@@ -42,13 +42,13 @@ public final class CloudSet implements RegistrySetCreator {
     }
 
     public final RegistryEntry<ConfiguredCarver<?>> CLOUD_CARVER;
-    public final TriSet<BasicCloudBlock> cloudBlock;
+    public final UnsafeTriSet<BasicCloudBlock> cloudBlock;
     public CloudSet(final Config config) {
         final var id = config.id;
         if (config.burnable)
-            cloudBlock = new TriSet.Builder<>(config.cloudBlock, TerrainsDefaults.getIdentifier(id + "_cloud"))
+            cloudBlock = new UnsafeTriSet.Builder<>(config.cloudBlock, TerrainsDefaults.getIdentifier(id + "_cloud"))
                     .addBlockItem().addBurnable(200).addFlammability(10, 500).build();
-        else cloudBlock = TriSet.buildBlock(config.cloudBlock, id + "_cloud");
+        else cloudBlock = UnsafeTriSet.buildBlock(config.cloudBlock, id + "_cloud");
         CLOUD_CARVER = Registration.register(id + "_cloud_carver", cloudBlock.BLOCK, config.probability);
     }
 

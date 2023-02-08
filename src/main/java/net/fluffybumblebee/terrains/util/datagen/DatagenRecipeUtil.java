@@ -1,7 +1,7 @@
 package net.fluffybumblebee.terrains.util.datagen;
 
 import com.terraformersmc.terraform.boat.api.TerraformBoatType;
-import net.fluffybumblebee.terrains.util.registration.block.TriSet;
+import net.fluffybumblebee.terrains.util.registration.mass.UnsafeTriSet;
 import net.minecraft.advancement.criterion.CriterionConditions;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
@@ -24,8 +24,8 @@ public class DatagenRecipeUtil {
 
     public static void stairs(
             final Consumer<RecipeJsonProvider> exporter,
-            final TriSet<?> output,
-            final TriSet<?> input
+            final UnsafeTriSet<?> output,
+            final UnsafeTriSet<?> input
     ) {
         create(output.BLOCK, 4)
                 .criterion("check_block", defaultCriterion(output.ITEM))
@@ -43,8 +43,8 @@ public class DatagenRecipeUtil {
 
     public static void slab(
             final Consumer<RecipeJsonProvider> exporter,
-            final TriSet<?> output,
-            final TriSet<?> input
+            final UnsafeTriSet<?> output,
+            final UnsafeTriSet<?> input
     ) {
         create(output.BLOCK, 6)
                 .criterion("check_block", defaultCriterion(output.ITEM))
@@ -60,8 +60,8 @@ public class DatagenRecipeUtil {
 
     public static void pane(
             final Consumer<RecipeJsonProvider> exporter,
-            final TriSet<?> output,
-            final TriSet<?> input
+            final UnsafeTriSet<?> output,
+            final UnsafeTriSet<?> input
     ) {
         create(output.BLOCK, 16)
                 .criterion("check_block", defaultCriterion(output.ITEM))
@@ -79,8 +79,8 @@ public class DatagenRecipeUtil {
     public static void twoSquared(
             final Consumer<RecipeJsonProvider> exporter,
             final int outputCount,
-            final TriSet<?> output,
-            final TriSet<?> input
+            final UnsafeTriSet<?> output,
+            final UnsafeTriSet<?> input
     ) {
         create(output.BLOCK, outputCount)
                 .criterion("check_block", defaultCriterion(output.ITEM))
@@ -97,8 +97,8 @@ public class DatagenRecipeUtil {
 
     public static void twoSquared(
             final Consumer<RecipeJsonProvider> exporter,
-            final TriSet<?> output,
-            final TriSet<?> input
+            final UnsafeTriSet<?> output,
+            final UnsafeTriSet<?> input
     ) {
         twoSquared(exporter, 1, output, input);
     }
@@ -107,7 +107,7 @@ public class DatagenRecipeUtil {
             final Consumer<RecipeJsonProvider> exporter,
             final TerraformBoatType output,
             final String type,
-            final TriSet<?> input
+            final UnsafeTriSet<?> input
     ) {
         final var boat = getIdentifier(type+ "_boat");
 
@@ -126,8 +126,8 @@ public class DatagenRecipeUtil {
 
     public static void sign(
             final Consumer<RecipeJsonProvider> exporter,
-            final TriSet<?> output,
-            final TriSet<?> input
+            final UnsafeTriSet<?> output,
+            final UnsafeTriSet<?> input
     ) {
         create(output.BLOCK, 1)
                 .criterion("check_block", defaultCriterion(output.ITEM))
@@ -149,7 +149,7 @@ public class DatagenRecipeUtil {
             final Item output,
             final Identifier outputID,
             final int outputCount,
-            final TriSet<?> input
+            final UnsafeTriSet<?> input
     ) {
         ShapelessRecipeJsonBuilder.create(output, outputCount)
                 .criterion("check_block", defaultCriterion(output))
@@ -164,25 +164,25 @@ public class DatagenRecipeUtil {
 
     public static void single(
             final Consumer<RecipeJsonProvider> exporter,
-            final TriSet<?> output,
+            final UnsafeTriSet<?> output,
             final int outputCount,
-            final TriSet<?> input
+            final UnsafeTriSet<?> input
     ) {
         single(exporter, output.ITEM, output.IDENTIFIER, outputCount, input);
     }
 
     public static void single(
             final Consumer<RecipeJsonProvider> exporter,
-            final TriSet<?> output,
-            final TriSet<?> input
+            final UnsafeTriSet<?> output,
+            final UnsafeTriSet<?> input
     ) {
         single(exporter, output.ITEM, output.IDENTIFIER, 1, input);
     }
 
     public static void pressurePlate(
             final Consumer<RecipeJsonProvider> exporter,
-            final TriSet<?> output,
-            final TriSet<?> input
+            final UnsafeTriSet<?> output,
+            final UnsafeTriSet<?> input
     ) {
         create(output.BLOCK, 1)
                 .criterion("check_block", defaultCriterion(output.ITEM))
@@ -198,8 +198,8 @@ public class DatagenRecipeUtil {
 
     public static void fence(
             final Consumer<RecipeJsonProvider> exporter,
-            final TriSet<?> output,
-            final TriSet<?> input
+            final UnsafeTriSet<?> output,
+            final UnsafeTriSet<?> input
     ) {
         create(output.BLOCK, 3)
                 .criterion("check_block", defaultCriterion(output.ITEM))
@@ -217,8 +217,8 @@ public class DatagenRecipeUtil {
 
     public static void fenceGate(
             final Consumer<RecipeJsonProvider> exporter,
-            final TriSet<?> output,
-            final TriSet<?> input
+            final UnsafeTriSet<?> output,
+            final UnsafeTriSet<?> input
     ) {
         create(output.BLOCK, 1)
                 .criterion("check_block", defaultCriterion(output.ITEM))
@@ -236,8 +236,8 @@ public class DatagenRecipeUtil {
 
     public static void smelt(
             final Consumer<RecipeJsonProvider> exporter,
-            final TriSet<?> output,
-            final TriSet<?> input
+            final UnsafeTriSet<?> output,
+            final UnsafeTriSet<?> input
     ) {
         offerSmelting(
                 exporter,
