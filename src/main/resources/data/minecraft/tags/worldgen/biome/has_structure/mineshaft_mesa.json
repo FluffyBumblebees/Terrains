@@ -1,5 +1,6 @@
 {
+  "replace": false,
   "values": [
-    "#minecraft:is_badlands"
+    "terrains:maple_ghost_forest"
   ]
 }
