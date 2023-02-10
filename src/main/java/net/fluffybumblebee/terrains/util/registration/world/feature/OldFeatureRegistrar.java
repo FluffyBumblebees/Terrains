@@ -20,7 +20,6 @@ import java.util.stream.Stream;
 
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
 
-@SuppressWarnings("unchecked")
 public class OldFeatureRegistrar {
     public static RegistryEntry<PlacedFeature> registerPlaced(
             final String s, final RegistryEntry<ConfiguredFeature<?,?>> registryEntry,
@@ -90,6 +89,7 @@ public class OldFeatureRegistrar {
             return true;
         }
 
+        @SuppressWarnings("unchecked")
         @Override
         public Stream<TagKey<T>> streamTags() {
             return Stream.of(new TagKey[0]);
