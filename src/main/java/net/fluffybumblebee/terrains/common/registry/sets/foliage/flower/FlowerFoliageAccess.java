@@ -3,7 +3,7 @@ package net.fluffybumblebee.terrains.common.registry.sets.foliage.flower;
 import net.fluffybumblebee.terrains.common.registry.sets.foliage.component.FoliageSet;
 import net.fluffybumblebee.terrains.common.registry.sets.foliage.component.FoliageSet.UniqueFoliageSetHolder;
 import net.fluffybumblebee.terrains.util.registration.registry_set.helper.RegistrySetTypeTools;
-import net.minecraft.util.registry.RegistryEntry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
 import static net.fluffybumblebee.terrains.common.registry.sets.foliage.flower.FlowerFoliageType.*;

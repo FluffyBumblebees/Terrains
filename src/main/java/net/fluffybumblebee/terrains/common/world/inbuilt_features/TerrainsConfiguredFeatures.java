@@ -4,7 +4,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.TreeFeatureConfig.Builder;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
@@ -16,7 +15,6 @@ import java.util.List;
 
 import static net.fluffybumblebee.terrains.util.registration.world.feature.TerrainsFeatureRegistrar.registerConfiguredFeature;
 import static net.minecraft.world.gen.feature.ConfiguredFeatures.createRandomPatchFeatureConfig;
-import static net.minecraft.world.gen.feature.ConfiguredFeatures.register;
 
 @SuppressWarnings("deprecation")
 public class TerrainsConfiguredFeatures {
@@ -42,7 +40,7 @@ public class TerrainsConfiguredFeatures {
             )
     );
 
-    public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> SCATTERED_PUMPKIN = register(
+    public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> SCATTERED_PUMPKIN = registerConfiguredFeature(
             "scattered_pumpkin",
             TerrainsFeatures.SCATTERED_BLOCk,
             createRandomPatchFeatureConfig(
@@ -52,7 +50,7 @@ public class TerrainsConfiguredFeatures {
             )
     );
 
-    public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> SCATTERED_MELON = register(
+    public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> SCATTERED_MELON = registerConfiguredFeature(
             "scattered_melon",
             TerrainsFeatures.SCATTERED_BLOCk,
             createRandomPatchFeatureConfig(

@@ -3,6 +3,7 @@ package net.fluffybumblebee.terrains.util.registration.world.biome;
 import net.fluffybumblebee.terrains.core.TerrainsDefaults;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.BuiltinRegistries;
