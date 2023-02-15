@@ -26,6 +26,10 @@ repositories {
 	maven {url = 'https://maven.minecraftforge.net/'}
 	maven {url = 'https://maven.terraformersmc.com/'}
 	maven {url = 'https://mvnrepository.com/artifact/it.unimi.dsi/fastutil/'}
+	maven {
+		name = 'Ladysnake Mods'
+		url = 'https://ladysnake.jfrog.io/artifactory/mods'
+	}
 }
 
 dependencies {
@@ -35,7 +39,8 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}+${project.minecraft_version}"
 
-	implementation(include("it.unimi.dsi:fastutil:8.2.1"))
+	implementation"it.unimi.dsi:fastutil:8.2.1"
+	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:4.2.0")
 	modImplementation(include("com.github.glitchfiend:TerraBlender-fabric:${project.minecraft_version}-${project.terrablender_version}"))
 	modImplementation(include("com.terraformersmc.terraform-api:terraform-tree-api-v1:${project.terraform_api_version}"))
 	modImplementation(include("com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_api_version}"))
@@ -43,10 +48,19 @@ dependencies {
 }
 
 processResources {
-	inputs.property("version", project.version)
+
+	Map<String, String> properties = new HashMap<>()
+	properties.put("version", version)
+	properties.put("fabric_loader_version", fabric_loader_version)
+	properties.put("fabric_api_version", fabric_api_version)
+	properties.put("minecraft_version", minecraft_version)
+	properties.put("modid", modid)
+	properties.put("mod_name", mod_name)
+
+	properties.forEach((k, v) -> inputs.property(k, v))
 
 	filesMatching("fabric.mod.json") {
-		expand("version": project.version)
+		expand properties
 	}
 }
 

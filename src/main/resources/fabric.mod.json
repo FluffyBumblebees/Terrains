@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "terrains",
+  "id": "${modid}",
   "version": "${version}",
 
-  "name": "Terrains",
+  "name": "${mod_name}",
   "description": "Random worldgen things for minecraft.",
   "authors": [
     "Fluffy Bumblebee [Owner]",
@@ -41,9 +41,9 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.14.12",
-    "fabric": "*",
-    "minecraft": "~1.18.2",
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric_api": ">=${fabric_api_version}",
+    "minecraft": "~${minecraft_version}",
     "java": ">=17"
   }
 }
