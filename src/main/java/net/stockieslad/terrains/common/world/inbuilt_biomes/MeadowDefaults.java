@@ -1,6 +1,5 @@
 package net.stockieslad.terrains.common.world.inbuilt_biomes;
 
-import net.stockieslad.terrains.mixins.intercomm.OverworldBiomeCreatorMixinInterface;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.sound.SoundEvents;
@@ -12,13 +11,12 @@ import net.minecraft.world.gen.GenerationStep;
 import static net.stockieslad.terrains.common.world.inbuilt_structures.features.TerrainsPlacedFeatures.*;
 
 public class MeadowDefaults {
+
     private static int getSkyColor(@SuppressWarnings("SameParameterValue") float temperature) {
         float f = temperature / 3.0F;
         f = MathHelper.clamp(f, -1.0F, 1.0F);
         return MathHelper.hsvToRgb(0.62222224F - f * 0.05F, 0.5F + f * 0.1F, 1.0F);
     }
-
-    public static OverworldBiomeCreatorMixinInterface ACCESS;
 
     public static final BiomeEffects EFFECTS =
         new BiomeEffects.Builder()

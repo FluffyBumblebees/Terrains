@@ -1,34 +1,25 @@
 package net.stockieslad.terrains.mixins.mixin;
 
-import net.stockieslad.terrains.common.world.inbuilt_biomes.MeadowDefaults;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.OverworldBiomeCreator;
 import net.minecraft.world.biome.SpawnSettings;
+import net.stockieslad.terrains.common.world.inbuilt_biomes.MeadowDefaults;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.addBatsAndMonsters;
+import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.addFarmAnimals;
 import static net.stockieslad.terrains.common.world.inbuilt_structures.features.TerrainsPlacedFeatures.*;
 import static net.stockieslad.terrains.util.registration.world.biome.BiomeRegistryTools.addDefaultFeatures;
 import static net.stockieslad.terrains.util.registration.world.biome.BiomeRegistryTools.addVegetalFeatures;
-import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 
 @Mixin(OverworldBiomeCreator.class)
 public class OverworldBiomeCreatorMixin {
-
-    @Shadow private static void addBasicFeatures(GenerationSettings.Builder generationSettings) {
-        addLandCarvers(generationSettings);
-        addAmethystGeodes(generationSettings);
-        addDungeons(generationSettings);
-        addMineables(generationSettings);
-        addSprings(generationSettings);
-        addFrozenTopLayer(generationSettings);
-    }
 
     @Inject(method = "createMeadow", at = @At("HEAD"), cancellable = true)
     private static void changeMeadow(CallbackInfoReturnable<Biome> cir) {
@@ -71,10 +62,5 @@ public class OverworldBiomeCreatorMixin {
         addBatsAndMonsters(builder);
 
         return builder;
-    }
-
-
-    static {
-        MeadowDefaults.ACCESS = OverworldBiomeCreatorMixin::addBasicFeatures;
     }
 }
