@@ -1,6 +1,7 @@
 {
+  "replace": false,
   "values": [
-    "minecraft:plains",
-    "minecraft:meadow"
+    "terrains:jacaranda_plains",
+    "terrains:meadow_flats"
   ]
 }

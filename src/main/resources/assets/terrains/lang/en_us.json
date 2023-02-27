@@ -14,7 +14,8 @@
 	"itemGroup.terrains.nature": "Terrains Nature",
 	"itemGroup.terrains.underground": "Terrains Underground",
 	"itemGroup.terrains.foods": "Terrains Foods",
-	
+	"itemGroup.terrains.skies": "Terrains Skies",
+
 
 	"block.terrains.black_leaves": "Black Stained Oak Leaves",
 	"block.terrains.black_sapling": "Black Stained Oak Sapling",
@@ -262,7 +263,6 @@
 	"block.terrains.sappy_maple_log": "Sappy Maple Log",
 
 	"item.terrains.maple_boat": "Maple Boat",
-	"item.terrains.maple_chest_boat": "Chest Maple Boat",
 	"block.terrains.maple_log": "Maple Log",
 	"block.terrains.maple_wood": "Maple Wood",
 	"block.terrains.stripped_maple_log": "Stripped Maple Log",
@@ -277,6 +277,7 @@
 	"block.terrains.maple_trapdoor": "Maple Trapdoor",
 	"block.terrains.maple_button": "Maple Button",
 	"block.terrains.maple_sign": "Maple Sign",
+
 
 	"item.terrains.maple_sap": "Maple Sap",
 	"item.terrains.pancake": "Pancake",
@@ -295,7 +296,6 @@
 	"block.terrains.lavender_flower": "Lavender Flower",
 
 	"item.terrains.jacaranda_boat": "Jacaranda Boat",
-	"item.terrains.jacaranda_chest_boat": "Jacaranda Maple Boat",
 	"block.terrains.jacaranda_log": "Jacaranda Log",
 	"block.terrains.jacaranda_wood": "Jacaranda Wood",
 	"block.terrains.stripped_jacaranda_log": "Stripped Jacaranda Log",
@@ -309,5 +309,16 @@
 	"block.terrains.jacaranda_door": "Jacaranda Door",
 	"block.terrains.jacaranda_trapdoor": "Jacaranda Trapdoor",
 	"block.terrains.jacaranda_button": "Jacaranda Button",
-	"block.terrains.jacaranda_sign": "Jacaranda Sign"
+	"block.terrains.jacaranda_sign": "Jacaranda Sign",
+
+	"block.terrains.cold_cloud": "Cold Cloud",
+	"block.terrains.storm_cloud": "Storm Cloud",
+	"block.terrains.teal_cloud": "Teal Cloud",
+	"block.terrains.blue_cloud": "Blue Cloud",
+	"block.terrains.pink_cloud": "Pink Cloud",
+	"block.terrains.golden_cloud": "Golden Cloud",
+	"block.terrains.purple_cloud": "Purple Cloud",
+	"block.terrains.green_cloud": "Green Cloud",
+	"block.terrains.irradiated_cloud": "Irradiated Cloud",
+	"block.terrains.blazing_cloud": "Blazing Cloud"
 }

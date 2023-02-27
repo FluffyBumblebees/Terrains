@@ -1,17 +1,20 @@
 {
   "schemaVersion": 1,
-  "id": "terrains",
+  "id": "${modid}",
   "version": "${version}",
 
-  "name": "Terrains",
+  "name": "${mod_name}",
   "description": "Random worldgen things for minecraft.",
   "authors": [
-    "Fluffy Bumblebee [Owner]",
+    "StockiesLad [Owner]",
     "IIpho3nix [Contributor-Artist]"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/terrains",
+    "sources": "https://github.com/FluffyBumblebees/Terrains",
+    "issues": "https://github.com/FluffyBumblebees/Terrains/issues",
+    "wiki": "https://github.com/FluffyBumblebees/Terrains/wiki",
+    "discord": "https://discord.gg/fMSnenNSXM"
   },
 
   "license": "All Rights Reserved",
@@ -20,16 +23,16 @@
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
-      "net.fluffybumblebee.terrains.cancer.datagen.TerrainsDatagen"
+      "net.stockieslad.terrains.cancer.datagen.TerrainsDatagen"
     ],
     "main": [
-      "net.fluffybumblebee.terrains.core.TerrainsCommon"
+      "net.stockieslad.terrains.core.TerrainsCommon"
     ],
     "client": [
-      "net.fluffybumblebee.terrains.core.TerrainsClient"
+      "net.stockieslad.terrains.core.TerrainsClient"
     ],
     "terrablender": [
-      "net.fluffybumblebee.terrains.common.world.terrablender.TerrainsTerrablenderBiomes"
+      "net.stockieslad.terrains.common.world.terrablender.TerrainsTerrablenderBiomes"
     ]
   },
   "accessWidener": "terrains.accesswidener",
@@ -38,9 +41,9 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.14.12",
-    "fabric": "*",
-    "minecraft": "~1.19.2",
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric": ">=${fabric_api_version}",
+    "minecraft": "~${minecraft_version}",
     "java": ">=17"
   }
 }

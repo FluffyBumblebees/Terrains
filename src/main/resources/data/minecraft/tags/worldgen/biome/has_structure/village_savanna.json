@@ -1,5 +1,7 @@
 {
+  "replace": false,
   "values": [
-    "minecraft:savanna"
+    "terrains:maple_ghost_forest",
+    "terrains:pumpkin_ridges"
   ]
 }

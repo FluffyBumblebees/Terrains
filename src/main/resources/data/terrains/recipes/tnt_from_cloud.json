@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "chess_large",
+  "pattern": [
+    "xyx",
+    "ysy",
+    "xyx"
+  ],
+  "key": {
+    "x": {
+      "item": "terrains:blazing_cloud"
+    },
+    "y": {
+      "item": "terrains:irradiated_cloud"
+    },
+    "s": {
+      "item": "minecraft:sandstone"
+    }
+  },
+  "result": {
+    "item": "minecraft:tnt"
+  }
+}
