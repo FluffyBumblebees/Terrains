@@ -6,7 +6,7 @@
   "name": "${mod_name}",
   "description": "Random worldgen things for minecraft.",
   "authors": [
-    "Fluffy Bumblebee [Owner]",
+    "StockiesLad [Owner]",
     "IIpho3nix [Contributor-Artist]"
   ],
   "contact": {
@@ -23,16 +23,16 @@
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
-      "net.fluffybumblebee.terrains.cancer.datagen.TerrainsDatagen"
+      "net.stockieslad.terrains.cancer.datagen.TerrainsDatagen"
     ],
     "main": [
-      "net.fluffybumblebee.terrains.core.TerrainsCommon"
+      "net.stockieslad.terrains.core.TerrainsCommon"
     ],
     "client": [
-      "net.fluffybumblebee.terrains.core.TerrainsClient"
+      "net.stockieslad.terrains.core.TerrainsClient"
     ],
     "terrablender": [
-      "net.fluffybumblebee.terrains.common.world.terrablender.TerrainsTerrablenderBiomes"
+      "net.stockieslad.terrains.common.world.terrablender.TerrainsTerrablenderBiomes"
     ]
   },
   "accessWidener": "terrains.accesswidener",
