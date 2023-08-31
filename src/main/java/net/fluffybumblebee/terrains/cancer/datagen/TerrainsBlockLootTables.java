@@ -61,7 +61,7 @@ public class TerrainsBlockLootTables extends FabricBlockLootTableProvider {
     }
 
     private void leaves(Block leaves, Block sapling) {
-        addDrop(leaves,
+       /*addDrop(leaves,
                 leavesDrop(leaves,
                         sapling,
                         0.05f,
@@ -69,6 +69,7 @@ public class TerrainsBlockLootTables extends FabricBlockLootTableProvider {
                         0.083333336f,
                         0.1f
                 )
-        );
+        );*/
     }
+
 }

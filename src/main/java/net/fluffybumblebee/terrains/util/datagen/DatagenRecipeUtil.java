@@ -10,11 +10,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 import static net.fluffybumblebee.terrains.core.TerrainsDefaults.getIdentifier;
-import static net.minecraft.data.server.RecipeProvider.*;
 import static net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder.create;
 
 public class DatagenRecipeUtil {
@@ -239,7 +237,7 @@ public class DatagenRecipeUtil {
             final TriSet<?> output,
             final TriSet<?> input
     ) {
-        offerSmelting(
+        /*offerSmelting(
                 exporter,
                 List.of(input.BLOCK),
                 output.BLOCK,
@@ -255,6 +253,6 @@ public class DatagenRecipeUtil {
                 0.5F,
                 100,
                 "blasting"
-        );
+        );*/
     }
 }

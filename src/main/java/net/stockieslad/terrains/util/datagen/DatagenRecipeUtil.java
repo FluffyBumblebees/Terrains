@@ -1,7 +1,6 @@
 package net.stockieslad.terrains.util.datagen;
 
 import com.terraformersmc.terraform.boat.api.TerraformBoatType;
-import net.stockieslad.terrains.util.registration.mass.UnsafeTriSet;
 import net.minecraft.advancement.criterion.CriterionConditions;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
@@ -9,13 +8,12 @@ import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
+import net.stockieslad.terrains.util.registration.mass.UnsafeTriSet;
 
-import java.util.List;
 import java.util.function.Consumer;
 
-import static net.stockieslad.terrains.core.TerrainsDefaults.getIdentifier;
-import static net.minecraft.data.server.RecipeProvider.*;
 import static net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder.create;
+import static net.stockieslad.terrains.core.TerrainsDefaults.getIdentifier;
 
 public class DatagenRecipeUtil {
     public static CriterionConditions defaultCriterion(Item item) {
@@ -239,7 +237,7 @@ public class DatagenRecipeUtil {
             final UnsafeTriSet<?> output,
             final UnsafeTriSet<?> input
     ) {
-        offerSmelting(
+        /*offerSmelting(
                 exporter,
                 List.of(input.BLOCK),
                 output.BLOCK,
@@ -255,6 +253,6 @@ public class DatagenRecipeUtil {
                 0.5F,
                 100,
                 "blasting"
-        );
+        );*/
     }
 }

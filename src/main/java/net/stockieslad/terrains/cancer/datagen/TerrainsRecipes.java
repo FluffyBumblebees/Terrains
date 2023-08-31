@@ -2,15 +2,11 @@ package net.stockieslad.terrains.cancer.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.stockieslad.terrains.common.registry.sets.foliage.flower.FlowerFoliageType.FlowerTypes;
-import net.stockieslad.terrains.common.registry.sets.tree.component.WoodSet;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.stockieslad.terrains.common.registry.sets.tree.component.WoodSet;
 
 import java.util.function.Consumer;
 
-import static net.stockieslad.terrains.common.registry.sets.RegistrySetManager.CRYSTAL_GEODES;
-import static net.stockieslad.terrains.common.registry.sets.RegistrySetManager.FULL_TREES;
-import static net.stockieslad.terrains.common.registry.sets.foliage.flower.FlowerFoliageAccess.accessFlowerConfig;
 import static net.stockieslad.terrains.util.datagen.DatagenRecipeUtil.*;
 
 public class TerrainsRecipes extends FabricRecipeProvider {
@@ -21,7 +17,7 @@ public class TerrainsRecipes extends FabricRecipeProvider {
 
     @Override
     protected void generateRecipes(Consumer<RecipeJsonProvider> exporter) {
-        CRYSTAL_GEODES.getConfigQuickerator().forEach(element -> {
+        /*CRYSTAL_GEODES.getConfigQuickerator().forEach(element -> {
             offerStonecuttingRecipe(exporter, element.CORUNDUM_STAIRS.BLOCK, element.WAXED_CORUNDUM.BLOCK);
             offerStonecuttingRecipe(exporter, element.CRYSTAL_STAIRS.BLOCK, element.CRYSTAL.BLOCK);
             offerStonecuttingRecipe(exporter, element.CORUNDUM_SLAB.BLOCK, element.CORUNDUM_STAIRS.BLOCK);
@@ -42,7 +38,7 @@ public class TerrainsRecipes extends FabricRecipeProvider {
         FULL_TREES.getConfigQuickerator().forEach(element -> woodSet(exporter, element.WOOD_SET));
 
         for (FlowerTypes flowerTypes : FlowerTypes.values())
-            single(exporter, flowerTypes.DYE, accessFlowerConfig(flowerTypes).block());
+            single(exporter, flowerTypes.DYE, accessFlowerConfig(flowerTypes).block());*/
     }
 
 
