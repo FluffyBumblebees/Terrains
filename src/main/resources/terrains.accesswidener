@@ -1,4 +1,4 @@
-accessWidener	v1	named
+accessWidener	v2	named
 
 accessible    method    net/minecraft/world/gen/feature/VegetationPlacedFeatures    modifiersWithChance    (ILnet/minecraft/world/gen/placementmodifier/PlacementModifier;)Ljava/util/List;
 extendable    method    net/minecraft/world/gen/carver/Carver    getState    (Lnet/minecraft/world/gen/carver/CarverContext;Lnet/minecraft/world/gen/carver/CarverConfig;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/world/gen/chunk/AquiferSampler;)Lnet/minecraft/block/BlockState;
