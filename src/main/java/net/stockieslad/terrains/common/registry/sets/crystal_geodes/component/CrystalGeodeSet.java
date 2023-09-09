@@ -68,7 +68,6 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
         CORUNDUM_CLUSTER = buildCrystal(new CorundumCluster(), TYPE + "_corundum_cluster");
         WAXED_CORUNDUM = buildCrystal(new CorundumBlock(), "waxed_" + TYPE + "_corundum");
 
-
         CORUNDUM = buildCrystal(new CorundumBlock(() -> CORUNDUM_CLUSTER.BLOCK), TYPE + "_corundum");
         CORUNDUM_SLAB = buildCrystal(new CorundumCrystalSlab(), TYPE + "_corundum_slab");
         CORUNDUM_STAIRS = buildCrystal(new CorundumCrystalStairs(), TYPE + "_corundum_stairs");
@@ -99,7 +98,9 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
 
     @Override
     public void registryEvent(final SetRegistry registry) {
-        registry.triSet(RegistryTypes.CLUSTER, CORUNDUM_CLUSTER);
+        registry.triSet(RegistryTypes.CLUSTER,
+                CORUNDUM_CLUSTER
+        );
         registry.triSet(RegistryTypes.TRANSPARENT_FULL_BLOCK,
                 WAXED_CORUNDUM,
                 CORUNDUM,
@@ -127,7 +128,7 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
 
     @Override
     public List<RenderTypes> getRenderTypes() {
-        return List.of(RenderTypes.TRANSLUCENT);
+        return List.of(RenderTypes.TRANSLUCENT, RenderTypes.CUTOUT);
     }
 
     @Override
