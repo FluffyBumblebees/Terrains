@@ -23,34 +23,38 @@ public final class ChainLogger {
         WARN = internalLogger::warn;
     }
 
-    private ChainLogger base(final String[] messages, final SideEffect type) {
+    private ChainLogger base(final SideEffect type, final String[] messages) {
         for (final String message : messages)
             type.action(message);
         return this;
     }
 
+    public ChainLogger log(SideEffect sideEffect, final String... messages) {
+        return base(sideEffect, messages);
+    }
+
     public ChainLogger debug(final String... messages) {
-        return base(messages, DEBUG);
+        return log(DEBUG, messages);
     }
 
     public ChainLogger error(final String... messages) {
-        return base(messages, ERROR);
+        return log(ERROR, messages);
     }
 
     public ChainLogger info(final String... messages) {
-        return base(messages, INFO);
+        return log(INFO, messages);
     }
 
     public ChainLogger shout(final String... messages) {
-        return base(messages, SHOUT);
+        return log(SHOUT, messages);
     }
 
     public ChainLogger trace(final String... messages) {
-        return base(messages, TRACE);
+        return log(TRACE, messages);
     }
 
     public ChainLogger warn(final String... messages) {
-        return base(messages, WARN);
+        return log(WARN, messages);
     }
 
     public interface SideEffect {

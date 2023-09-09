@@ -1,12 +1,8 @@
 package net.stockieslad.terrains.common.registry.sets.crystal_geodes.component;
 
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.stockieslad.terrains.client.render.RenderTypes;
-import net.stockieslad.terrains.common.instances.block.crystals.*;
-import net.stockieslad.terrains.util.registration.mass.UnsafeTriSet;
-import net.stockieslad.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
-import net.stockieslad.terrains.util.registration.registry_set.registrars.RegistryTypes;
-import net.stockieslad.terrains.util.registration.registry_set.registrars.SetRegistry;
+import net.feltmc.abstractium.init.AbstractiumCommon;
+import net.feltmc.abstractium.library.common.worldgen.biome.AbstractBiomes;
+import net.feltmc.abstractium.util.dynamic.Mimic;
 import net.minecraft.block.AmethystClusterBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -25,17 +21,24 @@ import net.minecraft.world.gen.placementmodifier.RarityFilterPlacementModifier;
 import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
+import net.stockieslad.terrains.client.render.RenderTypes;
+import net.stockieslad.terrains.common.instances.block.crystals.*;
+import net.stockieslad.terrains.util.registration.mass.UnsafeTriSet;
+import net.stockieslad.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
+import net.stockieslad.terrains.util.registration.registry_set.registrars.RegistryTypes;
+import net.stockieslad.terrains.util.registration.registry_set.registrars.SetRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry.registerWaxableBlockPair;
+import static net.feltmc.abstractium.library.common.CommonTypeObjects.placedFeature;
+import static net.feltmc.abstractium.library.common.CommonTypeObjects.registryKey;
+import static net.minecraft.world.gen.feature.PlacedFeatures.register;
 import static net.stockieslad.terrains.core.TerrainsDefaults.getNamespaceVar;
 import static net.stockieslad.terrains.util.registration.mass.UnsafeTriSet.buildBlock;
-import static net.stockieslad.terrains.util.registration.world.modification.EasyBiomeModification.generateFeature;
-import static net.minecraft.world.gen.feature.PlacedFeatures.register;
 
-@SuppressWarnings("FieldCanBeLocal")
+@SuppressWarnings({"FieldCanBeLocal"})
 public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetCreator {
     public final String TYPE;
     public final List<UnsafeTriSet<?>> ALL_BLOCKS;
@@ -129,7 +132,17 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
 
     @Override
     public void generationEvent() {
-        generateFeature(PLACED_GEODE, BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_STRUCTURES);
+        AbstractiumCommon.COMMON_ABSTRACTION_HANDLER.abstraction.getStructureGenerator()
+                .generateFeature(
+                        new Mimic(
+                                PLACED_GEODE.getKey().orElseThrow().getValue(),
+                                registryKey(placedFeature()),
+                                PLACED_GEODE.getKey().orElseThrow()
+                        ),
+                        AbstractBiomes.OVERWORLD,
+                        GenerationStep.Feature.UNDERGROUND_STRUCTURES
+                );
+        //generateFeature(PLACED_GEODE, BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_STRUCTURES);
     }
 
     public static <B extends Block, C extends AmethystClusterBlock> RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> registerGeode(

@@ -24,6 +24,7 @@ loom {
 
 repositories {
 	maven {url = 'https://maven.minecraftforge.net/'}
+	maven {url = "https://api.modrinth.com/maven"}
 	maven {url = 'https://maven.terraformersmc.com/'}
 	maven {url = 'https://mvnrepository.com/artifact/it.unimi.dsi/fastutil/'}
 	maven {
@@ -41,6 +42,7 @@ dependencies {
 
 	implementation"it.unimi.dsi:fastutil:8.2.1"
 	//modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:4.2.0")
+	modCompileOnly("maven.modrinth:abstractium:$project.abstractium_version")
 	modImplementation(include("com.github.glitchfiend:TerraBlender-fabric:${project.minecraft_version}-${project.terrablender_version}"))
 	modImplementation(include("com.terraformersmc.terraform-api:terraform-tree-api-v1:${project.terraform_api_version}"))
 	modImplementation(include("com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_api_version}"))

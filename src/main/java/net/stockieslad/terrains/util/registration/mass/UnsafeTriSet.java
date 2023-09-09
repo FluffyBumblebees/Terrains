@@ -2,14 +2,14 @@ package net.stockieslad.terrains.util.registration.mass;
 
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.stockieslad.terrains.common.instances.block.wood.WoodBlock;
-import net.stockieslad.terrains.core.TerrainsDefaults;
+import net.feltmc.abstractium.init.AbstractiumCommon;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.stockieslad.terrains.common.instances.block.wood.WoodBlock;
+import net.stockieslad.terrains.core.TerrainsDefaults;
 
 import static net.stockieslad.terrains.core.TerrainsDefaults.getIdentifier;
 
@@ -90,8 +90,8 @@ public final class UnsafeTriSet<B extends Block> {
             this(block, TerrainsDefaults.getIdentifier(identifier));
         }
 
-        private Builder<B> getInstanceWithSideEffect(InstanceReturnable instanceReturnable) {
-            instanceReturnable.sideEffect();
+        private Builder<B> getInstanceWithSideEffect(Runnable runnable) {
+            runnable.run();
             return this;
         }
 
@@ -120,19 +120,16 @@ public final class UnsafeTriSet<B extends Block> {
         }
 
         public UnsafeTriSet<B> build() {
-            Registry.register(Registry.BLOCK, identifier, block);
+            final var abstraction = AbstractiumCommon.COMMON_ABSTRACTION_HANDLER.abstraction.getRegistrar();
+            abstraction.registerBlock(identifier, block);
             if (blockItem != null)
-                Registry.register(Registry.ITEM, identifier, blockItem);
+                abstraction.registerItem(identifier, blockItem);
             return new UnsafeTriSet<>(block, blockItem, identifier);
         }
 
         @Override
         public String toString() {
             throw new RuntimeException("toString() called whilst building A BlockSet. Please avoid doing this!");
-        }
-
-        private interface InstanceReturnable {
-            void sideEffect();
         }
     }
 

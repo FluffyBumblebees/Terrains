@@ -7,19 +7,15 @@ import net.stockieslad.terrains.core.TerrainsDefaults;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class BoatRegistration {
 
-    public static void register(String material, Supplier<TerraformBoatType> type, WithBoat withBoat) {
+    public static void register(String material, Supplier<TerraformBoatType> type, Consumer<TerraformBoatType> consumer) {
         var boat = TerraformBoatItemHelper.registerBoatItem(new Identifier(TerrainsDefaults.NAMESPACE,
                 material + "_boat"), type);
-
-        withBoat.register(new TerraformBoatType.Builder().item(boat).build());
+        consumer.accept(new TerraformBoatType.Builder().item(boat).build());
         Registry.register(TerraformBoatTypeRegistry.INSTANCE, new Identifier(TerrainsDefaults.NAMESPACE, material), type.get());
-    }
-
-    public interface WithBoat {
-        void register(final TerraformBoatType item);
     }
 }
