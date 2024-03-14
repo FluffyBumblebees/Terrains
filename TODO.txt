@@ -1,6 +1,7 @@
 BACKEND:
-Abstract this entire mod
+Abstract this entire mod (just biomes to do now)
 Add a config
+cleanup all the code by removing tri-sets and all.
 
 STAINED_FORESTS:
 Make stained forests extremely rare and a small FLAT biome.

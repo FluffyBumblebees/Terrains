@@ -3,7 +3,6 @@ package net.stockieslad.terrains.common.registry.sets.tree.component;
 
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.feltmc.abstractium.library.common.entity.SignCollection;
-import net.minecraft.block.AbstractSignBlock;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
@@ -103,10 +102,6 @@ public final class WoodSet implements RegistrySetCreator {
 
         StrippableBlockRegistry.register(LOG.BLOCK, STRIPPED_LOG.BLOCK);
         StrippableBlockRegistry.register(WOOD.BLOCK, STRIPPED_WOOD.BLOCK);
-    }
-
-    public UnsafeTriSet<AbstractSignBlock> getSign() {
-        return UnsafeTriSet.of(SIGNS.signs.get(SignCollection.State.STANDING), getIdentifier(TYPE + "_sign")) ;
     }
 
     @Override
