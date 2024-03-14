@@ -1,28 +1,24 @@
 package net.stockieslad.terrains.common.registry.sets.tree.component;
 
 
-import com.terraformersmc.terraform.boat.api.TerraformBoatType;
-import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
-import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
-import net.stockieslad.terrains.client.render.RenderTypes;
-import net.stockieslad.terrains.common.instances.block.wood.*;
-import net.stockieslad.terrains.util.registration.mass.UnsafeTriSet;
-import net.stockieslad.terrains.util.registration.mass.UnsafeTriSet.Builder;
-import net.stockieslad.terrains.util.registration.entity.BoatRegistration;
-import net.stockieslad.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
-import net.stockieslad.terrains.util.registration.registry_set.registrars.RegistryTypes;
-import net.stockieslad.terrains.util.registration.mass.SafeTriSet;
-import net.stockieslad.terrains.util.registration.registry_set.registrars.SetRegistry;
-import net.minecraft.block.Blocks;
+import net.feltmc.abstractium.library.common.entity.SignCollection;
+import net.minecraft.block.AbstractSignBlock;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.SignItem;
 import net.minecraft.util.Identifier;
+import net.stockieslad.terrains.client.render.RenderTypes;
+import net.stockieslad.terrains.common.instances.block.wood.*;
+import net.stockieslad.terrains.core.TerrainsDefaults;
+import net.stockieslad.terrains.util.registration.mass.SafeTriSet;
+import net.stockieslad.terrains.util.registration.mass.UnsafeTriSet;
+import net.stockieslad.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
+import net.stockieslad.terrains.util.registration.registry_set.registrars.RegistryTypes;
+import net.stockieslad.terrains.util.registration.registry_set.registrars.SetRegistry;
 
 import java.util.List;
 
+import static net.feltmc.abstractium.init.AbstractiumCommon.COMMON_ABSTRACTION_HANDLER;
 import static net.stockieslad.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.stockieslad.terrains.util.registration.mass.UnsafeTriSet.buildFlammableBlock;
 
@@ -30,8 +26,8 @@ public final class WoodSet implements RegistrySetCreator {
     public final String TYPE;
     public final List<UnsafeTriSet<?>> ALL_BLOCKS;
 
+    public Item BOAT;
 
-    private TerraformBoatType BOAT;
     public final UnsafeTriSet<?> LOG;
     public final UnsafeTriSet<?> WOOD;
     public final UnsafeTriSet<?> STRIPPED_LOG;
@@ -46,10 +42,12 @@ public final class WoodSet implements RegistrySetCreator {
     public final UnsafeTriSet<?> TRAPDOOR;
     public final UnsafeTriSet<?> BUTTON;
 
-    public final UnsafeTriSet<TerraformSignBlock> SIGN;
-    public final UnsafeTriSet<?> WALL_SIGN;
+    public final SignCollection SIGNS;
+    /*public final UnsafeTriSet<TerraformSignBlock> SIGN;
+    public final UnsafeTriSet<?> WALL_SIGN;*/
 
     public WoodSet(final String woodType) {
+        final var abstraction = COMMON_ABSTRACTION_HANDLER.abstraction;
         TYPE = woodType;
 
         LOG = buildFlammableBlock(new WoodBlock(), TYPE + "_log");
@@ -66,15 +64,24 @@ public final class WoodSet implements RegistrySetCreator {
         TRAPDOOR = buildFlammableBlock(new WoodTrapDoor(), TYPE + "_trapdoor", ItemGroup.REDSTONE);
         BUTTON = buildFlammableBlock(new WoodButton(), TYPE + "_button", ItemGroup.REDSTONE);
 
-        Identifier SIGN_TEXTURE = getIdentifier("entity/signs/" + TYPE);
+        SIGNS = abstraction.getRegistrar().registerSign(
+                getIdentifier("entity/signs/" + TYPE),
+                TerrainsDefaults.NAMESPACE,
+                TYPE
+        );
+
+        /*Identifier SIGN_TEXTURE = getIdentifier("entity/signs/" + TYPE);
         WALL_SIGN = new Builder<>(new TerraformWallSignBlock(SIGN_TEXTURE,
                 FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)), getIdentifier(TYPE + "_wall_sign")).build();
         SIGN = new Builder<>(new TerraformSignBlock(SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_SIGN)),
                 getIdentifier(TYPE + "_sign"))
                 .addBlockItem(block -> new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), block, WALL_SIGN.BLOCK))
-                .build();
+                .build();*/
 
-        BoatRegistration.register(TYPE, () -> BOAT, boat -> BOAT = boat);
+        BOAT = abstraction.getRegistrar().registerBoat(
+                new Identifier(TerrainsDefaults.NAMESPACE, TYPE + "_boat"),
+                new Identifier(TerrainsDefaults.NAMESPACE, TYPE)
+        );
 
         ALL_BLOCKS = List.of(
                 LOG,
@@ -90,20 +97,16 @@ public final class WoodSet implements RegistrySetCreator {
                 DOOR,
                 TRAPDOOR,
                 BUTTON,
-                SIGN
+                //SIGN
+                UnsafeTriSet.of(SIGNS.signs.get(SignCollection.State.STANDING), getIdentifier(TYPE + "_sign"))
         );
 
         StrippableBlockRegistry.register(LOG.BLOCK, STRIPPED_LOG.BLOCK);
         StrippableBlockRegistry.register(WOOD.BLOCK, STRIPPED_WOOD.BLOCK);
     }
 
-    public UnsafeTriSet<TerraformSignBlock> getSign() {
-        return SIGN;
-    }
-
-    @SuppressWarnings("unused")
-    public TerraformBoatType getBoat() {
-        return BOAT;
+    public UnsafeTriSet<AbstractSignBlock> getSign() {
+        return UnsafeTriSet.of(SIGNS.signs.get(SignCollection.State.STANDING), getIdentifier(TYPE + "_sign")) ;
     }
 
     @Override
@@ -127,7 +130,7 @@ public final class WoodSet implements RegistrySetCreator {
                 DOOR,
                 TRAPDOOR,
                 BUTTON,
-                SIGN
+                UnsafeTriSet.of(SIGNS.signs.get(SignCollection.State.STANDING), getIdentifier(TYPE + "_sign"))
         );
 
         registry.triSet(RegistryTypes.WOOD,
@@ -142,15 +145,17 @@ public final class WoodSet implements RegistrySetCreator {
                 FENCE_GATE,
                 PRESSURE_PLATE,
                 BUTTON,
-                SIGN
+                UnsafeTriSet.of(SIGNS.signs.get(SignCollection.State.STANDING), getIdentifier(TYPE + "_sign"))
         );
 
         registry.storage.get(RegistryTypes.WOOD).add(new SafeTriSet(
-                BOAT.getItem()
+                BOAT
+                //BOAT.getItem()
         ));
 
         registry.storage.get(RegistryTypes.ALL_WOOD_BLOCKS).add(new SafeTriSet(
-                BOAT.getItem()
+                BOAT
+                //BOAT.getItem()
         ));
     }
 

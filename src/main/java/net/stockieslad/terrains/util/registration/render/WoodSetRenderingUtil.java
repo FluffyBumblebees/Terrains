@@ -8,7 +8,7 @@ import static net.stockieslad.terrains.util.registration.render.SignRenderingUti
 
 public class WoodSetRenderingUtil {
     public static void registerWoodSetEntities(WoodSet woodSet) {
-        registerTextures(woodSet.getSign().BLOCK.getTexture());
+        registerTextures(getIdentifier("entity/signs/" + woodSet.TYPE));
         registerModelLayer(getIdentifier(woodSet.TYPE));
     }
 }

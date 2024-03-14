@@ -1,7 +1,5 @@
 package net.stockieslad.terrains.util.datagen;
 
-import com.terraformersmc.terraform.boat.api.TerraformBoatType;
-import net.stockieslad.terrains.util.registration.mass.UnsafeTriSet;
 import net.minecraft.advancement.criterion.CriterionConditions;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
@@ -9,13 +7,15 @@ import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
+import net.stockieslad.terrains.util.registration.mass.UnsafeTriSet;
 
 import java.util.List;
 import java.util.function.Consumer;
 
-import static net.stockieslad.terrains.core.TerrainsDefaults.getIdentifier;
-import static net.minecraft.data.server.RecipeProvider.*;
+import static net.minecraft.data.server.RecipeProvider.offerBlasting;
+import static net.minecraft.data.server.RecipeProvider.offerSmelting;
 import static net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder.create;
+import static net.stockieslad.terrains.core.TerrainsDefaults.getIdentifier;
 
 public class DatagenRecipeUtil {
     public static CriterionConditions defaultCriterion(Item item) {
@@ -105,14 +105,14 @@ public class DatagenRecipeUtil {
 
     public static void boat(
             final Consumer<RecipeJsonProvider> exporter,
-            final TerraformBoatType output,
+            final Item output,
             final String type,
             final UnsafeTriSet<?> input
     ) {
         final var boat = getIdentifier(type+ "_boat");
 
-        create(output.getItem(), 1)
-                .criterion("check_block", defaultCriterion(output.getItem()))
+        create(output, 1)
+                .criterion("check_block", defaultCriterion(output))
                 .group("boat")
                 .pattern("x x")
                 .pattern("xxx")

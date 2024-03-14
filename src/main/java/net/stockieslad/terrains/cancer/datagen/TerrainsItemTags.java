@@ -85,7 +85,7 @@ public class TerrainsItemTags extends FabricTagProvider.ItemTagProvider {
     public final void addWoodBlockTags(final WoodSet woodSet) {
         addItemTags(woodSet.LOG, LOGS_THAT_BURN);
         addItemTags(woodSet.PLANKS, PLANKS, PLANKS_THAT_BURN);
-        addItemTags(woodSet.SIGN, SIGNS);
+        //addItemTags(woodSet.SIGN, SIGNS);
         addItemTags(woodSet.BUTTON, WOODEN_BUTTONS);
         addItemTags(woodSet.DOOR, WOODEN_DOORS);
         addItemTags(woodSet.FENCE, WOODEN_FENCES);

@@ -56,8 +56,8 @@ public class TerrainsRecipes extends FabricRecipeProvider {
         single(exporter, set.PLANKS, 4, set.STRIPPED_WOOD);
         stairs(exporter, set.STAIRS, set.PLANKS);
         slab(exporter, set.SLAB, set.PLANKS);
-        boat(exporter, set.getBoat(), set.TYPE, set.PLANKS);
-        sign(exporter, set.SIGN, set.PLANKS);
+        boat(exporter, set.BOAT, set.TYPE, set.PLANKS);
+        //sign(exporter, set.SIGN, set.PLANKS);
         single(exporter, set.BUTTON, 1, set.PLANKS);
         pressurePlate(exporter, set.PRESSURE_PLATE, set.PLANKS);
         fence(exporter, set.FENCE, set.PLANKS);

@@ -90,8 +90,8 @@ public class TerrainsBlockTags extends FabricTagProvider.BlockTagProvider {
     public final void addWoodBlockTags(final WoodSet woodSet) {
         addBlockTags(woodSet.LOG, LOGS_THAT_BURN, LOGS);
         addBlockTags(woodSet.PLANKS, PLANKS);
-        addBlockTags(woodSet.SIGN, STANDING_SIGNS);
-        addBlockTags(woodSet.WALL_SIGN, WALL_SIGNS);
+        //addBlockTags(woodSet.SIGN, STANDING_SIGNS);
+        //addBlockTags(woodSet.WALL_SIGN, WALL_SIGNS);
         addBlockTags(woodSet.BUTTON, WOODEN_BUTTONS);
         addBlockTags(woodSet.DOOR, WOODEN_DOORS);
         addBlockTags(woodSet.FENCE, WOODEN_FENCES);
