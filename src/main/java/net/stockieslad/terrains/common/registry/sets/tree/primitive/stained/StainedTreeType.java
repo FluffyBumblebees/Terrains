@@ -45,8 +45,8 @@ public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySe
     }
 
     @Override
-    public void registryEvent(SetRegistry registry) {
-        TREE_CONFIG.registryEvent(registry);
+    public void register(SetRegistry registry) {
+        TREE_CONFIG.register(registry);
     }
 
     @Override

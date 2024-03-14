@@ -36,8 +36,8 @@ public final class RegistrySet<Types, RegistryConfig extends RegistrySetCreator>
         typesQuickerator = () -> values;
         typesQuickerator.forEach(element -> {
             RegistryConfig set = factory.getNewSet(element);
-            set.generationEvent();
-            set.registryEvent(registry);
+            set.generate();
+            set.register(registry);
             renderTypes = set.getRenderTypes();
             typeMap.put(element, set);
         });

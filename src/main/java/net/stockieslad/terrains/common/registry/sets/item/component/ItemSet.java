@@ -25,7 +25,7 @@ public class ItemSet<I extends Item> implements RegistrySetCreator {
     }
 
     @Override
-    public void registryEvent(SetRegistry registry) {
+    public void register(SetRegistry registry) {
         registry.iterate(items.items()).forEach(element -> {
             Registry.register(Registry.ITEM, element.identifier, element.item);
             registry.storage.get(items.types()).add(new SafeTriSet(element.item));

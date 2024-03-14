@@ -6,7 +6,6 @@ import net.minecraft.util.Identifier;
 
 import java.util.Optional;
 
-@SuppressWarnings("unused")
 public record SafeTriSet(
         Optional<Block> block,
         Optional<Item> item,

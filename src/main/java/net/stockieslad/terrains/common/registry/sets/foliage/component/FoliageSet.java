@@ -53,7 +53,7 @@ public final class FoliageSet<
     }
 
     @Override
-    public void registryEvent(final SetRegistry registry) {
+    public void register(final SetRegistry registry) {
         for (T type : types) {
             var holder = foliageHolder.get(type);
             registry.triSet(this.type, holder.block);

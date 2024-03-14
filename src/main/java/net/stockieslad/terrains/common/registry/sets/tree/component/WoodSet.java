@@ -105,7 +105,7 @@ public final class WoodSet implements RegistrySetCreator {
     }
 
     @Override
-    public void registryEvent(final SetRegistry registry) {
+    public void register(final SetRegistry registry) {
         registry.triSet(RegistryTypes.WOOD_WITH_CUTOUT,
                 DOOR,
                 TRAPDOOR

@@ -34,7 +34,6 @@ import java.util.List;
 import static net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry.registerWaxableBlockPair;
 import static net.feltmc.abstractium.library.common.CommonTypeObjects.placedFeature;
 import static net.feltmc.abstractium.library.common.CommonTypeObjects.registryKey;
-import static net.minecraft.world.gen.feature.PlacedFeatures.register;
 import static net.stockieslad.terrains.core.TerrainsDefaults.getNamespaceVar;
 import static net.stockieslad.terrains.util.registration.mass.UnsafeTriSet.buildBlock;
 
@@ -97,7 +96,7 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
     }
 
     @Override
-    public void registryEvent(final SetRegistry registry) {
+    public void register(final SetRegistry registry) {
         registry.triSet(RegistryTypes.CLUSTER,
                 CORUNDUM_CLUSTER
         );
@@ -132,7 +131,7 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
     }
 
     @Override
-    public void generationEvent() {
+    public void generate() {
         AbstractiumCommon.COMMON_ABSTRACTION_HANDLER.abstraction.getStructureGenerator()
                 .generateFeature(
                         new Mimic(
@@ -192,7 +191,7 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
     public static RegistryEntry<PlacedFeature> registerPlacedGeode(
             final RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> geode, final String name
     ) {
-        return register(
+        return PlacedFeatures.register(
                 getNamespaceVar() + name + "_geode_placed",
                 geode,
                 RarityFilterPlacementModifier.of(1440),

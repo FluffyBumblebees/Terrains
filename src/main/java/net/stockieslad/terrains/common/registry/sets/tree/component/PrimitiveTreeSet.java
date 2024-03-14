@@ -49,7 +49,7 @@ public final class PrimitiveTreeSet<
     }
 
     @Override
-    public void registryEvent(final SetRegistry registry) {
+    public void register(final SetRegistry registry) {
         registry.triSet(RegistryTypes.LEAVES, LEAVES);
         registry.triSet(RegistryTypes.SAPLING, SAPLING);
         registry.triSetPotted(RegistryTypes.POTTED_BLOCK, POTTED_SAPLING);

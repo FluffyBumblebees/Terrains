@@ -72,7 +72,7 @@ public final class CloudSet implements RegistrySetCreator {
     }
 
     @Override
-    public void registryEvent(final SetRegistry registry) {
+    public void register(final SetRegistry registry) {
         registry.triSet(TRANSPARENT_FULL_BLOCK, cloudBlock);
     }
 
@@ -82,7 +82,7 @@ public final class CloudSet implements RegistrySetCreator {
     }
 
     @Override
-    public void generationEvent() {
+    public void generate() {
         COMMON_ABSTRACTION_HANDLER.abstraction.getStructureGenerator()
                 .generateCarver(
                        COMMON_ABSTRACTION_HANDLER.abstraction.getRegistrar().getKeyFromEntry(CLOUD_CARVER),
