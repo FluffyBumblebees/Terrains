@@ -1,6 +1,7 @@
 package net.stockieslad.terrains.common.registry.sets.tree.component;
 
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.minecraft.block.Block;
 import net.stockieslad.terrains.client.render.RenderTypes;
 import net.stockieslad.terrains.common.instances.block.wood.WoodBlock;
 import net.stockieslad.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
@@ -10,8 +11,6 @@ import net.stockieslad.terrains.util.registration.registry_set.helper.Quickerato
 import net.stockieslad.terrains.util.registration.registry_set.registrars.RegistrySetCreator;
 import net.stockieslad.terrains.util.registration.registry_set.registrars.RegistryTypes;
 import net.stockieslad.terrains.util.registration.registry_set.registrars.SetRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.sapling.SaplingGenerator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,12 +19,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public class WholeTreeSet<
-        Generator extends SaplingGenerator,
-        FeatureProvider extends FeatureCreator<Generator>,
+        FeatureProvider extends FeatureCreator,
         UniqueFeatures>
         implements RegistrySetCreator {
 
-    public final HashMap<String, PrimitiveTreeSet<Generator, FeatureProvider>> PRIMITIVE_TREE_CONFIGS;
+    public final HashMap<String, PrimitiveTreeSet<FeatureProvider>> PRIMITIVE_TREE_CONFIGS;
     public final UniqueFeatures UNIQUE_FEATURES;
 
     public final String WOOD_TYPE;
@@ -34,7 +32,7 @@ public class WholeTreeSet<
     public final WoodSet WOOD_SET;
 
     public WholeTreeSet(
-            @NotNull final TreeType<Generator, FeatureProvider, UniqueFeatures> config
+            @NotNull final TreeType<FeatureProvider, UniqueFeatures> config
     ) {
         WOOD_TYPE = config.woodType;
         TREE_VARIANTS = config.treeVariants;
@@ -90,13 +88,12 @@ public class WholeTreeSet<
     }
 
     public record TreeType<
-            Generator extends SaplingGenerator,
-            FeatureProvider extends FeatureCreator<Generator>,
+            FeatureProvider extends FeatureCreator,
             UniqueFeatures>(
             String woodType,
             String[] treeVariants,
             @Nullable String[] additionalLogVariants,
-            FeatureSupplier<Generator, FeatureProvider> featureSupplier,
+            FeatureSupplier<FeatureProvider> featureSupplier,
             UniqueFeatureSupplier<UniqueFeatures> uniqueFeatureSupplier
     ) {}
 

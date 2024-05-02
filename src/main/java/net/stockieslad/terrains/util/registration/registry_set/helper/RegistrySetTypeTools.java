@@ -6,7 +6,6 @@ import net.stockieslad.terrains.common.registry.sets.foliage.component.FoliageSe
 import net.stockieslad.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
 import net.stockieslad.terrains.common.registry.sets.tree.component.WholeTreeSet;
 import net.stockieslad.terrains.common.registry.sets.tree.component.WholeTreeSet.TreeType;
-import net.minecraft.block.sapling.SaplingGenerator;
 
 import static net.stockieslad.terrains.common.registry.sets.RegistrySetManager.FULL_TREES;
 
@@ -23,22 +22,20 @@ public class RegistrySetTypeTools {
 
     @SuppressWarnings("unused")
     public static <
-            Generator extends SaplingGenerator,
-            GeneratorSupplier extends FeatureCreator<Generator>,
+            GeneratorSupplier extends FeatureCreator,
             UniqueFeatures,
             Types extends Enum<?>
             >
-    GeneratorSupplier accessTreeFeatures(TreeType<Generator, GeneratorSupplier, UniqueFeatures> treeType,
+    GeneratorSupplier accessTreeFeatures(TreeType<GeneratorSupplier, UniqueFeatures> treeType,
                                          Types treeVariant) {
         return accessTreeFeatures(treeType, treeVariant.name().toLowerCase());
     }
 
     public static <
-            Generator extends SaplingGenerator,
-            GeneratorSupplier extends FeatureCreator<Generator>,
+            GeneratorSupplier extends FeatureCreator,
             UniqueFeatures
             >
-    GeneratorSupplier accessTreeFeatures(TreeType<Generator, GeneratorSupplier, UniqueFeatures> treeType, String treeVariant) {
+    GeneratorSupplier accessTreeFeatures(TreeType<GeneratorSupplier, UniqueFeatures> treeType, String treeVariant) {
         return (GeneratorSupplier) FULL_TREES
                 .getTypeMap()
                 .get(treeType)
@@ -47,7 +44,7 @@ public class RegistrySetTypeTools {
                 .TREE_FEATURES;
     }
 
-    public static <UniqueFeatures> UniqueFeatures getUniqueTreeFeatures(WholeTreeSet<?, ?, ?> treeVariant) {
+    public static <UniqueFeatures> UniqueFeatures getUniqueTreeFeatures(WholeTreeSet<?, ?> treeVariant) {
         return (UniqueFeatures) treeVariant.UNIQUE_FEATURES;
     }
 

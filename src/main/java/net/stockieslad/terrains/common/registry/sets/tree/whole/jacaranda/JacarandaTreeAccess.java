@@ -15,7 +15,7 @@ import static net.stockieslad.terrains.util.registration.registry_set.helper.Reg
 @SuppressWarnings("unused")
 public class JacarandaTreeAccess {
 
-    public static WholeTreeSet<?, ?, ?> getJacarandaTree() {
+    public static WholeTreeSet<?, ?> getJacarandaTree() {
         return RegistrySetManager.FULL_TREES.getTypeMap().get(JACARANDA_TREES);
     }
 

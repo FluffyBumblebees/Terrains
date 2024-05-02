@@ -24,7 +24,7 @@ import static net.stockieslad.terrains.util.registration.world.feature.TreeRegis
 import static net.minecraft.world.gen.feature.PlacedFeatures.createCountExtraModifier;
 
 public final class JacarandaTreeType {
-    public static final TreeType<StandardSaplingGenerator, JacarandaFeatures, UniqueJacarandaFeatures> JACARANDA_TREES =
+    public static final TreeType<JacarandaFeatures, UniqueJacarandaFeatures> JACARANDA_TREES =
             new TreeType<>(
                     "jacaranda",
                     EnumArrayToString(JacarandaTypes.values()),
@@ -37,7 +37,7 @@ public final class JacarandaTreeType {
         PINK,
         PURPLE
     }
-    public static final class JacarandaFeatures implements FeatureCreator<StandardSaplingGenerator> {
+    public static final class JacarandaFeatures implements FeatureCreator {
         private final List<Block> ALL_LOGS;
         public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> CONFIGURED_TREE_NO_BEES;
         public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> CONFIGURED_TREE_BEES;

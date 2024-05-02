@@ -26,7 +26,7 @@ public final class RegistrySetManager {
 
     public static final RegistrySet<TypesStainedTree, StainedTreeType<TypesStainedTree>> STAINED_TREES;
     public static final RegistrySet<TypesCrystalGeode, CrystalGeodeSet<TypesCrystalGeode>> CRYSTAL_GEODES;
-    public static final RegistrySet<TreeType<?, ?, ?>, WholeTreeSet<?, ?, ?>> FULL_TREES;
+    public static final RegistrySet<TreeType<?, ?>, WholeTreeSet<?, ?>> FULL_TREES;
     public static final RegistrySet<CloudSet.Config, CloudSet> CLOUDS;
     public static final RegistrySet<TypesFoliage<?, ?, ?>, FoliageSet<?, ?, ?>> FOLIAGE;
     public static final RegistrySet<TypesItem<?>, ItemSet<?>> ITEMS;

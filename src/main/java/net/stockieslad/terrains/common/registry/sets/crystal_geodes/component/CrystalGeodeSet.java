@@ -1,8 +1,5 @@
 package net.stockieslad.terrains.common.registry.sets.crystal_geodes.component;
 
-import net.feltmc.abstractium.init.AbstractiumCommon;
-import net.feltmc.abstractium.library.common.worldgen.biome.AbstractBiomes;
-import net.feltmc.abstractium.util.dynamic.Mimic;
 import net.minecraft.block.AmethystClusterBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -21,6 +18,9 @@ import net.minecraft.world.gen.placementmodifier.RarityFilterPlacementModifier;
 import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
+import net.stockieslad.abstractium.init.AbstractiumCommon;
+import net.stockieslad.abstractium.library.common.worldgen.biome.AbstractBiomes;
+import net.stockieslad.abstractium.util.dynamic.Mimic;
 import net.stockieslad.terrains.client.render.RenderTypes;
 import net.stockieslad.terrains.common.instances.block.crystals.*;
 import net.stockieslad.terrains.util.registration.mass.UnsafeTriSet;
@@ -32,8 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry.registerWaxableBlockPair;
-import static net.feltmc.abstractium.library.common.CommonTypeObjects.placedFeature;
-import static net.feltmc.abstractium.library.common.CommonTypeObjects.registryKey;
+import static net.stockieslad.abstractium.library.common.CommonTypeObjects.placedFeature;
+import static net.stockieslad.abstractium.library.common.CommonTypeObjects.registryKey;
 import static net.stockieslad.terrains.core.TerrainsDefaults.getNamespaceVar;
 import static net.stockieslad.terrains.util.registration.mass.UnsafeTriSet.buildBlock;
 
@@ -135,7 +135,6 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
         AbstractiumCommon.COMMON_ABSTRACTION_HANDLER.abstraction.getStructureGenerator()
                 .generateFeature(
                         new Mimic(
-                                PLACED_GEODE.getKey().orElseThrow().getValue(),
                                 registryKey(placedFeature()),
                                 PLACED_GEODE.getKey().orElseThrow()
                         ),

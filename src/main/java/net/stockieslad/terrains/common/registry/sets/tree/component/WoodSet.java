@@ -2,10 +2,10 @@ package net.stockieslad.terrains.common.registry.sets.tree.component;
 
 
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
-import net.feltmc.abstractium.library.common.entity.SignCollection;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
+import net.stockieslad.abstractium.library.common.entity.SignCollection;
 import net.stockieslad.terrains.client.render.RenderTypes;
 import net.stockieslad.terrains.common.instances.block.wood.*;
 import net.stockieslad.terrains.core.TerrainsDefaults;
@@ -17,7 +17,7 @@ import net.stockieslad.terrains.util.registration.registry_set.registrars.SetReg
 
 import java.util.List;
 
-import static net.feltmc.abstractium.init.AbstractiumCommon.COMMON_ABSTRACTION_HANDLER;
+import static net.stockieslad.abstractium.init.AbstractiumCommon.COMMON_ABSTRACTION_HANDLER;
 import static net.stockieslad.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.stockieslad.terrains.util.registration.mass.UnsafeTriSet.buildFlammableBlock;
 

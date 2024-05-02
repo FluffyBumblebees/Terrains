@@ -18,8 +18,7 @@ import static net.stockieslad.terrains.util.registration.mass.UnsafeTriSet.build
 import static net.stockieslad.terrains.util.registration.mass.UnsafeTriSet.buildFlammableBlock;
 
 public final class PrimitiveTreeSet<
-        Generator extends SaplingGenerator,
-        FeatureProvider extends PrimitiveTreeSet.FeatureCreator<Generator>
+        FeatureProvider extends PrimitiveTreeSet.FeatureCreator
         > implements RegistrySetCreator {
 
     public final String TREE_TYPE;
@@ -30,12 +29,12 @@ public final class PrimitiveTreeSet<
     public final UnsafeTriSet<ConfiguredFlowerPotBlock> POTTED_SAPLING;
 
     public PrimitiveTreeSet(
-            final Config<Generator, FeatureProvider> config
+            final Config<FeatureProvider> config
     ) {
         TREE_TYPE = config.treeType;
         LEAVES = buildFlammableBlock(new ConfiguredLeavesBlock(), TREE_TYPE + "_leaves");
         TREE_FEATURES = config.generatorSupplier.get(config.logs, LEAVES.BLOCK, TREE_TYPE);
-        final Generator saplingGenerator = TREE_FEATURES.createNew();
+        final SaplingGenerator saplingGenerator = TREE_FEATURES.createNew();
 
         SAPLING = buildBlock(
                 new ConfiguredSaplingBlock(saplingGenerator),
@@ -60,17 +59,17 @@ public final class PrimitiveTreeSet<
         return List.of(RenderTypes.CUTOUT);
     }
 
-    public record Config<Generator extends SaplingGenerator, FeatureProvider extends FeatureCreator<Generator>>(
+    public record Config<FeatureProvider extends FeatureCreator>(
             String treeType,
             List<Block> logs,
-            FeatureSupplier<Generator, FeatureProvider> generatorSupplier
+            FeatureSupplier<FeatureProvider> generatorSupplier
     ) {}
 
-    public interface FeatureSupplier <Generator extends SaplingGenerator, FeatureProvider extends FeatureCreator<Generator>> {
+    public interface FeatureSupplier <FeatureProvider extends FeatureCreator> {
         FeatureProvider get(final List<Block> allLogs, final ConfiguredLeavesBlock leavesBlock, final String type);
     }
 
-    public interface FeatureCreator<Generator extends SaplingGenerator> {
-        Generator createNew();
+    public interface FeatureCreator {
+        SaplingGenerator createNew();
     }
 }

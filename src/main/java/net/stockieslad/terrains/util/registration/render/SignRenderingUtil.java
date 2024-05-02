@@ -1,7 +1,7 @@
 package net.stockieslad.terrains.util.registration.render;
 
-import net.feltmc.abstractium.init.AbstractiumClient;
 import net.minecraft.util.Identifier;
+import net.stockieslad.abstractium.init.AbstractiumClient;
 
 public class SignRenderingUtil {
     public static void registerTextures(Identifier texture) {

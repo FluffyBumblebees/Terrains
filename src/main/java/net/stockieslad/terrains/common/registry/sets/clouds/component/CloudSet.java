@@ -1,8 +1,6 @@
 package net.stockieslad.terrains.common.registry.sets.clouds.component;
 
-import net.feltmc.abstractium.library.common.registration.AbstractRegistrar;
-import net.feltmc.abstractium.library.common.worldgen.biome.AbstractBiomes;
-import net.feltmc.abstractium.util.dynamic.Mimic;
+
 import net.minecraft.block.AbstractBlock.Settings;
 import net.minecraft.block.Material;
 import net.minecraft.sound.BlockSoundGroup;
@@ -14,6 +12,9 @@ import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.carver.Carver;
 import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.stockieslad.abstractium.library.common.registration.AbstractRegistrar;
+import net.stockieslad.abstractium.library.common.worldgen.biome.AbstractBiomes;
+import net.stockieslad.abstractium.util.dynamic.Mimic;
 import net.stockieslad.terrains.client.render.RenderTypes;
 import net.stockieslad.terrains.common.instances.block.cloud.BasicCloudBlock;
 import net.stockieslad.terrains.common.world.inbuilt_structures.carver.cloud.CloudCarver;
@@ -27,7 +28,7 @@ import net.stockieslad.terrains.util.registration.registry_set.registrars.SetReg
 import java.util.List;
 
 import static net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings.of;
-import static net.feltmc.abstractium.init.AbstractiumCommon.COMMON_ABSTRACTION_HANDLER;
+import static net.stockieslad.abstractium.init.AbstractiumCommon.COMMON_ABSTRACTION_HANDLER;
 import static net.stockieslad.terrains.util.registration.registry_set.registrars.RegistryTypes.TRANSPARENT_FULL_BLOCK;
 
 public final class CloudSet implements RegistrySetCreator {

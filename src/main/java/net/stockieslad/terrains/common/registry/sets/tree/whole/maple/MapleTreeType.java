@@ -31,7 +31,7 @@ import static net.stockieslad.terrains.util.registration.world.feature.TreeRegis
 import static net.minecraft.world.gen.feature.PlacedFeatures.createCountExtraModifier;
 
 public final class MapleTreeType {
-    public static final TreeType<StandardSaplingGenerator, MapleFeatures, UniqueMapleFeatures> MAPLE_TREES =
+    public static final TreeType<MapleFeatures, UniqueMapleFeatures> MAPLE_TREES =
             new TreeType<>(
                     "maple",
                     EnumArrayToString(MapleTypes.values()),
@@ -53,7 +53,7 @@ public final class MapleTreeType {
         WHITE,
         TYRIAN_PURPLE
     }
-    public static final class MapleFeatures implements FeatureCreator<StandardSaplingGenerator> {
+    public static final class MapleFeatures implements FeatureCreator {
         private final List<Block> ALL_LOGS;
         public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>> CONFIGURED_TREE_NO_BEES;
         public final RegistryEntry<ConfiguredFeature<TreeFeatureConfig,?>> CONFIGURED_TREE_BEES;

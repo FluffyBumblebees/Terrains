@@ -1,18 +1,18 @@
 package net.stockieslad.terrains.util.registration.world.feature;
 
-import net.feltmc.abstractium.library.common.AbstractCommonCalls;
-import net.feltmc.abstractium.util.dynamic.Mimic;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
+import net.stockieslad.abstractium.library.common.AbstractCommonCalls;
+import net.stockieslad.abstractium.util.dynamic.Mimic;
 
 import java.util.List;
 
-import static net.feltmc.abstractium.init.AbstractiumCommon.COMMON_ABSTRACTION_HANDLER;
-import static net.feltmc.abstractium.library.common.CommonTypeObjects.*;
+import static net.stockieslad.abstractium.init.AbstractiumCommon.COMMON_ABSTRACTION_HANDLER;
+import static net.stockieslad.abstractium.library.common.CommonTypeObjects.*;
 import static net.stockieslad.terrains.core.TerrainsDefaults.getIdentifier;
 
 public class TerrainsFeatureRegistrar {
@@ -39,7 +39,7 @@ public class TerrainsFeatureRegistrar {
         return ABSTRACT_COMMON_CALLS.getRegistrar().registerPlacedFeature(
                 getIdentifier(id),
                 ABSTRACT_COMMON_CALLS.getStructureCreator().createPlacedFeature(
-                        new Mimic(id, registryEntry(configuredFeature(wildcard(), wildcard())), registryEntry),
+                        new Mimic(registryEntry(configuredFeature(wildcard(), wildcard())), registryEntry),
                         modifiers
                 )
         ).cast(registryEntry(placedFeature()));

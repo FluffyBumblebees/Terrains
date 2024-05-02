@@ -1,10 +1,10 @@
 package net.stockieslad.terrains.common.world.inbuilt_structures.features;
 
-import net.feltmc.abstractium.init.AbstractiumCommon;
-import net.feltmc.abstractium.library.common.registration.AbstractRegistrar;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.LakeFeature;
 import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
+import net.stockieslad.abstractium.init.AbstractiumCommon;
+import net.stockieslad.abstractium.library.common.registration.AbstractRegistrar;
 import net.stockieslad.terrains.common.world.inbuilt_structures.features.component.MeadowLakeFeature;
 import net.stockieslad.terrains.common.world.inbuilt_structures.features.component.ScatteredBlockFeature;
 

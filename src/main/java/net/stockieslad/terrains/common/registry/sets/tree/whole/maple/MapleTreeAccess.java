@@ -13,7 +13,7 @@ import static net.stockieslad.terrains.util.registration.registry_set.helper.Reg
 
 public class MapleTreeAccess {
 
-    public static WholeTreeSet<?, ?, ?> getMapleTree() {
+    public static WholeTreeSet<?, ?> getMapleTree() {
         return RegistrySetManager.FULL_TREES.getTypeMap().get(MapleTreeType.MAPLE_TREES);
     }
 

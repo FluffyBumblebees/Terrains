@@ -1,9 +1,10 @@
 package net.stockieslad.terrains.util.registration.render;
 
-import net.feltmc.abstractium.init.AbstractiumClient;
-import net.feltmc.abstractium.library.client.render.AbstractRenderCalls;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.stockieslad.abstractium.init.AbstractiumClient;
+import net.stockieslad.abstractium.library.client.render.AbstractRenderCalls;
 import net.stockieslad.terrains.client.render.RenderTypes;
 import net.stockieslad.terrains.util.registration.registry_set.registrars.RegistrySet;
 import net.stockieslad.terrains.util.registration.registry_set.registrars.RegistryTypes;

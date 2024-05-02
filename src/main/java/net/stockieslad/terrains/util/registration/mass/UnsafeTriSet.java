@@ -2,12 +2,12 @@ package net.stockieslad.terrains.util.registration.mass;
 
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.feltmc.abstractium.init.AbstractiumCommon;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
+import net.stockieslad.abstractium.init.AbstractiumCommon;
 import net.stockieslad.terrains.common.instances.block.wood.WoodBlock;
 import net.stockieslad.terrains.core.TerrainsDefaults;
 
