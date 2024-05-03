@@ -7,7 +7,7 @@ import net.minecraft.util.Identifier;
 import net.stockieslad.terrains.core.TerrainsDefaults;
 import net.stockieslad.terrains.util.registration.registry_set.registrars.RegistryTypes;
 
-import static net.stockieslad.terrains.common.registry.sets.RegistrySetManager.CRYSTAL_GEODES;
+import static net.stockieslad.terrains.common.registry.sets.RegistrySets.CRYSTAL_GEODES;
 import static net.stockieslad.terrains.common.registry.sets.crystal_geodes.TypesCrystalGeode.PURPLE;
 
 

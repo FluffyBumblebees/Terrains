@@ -1,7 +1,7 @@
 package net.stockieslad.terrains.client.render;
 
 
-import static net.stockieslad.terrains.common.registry.sets.RegistrySetManager.ALL_SETS;
+import static net.stockieslad.terrains.common.registry.sets.RegistrySets.ALL_SETS;
 import static net.stockieslad.terrains.util.registration.render.BlockRenderLayerMapUtil.standardCutouts;
 import static net.stockieslad.terrains.util.registration.render.BlockRenderLayerMapUtil.standardTranslucents;
 

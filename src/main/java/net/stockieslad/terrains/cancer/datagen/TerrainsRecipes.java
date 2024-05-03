@@ -8,8 +8,8 @@ import net.minecraft.data.server.recipe.RecipeJsonProvider;
 
 import java.util.function.Consumer;
 
-import static net.stockieslad.terrains.common.registry.sets.RegistrySetManager.CRYSTAL_GEODES;
-import static net.stockieslad.terrains.common.registry.sets.RegistrySetManager.FULL_TREES;
+import static net.stockieslad.terrains.common.registry.sets.RegistrySets.CRYSTAL_GEODES;
+import static net.stockieslad.terrains.common.registry.sets.RegistrySets.FULL_TREES;
 import static net.stockieslad.terrains.common.registry.sets.foliage.flower.FlowerFoliageAccess.accessFlowerConfig;
 import static net.stockieslad.terrains.util.datagen.DatagenRecipeUtil.*;
 

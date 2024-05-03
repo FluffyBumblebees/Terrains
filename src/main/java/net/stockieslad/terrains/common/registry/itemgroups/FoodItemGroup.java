@@ -1,7 +1,7 @@
 package net.stockieslad.terrains.common.registry.itemgroups;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.stockieslad.terrains.common.registry.sets.RegistrySetManager;
+import net.stockieslad.terrains.common.registry.sets.RegistrySets;
 import net.stockieslad.terrains.util.registration.registry_set.registrars.RegistryTypes;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
@@ -18,10 +18,10 @@ public class FoodItemGroup {
         FOOD = FabricItemGroupBuilder.create(new Identifier(NAMESPACE, "foods"))
                 .icon(() -> HONEYCOMB_PANCAKE_SANDWICH.item().getDefaultStack())
                 .appendItems(stacks -> {
-                    RegistrySetManager.ITEMS.iterateRegistry(RegistryTypes.FOOD).forEach(element ->
+                    RegistrySets.ITEMS.iterateRegistry(RegistryTypes.FOOD).forEach(element ->
                             stacks.add(element.item().orElseThrow().getDefaultStack())
                     );
-                    RegistrySetManager.ITEMS.iterateRegistry(RegistryTypes.TRANSPARENT_FOOD).forEach(element ->
+                    RegistrySets.ITEMS.iterateRegistry(RegistryTypes.TRANSPARENT_FOOD).forEach(element ->
                             stacks.add(element.item().orElseThrow().getDefaultStack()));
                 })
                 .build();

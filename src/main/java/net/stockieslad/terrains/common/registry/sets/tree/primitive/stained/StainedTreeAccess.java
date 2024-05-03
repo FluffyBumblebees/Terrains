@@ -4,7 +4,7 @@ import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.PlacedFeature;
-import net.stockieslad.terrains.common.registry.sets.RegistrySetManager;
+import net.stockieslad.terrains.common.registry.sets.RegistrySets;
 import net.stockieslad.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
 import net.stockieslad.terrains.common.registry.sets.tree.primitive.stained.StainedTreeType.StainedConfig;
 
@@ -12,11 +12,10 @@ import net.stockieslad.terrains.common.registry.sets.tree.primitive.stained.Stai
 public class StainedTreeAccess {
 
     public static StainedTreeType<TypesStainedTree> accessInstance(TypesStainedTree colour) {
-        return RegistrySetManager.STAINED_TREES.getTypeMap().get(colour);
+        return RegistrySets.STAINED_TREES.getTypeMap().get(colour);
     }
 
-    public static <FeatureProvider extends FeatureCreator>  FeatureProvider
-    getFeatures(TypesStainedTree colour) {
+    public static <FeatureProvider extends FeatureCreator>  FeatureProvider getFeatures(TypesStainedTree colour) {
         return (FeatureProvider) accessInstance(colour).TREE_CONFIG.TREE_FEATURES;
     }
 

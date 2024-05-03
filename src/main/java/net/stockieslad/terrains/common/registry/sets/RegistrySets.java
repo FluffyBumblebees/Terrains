@@ -21,7 +21,7 @@ import static net.stockieslad.terrains.common.registry.sets.item.TypesItem.ALL_I
 import static net.stockieslad.terrains.common.registry.sets.tree.whole.TypesWholeTree.ALL_WHOLE_TREES;
 import static net.stockieslad.terrains.util.registration.registry_set.registrars.RegistryTypes.*;
 
-public final class RegistrySetManager {
+public final class RegistrySets {
     public static final RegistrySet<?, ?>[] ALL_SETS;
 
     public static final RegistrySet<TypesStainedTree, StainedTreeType<TypesStainedTree>> STAINED_TREES;
@@ -87,6 +87,6 @@ public final class RegistrySetManager {
         };
     }
 
-    private RegistrySetManager() {}
+    private RegistrySets() {}
     public static void init() {}
 }

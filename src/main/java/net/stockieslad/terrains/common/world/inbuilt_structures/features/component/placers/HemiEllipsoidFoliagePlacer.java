@@ -1,4 +1,4 @@
-package net.stockieslad.terrains.common.world.inbuilt_structures.features.component.component;
+package net.stockieslad.terrains.common.world.inbuilt_structures.features.component.placers;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

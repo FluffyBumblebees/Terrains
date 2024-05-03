@@ -12,7 +12,6 @@ import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.carver.Carver;
 import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.stockieslad.abstractium.library.common.registration.AbstractRegistrar;
 import net.stockieslad.abstractium.library.common.worldgen.biome.AbstractBiomes;
 import net.stockieslad.abstractium.util.dynamic.Mimic;
 import net.stockieslad.terrains.client.render.RenderTypes;
@@ -28,12 +27,11 @@ import net.stockieslad.terrains.util.registration.registry_set.registrars.SetReg
 import java.util.List;
 
 import static net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings.of;
-import static net.stockieslad.abstractium.init.AbstractiumCommon.COMMON_ABSTRACTION_HANDLER;
+import static net.stockieslad.terrains.core.TerrainsCommon.ABSTRACTION;
 import static net.stockieslad.terrains.util.registration.registry_set.registrars.RegistryTypes.TRANSPARENT_FULL_BLOCK;
 
 public final class CloudSet implements RegistrySetCreator {
-    private static final AbstractRegistrar ABSTRACT_REGISTRAR = COMMON_ABSTRACTION_HANDLER.abstraction.getRegistrar();
-    public static final Carver<CloudCarverConfig> ABSTRACT_CLOUD_CARVER = ABSTRACT_REGISTRAR.registerCarver(
+    public static final Carver<CloudCarverConfig> ABSTRACT_CLOUD_CARVER = ABSTRACTION.getRegistrar().registerCarver(
             TerrainsDefaults.getIdentifier("cloud_carver"), new CloudCarver(CloudCarverConfig.CODEC)
     );
 
@@ -50,7 +48,7 @@ public final class CloudSet implements RegistrySetCreator {
             cloudBlock = new UnsafeTriSet.Builder<>(config.cloudBlock, TerrainsDefaults.getIdentifier(id + "_cloud"))
                     .addBlockItem().addBurnable(200).addFlammability(10, 500).build();
         else cloudBlock = UnsafeTriSet.buildBlock(config.cloudBlock, id + "_cloud");
-        CLOUD_CARVER = ABSTRACT_REGISTRAR.registerCarverConfig(
+        CLOUD_CARVER = ABSTRACTION.getRegistrar().registerCarverConfig(
                 TerrainsDefaults.getIdentifier(id + "_cloud_carver"),
                 ABSTRACT_CLOUD_CARVER.configure(
                         new CloudCarverConfig(
@@ -84,9 +82,9 @@ public final class CloudSet implements RegistrySetCreator {
 
     @Override
     public void generate() {
-        COMMON_ABSTRACTION_HANDLER.abstraction.getStructureGenerator()
+        ABSTRACTION.getStructureGenerator()
                 .generateCarver(
-                       COMMON_ABSTRACTION_HANDLER.abstraction.getRegistrar().getKeyFromEntry(CLOUD_CARVER),
+                       ABSTRACTION.getRegistrar().getKeyFromEntry(CLOUD_CARVER),
                         AbstractBiomes.OVERWORLD,
                         GenerationStep.Carver.AIR
                 );

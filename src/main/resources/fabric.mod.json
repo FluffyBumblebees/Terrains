@@ -30,9 +30,6 @@
     ],
     "client": [
       "net.stockieslad.terrains.core.TerrainsClient"
-    ],
-    "terrablender": [
-      "net.stockieslad.terrains.common.world.terrablender.TerrainsTerrablenderBiomes"
     ]
   },
   "accessWidener": "terrains.accesswidener",

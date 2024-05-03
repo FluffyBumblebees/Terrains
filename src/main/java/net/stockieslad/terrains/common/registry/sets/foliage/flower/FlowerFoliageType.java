@@ -43,7 +43,7 @@ public final  class FlowerFoliageType {
     public enum FlowerTypes {
         LAVENDER(
                 StatusEffects.REGENERATION,
-                3,
+                11,
                 UnsafeTriSet.of(Items.PURPLE_DYE, new Identifier("purple_dye")));
 
 

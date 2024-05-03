@@ -7,10 +7,10 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
-import net.stockieslad.abstractium.init.AbstractiumCommon;
 import net.stockieslad.terrains.common.instances.block.wood.WoodBlock;
 import net.stockieslad.terrains.core.TerrainsDefaults;
 
+import static net.stockieslad.terrains.core.TerrainsCommon.ABSTRACTION;
 import static net.stockieslad.terrains.core.TerrainsDefaults.getIdentifier;
 
 public final class UnsafeTriSet<B extends Block> {
@@ -120,7 +120,7 @@ public final class UnsafeTriSet<B extends Block> {
         }
 
         public UnsafeTriSet<B> build() {
-            final var abstraction = AbstractiumCommon.COMMON_ABSTRACTION_HANDLER.abstraction.getRegistrar();
+            final var abstraction = ABSTRACTION.getRegistrar();
             abstraction.registerBlock(identifier, block);
             if (blockItem != null)
                 abstraction.registerItem(identifier, blockItem);

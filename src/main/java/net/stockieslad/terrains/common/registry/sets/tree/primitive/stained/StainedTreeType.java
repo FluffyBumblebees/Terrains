@@ -21,8 +21,6 @@ import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacer;
-import net.stockieslad.abstractium.init.AbstractiumCommon;
-import net.stockieslad.abstractium.library.common.AbstractCommonCalls;
 import net.stockieslad.abstractium.library.common.wrap.util.WrappedRandom;
 import net.stockieslad.abstractium.util.dynamic.Mimic;
 import net.stockieslad.terrains.client.render.RenderTypes;
@@ -41,9 +39,9 @@ import java.util.function.Supplier;
 
 import static net.stockieslad.abstractium.library.common.CommonTypeObjects.*;
 import static net.stockieslad.abstractium.util.dynamic.TypeObject.*;
+import static net.stockieslad.terrains.core.TerrainsCommon.ABSTRACTION;
 
 public final class StainedTreeType<Colour extends Enum<?>> implements RegistrySetCreator {
-    private static final AbstractCommonCalls ABSTRACTION = AbstractiumCommon.COMMON_ABSTRACTION_HANDLER.abstraction;
     public final PrimitiveTreeSet<StainedConfig> TREE_CONFIG;
 
     public StainedTreeType(final Colour type) {

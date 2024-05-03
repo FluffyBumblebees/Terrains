@@ -7,7 +7,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-import static net.stockieslad.terrains.common.registry.sets.RegistrySetManager.CLOUDS;
+import static net.stockieslad.terrains.common.registry.sets.RegistrySets.CLOUDS;
 
 
 public class SkiesItemGroup {

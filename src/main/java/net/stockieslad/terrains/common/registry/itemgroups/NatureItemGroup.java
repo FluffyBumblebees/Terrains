@@ -6,7 +6,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-import static net.stockieslad.terrains.common.registry.sets.RegistrySetManager.*;
+import static net.stockieslad.terrains.common.registry.sets.RegistrySets.*;
 import static net.stockieslad.terrains.common.registry.sets.tree.primitive.stained.TypesStainedTree.PURPLE;
 import static net.stockieslad.terrains.core.TerrainsDefaults.NAMESPACE;
 

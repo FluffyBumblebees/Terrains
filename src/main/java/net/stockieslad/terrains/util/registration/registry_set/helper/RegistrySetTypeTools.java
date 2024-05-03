@@ -1,13 +1,13 @@
 package net.stockieslad.terrains.util.registration.registry_set.helper;
 
-import net.stockieslad.terrains.common.registry.sets.RegistrySetManager;
+import net.stockieslad.terrains.common.registry.sets.RegistrySets;
 import net.stockieslad.terrains.common.registry.sets.foliage.TypesFoliage;
 import net.stockieslad.terrains.common.registry.sets.foliage.component.FoliageSet;
 import net.stockieslad.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
 import net.stockieslad.terrains.common.registry.sets.tree.component.WholeTreeSet;
 import net.stockieslad.terrains.common.registry.sets.tree.component.WholeTreeSet.TreeType;
 
-import static net.stockieslad.terrains.common.registry.sets.RegistrySetManager.FULL_TREES;
+import static net.stockieslad.terrains.common.registry.sets.RegistrySets.FULL_TREES;
 
 
 @SuppressWarnings("unchecked")
@@ -49,7 +49,7 @@ public class RegistrySetTypeTools {
     }
 
     public static FoliageSet<?, ?, ?> accessFoliageSet(TypesFoliage<?, ?, ?> type) {
-        return RegistrySetManager
+        return RegistrySets
                 .FOLIAGE
                 .getTypeMap()
                 .get(type);

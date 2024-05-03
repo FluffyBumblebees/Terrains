@@ -17,7 +17,7 @@ import net.stockieslad.terrains.util.registration.registry_set.registrars.SetReg
 
 import java.util.List;
 
-import static net.stockieslad.abstractium.init.AbstractiumCommon.COMMON_ABSTRACTION_HANDLER;
+import static net.stockieslad.terrains.core.TerrainsCommon.ABSTRACTION;
 import static net.stockieslad.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.stockieslad.terrains.util.registration.mass.UnsafeTriSet.buildFlammableBlock;
 
@@ -42,11 +42,8 @@ public final class WoodSet implements RegistrySetCreator {
     public final UnsafeTriSet<?> BUTTON;
 
     public final SignCollection SIGNS;
-    /*public final UnsafeTriSet<TerraformSignBlock> SIGN;
-    public final UnsafeTriSet<?> WALL_SIGN;*/
 
     public WoodSet(final String woodType) {
-        final var abstraction = COMMON_ABSTRACTION_HANDLER.abstraction;
         TYPE = woodType;
 
         LOG = buildFlammableBlock(new WoodBlock(), TYPE + "_log");
@@ -63,21 +60,13 @@ public final class WoodSet implements RegistrySetCreator {
         TRAPDOOR = buildFlammableBlock(new WoodTrapDoor(), TYPE + "_trapdoor", ItemGroup.REDSTONE);
         BUTTON = buildFlammableBlock(new WoodButton(), TYPE + "_button", ItemGroup.REDSTONE);
 
-        SIGNS = abstraction.getRegistrar().registerSign(
+        SIGNS = ABSTRACTION.getRegistrar().registerSign(
                 getIdentifier("entity/signs/" + TYPE),
                 TerrainsDefaults.NAMESPACE,
                 TYPE
         );
 
-        /*Identifier SIGN_TEXTURE = getIdentifier("entity/signs/" + TYPE);
-        WALL_SIGN = new Builder<>(new TerraformWallSignBlock(SIGN_TEXTURE,
-                FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)), getIdentifier(TYPE + "_wall_sign")).build();
-        SIGN = new Builder<>(new TerraformSignBlock(SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_SIGN)),
-                getIdentifier(TYPE + "_sign"))
-                .addBlockItem(block -> new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), block, WALL_SIGN.BLOCK))
-                .build();*/
-
-        BOAT = abstraction.getRegistrar().registerBoat(
+        BOAT = ABSTRACTION.getRegistrar().registerBoat(
                 new Identifier(TerrainsDefaults.NAMESPACE, TYPE + "_boat"),
                 new Identifier(TerrainsDefaults.NAMESPACE, TYPE)
         );

@@ -1,6 +1,6 @@
 package net.stockieslad.terrains.common.registry.sets.tree.whole.jacaranda;
 
-import net.stockieslad.terrains.common.registry.sets.RegistrySetManager;
+import net.stockieslad.terrains.common.registry.sets.RegistrySets;
 import net.stockieslad.terrains.common.registry.sets.tree.component.WholeTreeSet;
 import net.stockieslad.terrains.common.registry.sets.tree.whole.jacaranda.JacarandaTreeType.JacarandaTypes;
 import net.stockieslad.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.UniqueMapleFeatures;
@@ -16,7 +16,7 @@ import static net.stockieslad.terrains.util.registration.registry_set.helper.Reg
 public class JacarandaTreeAccess {
 
     public static WholeTreeSet<?, ?> getJacarandaTree() {
-        return RegistrySetManager.FULL_TREES.getTypeMap().get(JACARANDA_TREES);
+        return RegistrySets.FULL_TREES.getTypeMap().get(JACARANDA_TREES);
     }
 
     public static UniqueMapleFeatures getUniqueJacarandaFeatures() {

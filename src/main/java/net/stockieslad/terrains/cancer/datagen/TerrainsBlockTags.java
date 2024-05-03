@@ -9,7 +9,7 @@ import net.stockieslad.terrains.util.registration.mass.SafeTriSet;
 import net.minecraft.block.Block;
 import net.minecraft.tag.TagKey;
 
-import static net.stockieslad.terrains.common.registry.sets.RegistrySetManager.*;
+import static net.stockieslad.terrains.common.registry.sets.RegistrySets.*;
 import static net.minecraft.tag.BlockTags.*;
 
 public class TerrainsBlockTags extends FabricTagProvider.BlockTagProvider {

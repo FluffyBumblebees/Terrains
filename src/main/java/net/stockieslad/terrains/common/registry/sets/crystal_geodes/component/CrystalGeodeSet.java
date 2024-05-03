@@ -8,7 +8,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.*;
@@ -18,7 +17,6 @@ import net.minecraft.world.gen.placementmodifier.RarityFilterPlacementModifier;
 import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
-import net.stockieslad.abstractium.init.AbstractiumCommon;
 import net.stockieslad.abstractium.library.common.worldgen.biome.AbstractBiomes;
 import net.stockieslad.abstractium.util.dynamic.Mimic;
 import net.stockieslad.terrains.client.render.RenderTypes;
@@ -32,9 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry.registerWaxableBlockPair;
-import static net.stockieslad.abstractium.library.common.CommonTypeObjects.placedFeature;
-import static net.stockieslad.abstractium.library.common.CommonTypeObjects.registryKey;
-import static net.stockieslad.terrains.core.TerrainsDefaults.getNamespaceVar;
+import static net.stockieslad.terrains.core.TerrainsCommon.ABSTRACTION;
+import static net.stockieslad.terrains.core.TerrainsDefaults.getIdentifier;
 import static net.stockieslad.terrains.util.registration.mass.UnsafeTriSet.buildBlock;
 
 @SuppressWarnings({"FieldCanBeLocal"})
@@ -57,8 +54,8 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
     public final UnsafeTriSet<CorundumCrystalPane> CRYSTAL_PANE;
 
 
-    private final RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> CONFIGURED_GEODE;
-    private final RegistryEntry<PlacedFeature> PLACED_GEODE;
+    private final Mimic CONFIGURED_GEODE;
+    private final Mimic PLACED_GEODE;
 
     public CrystalGeodeSet(final Type type) {
         TYPE = type.name().toLowerCase();
@@ -132,19 +129,20 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
 
     @Override
     public void generate() {
-        AbstractiumCommon.COMMON_ABSTRACTION_HANDLER.abstraction.getStructureGenerator()
+        ABSTRACTION.getStructureGenerator()
                 .generateFeature(
-                        new Mimic(
+                        /*new Mimic(
                                 registryKey(placedFeature()),
                                 PLACED_GEODE.getKey().orElseThrow()
-                        ),
+                        ),*/
+                        ABSTRACTION.getRegistrar().getKeyFromEntry(PLACED_GEODE),
                         AbstractBiomes.OVERWORLD,
                         GenerationStep.Feature.UNDERGROUND_STRUCTURES
                 );
         //generateFeature(PLACED_GEODE, BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_STRUCTURES);
     }
 
-    public static <B extends Block, C extends AmethystClusterBlock> RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> registerGeode(
+    public static <B extends Block, C extends AmethystClusterBlock> Mimic registerGeode(
             final B corundum,
             final B crystal,
             final C cluster,
@@ -163,7 +161,7 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
                 .add(Blocks.DIAMOND_BLOCK.getDefaultState(), 1)
                 .build());
 
-        return ConfiguredFeatures.register(
+        return /*ConfiguredFeatures.register(
                 getNamespaceVar() + colour + "_geode",
                 Feature.GEODE,
                 new GeodeFeatureConfig(
@@ -184,13 +182,39 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
                         16,
                         0.05,
                         1)
+        );*/
+
+        ABSTRACTION.getRegistrar().registerConfiguredFeature(
+                getIdentifier(colour + "_geode"),
+                ABSTRACTION.getStructureCreator().createConfiguredFeature(
+                        new GeodeFeatureConfig(
+                                new GeodeLayerConfig(
+                                        BlockStateProvider.of(Blocks.AIR),
+                                        BlockStateProvider.of(crystal),
+                                        BlockStateProvider.of(corundum),
+                                        outerLayers,
+                                        outerLayers,
+                                        List.of(cluster.getDefaultState()),
+                                        BlockTags.FEATURES_CANNOT_REPLACE, BlockTags.GEODE_INVALID_BLOCKS),
+                                new GeodeLayerThicknessConfig(3.4, 5.6, 7.2, 9.4),
+                                new GeodeCrackConfig(0.95, 2.0, 2), 0.35, 0.083, true,
+                                UniformIntProvider.create(4, 6),
+                                UniformIntProvider.create(3, 4),
+                                UniformIntProvider.create(1, 2),
+                                -16,
+                                16,
+                                0.05,
+                                1
+                        ),
+                        Feature.GEODE
+                )
         );
     }
 
-    public static RegistryEntry<PlacedFeature> registerPlacedGeode(
-            final RegistryEntry<ConfiguredFeature<GeodeFeatureConfig, ?>> geode, final String name
+    public static Mimic registerPlacedGeode(
+            final Mimic geode, final String name
     ) {
-        return PlacedFeatures.register(
+        return /*PlacedFeatures.register(
                 getNamespaceVar() + name + "_geode_placed",
                 geode,
                 RarityFilterPlacementModifier.of(1440),
@@ -198,6 +222,20 @@ public final class CrystalGeodeSet<Type extends Enum<?>> implements RegistrySetC
                 HeightRangePlacementModifier.uniform(YOffset.aboveBottom(6),
                         YOffset.fixed(30)),
                 BiomePlacementModifier.of()
+        );*/
+
+        ABSTRACTION.getRegistrar().registerPlacedFeature(
+                getIdentifier(name + "_geode_placed"),
+                ABSTRACTION.getStructureCreator().createPlacedFeature(
+                        geode,
+                        List.of(
+                                RarityFilterPlacementModifier.of(1440),
+                                SquarePlacementModifier.of(),
+                                HeightRangePlacementModifier.uniform(YOffset.aboveBottom(6),
+                                        YOffset.fixed(30)),
+                                BiomePlacementModifier.of()
+                        )
+                )
         );
     }
 }

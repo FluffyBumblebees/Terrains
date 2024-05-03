@@ -1,26 +1,28 @@
 package net.stockieslad.terrains.util.registration.world.biome;
 
-import net.stockieslad.terrains.core.TerrainsDefaults;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.registry.BuiltinRegistries;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.PlacedFeature;
+import net.stockieslad.abstractium.util.dynamic.Mimic;
+import net.stockieslad.terrains.core.TerrainsDefaults;
 
+import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
 import static net.stockieslad.terrains.common.world.inbuilt_structures.features.TerrainsPlacedFeatures.PATCH_PUMPKIN;
 import static net.stockieslad.terrains.common.world.inbuilt_structures.features.TerrainsPlacedFeatures.PATCH_SUGAR_CANE;
-import static net.minecraft.world.gen.feature.DefaultBiomeFeatures.*;
+import static net.stockieslad.terrains.core.TerrainsCommon.ABSTRACTION;
 
 public class BiomeRegistryTools {
+    public static final int HOT_WATER = 0x6E9A98;
+    public static final int WARM_WATER = 0x0089F5;
+    public static final int COLD_WATER = 0x002D96;
+
     @SuppressWarnings("SameParameterValue")
     private static int getSkyColor(float temperature) {
         float f = temperature / 3.0F;
@@ -29,10 +31,11 @@ public class BiomeRegistryTools {
     }
 
     @SafeVarargs
-    public static void addVegetalFeatures(
+    public static GenerationSettings.Builder addVegetalFeatures(
             GenerationSettings.Builder builder, RegistryEntry<PlacedFeature>... features) {
         for (RegistryEntry<PlacedFeature> feature : features)
             builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, feature);
+        return builder;
     }
 
     public static void addBasicFeatures(GenerationSettings.Builder builder) {
@@ -57,6 +60,12 @@ public class BiomeRegistryTools {
         addDefaultAmbientSpawnEntries(spawnSettings);
         addDefaultMonsterSpawnEntries(spawnSettings);
         return spawnSettings;
+    }
+
+    public static SpawnSettings defaultSpawnSettingsWithWolf() {
+        SpawnSettings.Builder builder = createDefaultSpawnSettings();
+        builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.WOLF, 5, 4, 4));
+        return builder.build();
     }
 
     public static void addDefaultCreatureSpawnEntries(SpawnSettings.Builder builder) {
@@ -90,9 +99,10 @@ public class BiomeRegistryTools {
     }
 
     @SuppressWarnings("SameParameterValue")
-    public static RegistryKey<Biome> add(String name, Biome biome) {
-        RegistryKey<Biome> key = RegistryKey.of(Registry.BIOME_KEY, new Identifier(TerrainsDefaults.NAMESPACE, name));
-        BuiltinRegistries.add(BuiltinRegistries.BIOME, key, biome);
-        return key;
+    public static Mimic createRegistryKey(String name, Biome biome) {
+        return ABSTRACTION.getRegistrar().getKeyFromEntry(ABSTRACTION.getRegistrar().registerBiome(TerrainsDefaults.getIdentifier(name), biome));
+        /*RegistryKey<Biome> key = RegistryKey.of(Registry.BIOME_KEY, new Identifier(TerrainsDefaults.NAMESPACE, name));
+        BuiltinRegistries.createRegistryKey(BuiltinRegistries.BIOME, key, biome);
+        return key;*/
     }
 }

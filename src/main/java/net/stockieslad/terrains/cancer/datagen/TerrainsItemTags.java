@@ -11,7 +11,7 @@ import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-import static net.stockieslad.terrains.common.registry.sets.RegistrySetManager.*;
+import static net.stockieslad.terrains.common.registry.sets.RegistrySets.*;
 import static net.minecraft.tag.ItemTags.*;
 
 

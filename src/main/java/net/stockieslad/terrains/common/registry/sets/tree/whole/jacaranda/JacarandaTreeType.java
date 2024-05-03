@@ -3,7 +3,7 @@ package net.stockieslad.terrains.common.registry.sets.tree.whole.jacaranda;
 import net.stockieslad.terrains.common.registry.sets.tree.component.PrimitiveTreeSet.FeatureCreator;
 import net.stockieslad.terrains.common.registry.sets.tree.component.WholeTreeSet.TreeType;
 import net.stockieslad.terrains.common.world.inbuilt_structures.features.component.StandardSaplingGenerator;
-import net.stockieslad.terrains.common.world.inbuilt_structures.features.component.component.HemiEllipsoidFoliagePlacer;
+import net.stockieslad.terrains.common.world.inbuilt_structures.features.component.placers.HemiEllipsoidFoliagePlacer;
 import net.stockieslad.terrains.core.TerrainsDefaults;
 import net.minecraft.block.Block;
 import net.minecraft.block.LeavesBlock;

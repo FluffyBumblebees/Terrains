@@ -1,6 +1,6 @@
 package net.stockieslad.terrains.common.registry.sets.tree.whole.maple;
 
-import net.stockieslad.terrains.common.registry.sets.RegistrySetManager;
+import net.stockieslad.terrains.common.registry.sets.RegistrySets;
 import net.stockieslad.terrains.common.registry.sets.tree.component.WholeTreeSet;
 import net.stockieslad.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleFeatures;
 import net.stockieslad.terrains.common.registry.sets.tree.whole.maple.MapleTreeType.MapleTypes;
@@ -14,7 +14,7 @@ import static net.stockieslad.terrains.util.registration.registry_set.helper.Reg
 public class MapleTreeAccess {
 
     public static WholeTreeSet<?, ?> getMapleTree() {
-        return RegistrySetManager.FULL_TREES.getTypeMap().get(MapleTreeType.MAPLE_TREES);
+        return RegistrySets.FULL_TREES.getTypeMap().get(MapleTreeType.MAPLE_TREES);
     }
 
     public static UniqueMapleFeatures getUniqueMapleFeatures() {

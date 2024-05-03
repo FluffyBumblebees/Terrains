@@ -7,7 +7,7 @@ import net.stockieslad.terrains.util.registration.registry_set.registrars.Regist
 import net.stockieslad.terrains.util.registration.mass.SafeTriSet;
 import net.minecraft.block.Block;
 
-import static net.stockieslad.terrains.common.registry.sets.RegistrySetManager.*;
+import static net.stockieslad.terrains.common.registry.sets.RegistrySets.*;
 import static net.stockieslad.terrains.util.registration.registry_set.registrars.RegistryTypes.*;
 
 public class TerrainsBlockLootTables extends FabricBlockLootTableProvider {
