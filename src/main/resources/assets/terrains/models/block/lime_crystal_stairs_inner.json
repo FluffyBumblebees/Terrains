@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "terrains:block/lime_crystal",
-    "top": "terrains:block/lime_crystal",
-    "side": "terrains:block/lime_crystal"
-  }
-}

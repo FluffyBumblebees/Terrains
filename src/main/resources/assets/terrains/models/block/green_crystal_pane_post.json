@@ -1,7 +1,0 @@
-{
-    "parent": "terrains:block/template_crystal_corundum_pane_post",
-    "textures": {
-        "edge": "terrains:block/green_crystal",
-        "pane": "terrains:block/green_crystal"
-    }
-}

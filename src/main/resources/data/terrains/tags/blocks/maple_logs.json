@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "terrains:maple_log",
-    "terrains:stripped_maple_log",
-	"terrains:maple_wood",
-    "terrains:stripped_maple_wood"
-  ]
-}

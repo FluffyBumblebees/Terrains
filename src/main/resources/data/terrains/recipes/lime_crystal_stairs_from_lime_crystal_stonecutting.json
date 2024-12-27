@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "terrains:lime_crystal"
-  },
-  "result": "terrains:lime_crystal_stairs",
-  "count": 1
-}

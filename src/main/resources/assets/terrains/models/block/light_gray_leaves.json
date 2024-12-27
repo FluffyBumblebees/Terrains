@@ -1,6 +1,0 @@
-{
-  "parent": "block/leaves",
-  "textures": {
-    "all": "terrains:block/light_gray_leaves"
-  }
-}

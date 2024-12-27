@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "terrains:block/green_crystal",
-    "top": "terrains:block/green_crystal",
-    "side": "terrains:block/green_crystal"
-  }
-}

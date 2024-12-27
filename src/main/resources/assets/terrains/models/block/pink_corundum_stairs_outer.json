@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "terrains:block/pink_corundum",
-    "top": "terrains:block/pink_corundum",
-    "side": "terrains:block/pink_corundum"
-  }
-}

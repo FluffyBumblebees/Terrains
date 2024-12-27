@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "type=bottom": { "model": "terrains:block/maple_slab" },
-    "type=top": { "model": "terrains:block/maple_slab_top" },
-    "type=double": { "model": "terrains:block/maple_planks" }
-  }
-}

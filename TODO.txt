@@ -1,5 +1,5 @@
 BACKEND:
-Abstract this entire mod (just biomes to do now)
+Abstract this entire mod (ALMOST DONE)
 Add a config
 cleanup all the code by removing tri-sets and all.
 
@@ -34,6 +34,7 @@ CLOUDS:
 
 MEADOW:
 Make meadow a flatter biome with big lakes
+Make it seperate from the vanilla one (add some suffix)
 
 MAPLE:
 change the textures to be entirely mine and to just look better (it looks horrible now). Take inspiration from BOP Maple.

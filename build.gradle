@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.3-SNAPSHOT'
+	id 'fabric-loom' version '1.6-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -7,30 +7,11 @@ version = project.mod_version
 modid = project.modid
 group = project.maven_group
 
-loom {
-	accessWidenerPath = file("src/main/resources/terrains.accesswidener")
-	runs {
-		datagen {
-			inherit client
-			name "Data Generation"
-			vmArg "-Dfabric-api.datagen"
-			vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
-			vmArg "-Dfabric-api.datagen.modid=${project.modid}"
-
-			runDir "build/datagen"
-		}
-	}
+base {
+	archivesName = project.mod_name
 }
 
 repositories {
-	maven {url = 'https://maven.minecraftforge.net/'}
-	maven {url = "https://api.modrinth.com/maven"}
-	maven {url = 'https://maven.terraformersmc.com/'}
-	maven {url = 'https://mvnrepository.com/artifact/it.unimi.dsi/fastutil/'}
-	maven {
-		name = 'Ladysnake Mods'
-		url = 'https://ladysnake.jfrog.io/artifactory/mods'
-	}
 }
 
 dependencies {
@@ -39,14 +20,6 @@ dependencies {
 
 	modImplementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}+${project.minecraft_version}"
-
-	implementation"it.unimi.dsi:fastutil:8.2.1"
-	//modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:4.2.0")
-	modCompileOnly("maven.modrinth:abstractium:$project.abstractium_version")
-	modImplementation(include("com.github.glitchfiend:TerraBlender-fabric:${project.minecraft_version}-${project.terrablender_version}"))
-	modImplementation(include("com.terraformersmc.terraform-api:terraform-tree-api-v1:${project.terraform_api_version}"))
-	modImplementation(include("com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_api_version}"))
-	modImplementation(include("com.terraformersmc.terraform-api:terraform-shapes-api-v1:${project.terraform_api_version}"))
 }
 
 processResources {
@@ -72,11 +45,13 @@ tasks.withType(JavaCompile).configureEach {
 
 java {
 	withSourcesJar()
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
 }
 
 jar {
 	from("LICENSE") {
-		rename { "${it}_${project.archivesBaseName}"}
+		rename { "${it}_${archivesBaseName}"}
 	}
 }
 

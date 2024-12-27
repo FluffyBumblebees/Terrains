@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "terrains:waxed_lime_corundum"
-  },
-  "result": "terrains:lime_corundum_slab",
-  "count": 2
-}

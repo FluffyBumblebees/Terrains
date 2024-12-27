@@ -1,13 +1,9 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.stockieslad.terrains.mixins.mixin",
-  "compatibilityLevel": "JAVA_17",
-  "mixins": [
-    "OverworldBiomeCreatorMixin"
-  ],
-  "client": [
-  ],
+  "package": "net.stockieslad.magical_utilities.mixins.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [],
   "injectors": {
     "defaultRequire": 1
   }

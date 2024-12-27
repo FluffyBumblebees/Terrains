@@ -2,41 +2,26 @@
   "schemaVersion": 1,
   "id": "${modid}",
   "version": "${version}",
-
   "name": "${mod_name}",
   "description": "Random worldgen things for minecraft.",
   "authors": [
-    "StockiesLad [Owner]",
-    "IIpho3nix [Contributor-Artist]"
+    "StockiesLad [Owner]"
   ],
-  "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/terrains",
-    "sources": "https://github.com/FluffyBumblebees/Terrains",
-    "issues": "https://github.com/FluffyBumblebees/Terrains/issues",
-    "wiki": "https://github.com/FluffyBumblebees/Terrains/wiki",
-    "discord": "https://discord.gg/fMSnenNSXM"
-  },
-
+  "contact": {},
   "license": "All Rights Reserved",
-  "icon": "assets/terrains/icon.png",
-
+  "icon": "assets/magical_utilities/icon.png",
   "environment": "*",
   "entrypoints": {
-    "fabric-datagen": [
-      "net.stockieslad.terrains.cancer.datagen.TerrainsDatagen"
-    ],
     "main": [
-      "net.stockieslad.terrains.core.TerrainsCommon"
+      "net.stockieslad.magical_utilities.MagicalUtilitiesCommon"
     ],
     "client": [
-      "net.stockieslad.terrains.core.TerrainsClient"
+      "net.stockieslad.magical_utilities.MagicalUtilitiesClient"
     ]
   },
-  "accessWidener": "terrains.accesswidener",
   "mixins": [
     "terrains.mixins.json"
   ],
-
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",
     "fabric": ">=${fabric_api_version}",

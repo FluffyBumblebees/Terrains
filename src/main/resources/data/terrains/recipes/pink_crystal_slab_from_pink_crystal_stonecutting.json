@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "terrains:pink_crystal"
-  },
-  "result": "terrains:pink_crystal_slab",
-  "count": 2
-}

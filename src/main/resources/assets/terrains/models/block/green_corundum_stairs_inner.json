@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "terrains:block/green_corundum",
-    "top": "terrains:block/green_corundum",
-    "side": "terrains:block/green_corundum"
-  }
-}

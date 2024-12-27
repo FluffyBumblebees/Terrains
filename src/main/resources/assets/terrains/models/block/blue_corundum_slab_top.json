@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "terrains:block/blue_corundum",
-    "top": "terrains:block/blue_corundum",
-    "side": "terrains:block/blue_corundum"
-  }
-}
