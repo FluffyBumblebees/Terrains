@@ -1,4 +1,4 @@
-package net.stockieslad.magical_utilities.common.instances.block.crystals;
+package net.stockieslad.magical_utilities.block.crystals;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AmethystBlock;

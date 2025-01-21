@@ -1,4 +1,4 @@
-package net.stockieslad.magical_utilities.common;
+package net.stockieslad.magical_utilities.core;
 
 public enum Crystals {
     DARK,

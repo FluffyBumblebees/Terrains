@@ -1,4 +1,4 @@
-package net.stockieslad.magical_utilities.common;
+package net.stockieslad.magical_utilities.core;
 
 import net.minecraft.util.DyeColor;
 

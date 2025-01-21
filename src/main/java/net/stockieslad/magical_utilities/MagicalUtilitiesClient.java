@@ -4,7 +4,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
-import net.stockieslad.magical_utilities.common.Clouds;
+import net.stockieslad.magical_utilities.core.Clouds;
 
 import java.util.Arrays;
 

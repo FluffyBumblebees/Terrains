@@ -1,4 +1,4 @@
-package net.stockieslad.magical_utilities.common.instances.block.cloud;
+package net.stockieslad.magical_utilities.block.cloud;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,7 +25,6 @@ public class LiquidCloud extends BasicCloud {
         this(filledBucket, SoundEvents.ITEM_BUCKET_FILL);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         var item = player.getStackInHand(hand);

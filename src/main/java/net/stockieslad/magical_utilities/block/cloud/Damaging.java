@@ -1,4 +1,4 @@
-package net.stockieslad.magical_utilities.common.instances.block.cloud;
+package net.stockieslad.magical_utilities.block.cloud;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;

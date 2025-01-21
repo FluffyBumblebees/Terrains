@@ -1,16 +1,20 @@
-BACKEND:
-Abstract this entire mod (ALMOST DONE)
-Add a config
-cleanup all the code by removing tri-sets and all.
+Stained Trees {
+    Make the trees spawn as a gradient.
+    Make each colour drop fibrous dye which can be smelted for xp and a dye
+    Make it spawn super rarely in a plains biome.
+}
 
-STAINED_FORESTS:
-Make stained forests extremely rare and a small FLAT biome.
-Make the stained trees spawn in plains once again but very, very rarely.
+Crystals {
+    change textures to be original
+    charged crystals with 15 states rather than 15 different blocks; make them spawn in a gradient.
+    no geodes, instead make a full 'journey to the center of the earth' styled crystal cave. (Really hard)
+    crystals will break when interacted on by an entity and drop shards. Combine 4 to make it back into a crystal
+    crystals will need to be reinforced by touching it with liquid space-time. Powering it by redstone will unfreeze it
+    when black crystals do spawn, only 1 will at any place in a crystal cave. Combine 3 for an infinirod
+}
 
-CRYSTALS:
-Make crystal caves and change the corundum textures. Connect geodes to crystal caves for a sick entrance.
-
-CLOUDS:
+Clouds {
+    make cloud recipes like aether icestone freezing. Handle it in BasicCloud
     GENERAL:
     Remove all except white clouds spawn in the air (and change the spawning pattern to be unique)
     Fix rendering of clouds to render like trees (including all cloud-based blocks such as wood, grass).
@@ -31,12 +35,48 @@ CLOUDS:
     Make blazing cloud set you on fire.
     Make irradiated cloud able to very rarely randomly insta-kill you.
     Make pink cloud randomly and infrequently give 1-5 seconds of level 1 regeneration.
+}
 
-MEADOW:
-Make meadow a flatter biome with big lakes
-Make it seperate from the vanilla one (add some suffix)
+gravitium {
+    is made by pressing 25 clouds together with a piston
+    ingot is attracted to entities, like xp
+    block attracts entities to it
+    liquid will attract entities so hard in the middle you get crushed alive ("player was transformed into a singularity")
+}
 
-MAPLE:
-change the textures to be entirely mine and to just look better (it looks horrible now). Take inspiration from BOP Maple.
-Make the maple log able to be farmed for 6 bottles of maple syrup. If it's full make it drop a liquid block of maple syrup.
+Rainbow {
+    combining all dyes makes a rainbow that can be placed
+    rainbows can be absorbed by gravitium. When done 69 times, it makes a warped singularity
+    when powered by redstone, it will attract entities, just like gravitium
+    if a warped singularity is touched by a player, it will kill and delete all
+    a warped singularity can only be picked up by right-clicking it with an infinirod
+    the singularity item can be right-clicked on entities to save their data to only attract that type
+}
+
+soulite {
+    50/50 chance of healing or damaging the player on use/interaction
+    made by burning a rainbow in soul fire (10% success rate)
+}
+
+crystalised temporaz {
+    a matter representation of time
+    made with enderium, sculk, and unstable ingots
+    ingot can be right clicked on tile entities to tick it 200 times
+    block and fluid speeds up ticking of entities and blocks that touch it then destroys itself
+}
+
+stabilised quaterum {
+    made of alloys from all mods (even draconium)
+    staged after
+    used by the very high-end machines
+    tooltip -> has the power to synthesise matter out of any energy
+        liquid name = Liquefied Space-time
+        must be made first as a fluid from dark matter and spatialised time
+        liquid form is super unstable and can either explode or implode (sucks in blocks then disappearing)
+        mixing with destabilised redstone will cause a larger explosion/implosion
+        will only solidify into quateric aerogel when physically mixed with fluidised energy (made from ambrosium, and lumium)
+    quateric aerogel is completely safe and behaves like a normal block
+    quateric aerogel only has a base 5% chance of dropping stabilised quaterum
+    a block of stabilised quaterum is directional and will break any block (even bedrock) instantly when powered by redstone
+}
 

@@ -1,4 +1,4 @@
-package net.stockieslad.magical_utilities.common.instances.block.cloud;
+package net.stockieslad.magical_utilities.block.cloud;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -16,6 +16,10 @@ public class MagmaticCloud extends LiquidCloud {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+        if (state.get(STABLE)) {
+            super.onEntityCollision(state, world, pos, entity);
+            return;
+        }
         if (!entity.isOnFire())
             entity.setOnFireFromLava();
         super.onEntityCollision(state, world, pos, entity);
@@ -23,6 +27,7 @@ public class MagmaticCloud extends LiquidCloud {
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        if (state.get(STABLE)) return;
         double x = pos.getX() + random.nextDouble();
         double y = pos.getY() + random.nextDouble();
         double z = pos.getZ() + random.nextDouble();
