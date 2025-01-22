@@ -7,23 +7,18 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 @SuppressWarnings("deprecation")
 public class ColdCloud extends BasicCloud {
-    protected static VoxelShape SHAPE = VoxelShapes.empty();
-
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (state.get(STABLE)) {
@@ -41,8 +36,6 @@ public class ColdCloud extends BasicCloud {
             }
             return;
         }
-
-        world.playSound(null, pos, BlockSoundGroup.WOOL.getPlaceSound(), SoundCategory.BLOCKS);
 
         if ((Math.abs(motion.getY()) > 0.1f) && canFallThrough(world.getBlockState(position.down())) && canFallThrough(world.getBlockState(position.down().down()))) {
             entity.fallDistance = 23F;
@@ -86,7 +79,7 @@ public class ColdCloud extends BasicCloud {
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
+        return NO_SHAPE;
     }
 
     private boolean canFallThrough(BlockState state) {

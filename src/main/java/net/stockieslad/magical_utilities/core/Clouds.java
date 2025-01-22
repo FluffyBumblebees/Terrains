@@ -15,8 +15,8 @@ import static net.stockieslad.magical_utilities.MagicalUtilities.getIdentifier;
 public enum Clouds {
     CHARGED(new SmitingCloud()), // Summons lightning when walked in; Overworld; Indigo
     CHERRY(new NourishingCloud()), // Slowly fills up players hunger bars; Overworld; Pink
-    CONDENSED(new LiquidCloud(Items.WATER_BUCKET)), // Slows Entities
-    ENDER, // Teleports players randomly; Gives ender pearls; Teal
+    CONDENSED(new HydroCloud()), // Slows Entities
+    ENDER(new TeleportingCloud()), // Teleports players randomly; Gives ender pearls; Teal
     ENERGIZED(new RedstoneCloud()), // Lights up when entities are inside; gives redstone; Overworld; Red
     FERROUS, // Attract entities into it; Gives iron; Overworld; Iron
     GELID(new ColdCloud()), // Cold; sinks

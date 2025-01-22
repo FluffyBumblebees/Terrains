@@ -21,10 +21,17 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.stockieslad.magical_utilities.util.BlockPredicates;
 
+/*
+ * TODO: Fix Collision shape, add (safe, dormant) properties
+ * TODO: Rename 'STABLE' property to ACTIVE
+ * TODO: Add functionality to control shape directly
+ * TODO: Fix the noise spamming to happen only when entering/leaving
+ */
 @SuppressWarnings("deprecation")
 public class BasicCloud extends TransparentBlock {
-    //Fix Collision shape, add (safe, dormant) properties
     public static final BooleanProperty STABLE = BooleanProperty.of("stable");
+    public static final VoxelShape NO_SHAPE = VoxelShapes.empty();
+
     protected static final VoxelShape COLLISION_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 16.0, 0.01, 16.0);
     protected static final VoxelShape FALLING_COLLISION_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.9, 1.0);
 

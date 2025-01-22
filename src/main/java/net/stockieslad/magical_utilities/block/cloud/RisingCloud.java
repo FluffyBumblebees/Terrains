@@ -1,6 +1,7 @@
 package net.stockieslad.magical_utilities.block.cloud;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.BlockSoundGroup;
@@ -9,6 +10,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 public class RisingCloud extends BasicCloud {
@@ -53,5 +56,10 @@ public class RisingCloud extends BasicCloud {
         world.addParticle(ParticleTypes.CLOUD, xOffset, yOffset, zOffset, 0.0,
                 Direction.UP.getOffsetY() * ((random.nextFloat() * 0.75f) + 0.45f),
                 0.0);
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return NO_SHAPE;
     }
 }

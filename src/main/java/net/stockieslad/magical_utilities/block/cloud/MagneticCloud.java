@@ -5,7 +5,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 
-public class AttractionCloud extends BasicCloud {
+public class MagneticCloud extends BasicCloud {
 
     @SuppressWarnings("deprecation")
     @Override

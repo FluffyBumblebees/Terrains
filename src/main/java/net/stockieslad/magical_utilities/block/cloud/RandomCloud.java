@@ -9,13 +9,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 public class RandomCloud extends BasicCloud {
-    protected static VoxelShape SHAPE = VoxelShapes.empty();
-
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (state.get(STABLE)) {
@@ -41,6 +38,6 @@ public class RandomCloud extends BasicCloud {
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
+        return NO_SHAPE;
     }
 }

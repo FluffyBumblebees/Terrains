@@ -16,7 +16,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
@@ -24,7 +23,6 @@ import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import static net.stockieslad.magical_utilities.util.BlockHelper.arrayToPool;
 
 public class DirectionalCloud extends BasicCloud {
-    protected static VoxelShape SHAPE = VoxelShapes.empty();
     private static final EnumProperty<Direction> FACING = Properties.FACING;
     public final WeightedBlockStateProvider DEFAULT_STATES;
 
@@ -114,7 +112,7 @@ public class DirectionalCloud extends BasicCloud {
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
+        return NO_SHAPE;
     }
 
     @Override
