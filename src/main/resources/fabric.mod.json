@@ -17,10 +17,13 @@
     ],
     "client": [
       "net.stockieslad.magical_utilities.MagicalUtilitiesClient"
+    ],
+    "fabric-datagen": [
+      "net.stockieslad.magical_utilities.datagen.MuDataGenerator"
     ]
   },
   "mixins": [
-    "terrains.mixins.json"
+    "magical_utilities.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",

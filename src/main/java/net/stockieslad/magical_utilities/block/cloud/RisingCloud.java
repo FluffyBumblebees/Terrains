@@ -3,6 +3,8 @@ package net.stockieslad.magical_utilities.block.cloud;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
@@ -20,16 +22,16 @@ public class RisingCloud extends BasicCloud {
             super.onEntityCollision(state, world, pos, entity);
             return;
         }
+
         entity.fallDistance = 0.0F;
         final Vec3d motion = entity.getVelocity();
-
         if (entity.isSneaking()) {
             if (motion.y < 0) {
                 entity.setVelocity(motion.multiply(1.0, 0.005, 1.0));
             }
             return;
         }
-
+        world.playSound(null, pos, BlockSoundGroup.WOOL.getPlaceSound(), SoundCategory.BLOCKS);
         if (motion.y < 2) {
             if (-1.4 < motion.y) {
                 entity.setVelocity(motion.x, 2.0, motion.z);

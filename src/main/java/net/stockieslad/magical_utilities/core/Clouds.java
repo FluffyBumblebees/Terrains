@@ -13,18 +13,19 @@ import static net.stockieslad.magical_utilities.MagicalUtilities.getIdentifier;
     I'll finish this first before adding any other content or worldgen.
  */
 public enum Clouds {
-    CHARGED, // Summons lightning when walked in; Overworld; Indigo
-    CHERRY, // Slowly fills up players hunger bars; Overworld; Pink
-    CONDENSED(new LiquidCloud(Items.WATER_BUCKET)), // Stops fall damage; sinks; Gives water; Overworld; Blue
+    CHARGED(new SmitingCloud()), // Summons lightning when walked in; Overworld; Indigo
+    CHERRY(new NourishingCloud()), // Slowly fills up players hunger bars; Overworld; Pink
+    CONDENSED(new LiquidCloud(Items.WATER_BUCKET)), // Slows Entities
     ENDER, // Teleports players randomly; Gives ender pearls; Teal
     ENERGIZED(new RedstoneCloud()), // Lights up when entities are inside; gives redstone; Overworld; Red
     FERROUS, // Attract entities into it; Gives iron; Overworld; Iron
-    IRRADIATED(new DestructionCloud()), // Destroys blocks randomly in a radius; Purple;
+    GELID(new ColdCloud()), // Cold; sinks
+    IRRADIATED(new DestructiveCloud()), // Destroys blocks randomly in a radius; Purple;
     MAGMATIC(new MagmaticCloud(Items.LAVA_BUCKET)), // Damages entities & sets things on fire; gives 1 lava bucket, can be made with lava bucket as well; Nether; Orange
-    ORGANIC(new HealingCloud()), // Heals players slowly; Overworld; Green
-    SLIME(new BouncyCloud()), //Bounces entities; NOT DONE
+    LIVING(new HealingCloud()), // Heals players slowly; Overworld; Green
+    CHAOS(new RandomCloud()), //Random Direction;
     STEAM(new RisingCloud()), // Shoots entities up; Made by placing water and magmatic cloud together; Overworld; White
-    DIMENSIONAL, // Shoots entities directionally; flips when powered by redstone
+    INDIGO(new DirectionalCloud()), // Shoots entities directionally; flips when powered by redstone
     SULFUR(new DamagingCloud()); // Damaging; Gives sulfur; Made by placing magmatic & luminous cloud together; Nether; Yellow
 
     public final Identifier identifier;

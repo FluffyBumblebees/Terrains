@@ -11,6 +11,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.stockieslad.magical_utilities.core.Clouds;
 
 public class LiquidCloud extends BasicCloud {
     private final Item filledBucket;
@@ -28,9 +29,10 @@ public class LiquidCloud extends BasicCloud {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         var item = player.getStackInHand(hand);
-        if (item.isOf(Items.BUCKET)) {
+        if (item.isOf(Items.BUCKET) && !state.get(STABLE)) {
             player.playSound(sound, 1, 1);
             player.setStackInHand(hand, filledBucket.getDefaultStack());
+            world.setBlockState(pos, Clouds.STEAM.block.getDefaultState().with(STABLE, false));
             return ActionResult.SUCCESS;
         } else return super.onUse(state, world, pos, player, hand, hit);
     }

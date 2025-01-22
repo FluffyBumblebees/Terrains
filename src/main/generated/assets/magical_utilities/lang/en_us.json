@@ -1,0 +1,17 @@
+{
+  "block.magical_utilities.chaos_cloud": "Chaos Cloud",
+  "block.magical_utilities.charged_cloud": "Charged Cloud",
+  "block.magical_utilities.cherry_cloud": "Cherry Cloud",
+  "block.magical_utilities.condensed_cloud": "Condensed Cloud",
+  "block.magical_utilities.ender_cloud": "Ender Cloud",
+  "block.magical_utilities.energized_cloud": "Energized Cloud",
+  "block.magical_utilities.ferrous_cloud": "Ferrous Cloud",
+  "block.magical_utilities.gelid_cloud": "Gelid Cloud",
+  "block.magical_utilities.indigo_cloud": "Indigo Cloud",
+  "block.magical_utilities.irradiated_cloud": "Irradiated Cloud",
+  "block.magical_utilities.living_cloud": "Living Cloud",
+  "block.magical_utilities.magmatic_cloud": "Magmatic Cloud",
+  "block.magical_utilities.steam_cloud": "Steam Cloud",
+  "block.magical_utilities.sulfur_cloud": "Sulfur Cloud",
+  "itemgroup.magical_utilities.clouds": "Magical Clouds"
+}

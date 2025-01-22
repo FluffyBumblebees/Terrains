@@ -23,6 +23,7 @@ import net.stockieslad.magical_utilities.util.BlockPredicates;
 
 @SuppressWarnings("deprecation")
 public class BasicCloud extends TransparentBlock {
+    //Fix Collision shape, add (safe, dormant) properties
     public static final BooleanProperty STABLE = BooleanProperty.of("stable");
     protected static final VoxelShape COLLISION_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 16.0, 0.01, 16.0);
     protected static final VoxelShape FALLING_COLLISION_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.9, 1.0);

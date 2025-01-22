@@ -1,3 +1,5 @@
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyAccessibility
 plugins {
 	id 'fabric-loom' version '1.6-SNAPSHOT'
 	id 'maven-publish'
@@ -22,10 +24,35 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}+${project.minecraft_version}"
 }
 
+loom {
+
+	runs {
+		datagen {
+			inherit server
+			name "Data Generation"
+			vmArg "-Dfabric-api.datagen"
+			vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
+			vmArg "-Dfabric-api.datagen.modid=${modid}"
+
+			runDir "build/datagen"
+		}
+	}
+}
+
+sourceSets {
+	main {
+		resources {
+			srcDirs += [
+					'src/main/generated'
+			]
+		}
+	}
+}
+
 processResources {
 
 	Map<String, String> properties = new HashMap<>()
-	properties.put("version", version)
+	properties.put("version", (String)version)
 	properties.put("fabric_loader_version", fabric_loader_version)
 	properties.put("fabric_api_version", fabric_api_version)
 	properties.put("minecraft_version", minecraft_version)
@@ -57,7 +84,9 @@ jar {
 
 publishing {
 	publications {
+		//noinspection GroovyAssignabilityCheck
 		mavenJava(MavenPublication) {
+			//noinspection GroovyAssignabilityCheck
 			from components.java
 		}
 	}

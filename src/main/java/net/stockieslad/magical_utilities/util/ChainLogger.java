@@ -3,9 +3,11 @@ package net.stockieslad.magical_utilities.util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.function.Consumer;
+
 @SuppressWarnings({"unused", "UnusedReturnValue"})
 public final class ChainLogger {
-    private final SideEffect
+    private final Consumer<String>
             DEBUG,
             ERROR,
             INFO,
@@ -23,14 +25,14 @@ public final class ChainLogger {
         WARN = internalLogger::warn;
     }
 
-    private ChainLogger base(final SideEffect type, final String[] messages) {
+    private ChainLogger base(final Consumer<String> type, final String[] messages) {
         for (final String message : messages)
-            type.action(message);
+            type.accept(message);
         return this;
     }
 
-    public ChainLogger log(SideEffect sideEffect, final String... messages) {
-        return base(sideEffect, messages);
+    public ChainLogger log(Consumer<String> type, final String... messages) {
+        return base(type, messages);
     }
 
     public ChainLogger debug(final String... messages) {
@@ -55,9 +57,5 @@ public final class ChainLogger {
 
     public ChainLogger warn(final String... messages) {
         return log(WARN, messages);
-    }
-
-    public interface SideEffect {
-        void action(final String message);
     }
 }

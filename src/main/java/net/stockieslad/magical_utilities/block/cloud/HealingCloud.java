@@ -13,6 +13,9 @@ public class HealingCloud extends BasicCloud {
             super.onEntityCollision(state, world, pos, entity);
             return;
         }
+
+        if (world.getRandom().nextInt(25) != 0) return;
+
         if (entity instanceof PlayerEntity player)
             player.heal(0.1f);
         super.onEntityCollision(state, world, pos, entity);
