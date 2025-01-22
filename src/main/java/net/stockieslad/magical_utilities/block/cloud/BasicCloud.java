@@ -26,6 +26,7 @@ import net.stockieslad.magical_utilities.util.BlockPredicates;
  * TODO: Rename 'STABLE' property to ACTIVE
  * TODO: Add functionality to control shape directly
  * TODO: Fix the noise spamming to happen only when entering/leaving
+ * TODO: Tough as nails compat with dense cloud (hydration - quench thirst)
  */
 @SuppressWarnings("deprecation")
 public class BasicCloud extends TransparentBlock {

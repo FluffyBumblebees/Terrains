@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "magical_utilities:block/condensed_cloud"
+    "all": "magical_utilities:block/dense_cloud"
   }
 }

@@ -10,12 +10,12 @@ import net.stockieslad.magical_utilities.util.BlockHelper;
 import static net.stockieslad.magical_utilities.MagicalUtilities.getIdentifier;
 
 /*
-    I'll finish this first before adding any other content or worldgen.
+   TODO: Reorder according to colour
  */
 public enum Clouds {
     CHARGED(new SmitingCloud()), // Summons lightning when walked in; Overworld; Indigo
     CHERRY(new NourishingCloud()), // Slowly fills up players hunger bars; Overworld; Pink
-    CONDENSED(new HydroCloud()), // Slows Entities
+    DENSE(new HydroCloud()), // Slows Entities
     ENDER(new TeleportingCloud()), // Teleports players randomly; Gives ender pearls; Teal
     ENERGIZED(new RedstoneCloud()), // Lights up when entities are inside; gives redstone; Overworld; Red
     FERROUS, // Attract entities into it; Gives iron; Overworld; Iron

@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "magical_utilities:condensed_cloud"
+          "name": "magical_utilities:dense_cloud"
         }
       ],
       "rolls": 1.0
