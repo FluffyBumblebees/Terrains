@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 public class DamagingCloud extends BasicCloud {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (!state.get(STABLE))
+        if (!state.get(DORMANT))
             entity.damage(world.getDamageSources().inWall(), 1.0f);
         super.onEntityCollision(state, world, pos, entity);
     }

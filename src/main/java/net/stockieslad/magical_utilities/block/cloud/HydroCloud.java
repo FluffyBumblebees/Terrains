@@ -16,7 +16,7 @@ public class HydroCloud extends LiquidCloud {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (!state.get(STABLE)) entity.setVelocity(entity.getVelocity().multiply(0.1, 0.1, 0.1));
+        if (!state.get(DORMANT)) entity.setVelocity(entity.getVelocity().multiply(0.1, 0.1, 0.1));
         super.onEntityCollision(state, world, pos, entity);
     }
 

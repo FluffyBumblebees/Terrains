@@ -11,7 +11,7 @@ public class NourishingCloud extends BasicCloud {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         var random = world.getRandom();
-        if (!world.isClient && !state.get(STABLE) && random.nextInt(1000) == 0 && entity instanceof PlayerEntity player) {
+        if (!world.isClient && !state.get(DORMANT) && random.nextInt(1000) == 0 && entity instanceof PlayerEntity player) {
             player.getHungerManager().add(1, 0.1f);
             if (random.nextInt(1000) == 0)
                 world.setBlockState(pos, Clouds.STEAM.block.getDefaultState());

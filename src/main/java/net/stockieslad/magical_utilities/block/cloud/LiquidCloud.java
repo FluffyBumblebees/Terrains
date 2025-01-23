@@ -29,10 +29,10 @@ public class LiquidCloud extends BasicCloud {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         var item = player.getStackInHand(hand);
-        if (item.isOf(Items.BUCKET) && !state.get(STABLE)) {
+        if (item.isOf(Items.BUCKET) && !state.get(DORMANT)) {
             player.playSound(sound, 1, 1);
             player.setStackInHand(hand, filledBucket.getDefaultStack());
-            world.setBlockState(pos, Clouds.STEAM.block.getDefaultState().with(STABLE, false));
+            world.setBlockState(pos, Clouds.STEAM.block.getDefaultState().with(DORMANT, false));
             return ActionResult.SUCCESS;
         } else return super.onUse(state, world, pos, player, hand, hit);
     }

@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 public class RandomCloud extends BasicCloud {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (state.get(STABLE)) {
+        if (state.get(DORMANT)) {
             super.onEntityCollision(state, world, pos, entity);
             return;
         }

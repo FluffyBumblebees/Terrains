@@ -9,6 +9,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.ActionResult;
@@ -21,24 +22,16 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.stockieslad.magical_utilities.util.BlockPredicates;
 
-/*
- * TODO: Fix Collision shape, add (safe, dormant) properties
- * TODO: Rename 'STABLE' property to ACTIVE
- * TODO: Add functionality to control shape directly
- * TODO: Fix the noise spamming to happen only when entering/leaving
- * TODO: Tough as nails compat with dense cloud (hydration - quench thirst)
- */
 @SuppressWarnings("deprecation")
 public class BasicCloud extends TransparentBlock {
-    public static final BooleanProperty STABLE = BooleanProperty.of("stable");
+    public static final BooleanProperty DORMANT = BooleanProperty.of("dormant");
     public static final VoxelShape NO_SHAPE = VoxelShapes.empty();
-
     protected static final VoxelShape COLLISION_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 16.0, 0.01, 16.0);
     protected static final VoxelShape FALLING_COLLISION_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.9, 1.0);
 
     public BasicCloud() {
         this(FabricBlockSettings.create().strength(0.2F));
-        this.setDefaultState(getDefaultState().with(STABLE, true));
+        this.setDefaultState(getDefaultState().with(DORMANT, true));
     }
 
     public BasicCloud(Settings settings) {
@@ -47,7 +40,7 @@ public class BasicCloud extends TransparentBlock {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(STABLE);
+        builder.add(DORMANT);
     }
 
     @Override
@@ -69,13 +62,15 @@ public class BasicCloud extends TransparentBlock {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         var stack = player.getStackInHand(hand);
-        if (stack.isOf(Items.GLOWSTONE_DUST) && !state.get(STABLE)) {
+        if (stack.isOf(Items.GLOWSTONE_DUST) && !state.get(DORMANT)) {
             if (!player.isCreative()) stack.decrement(1);
-            world.setBlockState(pos, state.with(STABLE, true));
+            world.playSound(null, pos, BlockSoundGroup.WOOL.getPlaceSound(), SoundCategory.BLOCKS);
+            world.setBlockState(pos, state.with(DORMANT, true));
             return ActionResult.SUCCESS;
-        } else if (stack.isOf(Items.REDSTONE) && state.get(STABLE)) {
+        } else if (stack.isOf(Items.REDSTONE) && state.get(DORMANT)) {
             if (!player.isCreative()) stack.decrement(1);
-            world.setBlockState(pos, state.with(STABLE, false));
+            world.playSound(null, pos, BlockSoundGroup.WOOL.getBreakSound(), SoundCategory.BLOCKS);
+            world.setBlockState(pos, state.with(DORMANT, false));
             return ActionResult.SUCCESS;
         } else return ActionResult.PASS;
     }

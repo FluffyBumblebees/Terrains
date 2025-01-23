@@ -21,7 +21,7 @@ public class RisingCloud extends BasicCloud {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (state.get(STABLE)) {
+        if (state.get(DORMANT)) {
             super.onEntityCollision(state, world, pos, entity);
             return;
         }
@@ -46,7 +46,7 @@ public class RisingCloud extends BasicCloud {
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (state.get(STABLE)) return;
+        if (state.get(DORMANT)) return;
         super.randomDisplayTick(state, world, pos, random);
 
         final double xOffset = pos.getX() + world.random.nextDouble();

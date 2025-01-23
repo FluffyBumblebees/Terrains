@@ -37,7 +37,7 @@ public class RedstoneCloud extends BasicCloud {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (state.get(STABLE)) {
+        if (state.get(DORMANT)) {
             super.onEntityCollision(state, world, pos, entity);
             return;
         }
@@ -54,7 +54,7 @@ public class RedstoneCloud extends BasicCloud {
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-        if (state.get(STABLE)) return;
+        if (state.get(DORMANT)) return;
         if (!moved && !state.isOf(newState.getBlock())) {
             if (this.getRedstoneOutput(state) > 0)
                 world.updateNeighborsAlways(pos, this);
@@ -64,7 +64,7 @@ public class RedstoneCloud extends BasicCloud {
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (state.get(STABLE)) return;
+        if (state.get(DORMANT)) return;
         boolean noEntity = world.getEntitiesByClass(Entity.class, BOX.offset(pos),
                 EntityPredicates.EXCEPT_SPECTATOR.and((entity) -> !entity.canAvoidTraps())).isEmpty();
         if (state.get(POWERED) && noEntity) {

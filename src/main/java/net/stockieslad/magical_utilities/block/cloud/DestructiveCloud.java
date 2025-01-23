@@ -23,7 +23,7 @@ public class DestructiveCloud extends BasicCloud {
 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (state.get(STABLE)) return;
+        if (state.get(DORMANT)) return;
         if (!world.isReceivingRedstonePower(pos)) {
             var x = pos.getX() + (random.nextBoolean() ? random.nextInt(RANGE) : -random.nextInt(RANGE));
             var y = pos.getY() + (random.nextBoolean() ? random.nextInt(RANGE) : -random.nextInt(RANGE));
@@ -31,7 +31,8 @@ public class DestructiveCloud extends BasicCloud {
             var newPos = new BlockPos(x, y, z);
             var newState = world.getBlockState(newPos);
             world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25f, random.nextFloat());
-            world.getEntitiesByClass(Entity.class, BOX.offset(pos), EntityPredicates.EXCEPT_SPECTATOR).forEach(Entity::kill);
+            world.getEntitiesByClass(Entity.class, BOX.offset(pos), EntityPredicates.EXCEPT_SPECTATOR)
+                    .forEach(entity -> entity.damage(world.getDamageSources().inFire(), 100));
 
             if (newState.isIn(MuTags.BLOCK_CLOUDS)) return;
 

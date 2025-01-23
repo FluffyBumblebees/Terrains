@@ -47,7 +47,7 @@ public class DirectionalCloud extends BasicCloud {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (state.get(STABLE)) {
+        if (state.get(DORMANT)) {
             super.onEntityCollision(state, world, pos, entity);
             return;
         }
@@ -84,7 +84,7 @@ public class DirectionalCloud extends BasicCloud {
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (state.get(STABLE)) return;
+        if (state.get(DORMANT)) return;
 
         float x = pos.getX() + (random.nextFloat() * 0.7f) + 0.15f;
         float y = pos.getY() + (random.nextFloat() * 0.7f) + 0.15f;
