@@ -26,7 +26,7 @@ import net.stockieslad.magical_utilities.util.BlockPredicates;
 public class BasicCloud extends TransparentBlock {
     public static final BooleanProperty DORMANT = BooleanProperty.of("dormant");
     public static final VoxelShape NO_SHAPE = VoxelShapes.empty();
-    protected static final VoxelShape COLLISION_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 16.0, 0.01, 16.0);
+    protected static final VoxelShape COLLISION_SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 0.01, 16.0);
     protected static final VoxelShape FALLING_COLLISION_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.9, 1.0);
 
     public BasicCloud() {
@@ -79,7 +79,7 @@ public class BasicCloud extends TransparentBlock {
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         entity.fallDistance = 0.0F;
         if (entity.getVelocity().y < 0.1) {
-            entity.setVelocity(entity.getVelocity().multiply(1.0, 0.005, 1.0));
+            entity.setVelocity(entity.getVelocity().multiply(0.9, 0.005, 0.9));
         }
         entity.setOnGround(entity instanceof LivingEntity livingEntity && (!(livingEntity instanceof PlayerEntity player) || !player.getAbilities().flying));
     }
