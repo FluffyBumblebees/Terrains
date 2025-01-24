@@ -1,0 +1,9 @@
+{
+  "type": "magical_utilities:cloud_mixing",
+  "ingredients": [
+    "magical_utilities:dense_cloud",
+    "magical_utilities:dense_cloud"
+  ],
+  "result": "magical_utilities:gelid_cloud",
+  "successChance": 0.5
+}

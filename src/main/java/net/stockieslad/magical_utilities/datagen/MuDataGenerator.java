@@ -12,5 +12,6 @@ public class MuDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(MuModelGenerator::new);
         pack.addProvider(MuBlockTagGenerator::new);
         pack.addProvider(MuItemTagGenerator::new);
+        pack.addProvider(MuRecipeGenerator::new);
     }
 }

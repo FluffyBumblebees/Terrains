@@ -1,0 +1,10 @@
+{
+  "type": "magical_utilities:cloud_mixing",
+  "ingredients": [
+    "magical_utilities:chaos_cloud",
+    "magical_utilities:energized_cloud",
+    "magical_utilities:energized_cloud"
+  ],
+  "result": "magical_utilities:irradiated_cloud",
+  "successChance": 0.75
+}

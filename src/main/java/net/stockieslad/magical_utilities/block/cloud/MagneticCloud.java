@@ -22,37 +22,37 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
-import static net.stockieslad.magical_utilities.block.cloud.MagneticCloud.Mode.PULLING;
-import static net.stockieslad.magical_utilities.block.cloud.MagneticCloud.Mode.PUSHING;
+import static net.stockieslad.magical_utilities.block.cloud.MagneticCloud.EntityMode.ITEM;
+import static net.stockieslad.magical_utilities.block.cloud.MagneticCloud.EntityMode.LIVING;
 import static net.stockieslad.magical_utilities.util.MoreMath.clamp;
 
 @SuppressWarnings("deprecation")
 public class MagneticCloud extends BasicCloud {
-    private static final EnumProperty<Mode> MODE = EnumProperty.of("mode", Mode.class);
+    private static final EnumProperty<EntityMode> ENTITY_MODE = EnumProperty.of("entity_mode", EntityMode.class);
     private static final int RANGE = 10;
 
     public MagneticCloud() {
-        this.setDefaultState(this.stateManager.getDefaultState().with(MODE, PULLING));
+        this.setDefaultState(this.stateManager.getDefaultState().with(ENTITY_MODE, ITEM));
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(MODE);
+        builder.add(ENTITY_MODE);
     }
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         var stack = player.getStackInHand(hand);
-        if (stack.isOf(Items.COPPER_INGOT) && state.get(MODE).equals(PULLING)) {
+        if (stack.isOf(Items.COPPER_INGOT) && !state.get(ENTITY_MODE).equals(ITEM)) {
             if (!player.isCreative()) stack.decrement(1);
             world.playSound(null, pos, BlockSoundGroup.WOOL.getPlaceSound(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(MODE, PUSHING));
+            world.setBlockState(pos, state.with(ENTITY_MODE, ITEM));
             return ActionResult.SUCCESS;
-        } else if (stack.isOf(Items.IRON_INGOT) && state.get(MODE).equals(PUSHING)) {
+        } else if (stack.isOf(Items.IRON_INGOT) && !state.get(ENTITY_MODE).equals(LIVING)) {
             if (!player.isCreative()) stack.decrement(1);
             world.playSound(null, pos, BlockSoundGroup.WOOL.getBreakSound(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(MODE, PULLING));
+            world.setBlockState(pos, state.with(ENTITY_MODE, LIVING));
             return ActionResult.SUCCESS;
         } else return super.onUse(state, world, pos, player, hand, hit);
     }
@@ -71,7 +71,7 @@ public class MagneticCloud extends BasicCloud {
 
         if (state.get(DORMANT)) return;
 
-        var powered = world.isReceivingRedstonePower(pos);
+        var powered = state.get(ENTITY_MODE).equals(LIVING);
         var x = pos.getX();
         var y = pos.getY();
         var z = pos.getZ();
@@ -89,7 +89,7 @@ public class MagneticCloud extends BasicCloud {
             var diffY = entityPos.getY() - y;
             var diffZ = entityPos.getZ() - z;
 
-            if (state.get(MODE).equals(PUSHING)) {
+            if (world.isReceivingRedstonePower(pos)) {
                 diffX = -diffX;
                 diffY = -diffY;
                 diffZ = -diffZ;
@@ -114,9 +114,9 @@ public class MagneticCloud extends BasicCloud {
         }
     }
 
-    protected enum Mode implements StringIdentifiable {
-        PULLING,
-        PUSHING;
+    protected enum EntityMode implements StringIdentifiable {
+        ITEM,
+        LIVING;
 
         @Override
         public String asString() {

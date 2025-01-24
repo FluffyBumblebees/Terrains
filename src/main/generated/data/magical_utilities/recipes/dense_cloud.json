@@ -1,0 +1,11 @@
+{
+  "type": "magical_utilities:cloud_mixing",
+  "ingredients": [
+    "magical_utilities:steam_cloud",
+    "magical_utilities:steam_cloud",
+    "magical_utilities:steam_cloud",
+    "magical_utilities:steam_cloud"
+  ],
+  "result": "magical_utilities:dense_cloud",
+  "successChance": 0.5
+}

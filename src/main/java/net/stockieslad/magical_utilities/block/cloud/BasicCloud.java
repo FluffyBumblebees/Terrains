@@ -20,7 +20,14 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.stockieslad.magical_utilities.core.MuRecipes;
+import net.stockieslad.magical_utilities.recipe.CloudMixingRecipe;
 import net.stockieslad.magical_utilities.util.BlockPredicates;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static net.stockieslad.magical_utilities.util.BlockHelper.testSides;
 
 @SuppressWarnings("deprecation")
 public class BasicCloud extends TransparentBlock {
@@ -101,5 +108,58 @@ public class BasicCloud extends TransparentBlock {
             }
         }
         return COLLISION_SHAPE;
+    }
+
+    @Override
+    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+        super.onBlockAdded(state, world, pos, oldState, notify);
+        for (CloudMixingRecipe recipe : world.getRecipeManager().listAllOfType(MuRecipes.CLOUD_MIXING_RECIPE_TYPE)) {
+            var ingredients = new ArrayList<>(recipe.ingredients());
+
+            if (!ingredients.contains(state.getBlock())) continue;
+
+            /*var passed = testSides(pos, sidePos -> {
+                var sideState = world.getBlockState(sidePos);
+                var sideBlock = sideState.getBlock();
+                var contains = ingredients.contains(sideBlock) && state.get(DORMANT);
+                if (contains) ingredients.remove(sideBlock);
+                return contains;
+            });*/
+
+            var passed = locateRecipeNeighbours(world, state, pos, ingredients);
+
+            if (ingredients.size() != 0) continue;
+
+            var random = world.getRandom();
+
+            for (BlockPos blockPos : passed)
+                if (random.nextFloat() < recipe.successChance())
+                    world.setBlockState(blockPos, recipe.result().getDefaultState());
+                else world.breakBlock(blockPos, false);
+        }
+    }
+
+    private List<BlockPos> locateRecipeNeighbours(World world, BlockState state, BlockPos pos, List<Block> ingredients) {
+        return locateRecipeNeighbours(world, state, pos, ingredients, new ArrayList<>());
+    }
+
+    private List<BlockPos> locateRecipeNeighbours(World world, BlockState state, BlockPos pos, List<Block> ingredients, List<BlockPos> tested) {
+        List<BlockPos> nextSides = new ArrayList<>();
+        var sides = testSides(pos, sidePos -> {
+            if (tested.contains(sidePos)) return false;
+            tested.add(sidePos);
+
+            var sideState = world.getBlockState(sidePos);
+            var sideBlock = sideState.getBlock();
+            var contains = ingredients.contains(sideBlock) && state.get(DORMANT);
+            if (contains) {
+                ingredients.remove(sideBlock);
+                var nxt = ((BasicCloud)sideBlock).locateRecipeNeighbours(world, state, sidePos, ingredients, tested);
+                nextSides.addAll(nxt);
+            }
+            return contains;
+        });
+        nextSides.addAll(sides);
+        return nextSides;
     }
 }
