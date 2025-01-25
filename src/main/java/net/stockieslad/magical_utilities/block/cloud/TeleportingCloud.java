@@ -3,6 +3,8 @@ package net.stockieslad.magical_utilities.block.cloud;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -11,6 +13,16 @@ import net.minecraft.world.World;
 
 @SuppressWarnings("deprecation")
 public class TeleportingCloud extends BasicCloud {
+
+    @Override
+    public boolean testPacifier(ItemStack stack) {
+        return stack.isOf(Items.SCULK);
+    }
+
+    @Override
+    public boolean testActivator(ItemStack stack) {
+        return stack.isOf(Items.ENDER_PEARL);
+    }
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {

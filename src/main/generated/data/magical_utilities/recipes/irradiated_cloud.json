@@ -6,5 +6,5 @@
     "magical_utilities:energized_cloud"
   ],
   "result": "magical_utilities:irradiated_cloud",
-  "successChance": 0.75
+  "successChance": 0.01
 }

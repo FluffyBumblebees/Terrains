@@ -3,6 +3,8 @@ package net.stockieslad.magical_utilities.block.cloud;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -19,6 +21,11 @@ public class DestructiveCloud extends BasicCloud {
 
     public DestructiveCloud() {
         super(FabricBlockSettings.create().strength(0.2f).ticksRandomly().luminance(15));
+    }
+
+    @Override
+    public boolean testPacifier(ItemStack stack) {
+        return stack.isOf(Items.IRON_INGOT);
     }
 
     @Override

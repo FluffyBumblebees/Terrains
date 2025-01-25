@@ -13,30 +13,6 @@ Crystals {
     when black crystals do spawn, only 1 will at any place in a crystal cave. Combine 3 for an infinirod
 }
 
-Clouds {
-    make cloud recipes like aether icestone freezing. Handle it in BasicCloud
-    GENERAL:
-    Remove all except white clouds spawn in the air (and change the spawning pattern to be unique)
-    Fix rendering of clouds to render like trees (including all cloud-based blocks such as wood, grass).
-
-    BIOME:
-    Make an extremely rare biome for cloud trees with a new, weak type of log. Add floating islands on it as well.
-    For these floating islands, make it "held up" by strings of cloud.
-    Add some tiny floating clouds above the cloud biome.
-    Add a cloudy, semi-transparent grass and piles of cloud foliage.
-
-    CLOUD_ADJUSTMENTS:
-    Make an item (similar to wax) that is crafted using a block of regular cloud surrounded by amethyst shards to disable cloud features (if it's just for decor).
-    Make compact variants for clouds with the above item surrounded by designated cloud.
-    Make stair and slab variants of these clouds so one can actually build a cloud house.
-    Make storm cloud "whirl you up into the sky"
-    Make teal cloud named ender cloud and able to very rarely randomly spawn you somewhere within 10 blocks.
-    Make redstone cloud activate when player is inside.
-    Make blazing cloud set you on fire.
-    Make irradiated cloud able to very rarely randomly insta-kill you.
-    Make pink cloud randomly and infrequently give 1-5 seconds of level 1 regeneration.
-}
-
 gravitium {
     is made by pressing 25 clouds together with a piston
     ingot is attracted to entities, like xp

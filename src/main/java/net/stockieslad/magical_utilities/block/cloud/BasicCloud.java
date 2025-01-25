@@ -7,6 +7,7 @@ import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
@@ -21,6 +22,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.stockieslad.magical_utilities.core.MuRecipes;
+import net.stockieslad.magical_utilities.core.MuTags;
 import net.stockieslad.magical_utilities.recipe.CloudMixingRecipe;
 import net.stockieslad.magical_utilities.util.BlockPredicates;
 
@@ -43,6 +45,18 @@ public class BasicCloud extends TransparentBlock {
 
     public BasicCloud(Settings settings) {
         super(settings.sounds(BlockSoundGroup.WOOL).nonOpaque().notSolid().suffocates(BlockPredicates::never).blockVision(BlockPredicates::never));
+    }
+
+    public boolean testPacifier(ItemStack stack) {
+        return stack.isOf(Items.GLOWSTONE_DUST);
+    }
+
+    public boolean testActivator(ItemStack stack) {
+        return stack.isOf(Items.REDSTONE);
+    }
+
+    public boolean noShapeWhenActivated() {
+        return true;
     }
 
     @Override
@@ -69,12 +83,12 @@ public class BasicCloud extends TransparentBlock {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         var stack = player.getStackInHand(hand);
-        if (stack.isOf(Items.GLOWSTONE_DUST) && !state.get(DORMANT)) {
+        if (testPacifier(stack) && !state.get(DORMANT)) {
             if (!player.isCreative()) stack.decrement(1);
             world.playSound(null, pos, BlockSoundGroup.WOOL.getPlaceSound(), SoundCategory.BLOCKS);
             world.setBlockState(pos, state.with(DORMANT, true));
             return ActionResult.SUCCESS;
-        } else if (stack.isOf(Items.REDSTONE) && state.get(DORMANT)) {
+        } else if (testActivator(stack) && state.get(DORMANT)) {
             if (!player.isCreative()) stack.decrement(1);
             world.playSound(null, pos, BlockSoundGroup.WOOL.getBreakSound(), SoundCategory.BLOCKS);
             world.setBlockState(pos, state.with(DORMANT, false));
@@ -96,6 +110,8 @@ public class BasicCloud extends TransparentBlock {
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        if (noShapeWhenActivated() && !state.get(DORMANT)) return NO_SHAPE;
+
         if (!COLLISION_SHAPE.isEmpty() && world.getBlockState(pos.up()).getBlock() instanceof BasicCloud) {
             return VoxelShapes.fullCube();
         }
@@ -118,7 +134,7 @@ public class BasicCloud extends TransparentBlock {
 
             if (!ingredients.contains(state.getBlock())) continue;
 
-            var passed = locateRecipeNeighbours(world, state, pos, ingredients);
+            var passed = locateRecipeNeighbours(world, pos, ingredients);
 
             if (ingredients.size() != 0) continue;
 
@@ -131,11 +147,11 @@ public class BasicCloud extends TransparentBlock {
         }
     }
 
-    private List<BlockPos> locateRecipeNeighbours(World world, BlockState state, BlockPos pos, List<Block> ingredients) {
-        return locateRecipeNeighbours(world, state, pos, ingredients, new ArrayList<>());
+    private List<BlockPos> locateRecipeNeighbours(World world, BlockPos pos, List<Block> ingredients) {
+        return locateRecipeNeighbours(world, pos, ingredients, new ArrayList<>());
     }
 
-    private List<BlockPos> locateRecipeNeighbours(World world, BlockState state, BlockPos pos, List<Block> ingredients, List<BlockPos> tested) {
+    private List<BlockPos> locateRecipeNeighbours(World world, BlockPos pos, List<Block> ingredients, List<BlockPos> tested) {
         List<BlockPos> nextSides = new ArrayList<>();
         var sides = testSides(pos, sidePos -> {
             if (tested.contains(sidePos)) return false;
@@ -143,13 +159,15 @@ public class BasicCloud extends TransparentBlock {
 
             var sideState = world.getBlockState(sidePos);
 
-            if (sideState.get(DORMANT)) return false;
+            if (!sideState.isIn(MuTags.BLOCK_CLOUDS)) return false;
+            if (!sideState.get(DORMANT)) return false;
 
             var sideBlock = sideState.getBlock();
-            var contains = ingredients.contains(sideBlock) && !state.get(DORMANT);
+
+            var contains = ingredients.contains(sideBlock);
             if (contains) {
                 ingredients.remove(sideBlock);
-                var nxt = ((BasicCloud)sideBlock).locateRecipeNeighbours(world, state, sidePos, ingredients, tested);
+                var nxt = ((BasicCloud)sideBlock).locateRecipeNeighbours(world, sidePos, ingredients, tested);
                 nextSides.addAll(nxt);
             }
             return contains;

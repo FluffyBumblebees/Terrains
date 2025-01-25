@@ -2,13 +2,13 @@
   "type": "magical_utilities:cloud",
   "config": {
     "discard_chance_on_air_exposure": 0.0,
-    "size": 25,
+    "size": 36,
     "targets": [
       {
         "state": {
           "Name": "magical_utilities:sulfur_cloud",
           "Properties": {
-            "dormant": "true"
+            "dormant": "false"
           }
         },
         "target": {
@@ -22,7 +22,7 @@
         "state": {
           "Name": "magical_utilities:sulfur_cloud",
           "Properties": {
-            "dormant": "true"
+            "dormant": "false"
           }
         },
         "target": {

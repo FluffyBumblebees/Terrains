@@ -2,8 +2,8 @@
   "feature": "magical_utilities:ferrous_cloud",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 8
+      "type": "minecraft:rarity_filter",
+      "chance": 4
     },
     {
       "type": "minecraft:in_square"

@@ -12,6 +12,7 @@ import net.stockieslad.magical_utilities.core.Cloud;
 import java.util.List;
 
 import static net.minecraft.world.gen.feature.OreFeatureConfig.createTarget;
+import static net.stockieslad.magical_utilities.block.cloud.BasicCloud.DORMANT;
 
 public class MuConfiguredFeatures {
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> ctx) {
@@ -19,9 +20,9 @@ public class MuConfiguredFeatures {
         RuleTest caveAirReplaceables = new BlockStateMatchRuleTest(Blocks.CAVE_AIR.getDefaultState());
         for (Cloud value : Cloud.values()) {
             if (value.configuredFeature != null) {
-                var state = value.block.getDefaultState();
+                var state = value.block.getDefaultState().with(DORMANT, false);
                 List<Target> overworldOres = List.of(createTarget(airReplaceables, state), createTarget(caveAirReplaceables, state));
-                ctx.register(value.configuredFeature, new ConfiguredFeature<>(MuFeatures.CLOUD, new OreFeatureConfig(overworldOres, 25)));
+                ctx.register(value.configuredFeature, new ConfiguredFeature<>(MuFeatures.CLOUD, new OreFeatureConfig(overworldOres, 36)));
             }
         }
     }

@@ -28,11 +28,17 @@ import static net.minecraft.world.gen.YOffset.fixed;
 import static net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier.trapezoid;
 import static net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier.uniform;
 import static net.stockieslad.magical_utilities.MagicalUtilities.getIdentifier;
-import static net.stockieslad.magical_utilities.util.FeatureHelper.modifiersWithCount;
+import static net.stockieslad.magical_utilities.util.BiomeHelper.IS_COLD;
 import static net.stockieslad.magical_utilities.util.FeatureHelper.modifiersWithRarity;
 
 /*
- *  TODO: Add functionality to control shape directly
+ *  TODO: Fix rendering of clouds to work when you are inside of it.
+ *  TODO: Stair and slab variants with the same functionality.
+ *  TODO: Rename Magmatic cloud to Blazing Cloud
+ *  TODO: Dispenser support for cloud activation
+ *  TODO: Tooltips for cloud activation/pacification ingredients
+ *  TODO: Recipe Viewer support
+ *  TODO: Change dormant from boolean to enum (congealed (like wool), dormant (stable), passive (crafting), active (ability))
  *  TODO: Fix the noise spamming to happen only when entering/leaving
  *  TODO: Tough as nails compat with dense cloud (hydration - quench thirst)
  *  TODO: Add spawns in aether
@@ -40,11 +46,11 @@ import static net.stockieslad.magical_utilities.util.FeatureHelper.modifiersWith
 public enum Cloud {
     ENERGIZED(
             new RedstoneCloud(),
-            modifiersWithRarity(32, trapezoid(YOffset.BOTTOM, fixed(64))),
+            modifiersWithRarity(64, trapezoid(YOffset.BOTTOM, fixed(64))),
             cloud -> addFeature(excludeByKey(LUSH_CAVES).and(excludeByKey(DRIPSTONE_CAVES)).and(excludeByKey(DEEP_DARK)).and(foundInOverworld()), VEGETAL_DECORATION, cloud.placedFeature)
     ),
     MAGMATIC(new MagmaticCloud(),
-            modifiersWithRarity(16, uniform(fixed(30), fixed(40))),
+            modifiersWithRarity(64, uniform(fixed(30), fixed(40))),
             cloud -> addFeature(tag(IS_NETHER), VEGETAL_DECORATION, cloud.placedFeature)),
     SULFUR(
             new DamagingCloud(),
@@ -53,32 +59,32 @@ public enum Cloud {
     ),
     FERROUS(
             new MagneticCloud(),
-            modifiersWithCount(8, trapezoid(YOffset.BOTTOM, YOffset.TOP)),
+            modifiersWithRarity(4, trapezoid(YOffset.BOTTOM, YOffset.TOP)),
             cloud -> addFeature(includeByKey(DRIPSTONE_CAVES).and(foundInOverworld()), VEGETAL_DECORATION, cloud.placedFeature)
     ),
     CHAOS(new RandomCloud()),
     LIVING(
             new HealingCloud(),
-            modifiersWithCount(8, trapezoid(YOffset.BOTTOM, YOffset.TOP)),
+            modifiersWithRarity(4, trapezoid(YOffset.BOTTOM, YOffset.TOP)),
             cloud -> addFeature(includeByKey(LUSH_CAVES).and(foundInOverworld()), VEGETAL_DECORATION, cloud.placedFeature)
     ),
     ENDER(new TeleportingCloud()),
     CHARGED(new SmitingCloud()),
     GELID(new ColdCloud(),
-            modifiersWithRarity(16, uniform(fixed(65), fixed(75))),
-            cloud -> addFeature(includeByKey(ICE_SPIKES), VEGETAL_DECORATION, cloud.placedFeature)
+            modifiersWithRarity(64, uniform(fixed(65), fixed(75))),
+            cloud -> addFeature(IS_COLD, VEGETAL_DECORATION, cloud.placedFeature)
     ),
     DENSE(
             new HydroCloud(),
-            modifiersWithRarity(16, uniform(fixed(65), fixed(75))),
-            cloud -> addFeature(tag(IS_OCEAN), VEGETAL_DECORATION, cloud.placedFeature)
+            modifiersWithRarity(64, uniform(fixed(65), fixed(75))),
+            cloud -> addFeature(tag(IS_OCEAN).and(IS_COLD.negate()), VEGETAL_DECORATION, cloud.placedFeature)
     ),
     INDIGO(new DirectionalCloud()),
     IRRADIATED(new DestructiveCloud()),
     CHERRY(new NourishingCloud()),
     STEAM(
             new RisingCloud(),
-            modifiersWithRarity(64, uniform(fixed(85), fixed(95))),
+            modifiersWithRarity(32, uniform(fixed(86), YOffset.belowTop(64))),
             cloud -> addFeature(foundInOverworld().and(tag(IS_OCEAN).negate()), VEGETAL_DECORATION, cloud.placedFeature)
     );
 

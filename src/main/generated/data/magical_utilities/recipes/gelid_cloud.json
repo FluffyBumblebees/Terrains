@@ -5,5 +5,5 @@
     "magical_utilities:dense_cloud"
   ],
   "result": "magical_utilities:gelid_cloud",
-  "successChance": 0.5
+  "successChance": 0.1
 }

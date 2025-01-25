@@ -1,10 +1,11 @@
 package net.stockieslad.magical_utilities.block.cloud;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
@@ -12,13 +13,21 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 @SuppressWarnings("deprecation")
 public class ColdCloud extends BasicCloud {
+    @Override
+    public boolean testPacifier(ItemStack stack) {
+        return stack.isOf(Items.BLAZE_POWDER);
+    }
+
+    @Override
+    public boolean testActivator(ItemStack stack) {
+        return stack.isOf(Items.SNOW);
+    }
+
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (state.get(DORMANT)) {
@@ -75,11 +84,6 @@ public class ColdCloud extends BasicCloud {
         world.addParticle(ParticleTypes.CLOUD, xOffset, yOffset, zOffset, 0.0,
                 Direction.DOWN.getOffsetY() * ((random.nextFloat() * 0.75f) + 0.45f),
                 0.0);
-    }
-
-    @Override
-    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return NO_SHAPE;
     }
 
     private boolean canFallThrough(BlockState state) {

@@ -7,5 +7,5 @@
     "magical_utilities:energized_cloud"
   ],
   "result": "magical_utilities:charged_cloud",
-  "successChance": 0.75
+  "successChance": 0.02
 }

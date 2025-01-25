@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
@@ -33,6 +34,11 @@ public class MagneticCloud extends BasicCloud {
 
     public MagneticCloud() {
         this.setDefaultState(this.stateManager.getDefaultState().with(ENTITY_MODE, ITEM));
+    }
+
+    @Override
+    public boolean testPacifier(ItemStack stack) {
+        return stack.isOf(Items.GOLD_INGOT);
     }
 
     @Override
