@@ -34,7 +34,6 @@ import static net.stockieslad.magical_utilities.util.FeatureHelper.modifiersWith
 /*
  *  TODO: Fix rendering of clouds to work when you are inside of it.
  *  TODO: Stair and slab variants with the same functionality.
- *  TODO: Rename Magmatic cloud to Blazing Cloud
  *  TODO: Dispenser support for cloud activation
  *  TODO: Tooltips for cloud activation/pacification ingredients
  *  TODO: Recipe Viewer support
@@ -49,7 +48,7 @@ public enum Cloud {
             modifiersWithRarity(64, trapezoid(YOffset.BOTTOM, fixed(64))),
             cloud -> addFeature(excludeByKey(LUSH_CAVES).and(excludeByKey(DRIPSTONE_CAVES)).and(excludeByKey(DEEP_DARK)).and(foundInOverworld()), VEGETAL_DECORATION, cloud.placedFeature)
     ),
-    MAGMATIC(new MagmaticCloud(),
+    BLAZING(new MagmaticCloud(),
             modifiersWithRarity(64, uniform(fixed(30), fixed(40))),
             cloud -> addFeature(tag(IS_NETHER), VEGETAL_DECORATION, cloud.placedFeature)),
     SULFUR(

@@ -2,7 +2,7 @@
   "type": "magical_utilities:cloud_mixing",
   "ingredients": [
     "magical_utilities:gelid_cloud",
-    "magical_utilities:magmatic_cloud"
+    "magical_utilities:blazing_cloud"
   ],
   "result": "magical_utilities:chaos_cloud",
   "successChance": 0.1

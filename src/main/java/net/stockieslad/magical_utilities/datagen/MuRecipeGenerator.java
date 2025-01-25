@@ -18,7 +18,7 @@ public class MuRecipeGenerator extends FabricRecipeProvider {
     public void generate(Consumer<RecipeJsonProvider> exporter) {
         exporter.accept(new CloudMixingRecipeProvider(blocks(STEAM, STEAM, STEAM, STEAM), DENSE, 0.15f));
         exporter.accept(new CloudMixingRecipeProvider(blocks(DENSE, DENSE), GELID, 0.1f));
-        exporter.accept(new CloudMixingRecipeProvider(blocks(GELID, MAGMATIC), CHAOS, 0.1f));
+        exporter.accept(new CloudMixingRecipeProvider(blocks(GELID, BLAZING), CHAOS, 0.1f));
         exporter.accept(new CloudMixingRecipeProvider(blocks(LIVING, DENSE), CHERRY, 0.05f));
         exporter.accept(new CloudMixingRecipeProvider(blocks(CHAOS, CHAOS, FERROUS), ENDER, 0.1f));
         exporter.accept(new CloudMixingRecipeProvider(blocks(FERROUS, ENERGIZED, CHAOS), INDIGO, 0.25f));
