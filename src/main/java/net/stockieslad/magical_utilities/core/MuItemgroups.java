@@ -10,10 +10,10 @@ import net.stockieslad.magical_utilities.MagicalUtilities;
 public class MuItemgroups {
     public static ItemGroup CLOUDS = FabricItemGroup.builder().displayName(Text.translatable("itemgroup.magical_utilities.clouds"))
             .entries((displayContext, entries) -> {
-                for (Clouds value : Clouds.values())
+                for (Cloud value : Cloud.values())
                     entries.add(value.item);
             })
-            .icon(Clouds.IRRADIATED.item::getDefaultStack).build();
+            .icon(Cloud.IRRADIATED.item::getDefaultStack).build();
 
     public static void init() {
         Registry.register(Registries.ITEM_GROUP, MagicalUtilities.getIdentifier("clouds"), CLOUDS);

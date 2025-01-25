@@ -1,0 +1,37 @@
+{
+  "type": "magical_utilities:cloud",
+  "config": {
+    "discard_chance_on_air_exposure": 0.0,
+    "size": 25,
+    "targets": [
+      {
+        "state": {
+          "Name": "magical_utilities:dense_cloud",
+          "Properties": {
+            "dormant": "true"
+          }
+        },
+        "target": {
+          "block_state": {
+            "Name": "minecraft:air"
+          },
+          "predicate_type": "minecraft:blockstate_match"
+        }
+      },
+      {
+        "state": {
+          "Name": "magical_utilities:dense_cloud",
+          "Properties": {
+            "dormant": "true"
+          }
+        },
+        "target": {
+          "block_state": {
+            "Name": "minecraft:cave_air"
+          },
+          "predicate_type": "minecraft:blockstate_match"
+        }
+      }
+    ]
+  }
+}

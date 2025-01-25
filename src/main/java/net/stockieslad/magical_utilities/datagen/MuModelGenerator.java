@@ -6,7 +6,7 @@ import net.minecraft.data.client.*;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
-import net.stockieslad.magical_utilities.core.Clouds;
+import net.stockieslad.magical_utilities.core.Cloud;
 
 import static net.minecraft.data.client.VariantSettings.*;
 import static net.minecraft.data.client.VariantSettings.Rotation.*;
@@ -18,8 +18,8 @@ public class MuModelGenerator  extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator generator) {
-        for (Clouds value : Clouds.values()) {
-            if (value.equals(Clouds.INDIGO)) {
+        for (Cloud value : Cloud.values()) {
+            if (value.equals(Cloud.INDIGO)) {
                 Identifier vertical = TexturedModel.CUBE_COLUMN.upload(value.block, generator.modelCollector);
                 Identifier horizontal = TexturedModel.CUBE_COLUMN_HORIZONTAL.upload(value.block, generator.modelCollector);
                 generator.blockStateCollector.accept(VariantsBlockStateSupplier.create(value.block).coordinate(BlockStateVariantMap.create(Properties.FACING)

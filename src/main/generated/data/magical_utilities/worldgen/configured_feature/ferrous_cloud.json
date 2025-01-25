@@ -1,0 +1,39 @@
+{
+  "type": "magical_utilities:cloud",
+  "config": {
+    "discard_chance_on_air_exposure": 0.0,
+    "size": 25,
+    "targets": [
+      {
+        "state": {
+          "Name": "magical_utilities:ferrous_cloud",
+          "Properties": {
+            "dormant": "true",
+            "entity_mode": "item"
+          }
+        },
+        "target": {
+          "block_state": {
+            "Name": "minecraft:air"
+          },
+          "predicate_type": "minecraft:blockstate_match"
+        }
+      },
+      {
+        "state": {
+          "Name": "magical_utilities:ferrous_cloud",
+          "Properties": {
+            "dormant": "true",
+            "entity_mode": "item"
+          }
+        },
+        "target": {
+          "block_state": {
+            "Name": "minecraft:cave_air"
+          },
+          "predicate_type": "minecraft:blockstate_match"
+        }
+      }
+    ]
+  }
+}

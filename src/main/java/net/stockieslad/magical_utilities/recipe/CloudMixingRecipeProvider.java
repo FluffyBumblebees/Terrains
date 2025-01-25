@@ -8,7 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.util.Identifier;
-import net.stockieslad.magical_utilities.core.Clouds;
+import net.stockieslad.magical_utilities.core.Cloud;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -27,7 +27,7 @@ public class CloudMixingRecipeProvider implements RecipeJsonProvider {
         this.successChance = successChance;
     }
 
-    public CloudMixingRecipeProvider(List<? extends Block> ingredients, Clouds result, float successChance) {
+    public CloudMixingRecipeProvider(List<? extends Block> ingredients, Cloud result, float successChance) {
         this(result.identifier, ingredients, result.block, successChance);
     }
 

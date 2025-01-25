@@ -118,14 +118,6 @@ public class BasicCloud extends TransparentBlock {
 
             if (!ingredients.contains(state.getBlock())) continue;
 
-            /*var passed = testSides(pos, sidePos -> {
-                var sideState = world.getBlockState(sidePos);
-                var sideBlock = sideState.getBlock();
-                var contains = ingredients.contains(sideBlock) && state.get(DORMANT);
-                if (contains) ingredients.remove(sideBlock);
-                return contains;
-            });*/
-
             var passed = locateRecipeNeighbours(world, state, pos, ingredients);
 
             if (ingredients.size() != 0) continue;
@@ -150,8 +142,11 @@ public class BasicCloud extends TransparentBlock {
             tested.add(sidePos);
 
             var sideState = world.getBlockState(sidePos);
+
+            if (sideState.get(DORMANT)) return false;
+
             var sideBlock = sideState.getBlock();
-            var contains = ingredients.contains(sideBlock) && state.get(DORMANT);
+            var contains = ingredients.contains(sideBlock) && !state.get(DORMANT);
             if (contains) {
                 ingredients.remove(sideBlock);
                 var nxt = ((BasicCloud)sideBlock).locateRecipeNeighbours(world, state, sidePos, ingredients, tested);
