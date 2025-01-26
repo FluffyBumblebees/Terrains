@@ -3,7 +3,7 @@
   "id": "${modid}",
   "version": "${version}",
   "name": "${mod_name}",
-  "description": "Random worldgen things for minecraft.",
+  "description": "Random things that I added for some reason.",
   "authors": [
     "StockiesLad [Owner]"
   ],

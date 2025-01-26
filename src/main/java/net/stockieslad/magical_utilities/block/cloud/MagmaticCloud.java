@@ -42,7 +42,6 @@ public class MagmaticCloud extends LiquidCloud {
         double x = pos.getX() + random.nextDouble();
         double y = pos.getY() + random.nextDouble();
         double z = pos.getZ() + random.nextDouble();
-        for (int i2 = 0; i2 < 5; ++i2)
-            world.addParticle(ParticleTypes.LAVA, x, y, z, - 0.01 + random.nextFloat() / 50, random.nextFloat() / 50, - 0.01 + random.nextFloat() / 50);
+        world.addParticle(ParticleTypes.LAVA, x, y, z, - 0.01 + random.nextFloat() / 50, random.nextFloat() / 50, - 0.01 + random.nextFloat() / 50);
     }
 }
