@@ -9,6 +9,7 @@
           "Name": "magical_utilities:energized_cloud",
           "Properties": {
             "dormant": "false",
+            "entity_mode": "all",
             "powered": "false"
           }
         },
@@ -24,6 +25,7 @@
           "Name": "magical_utilities:energized_cloud",
           "Properties": {
             "dormant": "false",
+            "entity_mode": "all",
             "powered": "false"
           }
         },

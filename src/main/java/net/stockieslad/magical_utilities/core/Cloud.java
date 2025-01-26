@@ -34,7 +34,6 @@ import static net.stockieslad.magical_utilities.util.FeatureHelper.modifiersWith
 /*
  *  TODO: Add ability to link ender clouds.
  *  TODO: Fix rendering of clouds to work when you are inside of it.
- *  TODO: Dispenser support for cloud activation
  *  TODO: Recipe Viewer support
  *  TODO: Fix the noise spamming to happen only when entering/leaving
  *  TODO: Tough as nails compat with dense cloud (hydration - quench thirst)

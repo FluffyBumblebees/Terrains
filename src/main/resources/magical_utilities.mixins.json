@@ -4,6 +4,7 @@
   "package": "net.stockieslad.magical_utilities.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "DispenserBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1

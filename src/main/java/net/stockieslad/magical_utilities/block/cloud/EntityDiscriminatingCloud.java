@@ -18,6 +18,7 @@ import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
 
@@ -36,19 +37,27 @@ public class EntityDiscriminatingCloud extends BasicCloud {
         builder.add(ENTITY_MODE);
     }
 
+    public boolean tryUpdateEntityMode(World world, BlockState state, BlockPos pos, ItemStack stack, EntityMode mode, @Nullable PlayerEntity player) {
+        for (EntityMode value : EntityMode.values()) {
+            if (!mode.equals(value) && value.testStack(stack)) {
+                if (player == null || !player.isCreative()) stack.decrement(1);
+                world.playSound(null, pos, BlockSoundGroup.WOOL.getPlaceSound(), SoundCategory.BLOCKS);
+                world.setBlockState(pos, state.with(ENTITY_MODE, value));
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         var stack = player.getStackInHand(hand);
         var mode = state.get(ENTITY_MODE);
-        for (EntityMode value : EntityMode.values()) {
-            if (!mode.equals(value) && value.testStack(stack)) {
-                if (!player.isCreative()) stack.decrement(1);
-                world.playSound(null, pos, BlockSoundGroup.WOOL.getPlaceSound(), SoundCategory.BLOCKS);
-                world.setBlockState(pos, state.with(ENTITY_MODE, value));
-                return ActionResult.SUCCESS;
-            }
-        }
-        return super.onUse(state, world, pos, player, hand, hit);
+
+        if (tryUpdateEntityMode(world, state, pos, stack, mode, player))
+            return ActionResult.SUCCESS;
+        else return super.onUse(state, world, pos, player, hand, hit);
     }
 
     public enum EntityMode implements StringIdentifiable {
@@ -75,6 +84,14 @@ public class EntityDiscriminatingCloud extends BasicCloud {
         @Override
         public String asString() {
             return name().toLowerCase();
+        }
+
+        public static EntityMode find(ItemStack stack) {
+            for (EntityMode value : values()) {
+                if (value.testStack(stack))
+                    return value;
+            }
+            return null;
         }
     }
 }

@@ -25,6 +25,7 @@ import net.stockieslad.magical_utilities.core.MuRecipes;
 import net.stockieslad.magical_utilities.core.MuTags;
 import net.stockieslad.magical_utilities.recipe.CloudMixingRecipe;
 import net.stockieslad.magical_utilities.util.BlockPredicates;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +56,24 @@ public class BasicCloud extends TransparentBlock {
         return stack.isOf(Items.REDSTONE);
     }
 
+    public boolean tryPacify(World world, ItemStack stack, BlockPos pos, BlockState state, @Nullable PlayerEntity player) {
+        if (testPacifier(stack) && !state.get(DORMANT)) {
+            if (player == null || !player.isCreative()) stack.decrement(1);
+            world.playSound(null, pos, BlockSoundGroup.WOOL.getPlaceSound(), SoundCategory.BLOCKS);
+            world.setBlockState(pos, state.with(DORMANT, true));
+            return true;
+        } else return false;
+    }
+
+    public boolean tryActivate(World world, ItemStack stack, BlockPos pos, BlockState state, @Nullable PlayerEntity player) {
+        if (testActivator(stack) && state.get(DORMANT)) {
+            if (player == null || !player.isCreative()) stack.decrement(1);
+            world.playSound(null, pos, BlockSoundGroup.WOOL.getPlaceSound(), SoundCategory.BLOCKS);
+            world.setBlockState(pos, state.with(DORMANT, false));
+            return true;
+        } else return false;
+    }
+
     public boolean noShapeWhenActivated() {
         return true;
     }
@@ -83,17 +102,11 @@ public class BasicCloud extends TransparentBlock {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         var stack = player.getStackInHand(hand);
-        if (testPacifier(stack) && !state.get(DORMANT)) {
-            if (!player.isCreative()) stack.decrement(1);
-            world.playSound(null, pos, BlockSoundGroup.WOOL.getPlaceSound(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(DORMANT, true));
+        if (tryPacify(world, stack, pos, state, player))
             return ActionResult.SUCCESS;
-        } else if (testActivator(stack) && state.get(DORMANT)) {
-            if (!player.isCreative()) stack.decrement(1);
-            world.playSound(null, pos, BlockSoundGroup.WOOL.getBreakSound(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(DORMANT, false));
+        else if (tryActivate(world, stack, pos, state, player))
             return ActionResult.SUCCESS;
-        } else return ActionResult.PASS;
+        else return ActionResult.PASS;
     }
 
     @Override
