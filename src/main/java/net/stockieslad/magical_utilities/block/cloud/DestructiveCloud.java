@@ -25,34 +25,34 @@ public class DestructiveCloud extends BasicCloud {
 
     @Override
     public boolean testActivator(ItemStack stack) {
-        return stack.isOf(Cloud.FERROUS.item);
-    }
-
-    @Override
-    public boolean testPacifier(ItemStack stack) {
         return stack.isOf(Cloud.CHARGED.item);
     }
 
     @Override
+    public boolean testPacifier(ItemStack stack) {
+        return stack.isOf(Cloud.FERROUS.item);
+    }
+
+    @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (state.get(DORMANT)) return;
-        if (!world.isReceivingRedstonePower(pos)) {
-            var x = pos.getX() + (random.nextBoolean() ? random.nextInt(RANGE) : -random.nextInt(RANGE));
-            var y = pos.getY() + (random.nextBoolean() ? random.nextInt(RANGE) : -random.nextInt(RANGE));
-            var z = pos.getZ() + (random.nextBoolean() ? random.nextInt(RANGE) : -random.nextInt(RANGE));
-            var newPos = new BlockPos(x, y, z);
-            var newState = world.getBlockState(newPos);
-            world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25f, random.nextFloat());
-            world.getEntitiesByClass(Entity.class, BOX.offset(pos), EntityPredicates.EXCEPT_SPECTATOR)
-                    .forEach(entity -> entity.damage(world.getDamageSources().inFire(), 100));
+        if (state.get(DORMANT) || world.isReceivingRedstonePower(pos)) return;
 
-            if (newState.isIn(MuTags.BLOCK_CLOUDS)) return;
+        var x = pos.getX() + (random.nextBoolean() ? random.nextInt(RANGE) : -random.nextInt(RANGE));
+        var y = pos.getY() + (random.nextBoolean() ? random.nextInt(RANGE) : -random.nextInt(RANGE));
+        var z = pos.getZ() + (random.nextBoolean() ? random.nextInt(RANGE) : -random.nextInt(RANGE));
+        var newPos = new BlockPos(x, y, z);
+        var newState = world.getBlockState(newPos);
+        var entities =  world.getEntitiesByClass(Entity.class, BOX.offset(newPos), EntityPredicates.EXCEPT_SPECTATOR);
 
-            if (!newState.isAir())
-                world.breakBlock(newPos, true);
-            else if (random.nextInt(5) == 0) {
-                world.breakBlock(pos, false);
-            }
+        if (!newState.isIn(MuTags.BLOCK_CLOUDS)) {
+            System.out.println(newState);
+            if (!entities.isEmpty() || !newState.isAir())
+                world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25f, random.nextFloat());
+            entities.forEach(entity -> entity.damage(world.getDamageSources().inFire(), 100));
+            world.breakBlock(newPos, random.nextInt(5) != 0);
+
+            if (random.nextInt(1000) == 0)
+                shedAbility(world, pos);
         }
     }
 }

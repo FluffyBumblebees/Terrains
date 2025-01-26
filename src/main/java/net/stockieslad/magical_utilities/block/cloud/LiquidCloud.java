@@ -11,7 +11,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.stockieslad.magical_utilities.core.Cloud;
 
 public class LiquidCloud extends BasicCloud {
     private final Item filledBucket;
@@ -32,7 +31,7 @@ public class LiquidCloud extends BasicCloud {
         if (item.isOf(Items.BUCKET) && !state.get(DORMANT)) {
             player.playSound(sound, 1, 1);
             player.setStackInHand(hand, filledBucket.getDefaultStack());
-            world.setBlockState(pos, Cloud.STEAM.block.getDefaultState().with(DORMANT, false));
+            shedAbility(world, pos);
             return ActionResult.SUCCESS;
         } else return super.onUse(state, world, pos, player, hand, hit);
     }

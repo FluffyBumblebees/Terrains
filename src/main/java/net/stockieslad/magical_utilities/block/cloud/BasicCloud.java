@@ -21,6 +21,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.stockieslad.magical_utilities.core.Cloud;
 import net.stockieslad.magical_utilities.core.MuRecipes;
 import net.stockieslad.magical_utilities.core.MuTags;
 import net.stockieslad.magical_utilities.recipe.CloudMixingRecipe;
@@ -76,6 +77,11 @@ public class BasicCloud extends TransparentBlock {
 
     public boolean noShapeWhenActivated() {
         return true;
+    }
+
+    public final void shedAbility(World world, BlockPos pos) {
+        world.playSound(null, pos, BlockSoundGroup.WOOL.getPlaceSound(), SoundCategory.BLOCKS);
+        world.setBlockState(pos, Cloud.STEAM.block.getDefaultState().with(DORMANT, false));
     }
 
     @Override

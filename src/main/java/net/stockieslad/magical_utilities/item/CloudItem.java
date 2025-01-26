@@ -27,8 +27,7 @@ public class CloudItem extends BlockItem {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.translatable(tooltipKey).formatted(Formatting.DARK_GREEN));
         tooltip.add(Text.empty());
-        tooltip.add(Text.translatable(activatorTooltipKey).formatted(Formatting.DARK_RED));
         tooltip.add(Text.translatable(pacifierTooltipKey).formatted(Formatting.DARK_BLUE));
-
+        tooltip.add(Text.translatable(activatorTooltipKey).formatted(Formatting.DARK_RED));
     }
 }

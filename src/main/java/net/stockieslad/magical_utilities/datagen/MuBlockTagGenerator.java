@@ -3,6 +3,7 @@ package net.stockieslad.magical_utilities.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.stockieslad.magical_utilities.core.Cloud;
 import net.stockieslad.magical_utilities.core.MuTags;
 
@@ -16,8 +17,10 @@ public class MuBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup registry) {
         var clouds = getOrCreateTagBuilder(MuTags.BLOCK_CLOUDS);
+        var mineableByHoe = getOrCreateTagBuilder(BlockTags.HOE_MINEABLE);
         for (Cloud value : Cloud.values()) {
             clouds.add(value.identifier);
+            mineableByHoe.add(value.identifier);
         }
     }
 }

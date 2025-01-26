@@ -35,8 +35,8 @@ public class HydroCloud extends LiquidCloud {
             entity.setVelocity(entity.getVelocity().multiply(0.1, 0.1, 0.1));
             if (IS_TAN_LOADED && random.nextInt(1000) == 0 && entity instanceof PlayerEntity player) {
                 ((ITANPlayer)player).getThirstData().drink(1, 0.1f);
-                if (random.nextInt(1000) == 0)
-                    world.setBlockState(pos, Cloud.STEAM.block.getDefaultState());
+                if (random.nextInt(100) == 0)
+                    shedAbility(world, pos);
             }
         }
         super.onEntityCollision(state, world, pos, entity);

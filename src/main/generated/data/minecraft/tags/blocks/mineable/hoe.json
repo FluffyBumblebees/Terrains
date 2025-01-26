@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "magical_utilities:energized_cloud",
+    "magical_utilities:blazing_cloud",
+    "magical_utilities:sulfur_cloud",
+    "magical_utilities:ferrous_cloud",
+    "magical_utilities:chaos_cloud",
+    "magical_utilities:living_cloud",
+    "magical_utilities:ender_cloud",
+    "magical_utilities:charged_cloud",
+    "magical_utilities:gelid_cloud",
+    "magical_utilities:dense_cloud",
+    "magical_utilities:indigo_cloud",
+    "magical_utilities:irradiated_cloud",
+    "magical_utilities:cherry_cloud",
+    "magical_utilities:steam_cloud"
+  ]
+}

@@ -50,6 +50,7 @@ public class CloudFeature extends OreFeature {
 
     @Override
     protected boolean generateVeinPart(StructureWorldAccess world, Random random, OreFeatureConfig config, double startX, double endX, double startZ, double endZ, double startY, double endY, int x, int y, int z, int horizontalSize, int verticalSize) {
+        Direction facing = Direction.random(random);
         int i = 0;
         BitSet bitSet = new BitSet(horizontalSize * verticalSize * horizontalSize);
         BlockPos.Mutable mutable = new BlockPos.Mutable();
@@ -137,7 +138,7 @@ public class CloudFeature extends OreFeature {
                                                             if (shouldPlace(blockState, chunkSectionCache::getBlockState, random, config, target, mutable)) {
                                                                 var state = target.state;
                                                                 if (state.contains(FACING))
-                                                                    state = state.with(FACING, Direction.random(random));
+                                                                    state = state.with(FACING, facing);
                                                                 chunkSection.setBlockState(ad, ae, af, state, false);
                                                                 ++i;
                                                                 break;

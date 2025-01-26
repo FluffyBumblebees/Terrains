@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.stockieslad.magical_utilities.core.Cloud;
 
 public class HealingCloud extends BasicCloud {
     @Override
@@ -30,8 +29,8 @@ public class HealingCloud extends BasicCloud {
         var random = world.getRandom();
         if (!world.isClient && !state.get(DORMANT) && random.nextInt(1000) == 0 && entity instanceof PlayerEntity player) {
             player.heal(0.1f);
-            if (random.nextInt(1000) == 0)
-                world.setBlockState(pos, Cloud.STEAM.block.getDefaultState());
+            if (random.nextInt(100) == 0)
+                shedAbility(world, pos);
         }
         super.onEntityCollision(state, world, pos, entity);
     }
