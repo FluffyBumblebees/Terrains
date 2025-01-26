@@ -18,7 +18,7 @@ public class MagmaticCloud extends LiquidCloud {
 
     @Override
     public boolean testPacifier(ItemStack stack) {
-        return stack.isOf(Items.SNOW);
+        return stack.isOf(Items.SNOWBALL);
     }
 
     @Override

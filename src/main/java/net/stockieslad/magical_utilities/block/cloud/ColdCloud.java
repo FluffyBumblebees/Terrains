@@ -25,7 +25,7 @@ public class ColdCloud extends BasicCloud {
 
     @Override
     public boolean testActivator(ItemStack stack) {
-        return stack.isOf(Items.SNOW);
+        return stack.isOf(Items.SNOWBALL);
     }
 
     @Override

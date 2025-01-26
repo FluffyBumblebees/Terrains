@@ -1,66 +1,27 @@
 package net.stockieslad.magical_utilities.block.cloud;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.EnumProperty;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.StringIdentifiable;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
-import static net.stockieslad.magical_utilities.block.cloud.MagneticCloud.EntityMode.ITEM;
-import static net.stockieslad.magical_utilities.block.cloud.MagneticCloud.EntityMode.LIVING;
+import static net.stockieslad.magical_utilities.block.cloud.EntityDiscriminatingCloud.EntityMode.ITEM;
 import static net.stockieslad.magical_utilities.util.MoreMath.clamp;
 
 @SuppressWarnings("deprecation")
-public class MagneticCloud extends BasicCloud {
-    private static final EnumProperty<EntityMode> ENTITY_MODE = EnumProperty.of("entity_mode", EntityMode.class);
+public class MagneticCloud extends EntityDiscriminatingCloud {
     private static final int RANGE = 10;
-
-    public MagneticCloud() {
-        this.setDefaultState(this.stateManager.getDefaultState().with(ENTITY_MODE, ITEM));
-    }
 
     @Override
     public boolean testPacifier(ItemStack stack) {
-        return stack.isOf(Items.GOLD_INGOT);
-    }
-
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        super.appendProperties(builder);
-        builder.add(ENTITY_MODE);
-    }
-
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        var stack = player.getStackInHand(hand);
-        if (stack.isOf(Items.COPPER_INGOT) && !state.get(ENTITY_MODE).equals(ITEM)) {
-            if (!player.isCreative()) stack.decrement(1);
-            world.playSound(null, pos, BlockSoundGroup.WOOL.getPlaceSound(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(ENTITY_MODE, ITEM));
-            return ActionResult.SUCCESS;
-        } else if (stack.isOf(Items.IRON_INGOT) && !state.get(ENTITY_MODE).equals(LIVING)) {
-            if (!player.isCreative()) stack.decrement(1);
-            world.playSound(null, pos, BlockSoundGroup.WOOL.getBreakSound(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(ENTITY_MODE, LIVING));
-            return ActionResult.SUCCESS;
-        } else return super.onUse(state, world, pos, player, hand, hit);
+        return stack.isOf(Items.LAPIS_LAZULI);
     }
 
     @Override
@@ -77,17 +38,19 @@ public class MagneticCloud extends BasicCloud {
 
         if (state.get(DORMANT)) return;
 
-        var powered = state.get(ENTITY_MODE).equals(LIVING);
+        var mode = state.get(ENTITY_MODE);
+
         var x = pos.getX();
         var y = pos.getY();
         var z = pos.getZ();
         var box = new Box(x - RANGE, y - RANGE, z - RANGE,
-                          x + RANGE, y + RANGE, z + RANGE);
-        var entities = world.getEntitiesByClass(Entity.class, box, entity -> powered ? entity instanceof LivingEntity : entity instanceof ItemEntity);
+                x + RANGE, y + RANGE, z + RANGE);
+        var entities = world.getEntitiesByClass(Entity.class, box, mode.entityPredicate);
 
-        if (entities.size() > (powered ? RANGE : RANGE * 10)) return;
+        if (entities.size() > (mode.equals(ITEM) ? RANGE * 10 : RANGE)) return;
 
         for (Entity entity : entities) {
+            if (entity instanceof PlayerEntity player && player.isCreative() && player.getAbilities().flying) continue;
             var entityPos = entity.getBlockPos();
             var velocity = entity.getVelocity();
 
@@ -117,16 +80,6 @@ public class MagneticCloud extends BasicCloud {
                 entity.velocityDirty = true;
                 entity.velocityModified = true;
             }
-        }
-    }
-
-    protected enum EntityMode implements StringIdentifiable {
-        ITEM,
-        LIVING;
-
-        @Override
-        public String asString() {
-            return name().toLowerCase();
         }
     }
 }

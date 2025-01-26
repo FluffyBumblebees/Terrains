@@ -2,7 +2,6 @@ package net.stockieslad.magical_utilities.core;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
@@ -11,6 +10,7 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.stockieslad.magical_utilities.block.cloud.*;
+import net.stockieslad.magical_utilities.item.CloudItem;
 import net.stockieslad.magical_utilities.util.BlockHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,56 +32,110 @@ import static net.stockieslad.magical_utilities.util.BiomeHelper.IS_COLD;
 import static net.stockieslad.magical_utilities.util.FeatureHelper.modifiersWithRarity;
 
 /*
+ *  TODO: Add ability to link ender clouds.
  *  TODO: Fix rendering of clouds to work when you are inside of it.
- *  TODO: Stair and slab variants with the same functionality.
  *  TODO: Dispenser support for cloud activation
- *  TODO: Tooltips for cloud activation/pacification ingredients
  *  TODO: Recipe Viewer support
- *  TODO: Change dormant from boolean to enum (congealed (like wool), dormant (stable), passive (crafting), active (ability))
  *  TODO: Fix the noise spamming to happen only when entering/leaving
  *  TODO: Tough as nails compat with dense cloud (hydration - quench thirst)
  *  TODO: Add spawns in aether
  */
 public enum Cloud {
     ENERGIZED(
+            "Acts as a 3D pressure plate",
+            "Pacifies with Glowstone Dust.",
+            "Activates with Redstone Dust",
             new RedstoneCloud(),
             modifiersWithRarity(64, trapezoid(YOffset.BOTTOM, fixed(64))),
             cloud -> addFeature(excludeByKey(LUSH_CAVES).and(excludeByKey(DRIPSTONE_CAVES)).and(excludeByKey(DEEP_DARK)).and(foundInOverworld()), VEGETAL_DECORATION, cloud.placedFeature)
     ),
-    BLAZING(new MagmaticCloud(),
+    BLAZING(
+            "Solid lava...",
+            "Pacifies with a Snowball",
+            "Activates with Blaze Powder",
+            new MagmaticCloud(),
             modifiersWithRarity(64, uniform(fixed(30), fixed(40))),
             cloud -> addFeature(tag(IS_NETHER), VEGETAL_DECORATION, cloud.placedFeature)),
     SULFUR(
+            "Suffocates living entities",
+            "Pacifies with a Ghast Tear",
+            "Activates with a Fermented Spider Eye",
             new DamagingCloud(),
             modifiersWithRarity(64, trapezoid(YOffset.BOTTOM, YOffset.TOP)),
             cloud -> addFeature(tag(IS_NETHER), VEGETAL_DECORATION, cloud.placedFeature)
     ),
     FERROUS(
+            "Affects entities magnetically",
+            "Pacifies with a Lapis Lazuli",
+            "Activates with Redstone Dust",
             new MagneticCloud(),
             modifiersWithRarity(4, trapezoid(YOffset.BOTTOM, YOffset.TOP)),
             cloud -> addFeature(includeByKey(DRIPSTONE_CAVES).and(foundInOverworld()), VEGETAL_DECORATION, cloud.placedFeature)
     ),
-    CHAOS(new RandomCloud()),
+    CHAOS(
+            "Pushes entities in a random direction",
+            "Pacifies with a Dense Cloud",
+            "Activates with a Steam Cloud",
+            new RandomCloud()
+    ),
     LIVING(
+            "Heals entities slowly",
+            "Pacifies with a Fermented Spider Eye",
+            "Activates with a Ghast Tear",
             new HealingCloud(),
             modifiersWithRarity(4, trapezoid(YOffset.BOTTOM, YOffset.TOP)),
             cloud -> addFeature(includeByKey(LUSH_CAVES).and(foundInOverworld()), VEGETAL_DECORATION, cloud.placedFeature)
     ),
-    ENDER(new TeleportingCloud()),
-    CHARGED(new SmitingCloud()),
-    GELID(new ColdCloud(),
+    ENDER(
+            "Teleports entities",
+            "Pacifies with Sculk",
+            "Activates with an Ender Pearl",
+            new TeleportingCloud()
+    ),
+    CHARGED(
+            "Strikes lightning",
+            "Pacifies with a Chaos Cloud",
+            "Activates with a Copper Ingot",
+            new SmitingCloud()
+    ),
+    GELID(
+            "Cools & sinks entities",
+            "Pacifies with Blaze Powder",
+            "Activates with a Snowball",
+            new ColdCloud(),
             modifiersWithRarity(64, uniform(fixed(65), fixed(75))),
             cloud -> addFeature(IS_COLD, VEGETAL_DECORATION, cloud.placedFeature)
     ),
     DENSE(
+            "Slows entities & quenches thirst",
+            "Pacifies with a Steam Cloud",
+            "Activates with a Gelid Cloud",
             new HydroCloud(),
             modifiersWithRarity(64, uniform(fixed(65), fixed(75))),
             cloud -> addFeature(tag(IS_OCEAN).and(IS_COLD.negate()), VEGETAL_DECORATION, cloud.placedFeature)
     ),
-    INDIGO(new DirectionalCloud()),
-    IRRADIATED(new DestructiveCloud()),
-    CHERRY(new NourishingCloud()),
+    INDIGO(
+            "Pushes entities in a specific direction",
+            "Pacifies with a Dense Cloud",
+            "Activates with a Chaos Cloud",
+            new DirectionalCloud()
+    ),
+    IRRADIATED(
+            "Destroys blocks around it randomly",
+            "Pacifies with a Ferrous Cloud",
+            "Activates with a Charged Cloud",
+            new DestructiveCloud()
+    ),
+    CHERRY(
+            "Fills hunger bar",
+            "Pacifies with Rotten Flesh",
+            "Activates with Food",
+            new NourishingCloud()
+    ),
     STEAM(
+            "Pushes entities up",
+            "Pacifies with Glowstone Dust",
+            "Activates with Redstone Dust",
             new RisingCloud(),
             modifiersWithRarity(32, uniform(fixed(86), YOffset.belowTop(64))),
             cloud -> addFeature(foundInOverworld().and(tag(IS_OCEAN).negate()), VEGETAL_DECORATION, cloud.placedFeature)
@@ -91,14 +145,20 @@ public enum Cloud {
     public final RegistryKey<ConfiguredFeature<?, ?>> configuredFeature;
     public final RegistryKey<PlacedFeature> placedFeature;
 
+    public final String tooltip;
+    public final String pacifierTooltip;
+    public final String activatorTooltip;
     public final Identifier identifier;
     public final BasicCloud block;
-    public final BlockItem item;
+    public final CloudItem item;
 
-    Cloud(BasicCloud block, @Nullable List<PlacementModifier> modifiers, @Nullable Consumer<Cloud> withCloud) {
+    Cloud(String abilityTooltip, String pacifierTooltip, String activatorTooltip, BasicCloud block, @Nullable List<PlacementModifier> modifiers, @Nullable Consumer<Cloud> withCloud) {
+        this.tooltip = abilityTooltip;
+        this.pacifierTooltip = pacifierTooltip;
+        this.activatorTooltip = activatorTooltip;
         this.identifier = getIdentifier(this.name().toLowerCase() + "_cloud");
         this.block = block;
-        this.item = new BlockItem(block, new FabricItemSettings());
+        this.item = new CloudItem(this, new FabricItemSettings());
         BlockHelper.registerBlockAndItem(identifier, block, item);
 
         if (modifiers != null && withCloud != null) {
@@ -113,8 +173,8 @@ public enum Cloud {
         }
     }
 
-    Cloud(BasicCloud block) {
-        this(block, null, null);
+    Cloud(String abilityTooltip, String pacifierTooltip, String activatorTooltip, BasicCloud block) {
+        this(abilityTooltip, activatorTooltip, pacifierTooltip, block, null, null);
     }
 
     public static void init() {}

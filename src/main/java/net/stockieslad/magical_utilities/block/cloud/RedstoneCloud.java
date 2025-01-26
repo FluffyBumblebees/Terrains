@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
 @SuppressWarnings("deprecation")
-public class RedstoneCloud extends BasicCloud {
+public class RedstoneCloud extends EntityDiscriminatingCloud {
     private static final BooleanProperty POWERED = Properties.POWERED;
     public static final Box BOX = new Box(0, 0, 0, 1, 1, 1);
 
@@ -40,6 +40,9 @@ public class RedstoneCloud extends BasicCloud {
             return;
         }
         super.onEntityCollision(state, world, pos, entity);
+
+        if (!state.get(ENTITY_MODE).testEntity(entity)) return;
+
         if (!world.isClient) {
             if (!state.get(POWERED)) {
                 world.playSound(null, pos, BlockSoundGroup.WOOL.getPlaceSound(), SoundCategory.BLOCKS);

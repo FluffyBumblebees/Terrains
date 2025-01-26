@@ -4,13 +4,13 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
+import net.stockieslad.magical_utilities.core.Cloud;
 import net.stockieslad.magical_utilities.core.MuTags;
 
 import static net.stockieslad.magical_utilities.block.cloud.RedstoneCloud.BOX;
@@ -24,8 +24,13 @@ public class DestructiveCloud extends BasicCloud {
     }
 
     @Override
+    public boolean testActivator(ItemStack stack) {
+        return stack.isOf(Cloud.FERROUS.item);
+    }
+
+    @Override
     public boolean testPacifier(ItemStack stack) {
-        return stack.isOf(Items.IRON_INGOT);
+        return stack.isOf(Cloud.CHARGED.item);
     }
 
     @Override

@@ -17,6 +17,9 @@ public class MuLangGenerator extends FabricLanguageProvider {
             var nameBuilder = new StringBuilder(name);
             nameBuilder.setCharAt(0, Character.toUpperCase(name.charAt(0)));
             builder.add(value.block, nameBuilder + " Cloud");
+            builder.add(value.item.tooltipKey, value.tooltip);
+            builder.add(value.item.pacifierTooltipKey, value.pacifierTooltip);
+            builder.add(value.item.activatorTooltipKey, value.activatorTooltip);
         }
     }
 }

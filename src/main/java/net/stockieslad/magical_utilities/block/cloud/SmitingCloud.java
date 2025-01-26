@@ -15,7 +15,7 @@ import net.stockieslad.magical_utilities.core.Cloud;
 public class SmitingCloud extends BasicCloud {
     @Override
     public boolean testPacifier(ItemStack stack) {
-        return stack.isOf(Cloud.FERROUS.item);
+        return stack.isOf(Cloud.CHAOS.item);
     }
 
     @Override
