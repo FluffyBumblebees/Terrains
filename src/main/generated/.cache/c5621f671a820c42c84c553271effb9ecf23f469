@@ -1,7 +1,7 @@
-// 1.20.1	2025-01-27T17:33:15.9209179	Magical Utilities/Block Loot Tables
+// 1.20.1	2025-01-27T21:10:24.859671	Magical Utilities/Block Loot Tables
 62fba4083b3ec7d39ad9311b71d401d76dfb1db9 data\magical_utilities\loot_tables\blocks\living_cloud.json
-333a04941262503ded2ae1de2c1cbb50a2208c88 data\magical_utilities\loot_tables\blocks\cherry_cloud.json
 d657d7601e0efa4dc342c8e8a11e4e1637ce6c77 data\magical_utilities\loot_tables\blocks\charged_cloud.json
+333a04941262503ded2ae1de2c1cbb50a2208c88 data\magical_utilities\loot_tables\blocks\cherry_cloud.json
 6210371ddc79d94167829ffa0410ca19e0230b6a data\magical_utilities\loot_tables\blocks\ender_cloud.json
 2c1ba31ecec85ff61c014cbbb517fa20c9a37a7c data\magical_utilities\loot_tables\blocks\blazing_cloud.json
 2c25a7e28768fb2be49650f6335c4606d04b783e data\magical_utilities\loot_tables\blocks\dense_cloud.json

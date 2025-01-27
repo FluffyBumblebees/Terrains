@@ -12,6 +12,7 @@ public class MuLangGenerator extends FabricLanguageProvider {
     @Override
     public void generateTranslations(TranslationBuilder builder) {
         builder.add("itemgroup.magical_utilities.clouds", "Magical Clouds");
+        builder.add("recipe.magical_utilities.cloud_mixing", "Cloud Mixing");
         for (Cloud value : Cloud.values()) {
             var name = value.name().toLowerCase();
             var nameBuilder = new StringBuilder(name);

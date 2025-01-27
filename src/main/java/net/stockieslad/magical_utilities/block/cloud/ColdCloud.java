@@ -7,7 +7,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
@@ -16,7 +15,6 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
-@SuppressWarnings("deprecation")
 public class ColdCloud extends BasicCloud {
     @Override
     public boolean testPacifier(ItemStack stack) {
@@ -37,7 +35,6 @@ public class ColdCloud extends BasicCloud {
 
         entity.fallDistance = 0.0F;
         Vec3d motion = entity.getVelocity();
-        BlockPos position = entity.getBlockPos();
 
         if (entity.isSneaking()) {
             if (motion.y < 0) {
@@ -46,7 +43,7 @@ public class ColdCloud extends BasicCloud {
             return;
         }
 
-        if ((Math.abs(motion.getY()) > 0.1f) && canFallThrough(world.getBlockState(position.down())) && canFallThrough(world.getBlockState(position.down().down()))) {
+        if ((Math.abs(motion.getY()) > 0.1f)) {
             entity.fallDistance = 23F;
             entity.setVelocity(motion.x, -3.9, motion.z);
         }
@@ -84,10 +81,6 @@ public class ColdCloud extends BasicCloud {
         world.addParticle(ParticleTypes.CLOUD, xOffset, yOffset, zOffset, 0.0,
                 Direction.DOWN.getOffsetY() * ((random.nextFloat() * 0.75f) + 0.45f),
                 0.0);
-    }
-
-    private boolean canFallThrough(BlockState state) {
-        return state.isAir() || state.isIn(BlockTags.FIRE) || state.isLiquid() || state == this.getDefaultState();
     }
 }
 
