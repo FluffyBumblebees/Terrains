@@ -9,7 +9,7 @@
           "Name": "magical_utilities:ferrous_cloud",
           "Properties": {
             "dormant": "false",
-            "entity_mode": "item"
+            "entity_mode": "all"
           }
         },
         "target": {
@@ -24,7 +24,7 @@
           "Name": "magical_utilities:ferrous_cloud",
           "Properties": {
             "dormant": "false",
-            "entity_mode": "item"
+            "entity_mode": "all"
           }
         },
         "target": {

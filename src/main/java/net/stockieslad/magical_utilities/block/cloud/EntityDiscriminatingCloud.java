@@ -22,13 +22,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
 
-import static net.stockieslad.magical_utilities.block.cloud.EntityDiscriminatingCloud.EntityMode.ITEM;
+import static net.minecraft.state.property.Properties.POWERED;
+import static net.stockieslad.magical_utilities.block.cloud.EntityDiscriminatingCloud.EntityMode.ALL;
 
 public class EntityDiscriminatingCloud extends BasicCloud {
     public static final EnumProperty<EntityMode> ENTITY_MODE = EnumProperty.of("entity_mode", EntityMode.class);
 
     public EntityDiscriminatingCloud() {
-        this.setDefaultState(this.stateManager.getDefaultState().with(ENTITY_MODE, ITEM));
+        this.setDefaultState(this.stateManager.getDefaultState().with(ENTITY_MODE, ALL));
     }
 
     @Override
@@ -42,6 +43,8 @@ public class EntityDiscriminatingCloud extends BasicCloud {
             if (!mode.equals(value) && value.testStack(stack)) {
                 if (player == null || !player.isCreative()) stack.decrement(1);
                 world.playSound(null, pos, BlockSoundGroup.WOOL.getPlaceSound(), SoundCategory.BLOCKS);
+                if (state.contains(POWERED))
+                    state = state.with(POWERED, false);
                 world.setBlockState(pos, state.with(ENTITY_MODE, value));
                 return true;
             }

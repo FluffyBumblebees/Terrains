@@ -1,0 +1,18 @@
+{
+	"parent": "magical_utilities:block/cube_internal",
+	"textures": {
+		"particle": "#side",
+		"down_inside": "#end",
+		"down_outside": "#end",
+		"up_inside": "#end",
+		"up_outside": "#end",
+		"north_inside": "#side",
+		"north_outside": "#side",
+		"east_inside": "#side",
+		"east_outside": "#side",
+		"south_inside": "#side",
+		"south_outside": "#side",
+		"west_inside": "#side",
+		"west_outside": "#side"
+	}
+}

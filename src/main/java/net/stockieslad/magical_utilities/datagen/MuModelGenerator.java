@@ -13,6 +13,9 @@ import static net.minecraft.data.client.VariantSettings.Rotation.*;
 import static net.minecraft.data.client.VariantsBlockStateSupplier.create;
 
 public class MuModelGenerator  extends FabricModelProvider {
+
+
+
     public MuModelGenerator(FabricDataOutput output) {
         super(output);
     }
@@ -21,8 +24,8 @@ public class MuModelGenerator  extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator generator) {
         for (Cloud value : Cloud.values()) {
             if (value.equals(Cloud.INDIGO)) {
-                Identifier vertical = TexturedModel.CUBE_COLUMN.upload(value.block, generator.modelCollector);
-                Identifier horizontal = TexturedModel.CUBE_COLUMN_HORIZONTAL.upload(value.block, generator.modelCollector);
+                Identifier vertical = MuTexturedModels.COLUMN_INTERNAL.upload(value.block, generator.modelCollector);
+                Identifier horizontal = MuTexturedModels.COLUMN_INTERNAL_HORIZONTAL.upload(value.block, generator.modelCollector);
                 generator.blockStateCollector.accept(create(value.block).coordinate(BlockStateVariantMap.create(Properties.FACING)
                         .register(Direction.UP, BlockStateVariant.create().put(MODEL, horizontal))
                         .register(Direction.DOWN, BlockStateVariant.create().put(MODEL, horizontal).put(X, R180).put(Y, R180))
@@ -31,7 +34,7 @@ public class MuModelGenerator  extends FabricModelProvider {
                         .register(Direction.WEST, BlockStateVariant.create().put(MODEL, vertical).put(X, R270).put(Y, R90))
                         .register(Direction.EAST, BlockStateVariant.create().put(MODEL, vertical).put(X, R90).put(Y, R90)))
                 );
-            } else generator.registerSimpleCubeAll(value.block);
+            } else generator.registerSingleton(value.block, MuTexturedModels.CUBE_INTERNAL);
         }
     }
 

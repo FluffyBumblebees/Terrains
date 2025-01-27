@@ -37,7 +37,6 @@ import static net.stockieslad.magical_utilities.util.BiomeHelper.IS_COLD;
 import static net.stockieslad.magical_utilities.util.FeatureHelper.modifiersWithRarity;
 
 /*
- *  TODO: Fix rendering of clouds to work when you are inside of it.
  *  TODO: Recipe Viewer support
  *  TODO: Fix the noise spamming to happen only when entering/leaving
  */
@@ -182,7 +181,7 @@ public enum Cloud {
     }
 
     Cloud(String abilityTooltip, String pacifierTooltip, String activatorTooltip, BasicCloud block) {
-        this(abilityTooltip, activatorTooltip, pacifierTooltip, block, null, null);
+        this(abilityTooltip, pacifierTooltip, activatorTooltip, block, null, null);
     }
 
     public static void init() {}
