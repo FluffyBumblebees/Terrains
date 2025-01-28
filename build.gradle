@@ -27,8 +27,8 @@ dependencies {
 
 	modCompileOnly("curse.maven:tough-as-nails-246391:5815863")
 
-	//modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-fabric-api:${jei_version}")
-	//modRuntimeOnly("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
+	modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-fabric-api:${jei_version}")
+	modRuntimeOnly("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
 }
 
 loom {

@@ -15,6 +15,7 @@
   "block.magical_utilities.sulfur_cloud": "Sulfur Cloud",
   "itemgroup.magical_utilities.clouds": "Magical Clouds",
   "recipe.magical_utilities.cloud_mixing": "Cloud Mixing",
+  "recipe.magical_utilities.cloud_mixing.description": "Place in world to mix",
   "tooltip.magical_utilities.blazing_cloud": "Solid lava...",
   "tooltip.magical_utilities.blazing_cloud.activator": "Activates with Blaze Powder",
   "tooltip.magical_utilities.blazing_cloud.pacifier": "Pacifies with a Snowball",

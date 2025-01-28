@@ -37,8 +37,7 @@ import static net.stockieslad.magical_utilities.util.BiomeHelper.IS_COLD;
 import static net.stockieslad.magical_utilities.util.FeatureHelper.modifiersWithRarity;
 
 /*
- *  TODO: Recipe Viewer support
- *  TODO: Fix the noise spamming to happen only when entering/leaving
+ *  TODO: Fix the noise spamming during entity collision
  */
 public enum Cloud {
     ENERGIZED(

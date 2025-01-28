@@ -20,6 +20,9 @@
     ],
     "fabric-datagen": [
       "net.stockieslad.magical_utilities.datagen.MuDataGenerator"
+    ],
+    "jei_mod_plugin": [
+      "net.stockieslad.magical_utilities.compat.jei.MagicalUtilitiesJEI"
     ]
   },
   "mixins": [
